@@ -1,0 +1,660 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="14.3.0">
+  <help_text/>
+  <zoom_level>10</zoom_level>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>300</x>
+      <y>20</y>
+      <w>220</w>
+      <h>110</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Unitate Medicala&gt;&gt;
+--
+PK ID, int AA
+--
+- nume, varchar(256)
+--
+- adresa, varchar(256)
+--
+/FK programID, int NOT NULL/</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>610</x>
+      <y>20</y>
+      <w>210</w>
+      <h>220</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Program&gt;&gt;
+--
+PK programID, int AA
+--
+- luni, varchar(64)
+--
+- marti, varchar(64)
+--
+- miercuri, varchar(64)
+--
+- joi, varchar(64)
+--
+- vineri, varchar(64)
+--
+- sambata, varchar(64)
+--
+- duminica, varchar(64)
+--
+*//ex: 09:30-12:00 13:00-18:00*</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>510</x>
+      <y>40</y>
+      <w>120</w>
+      <h>100</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;-</panel_attributes>
+    <additional_attributes>100.0;10.0;10.0;80.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>310</x>
+      <y>140</y>
+      <w>210</w>
+      <h>220</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Date Angajat&gt;&gt;
+--
+PK CNP, numeric 
+--
+- nume, varchar(64)
+--
+- prenume, varchar(64)
+--
+- adresa, varchar(128)
+--
+- NrTelefon, numeric
+--
+- email, varchar(32)
+--
+- IBAN, varchar(34)
+--
+/FK NrContract, int/
+--
+- DataAngajarii, date
+
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>890</x>
+      <y>210</y>
+      <w>250</w>
+      <h>140</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;userData&gt;&gt;
+*deja criptate de aplicatia java*
+--
+PK username, varchar(256) 
+--
+- key, varchar(128) NN (parola criptata)
+--
+/FK angajatCNP, numeric unique/
+--
+- type, varchar(128)</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>810</x>
+      <y>280</y>
+      <w>100</w>
+      <h>110</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;90.0;80.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>890</x>
+      <y>0</y>
+      <w>210</w>
+      <h>180</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Serviciu&gt;&gt;
+--
+PK IDserviciu, int
+--
+- nume, varchar(32) 
+--
+/FK specialitate, int/
+*//daca e null = all*
+*//sau 0, hotaram*
+--
+- needsCompetenta, boolean 
+--
+- pret, numeric
+--
+- durata, numeric</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>620</x>
+      <y>370</y>
+      <w>210</w>
+      <h>130</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Contract&gt;&gt;
+--
+PK NrContract, int
+--
+/FK angajatCNP , numeric/
+--
+- salariu numeric
+--
+- NrOre numeric
+--
+- functie</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>380</x>
+      <y>570</y>
+      <w>210</w>
+      <h>90</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;TipAsistentMedical&gt;&gt;
+--
+/PK FK NrContract, numeric/
+--
+- tipul, varchar(32)
+--
+- grad, varchar(32)</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>880</x>
+      <y>380</y>
+      <w>210</w>
+      <h>190</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Medic&gt;&gt;
+--
+PK FK NrContract, int 
+--
+- cod_parafa, int 
+--
+- competente, varchar(128)
+--
+^ titlu_stiintific, varchar
+--
+^ post_didactic, varchar
+--
+- comision, numeric
+--
+^ - poate fi null
+* - probabil e un tabel
+
+
+
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>510</x>
+      <y>170</y>
+      <w>130</w>
+      <h>230</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;110.0;210.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>820</x>
+      <y>400</y>
+      <w>80</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;60.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>580</x>
+      <y>400</y>
+      <w>60</w>
+      <h>220</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;-</panel_attributes>
+    <additional_attributes>40.0;10.0;10.0;200.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>610</x>
+      <y>250</y>
+      <w>210</w>
+      <h>90</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;ServiciuPerUnitate&gt;&gt;
+--
+PK ID, int
+--
+/FK UM, int/
+--
+/FK serviciu, varchar(256)/</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>510</x>
+      <y>70</y>
+      <w>120</w>
+      <h>250</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;100.0;230.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>810</x>
+      <y>20</y>
+      <w>100</w>
+      <h>330</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;-</panel_attributes>
+    <additional_attributes>80.0;10.0;10.0;310.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>620</x>
+      <y>540</y>
+      <w>210</w>
+      <h>110</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Venit&gt;&gt;
+--
+PK NrTranzactie, int
+--
+- suma, int
+--
+- zi_plata, date
+--
+/FK NrCMedic, int/
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1190</x>
+      <y>220</y>
+      <w>210</w>
+      <h>80</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Specialitate&gt;&gt;
+--
+PK IDSpecialitate, int
+--
+- nume, varchar(256)</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1170</x>
+      <y>340</y>
+      <w>210</w>
+      <h>110</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;SpecialitateMedic&gt;&gt;
+--
+PK IDspecial, int
+--
+/FK NrContract, int/
+--
+/FK IDspecialitate, int/
+--
+- grad, boolean</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1080</x>
+      <y>400</y>
+      <w>110</w>
+      <h>60</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;40.0;90.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1270</x>
+      <y>290</y>
+      <w>40</w>
+      <h>70</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;20.0;50.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1090</x>
+      <y>50</y>
+      <w>120</w>
+      <h>190</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;-</panel_attributes>
+    <additional_attributes>100.0;170.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>0</x>
+      <y>340</y>
+      <w>210</w>
+      <h>150</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;OrarSpecific&gt;&gt;
+--
+PK osID, int
+--
+- ziCalendaristica, date
+--
+- interval_orar, varchar(256)
+*ex: 09:30-12:00 13:00-18:00*
+--
+/FK UM, int/
+--
+/FK NrContract, int/
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>510</x>
+      <y>300</y>
+      <w>130</w>
+      <h>120</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;-</panel_attributes>
+    <additional_attributes>110.0;100.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>240</x>
+      <y>400</y>
+      <w>210</w>
+      <h>130</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Orar Generic&gt;&gt;
+--
+PK ogID, int
+--
+- ziSaptamana, varchar(20)
+--
+- interval_orar, varchar(256)
+*ex: 09:30-12:00 13:00-18:00*
+--
+/FK NrContract, int/
+
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>440</x>
+      <y>400</y>
+      <w>200</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;-</panel_attributes>
+    <additional_attributes>180.0;10.0;10.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>200</x>
+      <y>350</y>
+      <w>440</w>
+      <h>80</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;-</panel_attributes>
+    <additional_attributes>420.0;60.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>180</x>
+      <y>70</y>
+      <w>140</w>
+      <h>290</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;-</panel_attributes>
+    <additional_attributes>120.0;10.0;10.0;270.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1230</x>
+      <y>470</y>
+      <w>210</w>
+      <h>120</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Programare&gt;&gt;
+--
+PK NrProgramare
+--
+- data, Date
+--
+- ora, varchar(64)
+--
+/FK NrCMedic, numeric/
+
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>720</x>
+      <y>490</y>
+      <w>180</w>
+      <h>70</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;-</panel_attributes>
+    <additional_attributes>160.0;10.0;10.0;50.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1080</x>
+      <y>500</y>
+      <w>170</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;150.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1430</x>
+      <y>220</y>
+      <w>210</w>
+      <h>110</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;ServiciiPerProgamari&gt;&gt;
+--
+PK ID, int
+--
+/FK IDserviciu, int/
+--
+/FK NrProgramare, int/
+--
+rezultat?</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1410</x>
+      <y>320</y>
+      <w>70</w>
+      <h>170</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;150.0;50.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1090</x>
+      <y>30</y>
+      <w>370</w>
+      <h>210</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;350.0;190.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>600</x>
+      <y>710</y>
+      <w>210</w>
+      <h>90</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Pacient&gt;&gt;
+--
+PK IDpacient, int
+--
+- nume, varchar(20)
+--
+- prenume, varchar(20)
+
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>880</x>
+      <y>610</y>
+      <w>240</w>
+      <h>200</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Raport&gt;&gt;
+--
+PK IDraport, int
+--
+/FK IDpacient, int/
+--
+/FK medicRecomandare, int (optional)/
+--
+/FK asistentContract, int (optional)/
+--
+- simptome, varchar(256)
+--
+*//investigatii (din SPP)*
+--
+- diagnostic, varchar(256)
+--
+- recomandari, varchar(256)
+
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>800</x>
+      <y>660</y>
+      <w>100</w>
+      <h>100</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;80.0;80.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>980</x>
+      <y>560</y>
+      <w>30</w>
+      <h>70</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;50.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>470</x>
+      <y>650</y>
+      <w>430</w>
+      <h>80</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;410.0;60.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>150</x>
+      <y>570</y>
+      <w>210</w>
+      <h>90</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Concediu&gt;&gt;
+--
+/PK FK NrContract, int/
+--
+- data_incepere, date
+--
+- data_terminare, date</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>350</x>
+      <y>400</y>
+      <w>290</w>
+      <h>190</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;-</panel_attributes>
+    <additional_attributes>270.0;10.0;10.0;170.0</additional_attributes>
+  </element>
+</diagram>
