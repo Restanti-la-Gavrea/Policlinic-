@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <diagram program="umlet" version="14.3.0">
   <help_text>=</help_text>
-  <zoom_level>10</zoom_level>
+  <zoom_level>8</zoom_level>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>230</x>
-      <y>30</y>
-      <w>210</w>
-      <h>130</h>
+      <x>304</x>
+      <y>144</y>
+      <w>168</w>
+      <h>104</h>
     </coordinates>
     <panel_attributes>&lt;&lt;UnitateMedicala&gt;&gt;
 --
@@ -18,17 +18,16 @@ PK nrUnitate, int AA
 --
 - adresa, varchar(128)
 --
-/FK nrProgram, int/
-/unique/</panel_attributes>
+/FK nrProgram, int unique/</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>530</x>
-      <y>0</y>
-      <w>210</w>
-      <h>270</h>
+      <x>520</x>
+      <y>152</y>
+      <w>168</w>
+      <h>216</h>
     </coordinates>
     <panel_attributes>&lt;&lt;Program&gt;&gt;
 /fiecare atribut este (optional)/
@@ -57,29 +56,25 @@ PK nrProgram, int AA
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>430</x>
-      <y>120</y>
-      <w>120</w>
-      <h>30</h>
+      <x>464</x>
+      <y>184</y>
+      <w>72</w>
+      <h>24</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;-</panel_attributes>
-    <additional_attributes>100.0;10.0;10.0;10.0</additional_attributes>
+    <additional_attributes>70.0;10.0;10.0;10.0</additional_attributes>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>230</x>
-      <y>170</y>
-      <w>210</w>
-      <h>220</h>
+      <x>304</x>
+      <y>440</y>
+      <w>168</w>
+      <h>144</h>
     </coordinates>
     <panel_attributes>&lt;&lt;DateAngajat&gt;&gt;
 --
 PK angajatCNP, BigInt 
---
-- nume, varchar(20)
---
-- prenume, varchar(20)
 --
 - adresa, varchar(128)
 --
@@ -99,10 +94,10 @@ PK angajatCNP, BigInt
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>810</x>
-      <y>240</y>
-      <w>250</w>
-      <h>140</h>
+      <x>104</x>
+      <y>416</y>
+      <w>184</w>
+      <h>112</h>
     </coordinates>
     <panel_attributes>&lt;&lt;UserData&gt;&gt;
 *deja criptate de aplicatia java*
@@ -119,21 +114,21 @@ PK username, varchar(32)
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>740</x>
-      <y>350</y>
-      <w>90</w>
-      <h>70</h>
+      <x>280</x>
+      <y>424</y>
+      <w>256</w>
+      <h>24</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;-</panel_attributes>
-    <additional_attributes>10.0;50.0;70.0;50.0;70.0;10.0</additional_attributes>
+    <additional_attributes>300.0;10.0;10.0;10.0</additional_attributes>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>810</x>
-      <y>30</y>
-      <w>210</w>
-      <h>190</h>
+      <x>728</x>
+      <y>88</y>
+      <w>168</w>
+      <h>152</h>
     </coordinates>
     <panel_attributes>&lt;&lt;Serviciu&gt;&gt;
 --
@@ -155,16 +150,18 @@ PK nrServiciu, int AA
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>540</x>
-      <y>390</y>
-      <w>210</w>
-      <h>150</h>
+      <x>520</x>
+      <y>376</y>
+      <w>168</w>
+      <h>136</h>
     </coordinates>
     <panel_attributes>&lt;&lt;Contract&gt;&gt;
 --
 PK nrContract, Int
 --
-/FK angajatCNP , BigInt unique/
+- nume, varchar(20)
+--
+- prenume, varchar(20)
 --
 - salariu, numeric
 --
@@ -177,10 +174,10 @@ PK nrContract, Int
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>300</x>
-      <y>610</y>
-      <w>210</w>
-      <h>110</h>
+      <x>520</x>
+      <y>528</y>
+      <w>168</w>
+      <h>88</h>
     </coordinates>
     <panel_attributes>&lt;&lt;TipAsistentMedical&gt;&gt;
 --
@@ -195,10 +192,10 @@ PK nrContract, Int
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>790</x>
-      <y>420</y>
-      <w>250</w>
-      <h>160</h>
+      <x>720</x>
+      <y>400</y>
+      <w>200</w>
+      <h>128</h>
     </coordinates>
     <panel_attributes>&lt;&lt;Medic&gt;&gt;
 --
@@ -223,21 +220,10 @@ PK FK nrContract, int
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>430</x>
-      <y>200</y>
-      <w>130</w>
-      <h>220</h>
-    </coordinates>
-    <panel_attributes>lt=&lt;&lt;&lt;-</panel_attributes>
-    <additional_attributes>10.0;10.0;60.0;10.0;60.0;200.0;110.0;200.0</additional_attributes>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>740</x>
-      <y>450</y>
-      <w>70</w>
-      <h>30</h>
+      <x>680</x>
+      <y>424</y>
+      <w>56</w>
+      <h>24</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;-</panel_attributes>
     <additional_attributes>10.0;10.0;50.0;10.0</additional_attributes>
@@ -245,27 +231,27 @@ PK FK nrContract, int
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>490</x>
-      <y>490</y>
-      <w>70</w>
-      <h>140</h>
+      <x>488</x>
+      <y>472</y>
+      <w>48</w>
+      <h>104</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;-</panel_attributes>
-    <additional_attributes>50.0;10.0;10.0;10.0;10.0;120.0</additional_attributes>
+    <additional_attributes>40.0;10.0;10.0;10.0;10.0;110.0;40.0;110.0</additional_attributes>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>530</x>
-      <y>280</y>
-      <w>210</w>
-      <h>90</h>
+      <x>520</x>
+      <y>72</y>
+      <w>168</w>
+      <h>72</h>
     </coordinates>
-    <panel_attributes>&lt;&lt;ServiciuPerUnitate&gt;&gt;
+    <panel_attributes>&lt;&lt;ServiciuPerCabinet&gt;&gt;
 --
 PK ID, int AA
 --
-/FK um, int/
+/FK nrCabinet, int/
 --
 /FK nrServiciu, int/
 bg=light_gray</panel_attributes>
@@ -274,10 +260,10 @@ bg=light_gray</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1400</x>
-      <y>520</y>
-      <w>170</w>
-      <h>110</h>
+      <x>992</x>
+      <y>376</y>
+      <w>136</w>
+      <h>88</h>
     </coordinates>
     <panel_attributes>&lt;&lt;Venit&gt;&gt;
 --
@@ -294,10 +280,10 @@ PK nrPlata, int AA
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1100</x>
-      <y>110</y>
-      <w>210</w>
-      <h>80</h>
+      <x>920</x>
+      <y>152</y>
+      <w>144</w>
+      <h>64</h>
     </coordinates>
     <panel_attributes>&lt;&lt;Specialitate&gt;&gt;
 --
@@ -309,10 +295,10 @@ PK nrSpecialitate, int
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1110</x>
-      <y>380</y>
-      <w>210</w>
-      <h>130</h>
+      <x>888</x>
+      <y>256</y>
+      <w>168</w>
+      <h>104</h>
     </coordinates>
     <panel_attributes>&lt;&lt;SpecialitateMedic&gt;&gt;
 --
@@ -330,21 +316,21 @@ bg=light_gray</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1010</x>
-      <y>80</y>
-      <w>150</w>
-      <h>50</h>
+      <x>888</x>
+      <y>128</y>
+      <w>104</w>
+      <h>40</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;-</panel_attributes>
-    <additional_attributes>130.0;30.0;130.0;10.0;10.0;10.0</additional_attributes>
+    <additional_attributes>110.0;30.0;110.0;10.0;10.0;10.0</additional_attributes>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>0</x>
-      <y>300</y>
-      <w>210</w>
-      <h>150</h>
+      <x>328</x>
+      <y>272</y>
+      <w>168</w>
+      <h>120</h>
     </coordinates>
     <panel_attributes>&lt;&lt;OrarSpecific&gt;&gt;
 --
@@ -355,7 +341,7 @@ PK osID, int, AA
 - intervalOrar, varchar(36)
 *//ex: 09:30-12:00 13:00-18:00*
 --
-/FK um, int/
+/FK nrUnitate, int/
 --
 /FK nrContract, int/
 bg=light_gray</panel_attributes>
@@ -364,21 +350,21 @@ bg=light_gray</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>430</x>
-      <y>330</y>
-      <w>130</w>
-      <h>110</h>
+      <x>464</x>
+      <y>440</y>
+      <w>72</w>
+      <h>24</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;-</panel_attributes>
-    <additional_attributes>110.0;90.0;40.0;90.0;40.0;10.0;10.0;10.0</additional_attributes>
+    <additional_attributes>70.0;10.0;10.0;10.0</additional_attributes>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>230</x>
-      <y>450</y>
-      <w>210</w>
-      <h>140</h>
+      <x>120</x>
+      <y>272</y>
+      <w>200</w>
+      <h>120</h>
     </coordinates>
     <panel_attributes>&lt;&lt;OrarGeneric&gt;&gt;
 --
@@ -390,18 +376,19 @@ PK ogID, int AA
 *//ex: 09:30-12:00 13:00-18:00*
 --
 /FK nrContract, int/
-*orarul generic are neajunsuri*
-
+--
+/FK nrCabinet, int/
+bg=light_gray
 </panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1160</x>
-      <y>520</y>
-      <w>200</w>
-      <h>110</h>
+      <x>1008</x>
+      <y>488</y>
+      <w>160</w>
+      <h>120</h>
     </coordinates>
     <panel_attributes>&lt;&lt;Programare&gt;&gt;
 --
@@ -411,27 +398,32 @@ PK nrProgramare, int AA
 --
 - ora, varchar(5)
 --
-/FK nrCMedic, int/</panel_attributes>
+/FK nrCMedic, int/
+--
+/FK nrCabine, int/
+--
+/FK nrPacient, int/
+</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1350</x>
-      <y>570</y>
-      <w>70</w>
-      <h>30</h>
+      <x>1056</x>
+      <y>456</y>
+      <w>24</w>
+      <h>48</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;-</panel_attributes>
-    <additional_attributes>10.0;10.0;50.0;10.0</additional_attributes>
+    <additional_attributes>10.0;40.0;10.0;10.0</additional_attributes>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1330</x>
-      <y>250</y>
-      <w>210</w>
-      <h>160</h>
+      <x>1080</x>
+      <y>232</y>
+      <w>168</w>
+      <h>128</h>
     </coordinates>
     <panel_attributes>&lt;&lt;ServiciuPerProgamare&gt;&gt;
 --
@@ -451,10 +443,10 @@ bg=light_gray</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>550</x>
-      <y>600</y>
-      <w>210</w>
-      <h>90</h>
+      <x>520</x>
+      <y>632</y>
+      <w>168</w>
+      <h>72</h>
     </coordinates>
     <panel_attributes>&lt;&lt;Pacient&gt;&gt;
 --
@@ -470,16 +462,14 @@ PK nrPacient, int AA
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>830</x>
-      <y>620</y>
-      <w>240</w>
-      <h>240</h>
+      <x>720</x>
+      <y>552</y>
+      <w>192</w>
+      <h>176</h>
     </coordinates>
     <panel_attributes>&lt;&lt;Raport&gt;&gt;
 --
 PK nrRaport, int AA
---
-/FK nrPacient, int/
 --
 /FK nrProgramare, int unique/
 --
@@ -502,10 +492,10 @@ PK nrRaport, int AA
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>70</x>
+      <x>360</x>
       <y>600</y>
-      <w>210</w>
-      <h>90</h>
+      <w>144</w>
+      <h>72</h>
     </coordinates>
     <panel_attributes>&lt;&lt;Concediu&gt;&gt;
 --
@@ -519,39 +509,37 @@ PK nrRaport, int AA
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>270</x>
-      <y>470</y>
-      <w>290</w>
-      <h>150</h>
+      <x>472</x>
+      <y>456</y>
+      <w>64</w>
+      <h>160</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;-</panel_attributes>
-    <additional_attributes>270.0;10.0;200.0;10.0;200.0;130.0;10.0;130.0</additional_attributes>
+    <additional_attributes>60.0;10.0;10.0;10.0;10.0;180.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1010</x>
-      <y>590</y>
-      <w>170</w>
-      <h>50</h>
+      <x>888</x>
+      <y>536</y>
+      <w>136</w>
+      <h>32</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;-</panel_attributes>
-    <additional_attributes>150.0;10.0;10.0;10.0;10.0;30.0</additional_attributes>
+    <additional_attributes>150.0;10.0;10.0;10.0;10.0;20.0</additional_attributes>
   </element>
   <element>
     <id>Text</id>
     <coordinates>
-      <x>90</x>
-      <y>760</y>
-      <w>440</w>
+      <x>96</x>
+      <y>600</y>
+      <w>264</w>
       <h>120</h>
     </coordinates>
     <panel_attributes>*Indicatii*
 Trebuie ca valoarea sa fie cu zecimale =&gt; numeric | nu? =&gt; int
 
-Implicit fiecare atribut e NOT NULL, mai putin atunci cand e 
-specificat ca e (optional) sau este mentionata o alta exceptie
-sub titlul tabelului
+Implicit fiecare atribut e NOT NULL, mai putin atunci cand e specificat ca e (optional) sau este mentionata o alta exceptie sub titlul tabelului
 
 
 bg=green
@@ -561,10 +549,10 @@ style=wordwrap</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1090</x>
-      <y>230</y>
-      <w>180</w>
-      <h>140</h>
+      <x>720</x>
+      <y>264</y>
+      <w>144</w>
+      <h>112</h>
     </coordinates>
     <panel_attributes>&lt;&lt;ServiciuCustom&gt;&gt;
 --
@@ -583,188 +571,152 @@ PK ID, int AA
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1010</x>
-      <y>200</y>
-      <w>130</w>
-      <h>50</h>
+      <x>800</x>
+      <y>232</y>
+      <w>24</w>
+      <h>48</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;-</panel_attributes>
-    <additional_attributes>10.0;10.0;110.0;10.0;110.0;30.0</additional_attributes>
+    <additional_attributes>10.0;10.0;10.0;40.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>980</x>
-      <y>360</y>
-      <w>140</w>
-      <h>80</h>
+      <x>792</x>
+      <y>368</y>
+      <w>24</w>
+      <h>48</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;-</panel_attributes>
-    <additional_attributes>10.0;60.0;10.0;30.0;120.0;30.0;120.0;10.0</additional_attributes>
+    <additional_attributes>10.0;40.0;10.0;10.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1340</x>
-      <y>400</y>
-      <w>30</w>
-      <h>140</h>
+      <x>1152</x>
+      <y>352</y>
+      <w>24</w>
+      <h>152</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;.
 </panel_attributes>
-    <additional_attributes>10.0;120.0;10.0;10.0</additional_attributes>
+    <additional_attributes>10.0;170.0;10.0;10.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1280</x>
-      <y>180</y>
-      <w>30</w>
-      <h>220</h>
+      <x>968</x>
+      <y>208</y>
+      <w>24</w>
+      <h>64</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;.
 </panel_attributes>
-    <additional_attributes>10.0;10.0;10.0;200.0</additional_attributes>
+    <additional_attributes>10.0;10.0;10.0;60.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1030</x>
-      <y>530</y>
-      <w>150</w>
-      <h>40</h>
+      <x>912</x>
+      <y>488</y>
+      <w>112</w>
+      <h>32</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;.
 </panel_attributes>
-    <additional_attributes>10.0;20.0;130.0;20.0</additional_attributes>
+    <additional_attributes>10.0;20.0;120.0;20.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1010</x>
-      <y>50</y>
-      <w>370</w>
-      <h>220</h>
+      <x>888</x>
+      <y>104</y>
+      <w>232</w>
+      <h>144</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;.
 </panel_attributes>
-    <additional_attributes>10.0;20.0;350.0;20.0;350.0;200.0</additional_attributes>
+    <additional_attributes>10.0;20.0;270.0;20.0;270.0;160.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>750</x>
+      <x>680</x>
+      <y>112</y>
+      <w>64</w>
+      <h>32</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;.
+</panel_attributes>
+    <additional_attributes>60.0;20.0;10.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>256</x>
+      <y>120</y>
+      <w>280</w>
+      <h>104</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;.
+</panel_attributes>
+    <additional_attributes>10.0;110.0;10.0;10.0;330.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>800</x>
+      <y>520</y>
+      <w>24</w>
+      <h>48</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;.
+</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;40.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>912</x>
+      <y>352</y>
+      <w>48</w>
+      <h>88</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;.
+</panel_attributes>
+    <additional_attributes>10.0;90.0;40.0;90.0;40.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>488</x>
+      <y>368</y>
+      <w>48</w>
+      <h>32</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;.
+</panel_attributes>
+    <additional_attributes>40.0;20.0;10.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>416</x>
+      <y>240</y>
+      <w>24</w>
+      <h>48</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;.
+</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;40.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1032</x>
       <y>640</y>
-      <w>100</w>
-      <h>40</h>
-    </coordinates>
-    <panel_attributes>lt=&lt;&lt;.
-</panel_attributes>
-    <additional_attributes>10.0;20.0;80.0;20.0</additional_attributes>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>730</x>
-      <y>50</y>
-      <w>100</w>
-      <h>330</h>
-    </coordinates>
-    <panel_attributes>lt=&lt;&lt;.
-</panel_attributes>
-    <additional_attributes>80.0;10.0;40.0;10.0;40.0;310.0;10.0;310.0</additional_attributes>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>430</x>
-      <y>140</y>
-      <w>120</w>
-      <h>210</h>
-    </coordinates>
-    <panel_attributes>lt=&lt;&lt;.
-</panel_attributes>
-    <additional_attributes>10.0;10.0;80.0;10.0;80.0;190.0;100.0;190.0</additional_attributes>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>900</x>
-      <y>570</y>
-      <w>30</w>
-      <h>70</h>
-    </coordinates>
-    <panel_attributes>lt=&lt;&lt;.
-</panel_attributes>
-    <additional_attributes>10.0;10.0;10.0;50.0</additional_attributes>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>450</x>
-      <y>710</y>
-      <w>400</w>
-      <h>60</h>
-    </coordinates>
-    <panel_attributes>lt=&lt;&lt;.
-</panel_attributes>
-    <additional_attributes>10.0;10.0;10.0;40.0;380.0;40.0</additional_attributes>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>430</x>
-      <y>440</y>
-      <w>130</w>
-      <h>40</h>
-    </coordinates>
-    <panel_attributes>lt=&lt;&lt;.
-</panel_attributes>
-    <additional_attributes>110.0;20.0;10.0;20.0</additional_attributes>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>1030</x>
-      <y>430</y>
-      <w>100</w>
-      <h>40</h>
-    </coordinates>
-    <panel_attributes>lt=&lt;&lt;.
-</panel_attributes>
-    <additional_attributes>10.0;20.0;80.0;20.0</additional_attributes>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>200</x>
-      <y>420</y>
-      <w>360</w>
-      <h>40</h>
-    </coordinates>
-    <panel_attributes>lt=&lt;&lt;.
-</panel_attributes>
-    <additional_attributes>340.0;20.0;10.0;20.0</additional_attributes>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>160</x>
-      <y>50</y>
-      <w>90</w>
-      <h>270</h>
-    </coordinates>
-    <panel_attributes>lt=&lt;&lt;.
-</panel_attributes>
-    <additional_attributes>70.0;20.0;10.0;20.0;10.0;250.0</additional_attributes>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>1190</x>
-      <y>690</y>
-      <w>180</w>
-      <h>40</h>
+      <w>144</w>
+      <h>32</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;.
 </panel_attributes>
@@ -773,10 +725,10 @@ PK ID, int AA
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1190</x>
-      <y>670</y>
-      <w>180</w>
-      <h>30</h>
+      <x>1032</x>
+      <y>624</y>
+      <w>144</w>
+      <h>24</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;-</panel_attributes>
     <additional_attributes>10.0;10.0;160.0;10.0</additional_attributes>
@@ -784,10 +736,10 @@ PK ID, int AA
   <element>
     <id>Text</id>
     <coordinates>
-      <x>1370</x>
-      <y>670</y>
-      <w>180</w>
-      <h>30</h>
+      <x>1176</x>
+      <y>624</y>
+      <w>144</w>
+      <h>24</h>
     </coordinates>
     <panel_attributes>one-to-one
 style=wordwrap</panel_attributes>
@@ -796,10 +748,10 @@ style=wordwrap</panel_attributes>
   <element>
     <id>Text</id>
     <coordinates>
-      <x>1370</x>
-      <y>700</y>
-      <w>180</w>
-      <h>30</h>
+      <x>1176</x>
+      <y>648</y>
+      <w>144</w>
+      <h>24</h>
     </coordinates>
     <panel_attributes>one-to-many
 style=wordwrap</panel_attributes>
@@ -808,10 +760,10 @@ style=wordwrap</panel_attributes>
   <element>
     <id>Text</id>
     <coordinates>
-      <x>1090</x>
-      <y>810</y>
-      <w>480</w>
-      <h>50</h>
+      <x>1000</x>
+      <y>736</y>
+      <w>328</w>
+      <h>40</h>
     </coordinates>
     <panel_attributes>/sagetile sunt dinspre tabela care contine cheia straina spre tabela la care se face referinta/
 style=wordwrap</panel_attributes>
@@ -820,10 +772,10 @@ style=wordwrap</panel_attributes>
   <element>
     <id>Text</id>
     <coordinates>
-      <x>1200</x>
-      <y>730</y>
-      <w>380</w>
-      <h>70</h>
+      <x>1016</x>
+      <y>672</y>
+      <w>296</w>
+      <h>56</h>
     </coordinates>
     <panel_attributes>prin compunerea relatiilor one-to-many cu ajutorul unor 
 tabele intermediare se fac relatiile many-to-many, aceste 
@@ -831,5 +783,187 @@ tabele sunt evidentiate, fiind colorate cu gri, indeferent ca
 contin informatii aditionale sau nu
 style=wordwrap</panel_attributes>
     <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>112</x>
+      <y>208</y>
+      <w>168</w>
+      <h>56</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Cabinet&gt;&gt;
+--
+PK nrCabinet, int
+--
+/FK nrUnitate, int/</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>272</x>
+      <y>224</y>
+      <w>48</w>
+      <h>32</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;.
+</panel_attributes>
+    <additional_attributes>40.0;20.0;10.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>136</x>
+      <y>32</y>
+      <w>136</w>
+      <h>72</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;AparatMedical&gt;&gt;
+--
+PK nrAparat, int
+--
+- nume, varchar(32)
+--
+/FK nrCabinet, int/</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>680</x>
+      <y>568</y>
+      <w>56</w>
+      <h>32</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;.
+</panel_attributes>
+    <additional_attributes>10.0;20.0;50.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>192</x>
+      <y>96</y>
+      <w>24</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;.</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;30.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>352</x>
+      <y>32</y>
+      <w>136</w>
+      <h>72</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;AparatNecesar&gt;&gt;
+--
+PK ID, int AA
+--
+/FK nrServiciu, int/
+--
+/FK nrAparat, int/
+bg=light_gray</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>104</x>
+      <y>120</y>
+      <w>136</w>
+      <h>72</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;AparatPerCabinet&gt;&gt;
+--
+PK ID, int AA
+--
+/FK nrAparat, int/
+--
+/FK nrCabinet, int/
+bg=light_gray</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>184</x>
+      <y>184</y>
+      <w>24</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;.</panel_attributes>
+    <additional_attributes>10.0;30.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>264</x>
+      <y>64</y>
+      <w>104</w>
+      <h>24</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;.</panel_attributes>
+    <additional_attributes>10.0;10.0;110.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>480</x>
+      <y>48</y>
+      <w>296</w>
+      <h>56</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;.</panel_attributes>
+    <additional_attributes>350.0;50.0;350.0;10.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>72</x>
+      <y>0</y>
+      <w>1216</w>
+      <h>584</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;.</panel_attributes>
+    <additional_attributes>50.0;280.0;10.0;280.0;10.0;10.0;1500.0;20.0;1500.0;710.0;1370.0;710.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>624</x>
+      <y>576</y>
+      <w>400</w>
+      <h>200</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;.</panel_attributes>
+    <additional_attributes>10.0;160.0;10.0;230.0;420.0;230.0;420.0;10.0;480.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>288</x>
+      <y>384</y>
+      <w>248</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;.
+</panel_attributes>
+    <additional_attributes>290.0;30.0;10.0;30.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>304</x>
+      <y>240</y>
+      <w>24</w>
+      <h>48</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;.
+</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;40.0</additional_attributes>
   </element>
 </diagram>
