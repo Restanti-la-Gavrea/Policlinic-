@@ -1,0 +1,219 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="14.3.0">
+  <zoom_level>10</zoom_level>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>210</x>
+      <y>50</y>
+      <w>790</w>
+      <h>60</h>
+    </coordinates>
+    <panel_attributes>GUI (JavaFX)</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>350</x>
+      <y>110</y>
+      <w>650</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>*Interfata GUI-Aplicatie*</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>520</x>
+      <y>150</y>
+      <w>130</w>
+      <h>340</h>
+    </coordinates>
+    <panel_attributes>
+*&lt;&lt;Modul HR&gt;&gt;*
+
+--
+
+
+
+*Vederea*
+/si modificarea/
+-Datelor personale-
+
+
+
+--
+
+*Vederea*
+/si modificarea/
+si crearea
+-Orarului-</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>830</x>
+      <y>150</y>
+      <w>170</w>
+      <h>340</h>
+    </coordinates>
+    <panel_attributes>
+*&lt;&lt;Modul GO&gt;&gt;*
+
+--
+
+*Programarea si*
+*inregistrarea pacientilor*
+-
+/Vizualizare istoric/
+--
+*Emitere bon fiscal*
+--
+
+*Raport*
+- Creare raport
+- Completare raport
+  - Analize
+  - Restul
+- Parafare
+--
+
+*Management servicii*
+/de catre medic/
+
+
+
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>650</x>
+      <y>150</y>
+      <w>180</w>
+      <h>340</h>
+    </coordinates>
+    <panel_attributes>
+*&lt;&lt;Modul F&gt;&gt;*
+
+--
+
+*Vizualizarea profitului*
+/-lantului de policlinici-/
+pe fiecare luna
+
+-
+
+*Vizualizarea profitului*
+/de fiecare medic/
+pe fiecare luna
+/sortat un functie de UM sau/
+/Specialitate/
+
+--
+
+*Vizualizarea salariilor*
+/inclusiv lunile precedente/</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>210</x>
+      <y>110</y>
+      <w>140</w>
+      <h>380</h>
+    </coordinates>
+    <panel_attributes>
+
+
+
+
+
+
+*&lt;&lt;Autentificare&gt;&gt;*
+ -
+&lt;&lt;Deautentificare&gt;&gt;
+
+Determina privilegiile
+identificand utilizatorul
+curent in BD</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>350</x>
+      <y>150</y>
+      <w>170</w>
+      <h>340</h>
+    </coordinates>
+    <panel_attributes>
+*&lt;&lt;Administraror&gt;&gt;*
+
+
+Management DB
+/stergere, adaugare/
+/update/
+/UserData, DateAngajati/
+
+-
+
+*&lt;&lt;SuperAdministrator&gt;&gt;*
+
+management admini
++ tool-uri de diagnostic
+(vizualizarea cotinut
+tabela, vizualizare schema
+etc.)
++adaugare UM, cabinete
+altele
+
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Text</id>
+    <coordinates>
+      <x>50</x>
+      <y>60</y>
+      <w>160</w>
+      <h>140</h>
+    </coordinates>
+    <panel_attributes>*Nota Administrator*
+/cum tratam stergerea unui angajat/
+
+stergem informatiile personale si contul asociat dar nu si contractul
+style=wordwrap</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>210</x>
+      <y>490</y>
+      <w>790</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>/JDBC/
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>210</x>
+      <y>520</y>
+      <w>790</w>
+      <h>80</h>
+    </coordinates>
+    <panel_attributes>
+MySQL
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+</diagram>
