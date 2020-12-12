@@ -107,6 +107,7 @@ create table Contract (
     nume varchar(20) not null,
     prenume varchar(20) not null,
     salariu numeric(10,2) not null,
+    dataConcediere date,
     nrOre int not null,
     functie enum("hr","eco","rec","as","m") not null
 );
