@@ -28,4 +28,4 @@ ALTER TABLE Programare ADD CONSTRAINT FK_ProgramareLaMedic FOREIGN KEY (nrCMedic
 ALTER TABLE Programare ADD CONSTRAINT FK_ProgramareLaCabinet FOREIGN KEY (nrCabinet) REFERENCES Cabinet(nrCabinet);
 ALTER TABLE Programare ADD CONSTRAINT FK_ProgramarePacient FOREIGN KEY (nrPacient) REFERENCES Pacient(nrPacient);
 ALTER TABLE ServiciuPerProgramare ADD CONSTRAINT FK_ProgramareLaServiciu FOREIGN KEY (nrServiciu) REFERENCES Serviciu(nrServiciu);
-ALTER TABLE ServiciuPerProgramare ADD CONSTRAINT FK_CeProgramare FOREIGN KEY (nrProgramare) REFERENCES Programare(nrProgramare);
+ALTER TABLE ServiciuPerProgramare ADD CONSTRAINT FK_CeProgramareCuServiciu FOREIGN KEY (nrProgramare) REFERENCES Programare(nrProgramare);

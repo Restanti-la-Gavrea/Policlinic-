@@ -1,4 +1,5 @@
-create database if not exists policlinica;
+drop database if exists policlinica;
+create database policlinica;
 use policlinica;
 -- -------------------------------------------------------------------------coloana 1 
 drop table if exists AparatMedical;
@@ -75,7 +76,7 @@ create table DateAngajat (
 
 drop table if exists Concediu;
 create table Concediu (
-	nrContract BIGINT unique primary key not null,
+	nrContract int unique primary key not null,
     dataIncepere date,
     dataTerminare date
 );
