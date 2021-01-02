@@ -3,14 +3,41 @@
  */
 package policlinica;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
 import javafx.animation.*;
 
 public class App {
-    public String getGreeting() {
-        return "Hello World!";
-    }
-
+	private final static String URL = "jdbc:mysql://localhost:3306/";
+	private final static String DB_NAME = "tema3";
+	private final static String USER = "root";
+	private final static String PASSWORD = "1234";
     public static void main(String[] args) {
-        System.out.println(new App().getGreeting());
+		
+		Connection c;
+		
+		try {
+			c=DriverManager.getConnection(URL+DB_NAME, USER, PASSWORD);
+
+			PreparedStatement s= c.prepareStatement("select * from angajati");
+			ResultSet rez= s.executeQuery();
+			while (rez.next()) {
+				
+				System.out.println("Numeangajat: " + rez.getString("nume"));
+				}
+			
+			
+			
+		}
+		catch (Exception e) {
+			System.out.println("SQLException: " + e.getMessage());
+		    System.out.println("SQLState: " + ((SQLException) e).getSQLState());
+		    System.out.println("VendorError: " + ((SQLException) e).getErrorCode());
+		}
+		
     }
 }
