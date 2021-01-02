@@ -13,7 +13,7 @@ import javafx.animation.*;
 
 public class App {
 	private final static String URL = "jdbc:mysql://localhost:3306/";
-	private final static String DB_NAME = "tema3";
+	private final static String DB_NAME = "policlinica";
 	private final static String USER = "root";
 	private final static String PASSWORD = "1234";
     public static void main(String[] args) {
@@ -23,11 +23,11 @@ public class App {
 		try {
 			c=DriverManager.getConnection(URL+DB_NAME, USER, PASSWORD);
 
-			PreparedStatement s= c.prepareStatement("select * from angajati");
+			PreparedStatement s= c.prepareStatement("select * from actors");
 			ResultSet rez= s.executeQuery();
 			while (rez.next()) {
 				
-				System.out.println("Numeangajat: " + rez.getString("nume"));
+				System.out.println("Numeangajat: " + rez.getString("name"));
 				}
 			
 			
