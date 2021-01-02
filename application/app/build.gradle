@@ -18,8 +18,6 @@ plugins {
 
 apply plugin:'java'
 
-
-
 java {
     toolchain {
         languageVersion = JavaLanguageVersion.of(14)
@@ -36,7 +34,12 @@ javafx {
 repositories {
     // Use JCenter for resolving dependencies.
     jcenter()
+    mavenCentral()
 }
+
+//configurations {
+ //   driver
+//}
 
 dependencies {
     // Use JUnit test framework.
@@ -44,8 +47,9 @@ dependencies {
 
     // This dependency is used by the application.
     implementation 'com.google.guava:guava:29.0-jre'
-
-    compile files('/jdbc/mysql-connector-java-8.0.22.jar')
+    //compile files('/jdbc/mysql-connector-java-8.0.22.jar')
+    //driver group: 'mysql', name: 'mysql-connector-java', version: '8.0.22'
+    compile 'mysql:mysql-connector-java:8.0.22'
 }
 
 application {
