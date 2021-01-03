@@ -8,6 +8,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Point2D;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -16,6 +17,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
+import java.awt.event.ActionEvent;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -23,29 +25,77 @@ import javafx.animation.*;
 
 public class App extends Application implements Initializable {
 
-	private Parent root;
+	private Stage window;
 
-    public static void main(String[] args) {
+
+
+	public static void main(String[] args) {
 		launch(args);
     }
 
 	@Override
 	public void start(Stage primaryStage) throws Exception {
-		root  = FXMLLoader.load(getClass().getResource("/mainLayout.fxml"));
+		Parent logInLayout;
+		Scene logInScene;
 
-		Scene scene = new Scene(root, 800, 600);
-		scene.getStylesheets().add("mainStyle.css");
+		window = primaryStage;
+		logInLayout = FXMLLoader.load(getClass().getResource("/logInLayout.fxml"));
+
+		logInScene = new Scene(logInLayout, 800, 600);
+		logInScene.getStylesheets().add("logInStyle.css");
 
 		primaryStage.minWidthProperty().setValue(600);
 		primaryStage.minHeightProperty().setValue(400);
-		primaryStage.setTitle("Administrare Policlinica");
-		primaryStage.setScene(scene);
-		primaryStage.show();
+		window.setTitle("Administrare Policlinica");
+		window.setScene(logInScene);
+		window.show();
 	}
 
 	@Override
 	public void initialize(URL url, ResourceBundle resourceBundle) {
 
 	}
+
+	//log-In button
+	@FXML public void logIn () throws Exception{
+
+		double height = ((Stage)(Stage.getWindows().get(0))).getHeight() - 38;
+		double width = ((Stage)(Stage.getWindows().get(0))).getWidth() - 16;
+
+		Parent mainLayout = FXMLLoader.load(getClass().getResource("/mainLayout.fxml"));
+		Scene mainScene = new Scene(mainLayout, width, height);
+		mainScene.getStylesheets().add("mainStyle.css");
+		Stage appStage = (Stage)(Stage.getWindows().get(0));
+
+		appStage.setScene(mainScene);
+		//appStage.show();
+	}
+
+	//urmatoarele functii sunt pentru butoanele din mainMenu
+	@FXML public void setUserLayout(){
+	}
+	@FXML public void setAdministratorLayout(){
+	}
+	@FXML public void setOrarLayout(){
+	}
+	@FXML public void setFinanteLayout(){
+	}
+	@FXML public void setPacientiLayout(){
+	}
+	@FXML public void setProgramariLayout(){
+	}
+	@FXML public void setServiciiLayout(){
+	}
+	@FXML public void logOut() throws Exception{
+		double height = ((Stage)(Stage.getWindows().get(0))).getHeight() - 38;
+		double width = ((Stage)(Stage.getWindows().get(0))).getWidth() - 16;
+
+		Parent logInLayout = FXMLLoader.load(getClass().getResource("/logInLayout.fxml"));
+		Scene tempScene = new Scene(logInLayout, width, height);
+		tempScene.getStylesheets().add("logInStyle.css");
+		Stage appStage = (Stage)(Stage.getWindows().get(0));
+		appStage.setScene(tempScene);
+	}
+
 
 }

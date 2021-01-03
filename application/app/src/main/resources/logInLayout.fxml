@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="330.0" minWidth="300.0" prefHeight="400.0" prefWidth="600.0" spacing="5.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="policlinica.App">
+   <children>
+      <HBox alignment="CENTER" prefHeight="30.0" prefWidth="200.0" spacing="10.0">
+         <children>
+            <Label text="username" />
+            <TextField fx:id="usernameField" />
+         </children>
+      </HBox>
+      <HBox alignment="CENTER" prefHeight="30.0" prefWidth="200.0" spacing="10.0">
+         <children>
+            <Label text="password">
+               <HBox.margin>
+                  <Insets right="1.0" />
+               </HBox.margin>
+            </Label>
+            <TextField fx:id="passwordField" />
+         </children>
+      </HBox>
+      <Button fx:id="logInBtn" mnemonicParsing="false" onAction="#logIn" prefWidth="149.0" text="Log In">
+         <VBox.margin>
+            <Insets left="61.0" top="3.0" />
+         </VBox.margin>
+      </Button>
+   </children>
+</VBox>
