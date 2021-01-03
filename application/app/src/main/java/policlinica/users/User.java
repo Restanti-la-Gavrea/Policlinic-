@@ -21,6 +21,8 @@ public class User {
 		this.nrContract = nrContract;
 		this.username = username;
 	}
+	
+	//Ia toate datele utilizatorului curent
 	public ResultSet getDateUser(){
 		String comanda = "Select * from Datepersonale where nrContract = " +
 							Integer.toString(nrContract) + ";";
