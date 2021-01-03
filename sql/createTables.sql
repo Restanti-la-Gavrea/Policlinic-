@@ -32,9 +32,8 @@ create table OrarGeneric (
 
 drop table if exists UserData;
 create table UserData (
-	username varchar(32) primary key not null,
+	nrcontract int unique primary key not null,
     pwd varchar(64) not null,
-    nrContract int unique not null unique,
     tip enum("admin","Sadmin","user")  not null
 );
 -- --------------------------------------------------------------------coloana 2
@@ -110,7 +109,7 @@ create table Contract (
     dataConcediere date,
     nrOre int not null,
     functie enum("hr","eco","rec","as","m") not null,
-    nrUnitate int not null
+    nrUnitate int unique not null
 );
 
 drop table if exists TipAsistentMedical;
@@ -151,7 +150,7 @@ create table Medic(
 	nrContract int primary key unique,
     codParafa int not null,
     competente varchar(128),
-    titluStiitific varchar(128),
+    titluStiintific varchar(128),
     postDidactic varchar(128),
     comision numeric(4,2) not null
     );
