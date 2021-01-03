@@ -109,7 +109,8 @@ create table Contract (
     salariu numeric(10,2) not null,
     dataConcediere date,
     nrOre int not null,
-    functie enum("hr","eco","rec","as","m") not null
+    functie enum("hr","eco","rec","as","m") not null,
+    nrUnitate int not null
 );
 
 drop table if exists TipAsistentMedical;

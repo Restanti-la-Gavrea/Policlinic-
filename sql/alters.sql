@@ -13,6 +13,7 @@ ALTER TABLE DateAngajat ADD CONSTRAINT FK_CeContract FOREIGN KEY (nrContract) RE
 ALTER TABLE Concediu ADD CONSTRAINT FK_CineConcediu FOREIGN KEY (nrContract) REFERENCES Contract(nrContract);
 ALTER TABLE ServiciuPerCabinet ADD CONSTRAINT FK_CeServiciuInCabinet FOREIGN KEY (nrServiciu) REFERENCES Serviciu(nrServiciu);
 ALTER TABLE ServiciuPerCabinet ADD CONSTRAINT FK_CeCabinetAreServiciu FOREIGN KEY (nrCabinet) REFERENCES Cabinet(nrCabinet);
+ALTER TABLE Contract ADD CONSTRAINT FK_NrUnitate FOREIGN key (nrUnitate) REFERENCES UnitateMedicala(nrUnitate);
 ALTER TABLE TipAsistentMedical ADD CONSTRAINT FK_AsistentContract FOREIGN KEY (nrContract) REFERENCES Contract(nrContract);
 ALTER TABLE Serviciu ADD CONSTRAINT FK_ServiciuNeedsSpecialitate FOREIGN KEY (nrSpecialitate) REFERENCES Specialitate(nrSpecialitate);
 ALTER TABLE ServiciuCustom ADD CONSTRAINT FK_ServiciuCustom FOREIGN KEY (nrServiciu) REFERENCES Serviciu(nrServiciu);
