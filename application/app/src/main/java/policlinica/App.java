@@ -29,9 +29,6 @@ public class App {
 				
 				System.out.println("Numeangajat: " + rez.getString("name"));
 				}
-			
-			
-			
 		}
 		catch (Exception e) {
 			System.out.println("SQLException: " + e.getMessage());

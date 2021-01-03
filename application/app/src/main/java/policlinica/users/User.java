@@ -13,6 +13,8 @@ public class User {
 	private final static String USER = "root";
 	private final static String PASSWORD = "1234";
 	
+	
+	
     public static void main(String[] args) {
 		
 		Connection c;
@@ -27,6 +29,7 @@ public class User {
 				System.out.println("Numeangajat: " + rez.getString("name"));
 				}
 		}
+		
 		catch (Exception e) {
 			System.out.println("SQLException: " + e.getMessage());
 		    System.out.println("SQLState: " + ((SQLException) e).getSQLState());
