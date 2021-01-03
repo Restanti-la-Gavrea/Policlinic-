@@ -3,38 +3,49 @@
  */
 package policlinica;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import javafx.application.Application;
+import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
+import javafx.geometry.Point2D;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.Pane;
+import javafx.stage.Stage;
+
+import java.net.URL;
+import java.util.ResourceBundle;
 
 import javafx.animation.*;
 
-public class App {
-	private final static String URL = "jdbc:mysql://localhost:3306/";
-	private final static String DB_NAME = "policlinica";
-	private final static String USER = "root";
-	private final static String PASSWORD = "1234";
-    public static void main(String[] args) {
-		
-		Connection c;
-		
-		try {
-			c=DriverManager.getConnection(URL+DB_NAME, USER, PASSWORD);
+public class App extends Application implements Initializable {
 
-			PreparedStatement s= c.prepareStatement("select * from actors");
-			ResultSet rez= s.executeQuery();
-			while (rez.next()) {
-				
-				System.out.println("Numeangajat: " + rez.getString("name"));
-				}
-		}
-		catch (Exception e) {
-			System.out.println("SQLException: " + e.getMessage());
-		    System.out.println("SQLState: " + ((SQLException) e).getSQLState());
-		    System.out.println("VendorError: " + ((SQLException) e).getErrorCode());
-		}
-		
+	private Parent root;
+
+    public static void main(String[] args) {
+		launch(args);
     }
+
+	@Override
+	public void start(Stage primaryStage) throws Exception {
+		root  = FXMLLoader.load(getClass().getResource("/mainLayout.fxml"));
+
+		Scene scene = new Scene(root, 800, 600);
+		scene.getStylesheets().add("mainStyle.css");
+
+		primaryStage.minWidthProperty().setValue(600);
+		primaryStage.minHeightProperty().setValue(400);
+		primaryStage.setTitle("Administrare Policlinica");
+		primaryStage.setScene(scene);
+		primaryStage.show();
+	}
+
+	@Override
+	public void initialize(URL url, ResourceBundle resourceBundle) {
+
+	}
+
 }

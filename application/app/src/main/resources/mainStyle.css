@@ -1,0 +1,24 @@
+* {
+    -fx-text-fill: rgba(5,50,55,1);
+}
+
+#main {
+    -fx-background-color: rgba(255,255,255,1);
+}
+
+.button {
+    -fx-background-color: rgba(0,0,0,0);
+    -fx-background-radius: 0;
+}
+
+.button:hover {
+    -fx-background-color: rgba(0,0,0,0.4);
+}
+
+#mainMenu {
+    -fx-background-color: rgba(11,100,110,1);
+}
+
+.whiteText {
+    -fx-text-fill: white;
+}
