@@ -10,7 +10,7 @@ public class SuperAdmin extends User {
 	//Daca nu se vrea cautare in functie de prenume de exemplu pur si simpulu la prenume 
 	//se pune "" sau null
 	
-	public void searchDateAngajati(String nume ,String prenume,String functie) {
+	public ResultSet getDateAngajati(String nume ,String prenume,String functie){
 		String comanda = "Select * from DatePersonale where ";
 		Boolean conditie = false;//verifica daca a fost deja impus o conditie
 		if (nume != null && nume != "")
@@ -32,7 +32,7 @@ public class SuperAdmin extends User {
 			comanda += "functie = " + functie;
 			conditie = true;
 		}
-		comanda+= ";";
-			
+		comanda+= ";";	
+		return this.getResult(comanda);
 	}
 }

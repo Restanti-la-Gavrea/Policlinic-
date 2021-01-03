@@ -12,40 +12,48 @@ public class User {
 	private final static String DB_NAME = "policlinica";
 	private final static String USER = "root";
 	private final static String PASSWORD = "1234";
+	Connection connection ;
+	int nrContract;
+	String username;
 	
-	private Connection setup() throws SQLException {
+	public User(int nrContract, String username) {
+		this.connection = setup();
+		this.nrContract = nrContract;
+		this.username = username;
+	}
+	public ResultSet getDateUser(){
+		String comanda = "Select * from Datepersonale where nrContract = " +
+							Integer.toString(nrContract) + ";";
+		return getResult(comanda);
+	}
+	private Connection setup(){
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
 		} catch (Exception ex) {
 			System.err.println("An Exception occured during JDBC Driver loading." + " Details are provided below:");
 			ex.printStackTrace(System.err);
 		}
-		return DriverManager.getConnection(URL + DB_NAME + USER + PASSWORD);
-	}
-	private ResultSet getResult(String statement, Connection c) throws SQLException{
-		PreparedStatement s;
-		s = c.prepareStatement(statement);
-		return s.executeQuery();
-	}	
-    public static void main(String[] args) {
-		
-		Connection c;
 		try {
-			c=DriverManager.getConnection(URL+DB_NAME, USER, PASSWORD);
-
-			PreparedStatement s= c.prepareStatement("select * from datepersonale");
-			ResultSet rez= s.executeQuery();
-			while (rez.next()) {
-				
-				System.out.println("Numeangajat: " + rez.getString("name"));
-				}
+			return DriverManager.getConnection(URL + DB_NAME + USER + PASSWORD);
 		}
-		
-		catch (Exception e) {
+		catch(Exception e) {
 			System.out.println("SQLException: " + e.getMessage());
 		    System.out.println("SQLState: " + ((SQLException) e).getSQLState());
 		    System.out.println("VendorError: " + ((SQLException) e).getErrorCode());
 		}
+		return null;
 		
-    }
+	}
+	protected ResultSet getResult(String statement){
+		try {
+			PreparedStatement s = connection.prepareStatement(statement);
+			return s.executeQuery();
+		}
+		catch(Exception e){
+			System.out.println("SQLException: " + e.getMessage());
+		    System.out.println("SQLState: " + ((SQLException) e).getSQLState());
+		    System.out.println("VendorError: " + ((SQLException) e).getErrorCode());
+		}
+		return null;
+	}	
 }
