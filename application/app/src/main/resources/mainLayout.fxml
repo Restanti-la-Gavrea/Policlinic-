@@ -26,12 +26,12 @@
                <padding>
                   <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                </padding></Button>
-            <Button fx:id="FinanteBtn" mnemonicParsing="false" onAction="#setFinanteLayout" prefWidth="100.0" styleClass="whiteText" text="Finante">
+            <Button fx:id="finanteBtn" mnemonicParsing="false" onAction="#setFinanteLayout" prefWidth="100.0" styleClass="whiteText" text="Finante">
                <padding>
                   <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                </padding>
             </Button>
-            <Button fx:id="PacientiBtn" mnemonicParsing="false" onAction="#setPacientiLayout" prefWidth="100.0" styleClass="whiteText" text="Pacienti">
+            <Button fx:id="pacientiBtn" mnemonicParsing="false" onAction="#setPacientiLayout" prefWidth="100.0" styleClass="whiteText" text="Pacienti">
                <VBox.margin>
                   <Insets />
                </VBox.margin>
