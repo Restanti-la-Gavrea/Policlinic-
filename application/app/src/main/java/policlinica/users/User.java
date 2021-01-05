@@ -46,7 +46,7 @@ public class User {
 			ex.printStackTrace(System.err);
 		}
 		try {
-			return DriverManager.getConnection(URL + DB_NAME + USER + PASSWORD);
+			return DriverManager.getConnection(URL + DB_NAME , USER , PASSWORD);
 		}
 		catch(Exception e) {
 			printSqlErrorMessage(e);
