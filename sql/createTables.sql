@@ -50,7 +50,7 @@ create table UnitateMedicala (
 	nrUnitate int primary key auto_increment not null,
     nume varchar(64) not null,
     adresa varchar(128) not null,
-    nrProgram int unique not null unique
+    nrProgram int unique not null
 );
 
 drop table if exists OrarSpecific;
@@ -109,7 +109,7 @@ create table Contract (
     dataConcediere date,
     nrOre int not null,
     functie enum("hr","eco","rec","as","m") not null,
-    nrUnitate int unique not null
+    nrUnitate int not null
 );
 
 drop table if exists TipAsistentMedical;
@@ -203,7 +203,7 @@ create table Programare(
 );
     
 drop table if exists ServiciuPerProgramare;
-create table ServiciuPerProgramare(
+create table ServiciuPerProgramare(	
 	ID int primary key auto_increment,
     nrServiciu int not null,
     nrProgramare int not null,
