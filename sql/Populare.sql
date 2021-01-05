@@ -1,5 +1,8 @@
 use policlinica;
+delete from programare;
+delete from aparatpercabinet;
 delete from medic;
+delete from cabinet;
 delete from tipasistentmedical;
 delete from dateangajat;
 delete from UserData;
@@ -72,7 +75,7 @@ Insert into UserData  values
 
 Insert into dateangajat values
 (501492145,"In varful Carpatilor acolo unde se strang animalele","5442974402","steaua2@gmail.com","IBANRO6622",1,'2001-01-01'),
-(123456789,"nr Magic,Str Baba Vanga,Pocreaca din Deal","6963770107","bri@yahoo.com","IBANanei",2,CURDATE()),
+(123456789,"nr Magic,Str Baba Vanga,Pocreaca din Deal","6963770107","bri@yahoo.com","IBANanei",2,'2020-12-30'),
 (674392843,"A treia strada la stanga la casa cu 2 etaje","8795123091","dia420@gmail.com","GBKK2139512151",3,'2000-02-29'),
 (315918244,"Sub podul vechi de 100 de ani din capitala Angliei, Rusia","5329854115","restanta@utcluj.com","AFP141256124",4,'2010-02-28'),
 (126125125,"Al patrulea copac de langa spitalul de urgente","7693520943","anideliceu@maimuta.uk","TYA12351612",5,'1912-12-12'),
@@ -129,6 +132,32 @@ insert into pacient values
 (15,"Vascan","Teodor"),
 (16,"Voncila","Ion");
 
+insert into programare values
+(1,'2021-01-13','17:00:00',3,1,1),
+(2,'2021-04-13','17:00:00',3,1,1),
+(3,'2020-02-02','17:00:00',3,1,1),
+(4,'2021-02-22','17:00:00',3,1,1),
+(5,'2021-03-01','17:00:00',3,1,1),
+(6,'2021-01-25','17:00:00',3,1,1),
+(7,'2021-04-01','17:00:00',3,1,1),
+(8,'2021-02-15','17:00:00',3,1,1),
+(9,'2021-12-13','17:00:00',3,1,1),
+(10,'2021-12-20','17:00:00',3,1,1), --
+(11,'2021-10-29','17:00:00',3,1,1),
+(12,'2021-08-19','17:00:00',3,1,1),
+(13,'2021-06-07','17:00:00',3,1,1),
+(14,'2021-05-13','17:00:00',3,1,1),
+(15,'2021-05-17','17:00:00',3,1,1),
+(16,'2021-01-30','17:00:00',3,1,1),--
+(17,'2021-02-20','17:00:00',3,1,1),--
+(18,'2021-07-13','17:00:00',3,1,1),
+(19,'2021-07-31','17:00:00',3,1,1), --
+(20,'2021-11-06','17:00:00',3,1,1), --
+(21,'2021-11-23','17:00:00',3,1,1),
+(22,'2021-07-20','17:00:00',3,1,1),
+(23,'2021-06-08','17:00:00',3,1,1),
+(24,'2021-08-26','17:00:00',3,1,1);
+
 
 Insert into aparatmedical values
 (1,"Stestoscop"),
@@ -141,23 +170,7 @@ Insert into aparatmedical values
 (8,"Aparat electrostimulare");
 
 
--- nu merge inca 
-delete from AparatNecesar;
-Insert into aparatnecesar  values
-(1,1,1),
-(2,1,2),
-(3,1,5),
-(4,1,8),
-(5,2,5),
-(6,2,7),
-(7,3,6),
-(8,4,4),
-(9,5,1),
-(10,5,2),
-(11,5,4),
-(12,5,6);
 
-delete from cabinet;
 Insert into cabinet values
 (1,1),
 (2,1),
@@ -200,7 +213,7 @@ Insert into cabinet values
 (39,4),
 (40,4);
 
-delete from aparatpercabinet;
+
 Insert into aparatpercabinet values
 (1,1,1),
 (2,3,1),
@@ -282,3 +295,22 @@ Insert into aparatpercabinet values
 (78,3,39),
 (79,3,40),
 (80,6,40);
+
+-- nu merge inca , trebuie creat intai serviciul
+delete from AparatNecesar;
+Insert into aparatnecesar  values
+(1,1,1),
+(2,1,2),
+(3,1,5),
+(4,1,8),
+(5,2,5),
+(6,2,7),
+(7,3,6),
+(8,4,4),
+(9,5,1),
+(10,5,2),
+(11,5,4),
+(12,5,6);
+
+
+

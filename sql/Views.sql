@@ -1,7 +1,7 @@
 use policlinica;
 drop view if exists datepersonale; 
 CREATE VIEW datepersonale AS Select contract.nrContract,contract.nume,contract.prenume,contract.salariu,contract.nrOre,contract.functie,contract.nrUnitate,
-userdata.pwd,userdata.tip,dateangajat.angajatCNP,dateangajat.adresa,dateangajat.nrTelefon,dateangajat.email,dateangajat.iban,dateangajat.DataAngajarii 
+username,userdata.pwd,userdata.tip,dateangajat.angajatCNP,dateangajat.adresa,dateangajat.nrTelefon,dateangajat.email,dateangajat.iban,dateangajat.DataAngajarii 
 from dateangajat INNER JOIN contract INNER JOIN userdata ON contract.nrcontract=dateangajat.nrcontract and contract.nrcontract=userdata.nrcontract;
 drop view if exists orar;
 CREATE VIEW orar AS Select concediu.nrContract,dataIncepere,dataTerminare,contract.nume,contract.prenume,contract.salariu,contract.nrOre,contract.functie,
