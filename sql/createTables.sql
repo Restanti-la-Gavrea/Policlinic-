@@ -2,26 +2,25 @@ drop database if exists policlinica;
 create database policlinica;
 use policlinica;
 -- -------------------------------------------------------------------------coloana 1 
-drop table if exists AparatMedical;
+
 create table AparatMedical (
 	nrAparat int primary key auto_increment not null,
     nume varchar(32) not null
 );
 
-drop table if exists AparatPerCabinet;
 create table AparatPerCabinet (
 	ID int primary key auto_increment not null,
     nrAparat int not null,
     nrCabinet int not null
 );
 
-drop table if exists Cabinet;
+
 create table Cabinet (
 	nrCabinet int primary key auto_increment not null,
     nrUnitate int not null
 );
 
-drop table if exists OrarGeneric;
+
 create table OrarGeneric (
 	ogID int primary key auto_increment not null,
     ziSaptamana varchar(10) not null,
@@ -30,22 +29,23 @@ create table OrarGeneric (
     nrUnitate int not null
 );
 
-drop table if exists UserData;
+
 create table UserData (
 	nrcontract int unique primary key not null,
+    username varchar(32) not null,
     pwd varchar(64) not null,
     tip enum("admin","Sadmin","user")  not null
 );
 -- --------------------------------------------------------------------coloana 2
 
-drop table if exists AparatNecesar;
+
 create table AparatNecesar (
 	ID int primary key auto_increment not null,
     nrServiciu int not null,
     nrAparat int not null
 );
 
-drop table if exists UnitateMedicala;
+
 create table UnitateMedicala (
 	nrUnitate int primary key auto_increment not null,
     nume varchar(64) not null,
@@ -53,7 +53,7 @@ create table UnitateMedicala (
     nrProgram int unique not null
 );
 
-drop table if exists OrarSpecific;
+
 create table OrarSpecific (
 	osID int primary key auto_increment not null,
     ziCalendaristica varchar(10) not null,
@@ -62,7 +62,7 @@ create table OrarSpecific (
     nrUnitate int not null
 );
 
-drop table if exists DateAngajat;
+
 create table DateAngajat (
 	angajatCNP BIGINT primary key auto_increment not null,
     adresa varchar(128) not null,
@@ -73,7 +73,7 @@ create table DateAngajat (
     DataAngajarii date not null
 );
 
-drop table if exists Concediu;
+
 create table Concediu (
 	nrContract int unique primary key not null,
     dataIncepere date,
@@ -81,14 +81,13 @@ create table Concediu (
 );
 -- ------------------------------------------------------------Coloana 3
 
-drop table if exists ServiciuPerCabinet;
 create table ServiciuPerCabinet (
 	ID int primary key auto_increment not null,
     nrCabinet int not null,
     nrServiciu int not null
 );
 
-drop table if exists Program;
+
 create table Program(
 	nrProgram int primary key auto_increment not null,
     luni varchar(24),
@@ -100,7 +99,7 @@ create table Program(
     duminica varchar(24)
 );
 
-drop table if exists Contract;
+
 create table Contract (
 	nrContract int primary key auto_increment not null,
     nume varchar(20) not null,
@@ -112,21 +111,22 @@ create table Contract (
     nrUnitate int not null
 );
 
-drop table if exists TipAsistentMedical;
+
 create table TipAsistentMedical (
 	nrContract int primary key not null,
     tip enum("generalist","laborator","radiologie") not null,
     grad boolean
 );
 
-drop table if exists Pacient;
+
 create table Pacient (
 	nrPacient int primary key auto_increment not null,
     nume varchar(20) ,
     prenume varchar(20)
 );
 -- -----------------------------------------------------------coloana 4
-drop table if exists Serviciu;
+
+
 create table Serviciu (
 	nrServiciu int primary key auto_increment not null,
     nume varchar(32) not null,
@@ -136,7 +136,7 @@ create table Serviciu (
     durata time not null
 );
 
-drop table if exists ServiciuCustom;
+
 create table ServiciuCustom (
 	ID int primary key auto_increment not null,
 	nrServiciu int not null unique,
@@ -145,7 +145,7 @@ create table ServiciuCustom (
     newDurata time not null
 );
 
-drop table if exists Medic;
+
 create table Medic(
 	nrContract int primary key unique,
     codParafa int not null,
@@ -155,7 +155,7 @@ create table Medic(
     comision numeric(4,2) not null
     );
 
-drop table if exists Raport;
+
 create table Raport(
 	nrRaport int primary key auto_increment,
     nrProgramare int unique not null,
@@ -170,13 +170,13 @@ create table Raport(
 
 -- --------------------------------------------------------Coloana 5
 
-drop table if exists Specialitate;
+
 create table Specialitate(
 	nrSpecialitate int primary key auto_increment,
     nume varchar(64) not null
 );
     
-drop table if exists SpecialitateMedic;
+
 create table SpecialitateMedic(
 	ID int primary key auto_increment,
     nrContract int not null,
@@ -184,7 +184,7 @@ create table SpecialitateMedic(
     grad enum("primar","specialist","profesor") not null
 );
     
-drop table if exists Plata;
+
 create table Plata(
 	nrPlata int primary key auto_increment,
     suma numeric(10,2) not null,
@@ -192,7 +192,7 @@ create table Plata(
     nrProgramare int not null unique
 );
     
-drop table if exists Programare;
+
 create table Programare(
 	nrProgramare int primary key not null auto_increment,
     dataP date not null,
@@ -202,7 +202,7 @@ create table Programare(
     nrPacient int not null
 );
     
-drop table if exists ServiciuPerProgramare;
+
 create table ServiciuPerProgramare(	
 	ID int primary key auto_increment,
     nrServiciu int not null,

@@ -6,6 +6,8 @@ delete from UserData;
 delete from contract;
 delete from Unitatemedicala;
 delete from Program;
+delete from AparatMedical;
+delete from pacient;
 Insert into Program values                              
 (1,"08:00-12:00 13:00-18:00","08:00-12:00 13:00-19:00","08:00-12:00 15:30-20:00","08:00-11:00 15:00-20:00","08:00-12:30 13:00-17:00","",""),
 (2,"07:00-12:00 13:00-18:30","09:00-12:00 13:00-19:00","08:00-12:00 15:30-20:00","07:00-11:00 15:30-19:30","08:00-12:30 13:00-17:30","09:00-14:00 14:30-17:00",""),
@@ -44,29 +46,29 @@ Insert into contract values
 (23,"Ofrim","Adela",35,NULL,190,"hr",4);
 
 Insert into UserData  values
-(1,"0000","admin"),
-(2,"0000","admin"),
-(3,"0000","user"),
-(4,"0000","user"),
-(5,"0000","Sadmin"),
-(6,"0000","Sadmin"),
-(7,"1111","admin"),
-(8,"1234","Sadmin"),
-(9,"1357","admin"),
-(10,"1111","user"),
-(11,"2345","user"),
-(12,"9999","admin"),
-(13,"4456","Sadmin"),
-(14,"9832","admin"),
-(15,"6580","Sadmin"),
-(16,"5684","admin"),
-(17,"4550","user"),
-(18,"0712","user"),
-(19,"1234","user"),
-(20,"1111","admin"),
-(21,"1111","admin"),
-(22,"0000","Sadmin"),
-(23,"5555","user");
+(1,"gabor","0000","admin"),
+(2,"ultrainstinctshaggy","0000","admin"),
+(3,"demonmonkey","0000","user"),
+(4,"trabantt","0000","user"),
+(5,"noobmaster69""0000","Sadmin"),
+(6,"xx_mrbeast_xx","0000","Sadmin"),
+(7,"xo_tm","1111","admin"),
+(8,"meremaimuta","1234","Sadmin"),
+(9,"spicy","1357","admin"),
+(10,"destrukto24","1111","user"),
+(11,"rapidpanda","2345","user"),
+(12,"itachi","9999","admin"),
+(13,"aventoryus","4456","Sadmin"),
+(14,"blizard4u2","9832","admin"),
+(15,"creepytaco","6580","Sadmin"),
+(16,"ducksnotallowed","5684","admin"),
+(17,"knighty","4550","user"),
+(18,"2fat2kidnaap","0712","user"),
+(19,"cowboyfrog","1234","user"),
+(20,"aladeen","1111","admin"),
+(21,"hequn","1111","admin"),
+(22,"markopejlo","0000","Sadmin"),
+(23,"tembelizor","5555","user");
 
 Insert into dateangajat values
 (501492145,"In varful Carpatilor acolo unde se strang animalele","5442974402","steaua2@gmail.com","IBANRO6622",1,'2001-01-01'),
@@ -109,7 +111,25 @@ Insert into medic values
 (20,20,"litotriție extracorporeală, explorare computer tomograf","doctor în științe medicale","",7);
 
 
-delete from AparatMedical;
+insert into pacient values
+(1,"Agachi","Luminita"),
+(2,"Achim","Ioan"),
+(3,"Adamescu","Dominica"),
+(4,"",""),
+(5,"",""),
+(6,"",""),
+(7,"",""),
+(8,"",""),
+(9,"",""),
+(10,"",""),
+(11,"",""),
+(12,"",""),
+(13,"",""),
+(14,"",""),
+(15,"",""),
+(16,"","");
+
+
 Insert into aparatmedical values
 (1,"Stestoscop"),
 (2,"Concentrator de oxigen"),
