@@ -6,8 +6,12 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class SuperAdmin extends ResurseUmane {
-	public SuperAdmin(int nrContract, String username) {
-		super(nrContract, username);
+
+	public SuperAdmin(ResultSet result) {
+		super(result);
+	}
+	public SuperAdmin() {
+		super();
 	}
 	public Boolean setContract(String nrContract,String nume,String prenume,String salariu,String nrOre,String functie,String nrUnitate) {
 		String comanda = getStringSetContract(nrContract, nume, prenume, salariu, nrOre, functie, nrUnitate);

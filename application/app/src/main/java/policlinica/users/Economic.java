@@ -1,10 +1,14 @@
 package policlinica.users;
 
+import java.sql.ResultSet;
+
 public class Economic extends User {
 
-	public Economic(int nrContract, String username) {
-		super(nrContract, username);
-		// TODO Auto-generated constructor stub
+	public Economic(ResultSet result) {
+		super(result);
+	}
+	public Economic() {
+		super();
 	}
 
 }

@@ -210,6 +210,3 @@ create table ServiciuPerProgramare(
     rezultat varchar(64)
     -- trebuie tinut cont de statusul raportului pentru modificarea campului rezultat
 );
-
-
-

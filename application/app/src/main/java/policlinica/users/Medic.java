@@ -1,10 +1,14 @@
 package policlinica.users;
 
+import java.sql.ResultSet;
+
 public class Medic extends Medical {
 
-	public Medic(int nrContract, String username) {
-		super(nrContract, username);
-		// TODO Auto-generated constructor stub
+	public Medic(ResultSet result) {
+		super(result);
+	}
+	public Medic() {
+		super();
 	}
 
 }

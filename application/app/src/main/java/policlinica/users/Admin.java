@@ -4,9 +4,11 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class Admin extends SuperAdmin {
-
-	public Admin(int nrContract, String username) {
-		super(nrContract, username);
+	public Admin(ResultSet result) {
+		super(result);
+	}
+	public Admin() {
+		super();
 	}
 	public Boolean setContract(String nrContract,String nume,String prenume,String salariu,String nrOre,String functie,String nrUnitate) {
 		try {

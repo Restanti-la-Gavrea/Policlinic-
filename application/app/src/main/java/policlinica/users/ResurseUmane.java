@@ -4,10 +4,14 @@ import java.sql.ResultSet;
 
 public class ResurseUmane extends User{
 
-	public ResurseUmane(int nrContract, String username) {
-		super(nrContract, username);
-	}
 	
+	public ResurseUmane(ResultSet result) {
+		super(result);
+	}
+	public ResurseUmane() {
+		super();
+	}
+
 	//Functia cauta toti angajati cu un anumit nume sau prenume sau functie
 	//Daca nu se vrea cautare in functie de prenume de exemplu pur si simpulu la prenume 
 	//se pune "" sau null
