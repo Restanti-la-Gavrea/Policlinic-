@@ -55,6 +55,10 @@ public class App extends Application implements Initializable {
 		launch(args);
     }
 
+    @FXML public void test(){
+	    //asta e pentru tine baragan
+    }
+
 	@Override
 	public void start(Stage primaryStage) throws Exception {
 		Parent logInLayout;
