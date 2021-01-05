@@ -13,6 +13,10 @@
 }
 
 .button:hover {
+    -fx-background-color: rgba(0,0,0,0.2);
+}
+
+.button:pressed {
     -fx-background-color: rgba(0,0,0,0.4);
 }
 
@@ -26,4 +30,9 @@
 
 .boldBigText {
     -fx-font-weight: bold;
+}
+
+.blueButton {
+    -fx-text-fill: white;
+    -fx-background-color: rgba(11,100,110,1);
 }

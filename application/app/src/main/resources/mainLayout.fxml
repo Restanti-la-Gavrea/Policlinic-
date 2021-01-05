@@ -22,6 +22,11 @@
                <padding>
                   <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                </padding></Button>
+            <Button fx:id="angajatiBtn" layoutX="10.0" layoutY="85.0" mnemonicParsing="false" onAction="#setAngajatiLayout" prefWidth="100.0" styleClass="whiteText" text="Angajati">
+               <padding>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </padding>
+            </Button>
             <Button fx:id="orarBtn" mnemonicParsing="false" onAction="#setOrarLayout" prefWidth="100.0" styleClass="whiteText" text="Orar">
                <padding>
                   <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />

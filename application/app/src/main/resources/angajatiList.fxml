@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+
+<ScrollPane fx:controller="policlinica.App" fitToHeight="true" fitToWidth="true" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" scaleZ="2.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1">
+   <content>
+      <TableView fx:id="angajatiTable" scaleZ="2.0">
+        <columns>
+          <TableColumn minWidth="100.0" prefWidth="-1.0" text="Numar Contract" />
+          <TableColumn minWidth="100.0" prefWidth="-1.0" text="Nume" />
+            <TableColumn minWidth="100.0" prefWidth="-1.0" text="Prenume" />
+            <TableColumn minWidth="100.0" prefWidth="-1.0" text="Post" />
+            <TableColumn minWidth="100.0" prefWidth="-1.0" text="Numar Telefon" />
+        </columns>
+      </TableView>
+   </content>
+</ScrollPane>

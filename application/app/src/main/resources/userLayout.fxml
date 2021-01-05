@@ -54,6 +54,7 @@
             <Label fx:id="angajatDataLbl" styleClass="bigText" text="26/09/2001" />
          </children>
       </HBox>
+      <Button fx:id="userEditBtn" mnemonicParsing="false" onAction="#editUser" prefWidth="90.0" styleClass="blueButton" text="Edit" />
    </children>
    <opaqueInsets>
       <Insets />
