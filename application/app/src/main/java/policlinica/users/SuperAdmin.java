@@ -19,9 +19,9 @@ public class SuperAdmin extends ResurseUmane {
 		executeUpdate(comanda);
 		return true;
 	}
-	public void setUserData(String nrContract,String username,String pwd,String tip) {
+	public Boolean setUserData(String nrContract,String username,String pwd,String tip) {
 		String comanda = getStringSetUserData(nrContract, username, pwd, tip);
-		executeUpdate(comanda);
+		return executeUpdate(comanda);
 	}
 	
 	
