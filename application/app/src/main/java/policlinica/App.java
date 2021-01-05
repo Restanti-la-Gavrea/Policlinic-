@@ -56,7 +56,7 @@ public class App extends Application implements Initializable {
     }
 
     @FXML public void test(){
-	    //asta e pentru tine baragan
+	    new Test();
     }
 
 	@Override
