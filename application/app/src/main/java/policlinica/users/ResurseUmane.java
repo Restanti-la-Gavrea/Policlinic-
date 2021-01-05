@@ -12,24 +12,32 @@ public class ResurseUmane extends User{
 	//Daca nu se vrea cautare in functie de prenume de exemplu pur si simpulu la prenume 
 	//se pune "" sau null
 	public ResultSet getDateAngajati(String nume ,String prenume,String functie){
-		String comanda = "Select * from DatePersonale where ";
+		String comanda = "Select * from DatePersonale ";
 		Boolean conditie = false;//verifica daca a fost deja impus o conditie
 		if (nume != null && nume != "")
 		{
-			comanda += "nume = '" + nume + "'";
+			
+			comanda += "where nume = '" + nume + "'";
 			conditie = true;
 		}
 		if (prenume != null && prenume != "")
 		{
-			if (conditie)
+			if (conditie) {
 				comanda += " and ";
+			}
+			else 
+				comanda += "where "; 
+				
 			comanda += "prenume = '" + prenume + "'";
 			conditie = true;
 		}
 		if (functie != null && functie != "")
 		{
-			if (conditie)
+			if (conditie) {
 				comanda += " and ";
+			}
+			else 
+				comanda += "where "; 
 			comanda += "functie = '" + functie + "'";
 			conditie = true;
 		}

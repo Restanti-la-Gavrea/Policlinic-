@@ -9,7 +9,7 @@ public class Test {
 	public Test() {
 		System.out.println("Testul a inceput");
 		SuperAdmin user = new SuperAdmin(1,"Mori");
-		ResultSet rs = user.getDateAngajati("","","m");
+		ResultSet rs = user.getDateAngajati("","","");
 	    try {
 			while (rs.next()) {
 			     System.out.println(rs.getString("adresa"));
