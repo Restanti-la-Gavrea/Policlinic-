@@ -16,25 +16,25 @@ public class ResurseUmane extends User{
 		Boolean conditie = false;//verifica daca a fost deja impus o conditie
 		if (nume != null && nume != "")
 		{
-			comanda += "nume = " + nume;
+			comanda += "nume = '" + nume + "'";
 			conditie = true;
 		}
 		if (prenume != null && prenume != "")
 		{
 			if (conditie)
 				comanda += " and ";
-			comanda += "prenume = " + prenume;
+			comanda += "prenume = '" + prenume + "'";
 			conditie = true;
 		}
 		if (functie != null && functie != "")
 		{
 			if (conditie)
 				comanda += " and ";
-			comanda += "functie = " + functie;
+			comanda += "functie = '" + functie + "'";
 			conditie = true;
 		}
-		comanda+= ";";	
-		return executeStatement(comanda);
+		comanda += ";";	
+		return executeSelect(comanda);
 	}
 	
 }

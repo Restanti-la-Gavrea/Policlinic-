@@ -24,19 +24,19 @@ public class User {
 	}
 	//Ia datele utilizatorului actual
 	public ResultSet getUserData() {
-		return getDataById(this.nrContract);
+		return getDataById(Integer.toString(nrContract));
 	}
 	
 	//Ia toate datele utilizatorului curent
-	protected ResultSet getDataById(int nrContract){
+	protected ResultSet getDataById(String nrContract){
 		String comanda = "Select * from Datepersonale where nrContract = " +
-							Integer.toString(nrContract) + ";";
-		return executeStatement(comanda);
+							nrContract + ";";
+		return executeSelect(comanda);
 	}
-	protected ResultSet getDataByCNP(Long cnp){
+	protected ResultSet getDataByCNP(String cnp){
 		String comanda = "Select * from Datepersonale where angajatCNP = " +
-							Long.toString(cnp) + ";";
-		return executeStatement(comanda);
+							cnp + ";";
+		return executeSelect(comanda);
 	}
 	private Connection setup(){
 		try {
@@ -54,15 +54,26 @@ public class User {
 		return null;
 		
 	}
-	protected ResultSet executeStatement(String statement){
+	protected ResultSet executeSelect(String selectString){
 		try {
-			PreparedStatement s = connection.prepareStatement(statement);
+			PreparedStatement s = connection.prepareStatement(selectString);
 			return s.executeQuery();
 		}
 		catch(SQLException e){
 			printSqlErrorMessage(e);
 		}
 		return null;
+	}
+	protected Boolean executeUpdate(String updateString){
+		try {
+			PreparedStatement s = connection.prepareStatement(updateString);
+		   s.executeUpdate();
+		   return true;
+		}
+		catch(SQLException e){
+			printSqlErrorMessage(e);
+			return false;
+		}
 	}
 	protected void printSqlErrorMessage(Exception e) {
 		System.out.println("SQLException: " + e.getMessage());
