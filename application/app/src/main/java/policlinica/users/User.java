@@ -119,7 +119,6 @@ public class User {
 			printSqlErrorMessage(e);
 		}
 		return null;
-		
 	}
 	protected ResultSet executeSelect(String selectString){
 		try {
