@@ -11,6 +11,8 @@ delete from Unitatemedicala;
 delete from Program;
 delete from AparatMedical;
 delete from pacient;
+delete from orargeneric;
+delete from orarspecific;
 Insert into Program values                              
 (1,"08:00-12:00 13:00-18:00","08:00-12:00 13:00-19:00","08:00-12:00 15:00-20:00","08:00-11:00 15:00-20:00","08:00-12:30 13:00-17:00","",""),
 (2,"07:00-12:00 13:00-18:30","09:00-12:00 13:00-19:00","08:00-12:00 15:30-20:00","07:00-11:00 15:30-19:30","08:00-12:30 13:00-17:30","09:00-14:00 14:30-17:00",""),
@@ -298,6 +300,12 @@ Insert into aparatpercabinet values
 (79,3,40),
 (80,6,40);
 
+
+Insert into orarGeneric (ziSaptamana,intervalOrar ,nrContract,nrUnitate)  values
+("Luni","09:30-12:00 13:00-18:00",1,1);
+
+Insert into orarSpecific (ziCalendaristica,intervalOrar ,nrContract,nrUnitate)  values
+("2008-11-11","09:30-12:00 13:00-18:00",1,1);
 -- nu merge inca , trebuie creat intai serviciul
 delete from AparatNecesar;
 Insert into aparatnecesar  values

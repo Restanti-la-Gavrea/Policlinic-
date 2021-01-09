@@ -4,9 +4,9 @@ CREATE VIEW datepersonale AS Select contract.nrContract,contract.nume,contract.p
 username,userdata.pwd,userdata.tip,dateangajat.angajatCNP,dateangajat.adresa,dateangajat.nrTelefon,dateangajat.email,dateangajat.iban,dateangajat.DataAngajarii 
 from dateangajat INNER JOIN contract INNER JOIN userdata ON contract.nrcontract=dateangajat.nrcontract and contract.nrcontract=userdata.nrcontract;
 drop view if exists orar;
-CREATE VIEW orar AS Select concediu.nrContract,dataIncepere,dataTerminare,contract.nume,contract.prenume,contract.salariu,contract.nrOre,contract.functie,
+CREATE VIEW orar AS Select contract.nume,contract.prenume,contract.salariu,contract.nrOre,contract.functie,
 contract.nrUnitate,ogID,ziSaptamana,intervalOrar,unitatemedicala.nume AS numeUM,unitatemedicala.adresa from unitatemedicala INNER JOIN contract INNER JOIN 
-orargeneric INNER JOIN concediu ON contract.nrcontract=orargeneric.nrcontract and contract.nrcontract=concediu.nrcontract and orargeneric.nrUnitate=unitatemedicala.nrUnitate;
+orargeneric ON contract.nrcontract=orargeneric.nrcontract  and orargeneric.nrUnitate=unitatemedicala.nrUnitate;
 drop view if exists exceptiiorarmedic;
 CREATE VIEW exceptiiorarmedic AS Select osID,ziCalendaristica,intervalOrar,unitatemedicala.nrunitate,unitatemedicala.nume AS numeUM,adresa,nrProgram,
 contract.nrContract,contract.nume,contract.prenume,contract.salariu,contract.nrOre,contract.functie from unitatemedicala INNER JOIN contract 
