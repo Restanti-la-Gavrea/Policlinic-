@@ -30,7 +30,7 @@ public class UserController implements Initializable {
     public void setPrenumeLbl(String prenume){prenumeLbl.setText(prenume);}
     public void setNrContractLbl(String nrContract){nrContractLbl.setText(nrContract);}
     public void setAdresaLbl(String adresa){adresaLbl.setText(adresa);}
-    public void setIbanLbl(String iban){adresaLbl.setText(iban);}
+    public void setIbanLbl(String iban){ibanLbl.setText(iban);}
     public void setNrTelefonLbl(String nrTelefon){nrTelefonLbl.setText(nrTelefon);}
     public void setEmailLbl(String email){emailLbl.setText(email);}
     public void setAngajatDataLbl(String angajatData){angajatDataLbl.setText(angajatData);}
