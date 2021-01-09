@@ -1,11 +1,30 @@
 package policlinica;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+
 public class AngajatTableItem {
     private String nrContract;
     private String nume;
     private String prenume;
     private String post;
     private String nrTelefon;
+
+    public AngajatTableItem(){
+        this.nrContract = null;
+        this.nume = null;
+        this.prenume = null;
+        this.post = null;
+        this.nrTelefon = null;
+    }
+
+    public AngajatTableItem(String nrContract, String nume, String prenume, String post, String nrTelefon) {
+        this.nrContract = nrContract;
+        this.nume = nume;
+        this.prenume = prenume;
+        this.post = post;
+        this.nrTelefon = nrTelefon;
+    }
 
     public String getNrContract() {
         return nrContract;
@@ -45,5 +64,13 @@ public class AngajatTableItem {
 
     public void setNrTelefon(String nrTelefon) {
         this.nrTelefon = nrTelefon;
+    }
+
+    static public ObservableList<AngajatTableItem> getSampleList(){
+        ObservableList<AngajatTableItem> list = FXCollections.observableArrayList();
+        list.add(new AngajatTableItem("134", "Baragan", "Adrei-Iustin", "Doctor", "112"));
+        list.add(new AngajatTableItem("666", "Bledea", "Dragos-Ioan", "HR", "911"));
+        list.add(new AngajatTableItem("1536", "Badaran", "Adi", "Asistent", "0750000000"));
+        return list;
     }
 }

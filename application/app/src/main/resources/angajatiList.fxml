@@ -2,15 +2,15 @@
 
 <?import javafx.scene.control.*?>
 
-<ScrollPane fx:controller="policlinica.App" fitToHeight="true" fitToWidth="true" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" scaleZ="2.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1">
+<ScrollPane fx:controller="policlinica.controllers.AngajatiListController" fitToHeight="true" fitToWidth="true" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" scaleZ="2.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" >
    <content>
       <TableView fx:id="angajatiTable" scaleZ="2.0">
         <columns>
-          <TableColumn minWidth="100.0" prefWidth="-1.0" text="Numar Contract" />
-          <TableColumn minWidth="100.0" prefWidth="-1.0" text="Nume" />
-            <TableColumn minWidth="100.0" prefWidth="-1.0" text="Prenume" />
-            <TableColumn minWidth="100.0" prefWidth="-1.0" text="Post" />
-            <TableColumn minWidth="100.0" prefWidth="-1.0" text="Numar Telefon" />
+          <TableColumn fx:id="nrContractCol" minWidth="100.0" prefWidth="-1.0" text="Numar Contract" />
+          <TableColumn fx:id="numeCol" minWidth="100.0" prefWidth="-1.0" text="Nume" />
+            <TableColumn fx:id="prenumeCol" minWidth="100.0" prefWidth="-1.0" text="Prenume" />
+            <TableColumn fx:id="postCol" minWidth="100.0" prefWidth="-1.0" text="Post" />
+            <TableColumn fx:id="nrTelefonCol" minWidth="100.0" prefWidth="-1.0" text="Numar Telefon" />
         </columns>
       </TableView>
    </content>
