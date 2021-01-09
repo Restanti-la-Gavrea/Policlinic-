@@ -4,7 +4,7 @@ CREATE VIEW datepersonale AS Select contract.nrContract,contract.nume,contract.p
 username,userdata.pwd,userdata.tip,dateangajat.angajatCNP,dateangajat.adresa,dateangajat.nrTelefon,dateangajat.email,dateangajat.iban,dateangajat.DataAngajarii 
 from dateangajat INNER JOIN contract INNER JOIN userdata ON contract.nrcontract=dateangajat.nrcontract and contract.nrcontract=userdata.nrcontract;
 drop view if exists orar;
-CREATE VIEW orar AS Select contract.nume,contract.prenume,contract.salariu,contract.nrOre,contract.functie,
+CREATE VIEW orar AS Select contract.nrcontract,contract.nume,contract.prenume,contract.salariu,contract.nrOre,contract.functie,
 contract.nrUnitate,ogID,ziSaptamana,intervalOrar,unitatemedicala.nume AS numeUM,unitatemedicala.adresa from unitatemedicala INNER JOIN contract INNER JOIN 
 orargeneric ON contract.nrcontract=orargeneric.nrcontract  and orargeneric.nrUnitate=unitatemedicala.nrUnitate;
 drop view if exists exceptiiorarmedic;
@@ -36,8 +36,12 @@ specialitate.nume AS numespecialitate,serviciu.nrserviciu,serviciu.nume AS numes
 newdurata from medic INNER JOIN specialitatemedic INNER JOIN specialitate INNER JOIN serviciu INNER JOIN serviciucustom 
 ON medic.nrcontract=specialitatemedic.nrcontract and specialitate.nrspecialitate=specialitatemedic.nrspecialitate and medic.nrcontract=serviciucustom.nrcontract 
 and serviciu.nrserviciu=serviciucustom.nrserviciu and serviciu.nrspecialitate=specialitate.nrspecialitate;
--- drop view if exists raportcomplet; -- nu e gata
--- CREATE VIEW raportcomplet AS Select * from raport INNER JOIN programare INNER JOIN pacient INNER JOIN medic INNER JOIN tipasistentmedical INNER JOIN contract 
--- INNER JOIN serviciu INNER JOIN serviciuperprogramare ON pacient.nrpacient=programare.nrpacient and programare.nrcmedic=medic.nrcontract 
--- and medic.nrcontract=contract.nrcontract and tipasistentmedical.nrcontract=contract.nrcontract and programare.nrprogramare=raport.nrprogramare 
--- and raport.medicrecomandare=medic.nrcontract and tipasistentmedical.nrcontract=raport.asistentcontract and serviciu.nrserviciu=serviciuperprogramare.nrserviciu and serviciuperprogram;
+drop view if exists raportcomplet; -- nu e gata
+CREATE VIEW raportcomplet AS Select contract.nrcontract,contract.nume,contract.prenume,salariu,nrore,functie,nrunitate,tip as tipasistent,grad,pacient.nrpacient,
+pacient.nume as numepacient,pacient.prenume as prenumepacient,codparafa as codparafamedic,competente,titlustiintific,postdidactic,programare.nrprogramare,datap,
+ora,nrcabinet,serviciu.nrserviciu,serviciu.nume as numeserviciu,nrspecialitate,needscompetenta,pret,durata,rezultat,raport.nrraport,simptome,
+diagnostic,recomandari,parafat from raport INNER JOIN programare INNER JOIN pacient INNER JOIN medic INNER JOIN tipasistentmedical INNER JOIN contract 
+INNER JOIN serviciu INNER JOIN serviciuperprogramare ON pacient.nrpacient=programare.nrpacient and programare.nrcmedic=medic.nrcontract 
+and medic.nrcontract=contract.nrcontract and tipasistentmedical.nrcontract=contract.nrcontract and programare.nrprogramare=raport.nrprogramare 
+and raport.medicrecomandare=medic.nrcontract and tipasistentmedical.nrcontract=raport.asistentcontract and serviciu.nrserviciu=serviciuperprogramare.nrserviciu 
+and serviciuperprogramare.nrprogramare=programare.nrprogramare;
