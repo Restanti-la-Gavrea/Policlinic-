@@ -2,6 +2,7 @@ package policlinica;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import policlinica.calendar.Calendar;
 import policlinica.calendar.Day;
 import policlinica.users.*;
 
@@ -11,7 +12,7 @@ public class Test {
 		//cautareSuperAdmin();
 		//updateContract();
 		//createUser();
-		CalendarTest();
+		CalendarDayTest();
 	}
 	private void cautareSuperAdmin() {
 		System.out.println("Testul a inceput");
@@ -37,9 +38,10 @@ public class Test {
 		System.out.println(user.getAdresa());
 		
 	}
-	private void CalendarTest() {
-		Day day = new Day("2021-1-9");
-		System.out.println(day.getIntDayOfWeek());
+	private void CalendarDayTest() {
+		Day day = new Day("2008-11-11");
+		day.setDayInformation( "1");
+		System.out.println(day.getIntervalorar());
 	}
 
 }

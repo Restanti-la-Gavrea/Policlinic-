@@ -48,5 +48,18 @@ public class ResurseUmane extends User{
 		comanda += ";";	
 		return executeSelect(comanda);
 	}
-	
+	public ResultSet getOrarGeneric(String nrContract,String dayOfWeek) {
+		String comanda = "SELECT * FROM orar where nrcontract = " + nrContract + 
+				" and ziSaptamana = '" + dayOfWeek + "';";
+		return executeSelect(comanda);
+	}
+	public ResultSet getOrarSpecific(String nrContract,String date) {
+		String comanda = "SELECT * FROM ExceptiiOrarMedic where nrcontract = " + nrContract + 
+				" and ziCalendaristica = '" + date + "';";
+		return executeSelect(comanda);
+	}
+	public ResultSet getConcediu(String nrContract) {
+		String comanda = "SELECT * FROM Concediu where nrcontract = " + nrContract +";";
+		return executeSelect(comanda);
+	}
 }
