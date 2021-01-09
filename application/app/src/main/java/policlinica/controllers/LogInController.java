@@ -39,7 +39,6 @@ public class LogInController implements Initializable {
     }
 
     @FXML public void logIn () throws Exception{
-
         String username = usernameField.getText();
         String password = passwordField.getText();
 
@@ -50,6 +49,13 @@ public class LogInController implements Initializable {
             errLogInLbl.setVisible(true);
             return;
         }
+
+        //resetting the look of the log-in screen
+        usernameField.clear();
+        passwordField.clear();
+        errLogInLbl.setVisible(false);
+
+        mainController.setUser(user);
 
         //change scene
         double height = ((Stage)(Stage.getWindows().get(0))).getHeight();
@@ -75,6 +81,5 @@ public class LogInController implements Initializable {
 
     public void setMainController(MainController mainController) { this.mainController = mainController; }
     public void setMainScene(Scene mainScene) { this.mainScene = mainScene; }
-
 
 }

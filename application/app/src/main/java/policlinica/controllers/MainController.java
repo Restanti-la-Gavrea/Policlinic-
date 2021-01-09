@@ -6,15 +6,20 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+import policlinica.users.User;
 
 import java.net.URL;
 import java.util.ResourceBundle;
 
 public class MainController implements Initializable {
+
+    private User user;
 
     //main menu buttons
     @FXML
@@ -50,6 +55,15 @@ public class MainController implements Initializable {
     }
 
     @FXML public void setUserLayout() throws Exception{
+        userController.setNumeLbl(user.getNume());
+        userController.setPrenumeLbl(user.getPrenume());
+        userController.setAdresaLbl(user.getAdresa());
+        userController.setAngajatDataLbl(user.getDataAngajarii());
+        userController.setEmailLbl(user.getEmail());
+        userController.setIbanLbl(user.getIban());
+        userController.setNrContractLbl(user.getNrContract());
+        userController.setNrTelefonLbl(user.getNrTelefon());
+
         main.setCenter(userDataLayout);
     }
     @FXML public void setAdministratorLayout() throws Exception{
@@ -70,6 +84,13 @@ public class MainController implements Initializable {
     @FXML public void setServiciiLayout(){
     }
     @FXML public void logOut(){
+
+        StackPane layout = new StackPane();
+        Label label = new Label("Alege din meniul din stanga pentru a incepe");
+        layout.getChildren().add(label);
+
+        main.setCenter(layout);
+
         double height = ((Stage)(Stage.getWindows().get(0))).getHeight();
         double width = ((Stage)(Stage.getWindows().get(0))).getWidth();
 
@@ -98,7 +119,7 @@ public class MainController implements Initializable {
         loader = new FXMLLoader(getClass().getResource("/angajatiList.fxml"));
         angajatiListLayout = loader.load();
         angajatiListController = loader.getController();
-
     }
 
+    public void setUser(User user) { this.user = user; }
 }
