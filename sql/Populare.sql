@@ -217,7 +217,31 @@ insert into programare values
 (23,'2021-06-08','10:00:00',20,31,16),
 (24,'2021-08-26','16:00:00',20,40,16);
 
-
+insert into raport values
+(1,1,5,7,"","","",false),
+(2,2,6,7,"","","",false),
+(3,3,NULL,7,"","","",false),
+(4,4,NULL,NULL,"","","",false),
+(5,5,3,NULL,"","","",false),
+(6,6,3,7,"","","",false),
+(7,7,NULL,NULL,"","","",false),
+(8,8,6,7,"","","",false),
+(9,9,NULL,NULL,"","","",false),
+(10,10,NULL,10,"","","",false),
+(11,11,NULL,7,"","","",false),
+(12,12,3,7,"","","",false),
+(13,13,NULL,10,"","","",false),
+(14,14,NULL,NULL,"","","",false),
+(15,15,NULL,NULL,"","","",false),
+(16,16,NULL,10,"","","",false),
+(17,17,8,19,"","","",false),
+(18,18,9,18,"","","",false),
+(19,19,NULL,10,"","","",false),
+(20,20,NULL,NULL,"","","",false),
+(21,21,3,NULL,"","","",false),
+(22,22,9,18,"","","",false),
+(23,23,8,19,"","","",false),
+(24,24,14,NULL,"","","",false);
 
 Insert into aparatpercabinet values
 (1,1,1),
@@ -428,7 +452,7 @@ Insert into orarGeneric (ziSaptamana,intervalOrar ,nrunitate,nrcontract)  values
 ("Luni","09:30-12:00 13:00-18:00",4,23),
 ("Marti","09:30-12:00 13:00-19:00",4,23),
 ("Miercuri","09:30-12:00 16:00-18:00",4,23),
-("Joi","09:30-11:00 15:00-18:00",4,23),
+("Joi","09:30-11:00 15:00-20:00",4,23),
 ("Vineri","09:30-12:00 13:00-15:00",4,23),
 ("Sambata","07:00-10:00 11:00-15:00",4,23); -- A patra unitate medicala
 
