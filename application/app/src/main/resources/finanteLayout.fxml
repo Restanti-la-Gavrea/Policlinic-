@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox fx:id="finanteBox" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="policlinica.controllers.FinanteController">
+   <children>
+      <HBox fx:id="extraBox" alignment="CENTER_LEFT" spacing="5.0">
+         <children>
+            <Button fx:id="backBtn" mnemonicParsing="false" onAction="#goBack" text="&lt;" />
+            <ChoiceBox fx:id="viewBox" prefWidth="200.0" />
+            <ChoiceBox fx:id="detailBox" prefWidth="200.0" />
+         </children>
+      </HBox>
+      <VBox spacing="10.0">
+         <children>
+            <HBox alignment="CENTER">
+               <children>
+                  <Label fx:id="descriptiveLbl" text="Label Descriptiv" />
+                  <Label text="Navigheaza Luna">
+                     <HBox.margin>
+                        <Insets left="50.0" right="5.0" />
+                     </HBox.margin>
+                  </Label>
+                  <Button fx:id="previousBtn" mnemonicParsing="false" onAction="#goPrevious" text="&lt;" />
+                  <Button fx:id="nextBtn" mnemonicParsing="false" onAction="#goNext" text="&gt;" />
+               </children>
+            </HBox>
+            <TableView fx:id="finanteTable">
+              <columns>
+                <TableColumn fx:id="numeCol" prefWidth="227.0" text="Nume" />
+                <TableColumn fx:id="detailsCol" prefWidth="184.0" text="Detalii Aditionale" />
+                  <TableColumn fx:id="sumCol" minWidth="0.0" prefWidth="134.0" text="Suma" />
+              </columns>
+            </TableView>
+         </children>
+         <VBox.margin>
+            <Insets top="10.0" />
+         </VBox.margin>
+         <padding>
+            <Insets bottom="5.0" top="5.0" />
+         </padding>
+      </VBox>
+   </children>
+   <padding>
+      <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+   </padding>
+</VBox>

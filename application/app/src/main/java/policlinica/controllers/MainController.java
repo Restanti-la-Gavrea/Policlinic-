@@ -41,8 +41,15 @@ public class MainController implements Initializable {
 
     private VBox userDataLayout;
     private UserController userController;
+
     private ScrollPane angajatiListLayout;
     private AngajatiListController angajatiListController;
+
+    private VBox finanteLayout;
+    private FinanteController finanteController;
+
+    private VBox orarLayout;
+    private OrarController orarController;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -74,8 +81,10 @@ public class MainController implements Initializable {
 
     }
     @FXML public void setOrarLayout(){
+        main.setCenter(orarLayout);
     }
     @FXML public void setFinanteLayout(){
+        main.setCenter(finanteLayout);
     }
     @FXML public void setPacientiLayout(){
     }
@@ -119,6 +128,14 @@ public class MainController implements Initializable {
         loader = new FXMLLoader(getClass().getResource("/angajatiList.fxml"));
         angajatiListLayout = loader.load();
         angajatiListController = loader.getController();
+
+        loader = new FXMLLoader(getClass().getResource("/finanteLayout.fxml"));
+        finanteLayout = loader.load();
+        finanteController = loader.getController();
+
+        loader = new FXMLLoader(getClass().getResource("/orarViewLayout.fxml"));
+        orarLayout = loader.load();
+        orarController = loader.getController();
     }
 
     public void setUser(User user) { this.user = user; }

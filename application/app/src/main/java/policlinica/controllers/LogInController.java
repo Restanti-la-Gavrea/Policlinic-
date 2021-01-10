@@ -34,7 +34,6 @@ public class LogInController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        errLogInLbl.managedProperty().bind(errLogInLbl.visibleProperty());
         errLogInLbl.setVisible(false);
     }
 

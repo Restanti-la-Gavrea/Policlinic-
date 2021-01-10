@@ -1,6 +1,8 @@
+
 * {
     -fx-text-fill: rgba(5,50,55,1);
-    -fx-background-color: rgba(255,255,255,1);
+    /*-fx-background-color: rgba(255,255,255,1);*/
+
 }
 
 #main {
@@ -35,4 +37,44 @@
 .blueButton {
     -fx-text-fill: white;
     -fx-background-color: rgba(11,100,110,1);
+}
+
+.blueButton:hover {
+    -fx-background-color: rgba(10,87,92,1);
+}
+
+.blueButton:pressed {
+    -fx-background-color: rgba(8,75,77,1);
+}
+
+.choice-box .menu-item:focused { -fx-background-color: rgba(11,100,110,1);}
+.choice-box .menu-item:focused > .label { -fx-text-fill: white;}
+
+.choice-box {
+    -fx-border-color: rgba(5,50,55,0.15);
+    -fx-border-style: solid;
+    -fx-background-color: rgba(5,50,55,0.1);
+
+    -fx-mark-color: rgba(11,100,110,1);
+}
+
+.calendarTitle {
+    -fx-text-fill: white;
+    -fx-background-color: rgba(11,100,110,1);
+}
+
+.calendarItem {
+    -fx-border-color: rgba(5,50,55,0.15);
+}
+
+.calendarItem:hover {
+    -fx-background-color: rgba(5,50,55,0.1);
+}
+
+.calendarItem:pressed {
+    -fx-background-color: rgba(5,50,55,0.2);
+}
+
+.selectedItem {
+    -fx-background-color: rgba(5,50,55,0.1);
 }

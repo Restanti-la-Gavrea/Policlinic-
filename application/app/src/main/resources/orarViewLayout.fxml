@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" spacing="10.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="policlinica.controllers.OrarController">
+   <children>
+      <HBox alignment="CENTER_LEFT" spacing="5.0">
+         <children>
+            <Button fx:id="previousBtn" mnemonicParsing="false" onAction="#previousMonth" text="&lt;" />
+            <Button fx:id="nextBtn" mnemonicParsing="false" onAction="#nextMonth" text="&gt;" />
+            <Label fx:id="calendarDetailLbl" text="Month and yeah here">
+               <HBox.margin>
+                  <Insets left="10.0" />
+               </HBox.margin></Label>
+         </children>
+      </HBox>
+      <GridPane alignment="CENTER">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="75.0" />
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="75.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="75.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="75.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="75.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="75.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="75.0" />
+        </columnConstraints>
+        <rowConstraints>
+            <RowConstraints minHeight="10.0" prefHeight="20.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="50.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="50.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="50.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="50.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="50.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <Label fx:id="cell00" alignment="TOP_LEFT" contentDisplay="CENTER" onMouseClicked="#calendarClickHandler" prefHeight="50.0" prefWidth="75.0" styleClass="calendarItem" text="Label" GridPane.rowIndex="1" />
+            <Label fx:id="cell01" alignment="TOP_LEFT" layoutX="10.0" layoutY="10.0" onMouseClicked="#calendarClickHandler" prefHeight="50.0" prefWidth="75.0" styleClass="calendarItem" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <Label fx:id="cell02" alignment="TOP_LEFT" layoutX="85.0" layoutY="10.0" onMouseClicked="#calendarClickHandler" prefHeight="50.0" prefWidth="75.0" styleClass="calendarItem" text="Label" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+            <Label fx:id="cell03" alignment="TOP_LEFT" layoutX="10.0" layoutY="10.0" onMouseClicked="#calendarClickHandler" prefHeight="50.0" prefWidth="75.0" styleClass="calendarItem" text="Label" GridPane.columnIndex="3" GridPane.rowIndex="1" />
+            <Label fx:id="cell04" alignment="TOP_LEFT" layoutX="10.0" layoutY="10.0" onMouseClicked="#calendarClickHandler" prefHeight="50.0" prefWidth="75.0" styleClass="calendarItem" text="Label" GridPane.columnIndex="4" GridPane.rowIndex="1" />
+            <Label fx:id="cell05" alignment="TOP_LEFT" layoutX="10.0" layoutY="10.0" onMouseClicked="#calendarClickHandler" prefHeight="50.0" prefWidth="75.0" styleClass="calendarItem" text="Label" GridPane.columnIndex="5" GridPane.rowIndex="1" />
+            <Label fx:id="cell06" alignment="TOP_LEFT" layoutX="10.0" layoutY="10.0" onMouseClicked="#calendarClickHandler" prefHeight="50.0" prefWidth="75.0" styleClass="calendarItem" text="Label" GridPane.columnIndex="6" GridPane.rowIndex="1" />
+            <Label fx:id="cell10" alignment="TOP_LEFT" layoutX="10.0" layoutY="10.0" onMouseClicked="#calendarClickHandler" prefHeight="50.0" prefWidth="75.0" styleClass="calendarItem" text="Label" GridPane.rowIndex="2" />
+            <Label fx:id="cell11" alignment="TOP_LEFT" layoutX="10.0" layoutY="10.0" onMouseClicked="#calendarClickHandler" prefHeight="50.0" prefWidth="75.0" styleClass="calendarItem" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <Label fx:id="cell12" alignment="TOP_LEFT" layoutX="10.0" layoutY="10.0" onMouseClicked="#calendarClickHandler" prefHeight="50.0" prefWidth="75.0" styleClass="calendarItem" text="Label" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+            <Label fx:id="cell13" alignment="TOP_LEFT" layoutX="10.0" layoutY="10.0" onMouseClicked="#calendarClickHandler" prefHeight="50.0" prefWidth="75.0" styleClass="calendarItem" text="Label" GridPane.columnIndex="3" GridPane.rowIndex="2" />
+            <Label fx:id="cell14" alignment="TOP_LEFT" layoutX="10.0" layoutY="10.0" onMouseClicked="#calendarClickHandler" prefHeight="50.0" prefWidth="75.0" styleClass="calendarItem" text="Label" GridPane.columnIndex="4" GridPane.rowIndex="2" />
+            <Label fx:id="cell15" alignment="TOP_LEFT" layoutX="10.0" layoutY="10.0" onMouseClicked="#calendarClickHandler" prefHeight="50.0" prefWidth="75.0" styleClass="calendarItem" text="Label" GridPane.columnIndex="5" GridPane.rowIndex="2" />
+            <Label fx:id="cell16" alignment="TOP_LEFT" layoutX="10.0" layoutY="10.0" onMouseClicked="#calendarClickHandler" prefHeight="50.0" prefWidth="75.0" styleClass="calendarItem" text="Label" GridPane.columnIndex="6" GridPane.rowIndex="2" />
+            <Label fx:id="cell20" alignment="TOP_LEFT" layoutX="10.0" layoutY="10.0" onMouseClicked="#calendarClickHandler" prefHeight="50.0" prefWidth="75.0" styleClass="calendarItem" text="Label" GridPane.rowIndex="3" />
+            <Label fx:id="cell21" alignment="TOP_LEFT" layoutX="10.0" layoutY="10.0" onMouseClicked="#calendarClickHandler" prefHeight="50.0" prefWidth="75.0" styleClass="calendarItem" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+            <Label fx:id="cell22" alignment="TOP_LEFT" layoutX="85.0" layoutY="110.0" onMouseClicked="#calendarClickHandler" prefHeight="50.0" prefWidth="75.0" styleClass="calendarItem" text="Label" GridPane.columnIndex="2" GridPane.rowIndex="3" />
+            <Label fx:id="cell23" alignment="TOP_LEFT" layoutX="10.0" layoutY="10.0" onMouseClicked="#calendarClickHandler" prefHeight="50.0" prefWidth="75.0" styleClass="calendarItem" text="Label" GridPane.columnIndex="3" GridPane.rowIndex="3" />
+            <Label fx:id="cell24" alignment="TOP_LEFT" layoutX="10.0" layoutY="10.0" onMouseClicked="#calendarClickHandler" prefHeight="50.0" prefWidth="75.0" styleClass="calendarItem" text="Label" GridPane.columnIndex="4" GridPane.rowIndex="3" />
+            <Label fx:id="cell25" alignment="TOP_LEFT" layoutX="10.0" layoutY="10.0" onMouseClicked="#calendarClickHandler" prefHeight="50.0" prefWidth="75.0" styleClass="calendarItem" text="Label" GridPane.columnIndex="5" GridPane.rowIndex="3" />
+            <Label fx:id="cell26" alignment="TOP_LEFT" layoutX="10.0" layoutY="10.0" onMouseClicked="#calendarClickHandler" prefHeight="50.0" prefWidth="75.0" styleClass="calendarItem" text="Label" GridPane.columnIndex="6" GridPane.rowIndex="3" />
+            <Label fx:id="cell30" alignment="TOP_LEFT" layoutX="10.0" layoutY="10.0" onMouseClicked="#calendarClickHandler" prefHeight="50.0" prefWidth="75.0" styleClass="calendarItem" text="Label" GridPane.rowIndex="4" />
+            <Label fx:id="cell31" alignment="TOP_LEFT" layoutX="10.0" layoutY="10.0" onMouseClicked="#calendarClickHandler" prefHeight="50.0" prefWidth="75.0" styleClass="calendarItem" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+            <Label fx:id="cell32" alignment="TOP_LEFT" layoutX="10.0" layoutY="10.0" onMouseClicked="#calendarClickHandler" prefHeight="50.0" prefWidth="75.0" styleClass="calendarItem" text="Label" GridPane.columnIndex="2" GridPane.rowIndex="4" />
+            <Label fx:id="cell33" alignment="TOP_LEFT" layoutX="10.0" layoutY="10.0" onMouseClicked="#calendarClickHandler" prefHeight="50.0" prefWidth="75.0" styleClass="calendarItem" text="Label" GridPane.columnIndex="3" GridPane.rowIndex="4" />
+            <Label fx:id="cell34" alignment="TOP_LEFT" layoutX="10.0" layoutY="10.0" onMouseClicked="#calendarClickHandler" prefHeight="50.0" prefWidth="75.0" styleClass="calendarItem" text="Label" GridPane.columnIndex="4" GridPane.rowIndex="4" />
+            <Label fx:id="cell35" alignment="TOP_LEFT" layoutX="310.0" layoutY="160.0" onMouseClicked="#calendarClickHandler" prefHeight="50.0" prefWidth="75.0" styleClass="calendarItem" text="Label" GridPane.columnIndex="5" GridPane.rowIndex="4" />
+            <Label fx:id="cell36" alignment="TOP_LEFT" layoutX="10.0" layoutY="10.0" onMouseClicked="#calendarClickHandler" prefHeight="50.0" prefWidth="75.0" styleClass="calendarItem" text="Label" GridPane.columnIndex="6" GridPane.rowIndex="4" />
+            <Label fx:id="cell40" alignment="TOP_LEFT" layoutX="10.0" layoutY="10.0" onMouseClicked="#calendarClickHandler" prefHeight="50.0" prefWidth="75.0" styleClass="calendarItem" text="Label" GridPane.rowIndex="5" />
+            <Label fx:id="cell41" alignment="TOP_LEFT" layoutX="10.0" layoutY="10.0" onMouseClicked="#calendarClickHandler" prefHeight="50.0" prefWidth="75.0" styleClass="calendarItem" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+            <Label fx:id="cell42" alignment="TOP_LEFT" layoutX="10.0" layoutY="10.0" onMouseClicked="#calendarClickHandler" prefHeight="50.0" prefWidth="75.0" styleClass="calendarItem" text="Label" GridPane.columnIndex="2" GridPane.rowIndex="5" />
+            <Label fx:id="cell43" alignment="TOP_LEFT" layoutX="10.0" layoutY="10.0" onMouseClicked="#calendarClickHandler" prefHeight="50.0" prefWidth="75.0" styleClass="calendarItem" text="Label" GridPane.columnIndex="3" GridPane.rowIndex="5" />
+            <Label fx:id="cell44" alignment="TOP_LEFT" layoutX="10.0" layoutY="10.0" onMouseClicked="#calendarClickHandler" prefHeight="50.0" prefWidth="75.0" styleClass="calendarItem" text="Label" GridPane.columnIndex="4" GridPane.rowIndex="5" />
+            <Label fx:id="cell45" alignment="TOP_LEFT" layoutX="310.0" layoutY="210.0" onMouseClicked="#calendarClickHandler" prefHeight="50.0" prefWidth="75.0" styleClass="calendarItem" text="Label" GridPane.columnIndex="5" GridPane.rowIndex="5" />
+            <Label fx:id="cell46" alignment="TOP_LEFT" layoutX="10.0" layoutY="10.0" onMouseClicked="#calendarClickHandler" prefHeight="50.0" prefWidth="75.0" styleClass="calendarItem" text="Label" GridPane.columnIndex="6" GridPane.rowIndex="5" />
+            <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="20.0" prefWidth="75.0" styleClass="calendarTitle" text="Luni" />
+            <Label alignment="CENTER" prefHeight="20.0" prefWidth="75.0" styleClass="calendarTitle" text="Marti" GridPane.columnIndex="1" />
+            <Label alignment="CENTER" prefHeight="20.0" prefWidth="75.0" styleClass="calendarTitle" text="Miercuri" GridPane.columnIndex="2" />
+            <Label alignment="CENTER" prefHeight="20.0" prefWidth="75.0" styleClass="calendarTitle" text="Joi" GridPane.columnIndex="3" />
+            <Label alignment="CENTER" prefHeight="20.0" prefWidth="75.0" styleClass="calendarTitle" text="Vineri" GridPane.columnIndex="4" />
+            <Label alignment="CENTER" prefHeight="20.0" prefWidth="75.0" styleClass="calendarTitle" text="Sambata" GridPane.columnIndex="5" />
+            <Label alignment="CENTER" prefHeight="20.0" prefWidth="75.0" styleClass="calendarTitle" text="Duminica" GridPane.columnIndex="6" />
+         </children>
+         <padding>
+            <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+         </padding>
+      </GridPane>
+   </children>
+   <padding>
+      <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+   </padding>
+</VBox>

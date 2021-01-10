@@ -12,10 +12,9 @@ import java.util.ResourceBundle;
 
 public class AngajatiListController implements Initializable {
 
-    @FXML
-    TableView<AngajatTableItem> angajatiTable;
-    @FXML
-    TableColumn<AngajatTableItem, String> nrContractCol;
+    @FXML TableView<AngajatTableItem> angajatiTable;
+
+    @FXML TableColumn<AngajatTableItem, String> nrContractCol;
     @FXML TableColumn<AngajatTableItem, String> numeCol;
     @FXML TableColumn<AngajatTableItem, String> prenumeCol;
     @FXML TableColumn<AngajatTableItem, String> postCol;
@@ -23,11 +22,13 @@ public class AngajatiListController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+
         nrContractCol.setCellValueFactory(new PropertyValueFactory<>("nrContract"));
         nrTelefonCol.setCellValueFactory(new PropertyValueFactory<>("nrTelefon"));
         numeCol.setCellValueFactory(new PropertyValueFactory<>("nume"));
         prenumeCol.setCellValueFactory(new PropertyValueFactory<>("prenume"));
         postCol.setCellValueFactory(new PropertyValueFactory<>("post"));
+
         angajatiTable.setItems(AngajatTableItem.getSampleList());
     }
 }

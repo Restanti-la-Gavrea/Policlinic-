@@ -4,57 +4,66 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<VBox fx:controller="policlinica.controllers.UserController" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" spacing="10.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" >
+<VBox alignment="CENTER_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" spacing="10.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="policlinica.controllers.UserController">
    <children>
-      <HBox spacing="10.0">
+      <HBox alignment="CENTER_LEFT" prefHeight="25.0" spacing="10.0">
          <children>
             <Label prefWidth="100.0" styleClass="boldBigText" text="Nume:" />
             <Label fx:id="numeLbl" styleClass="bigText" text="Gavrila" />
+            <TextField fx:id="numeFld" prefWidth="200.0" />
          </children>
       </HBox>
-      <HBox layoutX="30.0" layoutY="30.0" spacing="10.0">
+      <HBox alignment="CENTER_LEFT" layoutX="30.0" layoutY="30.0" prefHeight="25.0" spacing="10.0">
          <children>
             <Label prefWidth="100.0" styleClass="boldBigText" text="Prenume:" />
             <Label fx:id="prenumeLbl" styleClass="bigText" text="Tiberiu-Valentin" />
+            <TextField fx:id="prenumeFld" prefWidth="200.0" />
          </children>
       </HBox>
-      <HBox layoutX="30.0" layoutY="57.0" spacing="10.0">
+      <HBox alignment="CENTER_LEFT" layoutX="30.0" layoutY="57.0" prefHeight="25.0" spacing="10.0">
          <children>
             <Label prefWidth="100.0" styleClass="boldBigText" text="Numar Contract:" />
             <Label fx:id="nrContractLbl" styleClass="bigText" text="25613" />
+            <TextField fx:id="nrContractFld" prefWidth="200.0" />
          </children>
       </HBox>
-      <HBox layoutX="30.0" layoutY="84.0" spacing="10.0">
+      <HBox alignment="CENTER_LEFT" layoutX="30.0" layoutY="84.0" prefHeight="25.0" spacing="10.0">
          <children>
             <Label prefWidth="100.0" styleClass="boldBigText" text="Numar Telefon:" />
             <Label fx:id="nrTelefonLbl" styleClass="bigText" text="0753796932" />
+            <TextField fx:id="nrTelefonFld" prefWidth="200.0" />
          </children>
       </HBox>
-      <HBox layoutX="30.0" layoutY="111.0" spacing="10.0">
+      <HBox alignment="CENTER_LEFT" layoutX="30.0" layoutY="111.0" prefHeight="25.0" spacing="10.0">
          <children>
             <Label prefWidth="100.0" styleClass="boldBigText" text="E-mail:" />
             <Label fx:id="emailLbl" styleClass="bigText" text="gavrilatibeiru26@gmail.com" />
+            <TextField fx:id="emailFld" prefWidth="200.0" />
          </children>
       </HBox>
-      <HBox layoutX="30.0" layoutY="138.0" spacing="10.0">
+      <HBox alignment="CENTER_LEFT" layoutX="30.0" layoutY="138.0" prefHeight="25.0" spacing="10.0">
          <children>
             <Label prefWidth="100.0" styleClass="boldBigText" text="IBAN:" />
             <Label fx:id="ibanLbl" styleClass="bigText" text="BTRLT35892ROMANIA449202XXX" />
+            <TextField fx:id="ibanFld" prefWidth="200.0" />
          </children>
       </HBox>
-      <HBox layoutX="30.0" layoutY="165.0" spacing="10.0">
+      <HBox alignment="CENTER_LEFT" layoutX="30.0" layoutY="165.0" prefHeight="25.0" spacing="10.0">
          <children>
             <Label prefWidth="100.0" styleClass="boldBigText" text="Adresa:" />
             <Label fx:id="adresaLbl" styleClass="bigText" text="sat Fundeanu, Com. Draguseni, jud Galati, str. Principala" />
+            <TextField fx:id="adresaFld" prefWidth="200.0" />
          </children>
       </HBox>
-      <HBox layoutX="30.0" layoutY="192.0" spacing="10.0">
+      <HBox alignment="CENTER_LEFT" layoutX="30.0" layoutY="192.0" prefHeight="25.0" spacing="10.0">
          <children>
             <Label prefWidth="100.0" styleClass="boldBigText" text="Angajat Din:" />
             <Label fx:id="angajatDataLbl" styleClass="bigText" text="26/09/2001" />
+            <DatePicker fx:id="angajatFld" prefWidth="200.0" />
          </children>
       </HBox>
       <Button fx:id="userEditBtn" mnemonicParsing="false" onAction="#editUser" prefWidth="90.0" styleClass="blueButton" text="Edit" />
+      <Button fx:id="submitBtn" layoutX="30.0" layoutY="310.0" mnemonicParsing="false" onAction="#editSubmit" prefWidth="90.0" styleClass="blueButton" text="Submit" />
    </children>
    <opaqueInsets>
       <Insets />
