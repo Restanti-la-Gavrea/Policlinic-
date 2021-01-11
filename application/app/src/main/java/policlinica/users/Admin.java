@@ -18,7 +18,7 @@ public class Admin extends SuperAdmin {
 					return executeUpdate(comanda);
 				}
 		}catch (SQLException e) {
-		      printSqlErrorMessage(e);
+		      System.out.println("setContract Error");
 		      return false;
 	    }
 		return false;
@@ -31,7 +31,7 @@ public class Admin extends SuperAdmin {
 					return executeUpdate(comanda);
 				}
 		}catch (SQLException e) {
-		      printSqlErrorMessage(e);
+		      System.err.println("setDateAngajatError");
 		      return false;
 	    }
 		return false;

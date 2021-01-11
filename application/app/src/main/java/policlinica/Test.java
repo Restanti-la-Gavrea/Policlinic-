@@ -13,7 +13,8 @@ public class Test {
 		//updateContract();
 		//createUser();
 		//CalendarDayTest();
-		verificaCevaListaDeAngaati();
+		//verificaCevaListaDeAngaati();
+		User user = new User("1");
 	}
 	private void cautareSuperAdmin() {
 		System.out.println("Testul a inceput");

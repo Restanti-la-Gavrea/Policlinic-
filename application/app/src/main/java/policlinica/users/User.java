@@ -34,8 +34,15 @@ public class User {
 		this.connection = setup();
 	}
 	public User(String nrContract) {
+		this.connection = setup();
 		ResultSet result = this.getDataById(nrContract);
-		this.getUserDataFromResultSet(result);
+		try {
+			if (result.next())
+				this.getUserDataFromResultSet(result);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 	public User(ResultSet result) {
 		this.connection = setup();
@@ -89,7 +96,7 @@ public class User {
 				     return user;
 					}
 			} catch (SQLException e) {
-				printSqlErrorMessage(e);
+				System.err.println("Autentificator Error");
 				return null;
 			}
 		return null;
@@ -126,7 +133,7 @@ public class User {
 			return DriverManager.getConnection(URL + DB_NAME , USER , PASSWORD);
 		}
 		catch(Exception e) {
-			printSqlErrorMessage(e);
+			System.out.println("Setup Error");
 		}
 		return null;
 	}
@@ -135,8 +142,8 @@ public class User {
 			PreparedStatement s = connection.prepareStatement(selectString);
 			return s.executeQuery();
 		}
-		catch(SQLException e){
-			printSqlErrorMessage(e);
+		catch(Exception e){
+			printSqlErrorMessage(selectString);
 		}
 		return null;
 	}
@@ -147,14 +154,13 @@ public class User {
 		   return true;
 		}
 		catch(SQLException e){
-			printSqlErrorMessage(e);
+			printSqlErrorMessage(updateString);
 			return false;
 		}
 	}
-	protected void printSqlErrorMessage(Exception e) {
-		System.out.println("SQLException: " + e.getMessage());
-	    System.out.println("SQLState: " + ((SQLException) e).getSQLState());
-	    System.out.println("VendorError: " + ((SQLException) e).getErrorCode());
+	protected void printSqlErrorMessage(String message) {
+		System.err.println("SQL Error:");
+		System.out.println(message);
 	}
 	public String getNrContract() {
 		return nrContract;
