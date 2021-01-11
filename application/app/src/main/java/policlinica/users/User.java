@@ -7,6 +7,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
+import policlinica.AngajatTableItem;
+
 public class User {
 	
 	private final static String URL = "jdbc:mysql://localhost:3306/";
@@ -52,10 +54,19 @@ public class User {
 			e.printStackTrace();
 		}
 	}
+	public AngajatTableItem userToAngajatTableItem(User user) {
+		AngajatTableItem angajat = new AngajatTableItem();
+		angajat.setNume(user.getNume());
+		angajat.setPrenume(user.getPrenume());
+		angajat.setNrContract(user.getNrContract());
+		angajat.setPost(user.getFunctie());
+		angajat.setNrTelefon(user.getNrTelefon());
+		return angajat;
+	}
 	public User Autentificator(String username,String password) {
 		ResultSet result = getDataByUsername(username,password);
 		 try {
-				while (result.next()) {
+				if (result.next()) {
 				     String functie = result.getString("functie");
 				     User user = null;
 				     if (functie.equals("hr")) {

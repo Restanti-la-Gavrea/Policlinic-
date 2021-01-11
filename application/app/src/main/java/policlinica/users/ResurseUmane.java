@@ -1,6 +1,10 @@
 package policlinica.users;
 
 import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+
+import policlinica.AngajatTableItem;
 
 public class ResurseUmane extends User{
 
@@ -15,6 +19,22 @@ public class ResurseUmane extends User{
 	//Functia cauta toti angajati cu un anumit nume sau prenume sau functie
 	//Daca nu se vrea cautare in functie de prenume de exemplu pur si simpulu la prenume 
 	//se pune "" sau null
+	public ArrayList <AngajatTableItem >getArrayOfDateAngajati(){
+		ArrayList <AngajatTableItem >listaAngajati = new ArrayList<>();
+		ResultSet result = getDateAngajati("","","");
+		try {
+			while(result.next()) {
+				AngajatTableItem angajat = new AngajatTableItem();
+				User user = new User(result);
+				angajat.getAngajatTableItemFromUser(user);
+				listaAngajati.add(angajat);
+			}
+		} catch (SQLException e) {
+			System.out.println("Eroare in getArrayOfDateAngajati");
+		}
+		return listaAngajati;
+		
+	}
 	public ResultSet getDateAngajati(String nume ,String prenume,String functie){
 		String comanda = "Select * from DatePersonale ";
 		Boolean conditie = false;//verifica daca a fost deja impus o conditie

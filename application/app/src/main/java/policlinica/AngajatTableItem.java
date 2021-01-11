@@ -2,6 +2,7 @@ package policlinica;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import policlinica.users.User;
 
 public class AngajatTableItem {
     private String nrContract;
@@ -64,4 +65,11 @@ public class AngajatTableItem {
         list.add(new AngajatTableItem("1536", "Badaran", "Adi", "Asistent", "0750000000"));
         return list;
     }
+    public void getAngajatTableItemFromUser(User user) {
+		this.setNume(user.getNume());
+		this.setPrenume(user.getPrenume());
+		this.setNrContract(user.getNrContract());
+		this.setPost(user.getFunctie());
+		this.setNrTelefon(user.getNrTelefon());
+	}
 }
