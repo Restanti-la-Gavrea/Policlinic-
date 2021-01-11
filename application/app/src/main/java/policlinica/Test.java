@@ -1,9 +1,9 @@
 package policlinica;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
-import policlinica.calendar.Calendar;
-import policlinica.calendar.Day;
+import policlinica.calendar.*;
 import policlinica.users.*;
 
 public class Test {
@@ -12,7 +12,8 @@ public class Test {
 		//cautareSuperAdmin();
 		//updateContract();
 		//createUser();
-		CalendarDayTest();
+		//CalendarDayTest();
+		verificaCevaListaDeAngaati();
 	}
 	private void cautareSuperAdmin() {
 		System.out.println("Testul a inceput");
@@ -42,6 +43,12 @@ public class Test {
 		Day day = new Day("2008-11-11");
 		day.setDayInformation( "1");
 		System.out.println(day.getIntervalorar());
+	}
+	private void verificaCevaListaDeAngaati() {
+		ArrayList <AngajatTableItem>lista = new ArrayList<>();
+		lista = (new ResurseUmane()).getArrayOfDateAngajati();
+		System.out.println(lista.size());
+		
 	}
 
 }

@@ -33,8 +33,16 @@ public class User {
 	public User() {
 		this.connection = setup();
 	}
+	public User(String nrContract) {
+		ResultSet result = this.getDataById(nrContract);
+		this.getUserDataFromResultSet(result);
+	}
 	public User(ResultSet result) {
 		this.connection = setup();
+		this.getUserDataFromResultSet(result);
+		
+	}
+	public void getUserDataFromResultSet(ResultSet result) {
 		try {
 			this.nrContract = result.getString("nrContract");
 			this.username = result.getString("username");
@@ -53,15 +61,6 @@ public class User {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-	}
-	public AngajatTableItem userToAngajatTableItem(User user) {
-		AngajatTableItem angajat = new AngajatTableItem();
-		angajat.setNume(user.getNume());
-		angajat.setPrenume(user.getPrenume());
-		angajat.setNrContract(user.getNrContract());
-		angajat.setPost(user.getFunctie());
-		angajat.setNrTelefon(user.getNrTelefon());
-		return angajat;
 	}
 	public User Autentificator(String username,String password) {
 		ResultSet result = getDataByUsername(username,password);
