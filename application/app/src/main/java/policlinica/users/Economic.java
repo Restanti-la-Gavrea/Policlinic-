@@ -119,7 +119,7 @@ public class Economic extends User {
 		FinanteTableItem[] profit = null;
 		double[] result1 = new double[0]; 
 		try {
-			ResultSet rs = executeSelect("Select count(*) as Count from UnitateMedicala");
+			ResultSet rs = executeSelect("Select Count(*) as Count from UnitateMedicala");
 			int count = 1;
 			if (rs.next()) {
 				count = rs.getInt("Count") + 1;

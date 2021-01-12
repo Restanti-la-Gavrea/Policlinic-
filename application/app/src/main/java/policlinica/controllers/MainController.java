@@ -106,9 +106,11 @@ public class MainController implements Initializable {
         }
     }
     @FXML public void setFinanteLayout(){
+        finanteController.setUser(user);
         main.setCenter(finanteLayout);
     }
     @FXML public void setPacientiLayout(){
+        main.setCenter(pacientiLayout);
     }
     @FXML public void setProgramariLayout(){
     }
@@ -206,7 +208,8 @@ public class MainController implements Initializable {
             serviciiBtn.setVisible(false);
         }
         else{
-            serviciiBtn.setVisible(true);
+           if(user instanceof Medic)
+               serviciiBtn.setVisible(true);
         }
 
         if(user instanceof Medical){
