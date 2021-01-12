@@ -96,8 +96,8 @@ public class MainController implements Initializable {
         if (user instanceof ResurseUmane) {
             angajatiListController.fillWithEmployees(orarLayout, orarController, main);
             angajatiListController.setButtonForOrar();
-            orarController.setContext(orarEditLayout, main, orarEditController);
-            orarEditController.setContext(orarLayout, main);
+            orarController.setContext(orarEditLayout, main, orarEditController, (ResurseUmane)user);
+            orarEditController.setContext(orarLayout, orarController, main);
             main.setCenter(angajatiListLayout);
         }
         else {

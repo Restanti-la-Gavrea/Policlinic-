@@ -27,8 +27,8 @@ public class FinanteController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
-        viewBox.getItems().addAll("Salariul Propriu", "Profitul Propriu", "Profitul Total", "Profitul Medic/Unitate", "Profitul Medic/Specialitate");
-        detailBox.getItems().addAll("Aici Lista de medici", "medic1", "medic2");
+       // viewBox.getItems().addAll("Salariul Propriu", "Profitul Propriu", "Profitul Total", "Profitul Medic/Unitate", "Profitul Medic/Specialitate");
+       // detailBox.getItems().addAll("Aici Lista de medici", "medic1", "medic2");
 
         extraBox.managedProperty().bind(extraBox.visibleProperty());
 

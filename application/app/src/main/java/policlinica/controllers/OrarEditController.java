@@ -8,6 +8,12 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
+import policlinica.MonthName;
+import policlinica.calendar.CalendarAux;
+import policlinica.calendar.CalendarSaptamanal;
+import policlinica.calendar.Day;
+import policlinica.users.ResurseUmane;
+import policlinica.users.User;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -15,7 +21,10 @@ import java.util.ResourceBundle;
 public class OrarEditController implements Initializable {
 
     private VBox orarLayout;
-    BorderPane main;
+    private OrarController orarController;
+    private BorderPane main;
+    private ResurseUmane user;
+    private User userCalendar;
 
     @FXML private VBox saptamanalBox;
     @FXML private TextField luniFld;
@@ -26,11 +35,13 @@ public class OrarEditController implements Initializable {
     @FXML private TextField sambataFld;
     @FXML private TextField duminicaFld;
     @FXML private Button saptamanalSubmitBtn;
+    private CalendarSaptamanal calendarSaptamanal;
 
     @FXML private VBox specificBox;
     @FXML private Label specificDayLbl;
     @FXML private TextField specificFld;
     @FXML private Button specificSubmitBtn;
+    private Day ziSelected;
 
     @FXML private VBox concediuBox;
     @FXML private DatePicker firstDayFld;
@@ -38,13 +49,46 @@ public class OrarEditController implements Initializable {
     @FXML private Button concediuSubmitBtn;
 
     @FXML public void submitSaptamanal(){
+        calendarSaptamanal.getDay(0).setIntervalorar(sambataFld.getText());
+        calendarSaptamanal.getDay(1).setIntervalorar(duminicaFld.getText());
+        calendarSaptamanal.getDay(2).setIntervalorar(luniFld.getText());
+        calendarSaptamanal.getDay(3).setIntervalorar(martiFld.getText());
+        calendarSaptamanal.getDay(4).setIntervalorar(miercuriFld.getText());
+        calendarSaptamanal.getDay(5).setIntervalorar(joiFld.getText());
+        calendarSaptamanal.getDay(6).setIntervalorar(vineriFld.getText());
 
+
+        user.setOrarGeneric(calendarSaptamanal);
+
+        calendarSaptamanal = null;
+
+        orarController.refreshCalendar();
+        main.setCenter(orarLayout);
     }
     @FXML public void submitSpecific(){
+        ziSelected.setIntervalorar(specificFld.getText());
+        user.setOrarSpecific(ziSelected);
 
+        ziSelected = null;
+
+        orarController.refreshCalendar();
+        main.setCenter(orarLayout);
     }
     @FXML public void submitConcediu(){
+        String prima = firstDayFld.getEditor().getText();
+        String ultima = lastDayFld.getEditor().getText();
 
+        prima = CalendarAux.parseToSQLDate(prima);
+        ultima = CalendarAux.parseToSQLDate(ultima);
+
+        System.out.println(prima + " " + ultima);
+
+        Day primaZi = new Day(prima);
+        Day ultimaZi = new Day(ultima);
+
+        user.setConcediu(userCalendar, primaZi, ultimaZi);
+        orarController.refreshCalendar();
+        main.setCenter(orarLayout);
     }
 
     @Override
@@ -52,30 +96,57 @@ public class OrarEditController implements Initializable {
         concediuBox.managedProperty().bind(concediuBox.visibleProperty());
         saptamanalBox.managedProperty().bind(saptamanalBox.visibleProperty());
         specificBox.managedProperty().bind(specificBox.visibleProperty());
+
+        firstDayFld.setPromptText("Inceputul Concediului");
+        lastDayFld.setPromptText("Sfarsitul Concediului");
     }
 
-    public void showSaptamanal(){
+    public void showSaptamanal(ResurseUmane user, User userCalendar){
         concediuBox.setVisible(false);
         saptamanalBox.setVisible(true);
         specificBox.setVisible(false);
+        this.user = user;
+        this.userCalendar = userCalendar;
+
+        calendarSaptamanal = new CalendarSaptamanal(userCalendar.getNrContract());
+
+        sambataFld.setText(calendarSaptamanal.getDay(0).getIntervalorar());
+        duminicaFld.setText(calendarSaptamanal.getDay(1).getIntervalorar());
+        luniFld.setText(calendarSaptamanal.getDay(2).getIntervalorar());
+        martiFld.setText(calendarSaptamanal.getDay(3).getIntervalorar());
+        miercuriFld.setText(calendarSaptamanal.getDay(4).getIntervalorar());
+        joiFld.setText(calendarSaptamanal.getDay(5).getIntervalorar());
+        vineriFld.setText(calendarSaptamanal.getDay(6).getIntervalorar());
+
     }
-    public void showSpecific(){
+    public void showSpecific(ResurseUmane user, User userCalendar, Day ziSelected){
         concediuBox.setVisible(false);
         saptamanalBox.setVisible(false);
         specificBox.setVisible(true);
+        this.user = user;
+        this.userCalendar = userCalendar;
+
+        this.ziSelected = ziSelected;
+        specificFld.setText(ziSelected.getIntervalorar());
+
+        specificDayLbl.setText(ziSelected.getNameDayOfWeek() + ", " + ziSelected.getDayOfMonth() + " " + MonthName.getMonthName(ziSelected.getMounthOfYear() - 1));
+
     }
-    public void showConcediu(){
+    public void showConcediu(ResurseUmane user, User userCalendar){
         concediuBox.setVisible(true);
         saptamanalBox.setVisible(false);
         specificBox.setVisible(false);
+        this.user = user;
+        this.userCalendar = userCalendar;
     }
 
     @FXML public void goBack(){
         main.setCenter(orarLayout);
     }
 
-    public void setContext(VBox orarLayout, BorderPane main){
+    public void setContext(VBox orarLayout, OrarController orarController, BorderPane main){
         this.orarLayout = orarLayout;
         this.main = main;
+        this.orarController = orarController;
     }
 }

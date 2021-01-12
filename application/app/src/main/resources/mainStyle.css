@@ -10,7 +10,10 @@
 }
 
 .text-field {
-    -fx-background-radius: 0;
+    -fx-border-color: rgba(5,50,55,0.15);
+        -fx-border-style: solid;
+        -fx-border-width: 1;
+        -fx-background-color: rgba(11,100,110,0.1);
 }
 
 .button {
@@ -57,7 +60,7 @@
 .choice-box {
     -fx-border-color: rgba(5,50,55,0.15);
     -fx-border-style: solid;
-    -fx-background-color: rgbargba(11,100,110,0.1);
+    -fx-background-color: rgba(11,100,110,0.05);
     -fx-background-radius: 0;
     -fx-mark-color: rgba(11,100,110,1);
 }
@@ -87,15 +90,17 @@
     -fx-background-color: transparent;
 }
 
-.table-row-cell:highlighed {
-    -fx-text-fill: white;
-        -fx-background-color: rgba(11,100,110,1);
+.table-row-cell:selected {
+        -fx-background-color: rgba(14,125,138,1);
         }
+
+.table-row-cell:selected .text {
+       -fx-fill: white ;
+}
 
 .table-view .column-header-background{
     -fx-background-color: linear-gradient(to bottom, #0b646e, #0b646f);
     -fx-background-radius:0;
-
 }
 
 .table-view .column-header {

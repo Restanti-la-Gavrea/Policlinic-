@@ -12,6 +12,7 @@ import policlinica.MonthName;
 import policlinica.calendar.Calendar;
 import policlinica.calendar.CalendarAux;
 import policlinica.calendar.Day;
+import policlinica.users.ResurseUmane;
 import policlinica.users.User;
 
 import java.net.URL;
@@ -71,6 +72,7 @@ public class OrarController implements Initializable {
     @FXML private Button previousBtn;
     @FXML private Button nextBtn;
 
+    private ResurseUmane user;
     private User userCalendar;
     private Calendar calendar;
 
@@ -172,6 +174,10 @@ public class OrarController implements Initializable {
         createCalendar(user.getNrContract());
     }
 
+    public void refreshCalendar(){
+        createCalendar(userCalendar.getNrContract());
+    }
+
     private void createCalendar(String nrContract){
         calendar = new Calendar(nrContract, ""+year, ""+(month+1));
 
@@ -200,22 +206,26 @@ public class OrarController implements Initializable {
     }
 
     @FXML public void editSaptamanal(){
-        orarEditController.showSaptamanal();
+        orarEditController.showSaptamanal(user, userCalendar);
         main.setCenter(orarEditLayout);
     }
     @FXML public void editSpecific(){
-        orarEditController.showSpecific();
-        main.setCenter(orarEditLayout);
+        if(selLblCol >= 0 && selLblRow >= 0)
+        {
+            orarEditController.showSpecific(user, userCalendar, calendar.getDay(selLblRow, selLblCol));
+            main.setCenter(orarEditLayout);
+        }
     }
     @FXML public void editConcedii(){
-        orarEditController.showConcediu();
+        orarEditController.showConcediu(user, userCalendar);
         main.setCenter(orarEditLayout);
     }
 
-    public void setContext(VBox orarEditLayout, BorderPane main, OrarEditController orarEditController){
+    public void setContext(VBox orarEditLayout, BorderPane main, OrarEditController orarEditController, ResurseUmane user){
         this.orarEditLayout = orarEditLayout;
         this.orarEditController = orarEditController;
         this.main = main;
+        this.user = user;
     }
 
     public void showHrControls(){
