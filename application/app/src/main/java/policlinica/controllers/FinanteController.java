@@ -12,7 +12,6 @@ import java.util.ResourceBundle;
 
 public class FinanteController implements Initializable {
 
-    @FXML Button backBtn;
     @FXML ChoiceBox<String> viewBox;
     @FXML ChoiceBox<String> detailBox;
     @FXML HBox extraBox;
@@ -40,7 +39,6 @@ public class FinanteController implements Initializable {
         finanteTable.setItems(FinanteTableItem.getSample());
     }
 
-    @FXML public void goBack(){}
     @FXML public void goPrevious(){}
     @FXML public void goNext(){}
 

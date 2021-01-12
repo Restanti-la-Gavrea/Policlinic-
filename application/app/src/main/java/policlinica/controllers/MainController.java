@@ -47,6 +47,12 @@ public class MainController implements Initializable {
     private VBox orarLayout;
     private OrarController orarController;
 
+    private VBox orarEditLayout;
+    private OrarEditController orarEditController;
+
+    private VBox pacientiLayout;
+    private PacientiController pacientiController;
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
@@ -81,19 +87,23 @@ public class MainController implements Initializable {
 
     }
     @FXML public void setAngajatiLayout() throws Exception{
-
         angajatiListController.fillWithEmployees(userDataLayout, userController, main);
         angajatiListController.setButtonForDetails();
-
 
         main.setCenter(angajatiListLayout);
     }
     @FXML public void setOrarLayout(){
-
-        angajatiListController.fillWithEmployees(orarLayout, orarController, main);
-        angajatiListController.setButtonForOrar();
-
-        main.setCenter(angajatiListLayout);
+        if (user instanceof ResurseUmane) {
+            angajatiListController.fillWithEmployees(orarLayout, orarController, main);
+            angajatiListController.setButtonForOrar();
+            orarController.setContext(orarEditLayout, main, orarEditController);
+            orarEditController.setContext(orarLayout, main);
+            main.setCenter(angajatiListLayout);
+        }
+        else {
+            orarController.setUserShowCalendar(user);
+            main.setCenter(orarLayout);
+        }
     }
     @FXML public void setFinanteLayout(){
         main.setCenter(finanteLayout);
@@ -148,6 +158,15 @@ public class MainController implements Initializable {
         loader = new FXMLLoader(getClass().getResource("/orarViewLayout.fxml"));
         orarLayout = loader.load();
         orarController = loader.getController();
+
+        loader = new FXMLLoader(getClass().getResource("/orarEditLayout.fxml"));
+        orarEditLayout = loader.load();
+        orarEditController = loader.getController();
+
+        loader = new FXMLLoader(getClass().getResource("/pacientiLayout.fxml"));
+        pacientiLayout = loader.load();
+        pacientiController = loader.getController();
+
     }
 
 
@@ -162,6 +181,7 @@ public class MainController implements Initializable {
             serviciiBtn.setVisible(true);
             angajatiListController.setUser((ResurseUmane) user);
             userController.setUser((SuperAdmin)user);
+            orarController.showHrControls();
 
             userController.showEditBtn();
             return;
@@ -175,8 +195,10 @@ public class MainController implements Initializable {
         if(user instanceof ResurseUmane) {
             angajatiBtn.setVisible(true);
             angajatiListController.setUser((ResurseUmane) user);
+            orarController.showHrControls();
         }
         else{
+            orarController.hideHrControls();
             angajatiBtn.setVisible(false);
         }
 
