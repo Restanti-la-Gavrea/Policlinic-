@@ -13,15 +13,20 @@ public class SuperAdmin extends ResurseUmane {
 	public SuperAdmin() {
 		super();
 	}
+	public Boolean submitUser(User user) {
+		Boolean t1 = this.setContract(user.getNrContract(), user.getNume(), user.getPrenume(), user.getSalariu(), user.getNrOre(), user.getFunctie(), user.getNrUnitate());
+		Boolean t2 = this.setDateAngajat(user.getCnp(),user.getAdresa() ,user.getNrTelefon() ,user.getEmail(), user.getIban(), user.getNrContract(),user.getDataAngajarii());
+		Boolean t3 = this.setUserData(this.getNrContract(),this.getUsername(),this.getPassword(),this.getTip());
+		return t1 && t2 && t3;
+	}
+	
 	public Boolean setContract(String nrContract,String nume,String prenume,String salariu,String nrOre,String functie,String nrUnitate) {
 		String comanda = getStringSetContract(nrContract, nume, prenume, salariu, nrOre, functie, nrUnitate);
-		executeUpdate(comanda);
-		return true;
+		return executeUpdate(comanda);
 	}
 	public Boolean setDateAngajat(String angajatCNP,String adresa,String nrTelefon,String email,String iban,String nrContract,String dataAngajarii) {
 		String comanda = GetStringSetDateAngajat(angajatCNP, adresa, nrTelefon, email, iban, nrContract, dataAngajarii);
-		executeUpdate(comanda);
-		return true;
+		return executeUpdate(comanda);
 	}
 	public Boolean setUserData(String nrContract,String username,String pwd,String tip) {
 		String comanda = getStringSetUserData(nrContract, username, pwd, tip);

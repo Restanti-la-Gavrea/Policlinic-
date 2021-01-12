@@ -29,6 +29,10 @@ public class User {
 	protected String password;
 	protected String functie;
 	protected String tip;
+	protected String salariu;
+	protected String nrOre;
+	protected String nrUnitate;
+	
 	
 	public User() {
 		this.connection = setup();
@@ -64,10 +68,31 @@ public class User {
 			this.password =result.getString("pwd");
 			this.functie = result.getString("functie");
 			this.tip = result.getString("tip");
+			this.salariu = result.getString("salariu");
+			this.nrOre = result.getString("nrOre");
+			this.nrUnitate = result.getString("nrUnitate");
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+	}
+	public String getNrUnitate() {
+		return nrUnitate;
+	}
+	public void setNrUnitate(String nrUnitate) {
+		this.nrUnitate = nrUnitate;
+	}
+	public String getSalariu() {
+		return salariu;
+	}
+	public void setSalariu(String salariu) {
+		this.salariu = salariu;
+	}
+	public String getNrOre() {
+		return nrOre;
+	}
+	public void setNrOre(String nrOre) {
+		this.nrOre = nrOre;
 	}
 	public User Autentificator(String username,String password) {
 		ResultSet result = getDataByUsername(username,password);
