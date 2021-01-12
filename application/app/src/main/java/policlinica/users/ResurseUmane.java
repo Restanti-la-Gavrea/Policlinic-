@@ -15,10 +15,6 @@ public class ResurseUmane extends User{
 	public ResurseUmane() {
 		super();
 	}
-
-	//Functia cauta toti angajati cu un anumit nume sau prenume sau functie
-	//Daca nu se vrea cautare in functie de prenume de exemplu pur si simpulu la prenume 
-	//se pune "" sau null
 	public ArrayList <AngajatTableItem >getArrayOfDateAngajati(){
 		ArrayList <AngajatTableItem >listaAngajati = new ArrayList<>();
 		ResultSet result = getDateAngajati("","","");
@@ -82,4 +78,6 @@ public class ResurseUmane extends User{
 		String comanda = "SELECT * FROM Concediu where nrcontract = " + nrContract +";";
 		return executeSelect(comanda);
 	}
+
+
 }

@@ -14,7 +14,7 @@ public class Test {
 		//createUser();
 		//CalendarDayTest();
 		//verificaCevaListaDeAngaati();
-		User user = new User("1");
+		testsubmitUser();
 	}
 	private void cautareSuperAdmin() {
 		System.out.println("Testul a inceput");
@@ -39,6 +39,17 @@ public class Test {
 		System.out.println(user.getTip());
 		System.out.println(user.getAdresa());
 		
+	}
+	private void testsubmitUser() {
+		User user = new User("1");
+		SuperAdmin sadm = new SuperAdmin();
+		user.setNume("Ion");
+		if(sadm.submitUser(user))
+			System.out.println("Test 1 reusit");
+		sadm = new Admin();
+		user.setPrenume("Ionescu");
+		if (sadm.submitUser(user))
+			System.out.println("Test 2 reusit");
 	}
 	private void CalendarDayTest() {
 		Day day = new Day("2008-11-11");

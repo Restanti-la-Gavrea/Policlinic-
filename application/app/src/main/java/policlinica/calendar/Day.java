@@ -16,6 +16,14 @@ public class Day {
 	private String numeUnitate;
 	private int nrUnitate;
 	
+	public Day(Date date) {
+		simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
+		this.date = date;
+		this.intervalorar = new String("liber");
+		this.nrUnitate = 0;
+		this.numeUnitate = null;
+	}
+	
 	public Day( String date) {
 		super();
 		simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
