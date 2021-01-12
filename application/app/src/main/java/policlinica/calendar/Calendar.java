@@ -26,7 +26,7 @@ public class Calendar {
 			int dayOfWeek = curentDay.getIntDayOfWeek() -1;
 			calendar[week][dayOfWeek] = curentDay;
 			curentDay.setDayInformation(nrContract);
-			if (dayOfWeek == 7)
+			if (dayOfWeek == 6)
 				week++;
 		}
 	}
