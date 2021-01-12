@@ -3,6 +3,8 @@ package policlinica.users;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import policlinica.calendar.Day;
+
 public class Admin extends SuperAdmin {
 	public Admin(ResultSet result) {
 		super(result);
@@ -24,7 +26,7 @@ public class Admin extends SuperAdmin {
 	}
 
 	public Boolean setDateAngajat(String angajatCNP, String adresa, String nrTelefon, String email, String iban,
-			String nrContract, String dataAngajarii) {
+		String nrContract, String dataAngajarii) {
 		ResultSet result = getDataByCNP(angajatCNP);
 		User user = new User(nrContract);
 		if (conditieAdmin(user)) {
@@ -32,6 +34,11 @@ public class Admin extends SuperAdmin {
 					dataAngajarii);
 			return executeUpdate(comanda);
 		}
+		return false;
+	}
+	public Boolean setConcediu(User user ,Day dayin,Day dayout) {
+		if (conditieAdmin(user))
+			return executeUpdate(getStringSetConcediu(user, dayout, dayout));
 		return false;
 	}
 

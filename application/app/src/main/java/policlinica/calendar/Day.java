@@ -15,12 +15,13 @@ public class Day {
 	private SimpleDateFormat simpleDateFormat; 
 	private String numeUnitate;
 	private int nrUnitate;
-	
+	private String nrContract;
 	public Day(Date date) {
 		simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
 		this.date = date;
 		this.intervalorar = new String("liber");
 		this.nrUnitate = 0;
+		this.nrContract = null;
 		this.numeUnitate = null;
 	}
 	
@@ -31,6 +32,7 @@ public class Day {
 			this.date = simpleDateFormat.parse(date);
 			this.intervalorar = new String("liber");
 			this.nrUnitate = 0;
+			this.nrContract = null;
 			this.numeUnitate = null;
 		} catch (ParseException e) {
 			System.err.println("Nu s-a reusit transformarea String in date");
@@ -94,11 +96,27 @@ public class Day {
 		return simpleDateFormat.format(this.date);
 	}
 	
+	public Date getDate() {
+		return date;
+	}
+
+	public void setDate(Date date) {
+		this.date = date;
+	}
+
+	public String getNrContract() {
+		return nrContract;
+	}
+
+	public void setNrContract(String nrContract) {
+		this.nrContract = nrContract;
+	}
+
 	public void setDayInformation(String nrContract) {
 		///Prioritatea datelor Specific, Concediu, Generic
 		//pentru concediu intervalul orar = "concediu" ,nrunitate = 0,nume unitate = null
 		//default orar = "liber" , nrunitate = 0 , nume unitate = null
-		
+		this.nrContract = nrContract;
 		Admin admin = new Admin();
 		ResultSet resultGeneric = admin.getOrarGeneric(nrContract, this.getNameDayOfWeek());
 		ResultSet resultConcediu = admin.getConcediu(nrContract);

@@ -13,8 +13,9 @@ public class Test {
 		//updateContract();
 		//createUser();
 		//CalendarDayTest();
+		CalendarTest();
 		//verificaCevaListaDeAngaati();
-		testsubmitUser();
+		//testsubmitUser();
 	}
 	private void cautareSuperAdmin() {
 		System.out.println("Testul a inceput");
@@ -55,6 +56,12 @@ public class Test {
 		Day day = new Day("2008-11-11");
 		day.setDayInformation( "1");
 		System.out.println(day.getIntervalorar());
+	}
+	private void CalendarTest() {
+		Calendar calendar = new Calendar("1","2020","3");
+		Day day = calendar.getDay("3");
+		System.out.println(day.getIntervalorar());
+		
 	}
 	private void verificaCevaListaDeAngaati() {
 		ArrayList <AngajatTableItem>lista = new ArrayList<>();

@@ -22,7 +22,7 @@ public class Calendar {
 		int daysInMonth = yearMonthObject.lengthOfMonth();
 		for (int day = 1 ; day <= daysInMonth ; day++) {
 			Day curentDay = new Day(year + "-" + mounth + "-" + Integer.toString(day));
-			int dayOfWeek = curentDay.getIntDayOfWeek();
+			int dayOfWeek = curentDay.getIntDayOfWeek() -1;
 			calendar[week][dayOfWeek] = curentDay;
 			curentDay.setDayInformation(nrContract);
 			if (dayOfWeek == 7)
