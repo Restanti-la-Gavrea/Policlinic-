@@ -11,7 +11,7 @@ public class CalendarSaptamanal {
 		for (int i = 0 ; i < 7 ; i ++) {
 			calendar[i] = new Day("2021-01-" + (10 + i));
 			calendar[i].setDayGenericInformation(nrContract);
-			System.out.println(i+" "+ calendar[i].getStringDate() + " " + calendar[i].getNameDayOfWeek());
+			//System.out.println(i+" "+ calendar[i].getStringDate() + " " + calendar[i].getNameDayOfWeek());
 		}
 	}
 	public Day getDay(int i) {
