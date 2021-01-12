@@ -146,6 +146,24 @@ public class Day {
 			if (resultSpecific.next())
 			{
 				this.setIntervalorar(resultSpecific.getString("intervalOrar"));
+				this.setNrUnitate(resultSpecific.getString("nrUnitate"));
+			}
+		} catch (SQLException e) {
+			SQLError(e);
+		}
+		
+	}
+	public void setDayGenericInformation(String nrContract) {
+		
+		User user = new User(nrContract);
+		this.nrContract = nrContract;
+		this.nrUnitate = user.getNrUnitate();
+		Admin admin = new Admin();
+		ResultSet resultGeneric = admin.getOrarGeneric(nrContract, this.getNameDayOfWeek());
+		try {
+			if (resultGeneric.next())
+			{
+				this.setIntervalorar(resultGeneric.getString("intervalOrar"));
 				this.setNrUnitate(resultGeneric.getString("nrUnitate"));
 			}
 		} catch (SQLException e) {

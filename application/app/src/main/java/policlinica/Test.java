@@ -12,10 +12,10 @@ public class Test {
 		//cautareSuperAdmin();
 		//updateContract();
 		//CalendarDayTest();
-		//CalendarTest();
+		CalendarTest();
 		//verificaCevaListaDeAngaati();
 		//testsubmitUser();
-		verificaUpdateOrar();
+		//verificaUpdateOrar();
 	}
 	private void cautareSuperAdmin() {
 		System.out.println("Testul a inceput");
@@ -47,8 +47,8 @@ public class Test {
 		System.out.println(day.getIntervalorar());
 	}
 	private void CalendarTest() {
-		Calendar calendar = new Calendar("1","2021","1");
-		Day day = calendar.getDay("3");
+		CalendarSaptamanal calendar = new CalendarSaptamanal("1");
+		Day day = calendar.getDay(0);
 		System.out.println(day.getIntervalorar());
 	}
 	private void verificaCevaListaDeAngaati() {
@@ -58,7 +58,7 @@ public class Test {
 	}
 	private void verificaUpdateOrar() {
 		Calendar calendar = new Calendar("3","2021","1");
-		Day day = calendar.getDay("3");
+		Day day = calendar.getDay(3);
 		day.setIntervalorar("Saptamansa");
 		Admin admin = new Admin();
 		admin.setDayOfOrarGeneric(day);

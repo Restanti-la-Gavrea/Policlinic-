@@ -72,14 +72,11 @@ public class ResurseUmane extends User {
 			comanda = "delete from orarspecific " + getOrarSpecificCondition(day);
 			return executeUpdate(comanda);
 		}
-		System.out.println(day.getNrContract()+ " " + day.getStringDate());
 		ResultSet result = getOrarSpecific(day.getNrContract(), day.getStringDate());
 		try {
 			if (result.next()) {
-				System.out.println("Update");
 				comanda = getStringUpdateOrarSpecific(day);
 			} else {
-				System.out.println("insert");
 				comanda = getStringInsertOrarSpecific(day);
 			}
 		} catch (SQLException e) {
