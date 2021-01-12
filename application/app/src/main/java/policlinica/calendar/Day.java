@@ -4,6 +4,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.ZoneId;
 import java.util.Calendar;
 import java.util.Date;
 
@@ -39,7 +41,18 @@ public class Day {
 			e.printStackTrace();
 		}
 	}
-	
+	public int getDayOfMonth() {
+		LocalDate localDate = date.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+		return localDate.getDayOfMonth();
+	}
+	public int getMounthOfYear() {
+		LocalDate localDate = date.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+		return localDate.getMonthValue();
+	}
+	public int getYear() {
+		LocalDate localDate = date.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+		return localDate.getYear();
+	}
 	public int getNrUnitate() {
 		return nrUnitate;
 	}

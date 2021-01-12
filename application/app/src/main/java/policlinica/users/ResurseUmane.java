@@ -36,6 +36,11 @@ public class ResurseUmane extends User{
 		return executeUpdate(getStringSetConcediu(user, dayout, dayout));
 	}
 	public Boolean setOrarGeneric(Day day,String orar) {
+		ResultSet result = getOrarGeneric(day.getNrContract(), day.getNameDayOfWeek());
+//		if (result.next()) {
+//			
+//			
+//		}
 		String comanda = "Update OrarGeneric Set";
 		comanda += "   intervalOrar = '" + day.getIntervalorar();
 		comanda += "' , intervalOrar = '" + day.getNumeUnitate();
@@ -43,6 +48,7 @@ public class ResurseUmane extends User{
 		comanda += " and nrUnitate = " + day.getNrContract() + " ;" ;
 		return executeUpdate(comanda);
 	}
+	
 
 	
 	public ResultSet getDateAngajati(String nume ,String prenume,String functie){
@@ -97,6 +103,14 @@ public class ResurseUmane extends User{
 		comanda += "   dataIncepere = '" + dayin.getStringDate();
 		comanda += "' , dataTerminare = '" + dayout.getStringDate();
 		comanda += "'   where nrContract = " + user.getNrContract() + " ;" ;
+		return comanda;
+	}
+	protected String getStringUpdateOrarGeneric(Day day) {
+		String comanda = "Update OrarGeneric Set";
+		comanda += "   intervalOrar = '" + day.getIntervalorar();
+		comanda += "' , nrUnitate = " + day.getNumeUnitate();
+		comanda += "   where ziSaptamana = '" + day.getNameDayOfWeek() ;
+		comanda += "' and nrContract = " + day.getNrContract() + " ;" ;
 		return comanda;
 	}
 
