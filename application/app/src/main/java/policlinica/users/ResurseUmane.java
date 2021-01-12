@@ -36,14 +36,21 @@ public class ResurseUmane extends User {
 	}
 
 	public Boolean setConcediu(User user, Day dayin, Day dayout) {
+		String comanda = "";
 		try {
 			if (getConcediu(user.getNrContract()).next())
-				return executeUpdate(getStringInsertConcediu(user, dayin, dayout)) ;
+			{
+				comanda = getStringUpdateConcediu(user, dayin, dayout);
+			}else {
+				comanda = getStringInsertConcediu(user, dayout, dayout);
+			}
+				
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		return executeUpdate(getStringUpdateConcediu(user, dayout, dayout));
+		System.out.println(comanda);
+		return executeUpdate(comanda);
 	}
 	public Boolean setOrarGeneric(CalendarSaptamanal calendar) {
 		Boolean t = true;
