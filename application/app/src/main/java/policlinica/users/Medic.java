@@ -28,7 +28,6 @@ public class Medic extends Medical {
 		profit -= super.getSalariu(month, year);
 		return profit;
 	}
-
 	@Override
 	public double getSalariu(int month, int year) {
 		double salariuLunar = Double.parseDouble(salariu) * Double.parseDouble(nrOre);
