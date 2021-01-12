@@ -26,7 +26,6 @@ public class Day {
 	}
 	
 	public Day(String date) {
-		super();
 		try {
 			this.date = simpleDateFormat.parse(date);
 			this.intervalorar = new String("liber");

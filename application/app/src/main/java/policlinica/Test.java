@@ -12,11 +12,11 @@ public class Test {
 		//cautareSuperAdmin();
 		//updateContract();
 		//CalendarDayTest();
-		//CalendarTest();
+		CalendarTest();
 		//verificaCevaListaDeAngaati();
 		//testsubmitUser();
 		//verificaUpdateOrar();
-		testIntervalOrar();
+		//estIntervalOrar();
 	}
 	private void cautareSuperAdmin() {
 		System.out.println("Testul a inceput");
@@ -50,7 +50,7 @@ public class Test {
 	private void CalendarTest() {
 		CalendarSaptamanal calendar = new CalendarSaptamanal("1");
 		Day day = calendar.getDay(0);
-		System.out.println(day.getIntervalorar());
+		System.out.println(day.getNameDayOfWeek());
 	}
 	private void verificaCevaListaDeAngaati() {
 		ArrayList <AngajatTableItem>lista = new ArrayList<>();
