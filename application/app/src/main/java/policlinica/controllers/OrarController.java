@@ -15,6 +15,9 @@ public class OrarController implements Initializable {
     @FXML private Button previousBtn;
     @FXML private Button nextBtn;
 
+    private int selLblRow;
+    private int selLblCol;
+
     private Label[][] matrix;
 
     @FXML private Label cell00;
@@ -57,15 +60,26 @@ public class OrarController implements Initializable {
     @FXML private Label cell45;
     @FXML private Label cell46;
 
+    @FXML private Label cell50;
+    @FXML private Label cell51;
+    @FXML private Label cell52;
+    @FXML private Label cell53;
+    @FXML private Label cell54;
+    @FXML private Label cell55;
+    @FXML private Label cell56;
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        matrix = new Label[5][7];
+        matrix = new Label[6][7];
         matrix[0][0] = cell00;matrix[0][1] = cell01;matrix[0][2] = cell02;matrix[0][3] = cell03;matrix[0][4] = cell04;matrix[0][5] = cell05;matrix[0][6] = cell06;
         matrix[1][0] = cell10;matrix[1][1] = cell11;matrix[1][2] = cell12;matrix[1][3] = cell13;matrix[1][4] = cell14;matrix[1][5] = cell15;matrix[1][6] = cell16;
         matrix[2][0] = cell20;matrix[2][1] = cell21;matrix[2][2] = cell22;matrix[2][3] = cell23;matrix[2][4] = cell24;matrix[2][5] = cell25;matrix[2][6] = cell26;
         matrix[3][0] = cell30;matrix[3][1] = cell31;matrix[3][2] = cell32;matrix[3][3] = cell33;matrix[3][4] = cell34;matrix[3][5] = cell35;matrix[3][6] = cell36;
         matrix[4][0] = cell40;matrix[4][1] = cell41;matrix[4][2] = cell42;matrix[4][3] = cell43;matrix[4][4] = cell44;matrix[4][5] = cell45;matrix[4][6] = cell46;
+        matrix[5][0] = cell50;matrix[5][1] = cell51;matrix[5][2] = cell52;matrix[5][3] = cell53;matrix[5][4] = cell54;matrix[5][5] = cell55;matrix[5][6] = cell56;
 
+        selLblCol = -1;
+        selLblRow = -1;
     }
 
     @FXML public void previousMonth(){
@@ -78,17 +92,19 @@ public class OrarController implements Initializable {
 
     @FXML public void calendarClickHandler(MouseEvent e){
 
-        for(int i=0; i<5; i++)
-            for(int j=0; j<7; j++)
-                {
-                    if(matrix[i][j].getStyleClass().size() > 2)
-                         matrix[i][j].getStyleClass().remove(2);
-                    //matrix[i][j].getStyleClass().add("calendarItem");
-                }
-
         Label cell = (Label)e.getSource();
         cell.getStyleClass().add("selectedItem");
-    }
 
+        if(selLblCol > -1 && selLblRow > -1)
+            matrix[selLblRow][selLblCol].getStyleClass().remove(2);
+
+        for(int i=0; i<6; i++)
+            for(int j=0; j<7; j++) {
+                if (matrix[i][j] == cell) {
+                    selLblCol = j;
+                    selLblRow = i;
+                }
+            }
+    }
 
 }

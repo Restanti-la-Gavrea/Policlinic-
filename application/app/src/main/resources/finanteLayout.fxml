@@ -6,7 +6,7 @@
 
 <VBox fx:id="finanteBox" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="policlinica.controllers.FinanteController">
    <children>
-      <HBox fx:id="extraBox" alignment="CENTER_LEFT" spacing="5.0">
+      <HBox fx:id="extraBox" alignment="CENTER_LEFT" spacing="5.0" VBox.vgrow="ALWAYS">
          <children>
             <Button fx:id="backBtn" mnemonicParsing="false" onAction="#goBack" text="&lt;" />
             <ChoiceBox fx:id="viewBox" prefWidth="200.0" />
@@ -15,7 +15,7 @@
       </HBox>
       <VBox spacing="10.0">
          <children>
-            <HBox alignment="CENTER">
+            <HBox alignment="CENTER" VBox.vgrow="ALWAYS">
                <children>
                   <Label fx:id="descriptiveLbl" text="Label Descriptiv" />
                   <Label text="Navigheaza Luna">
@@ -27,7 +27,7 @@
                   <Button fx:id="nextBtn" mnemonicParsing="false" onAction="#goNext" text="&gt;" />
                </children>
             </HBox>
-            <TableView fx:id="finanteTable">
+            <TableView fx:id="finanteTable" VBox.vgrow="ALWAYS">
               <columns>
                 <TableColumn fx:id="numeCol" prefWidth="227.0" text="Nume" />
                 <TableColumn fx:id="detailsCol" prefWidth="184.0" text="Detalii Aditionale" />

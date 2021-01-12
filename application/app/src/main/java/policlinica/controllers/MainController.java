@@ -3,15 +3,16 @@ package policlinica.controllers;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+import policlinica.users.Admin;
+import policlinica.users.ResurseUmane;
+import policlinica.users.SuperAdmin;
 import policlinica.users.User;
 
 import java.net.URL;
@@ -22,8 +23,7 @@ public class MainController implements Initializable {
     private User user;
 
     //main menu buttons
-    @FXML
-    Button userBtn;
+    @FXML Button userBtn;
     @FXML Button administratorBtn;
     @FXML Button angajatiBtn;
     @FXML Button orarBtn;
@@ -33,8 +33,7 @@ public class MainController implements Initializable {
     @FXML Button serviciiBtn;
     @FXML Button logOutBtn;
 
-    @FXML
-    BorderPane main;
+    @FXML BorderPane main;
 
     private Scene logInScene;
     private LogInController logInController;
@@ -42,7 +41,7 @@ public class MainController implements Initializable {
     private VBox userDataLayout;
     private UserController userController;
 
-    private ScrollPane angajatiListLayout;
+    private VBox angajatiListLayout;
     private AngajatiListController angajatiListController;
 
     private VBox finanteLayout;
@@ -71,17 +70,27 @@ public class MainController implements Initializable {
         userController.setNrContractLbl(user.getNrContract());
         userController.setNrTelefonLbl(user.getNrTelefon());
 
+        userController.switchToDetails();
+        userController.hideEditBtn();
+
         main.setCenter(userDataLayout);
     }
     @FXML public void setAdministratorLayout() throws Exception{
 
     }
     @FXML public void setAngajatiLayout() throws Exception{
-        main.setCenter(angajatiListLayout);
 
+        angajatiListController.fillWithEmployees(userDataLayout, userController, main);
+        angajatiListController.setButtonForDetails();
+
+        main.setCenter(angajatiListLayout);
     }
     @FXML public void setOrarLayout(){
-        main.setCenter(orarLayout);
+
+        angajatiListController.fillWithEmployees(orarLayout, orarController, main);
+        angajatiListController.setButtonForOrar();
+
+        main.setCenter(angajatiListLayout);
     }
     @FXML public void setFinanteLayout(){
         main.setCenter(finanteLayout);
@@ -129,6 +138,7 @@ public class MainController implements Initializable {
         angajatiListLayout = loader.load();
         angajatiListController = loader.getController();
 
+
         loader = new FXMLLoader(getClass().getResource("/finanteLayout.fxml"));
         finanteLayout = loader.load();
         finanteController = loader.getController();
@@ -138,5 +148,11 @@ public class MainController implements Initializable {
         orarController = loader.getController();
     }
 
-    public void setUser(User user) { this.user = user; }
+
+    public void setUser(User user) {
+        this.user = user;
+        if(user instanceof ResurseUmane) {
+            angajatiListController.setUser((ResurseUmane) user);
+        }
+    }
 }

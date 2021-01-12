@@ -34,6 +34,10 @@ public class UserController implements Initializable {
     @FXML private Button submitBtn;
 
     @FXML public void editUser(){
+        switchToEdit();
+    }
+
+    public void switchToEdit(){
         numeFld.setVisible(true);
         prenumeFld.setVisible(true);
         nrTelefonFld.setVisible(true);
@@ -58,6 +62,10 @@ public class UserController implements Initializable {
     }
 
     @FXML public void editSubmit(){
+        switchToDetails();
+    }
+
+    public void switchToDetails(){
         numeFld.setVisible(false);
         prenumeFld.setVisible(false);
         nrTelefonFld.setVisible(false);
@@ -124,5 +132,13 @@ public class UserController implements Initializable {
         emailFld.setVisible(false);
         angajatFld.setVisible(false);
         submitBtn.setVisible(false);
+    }
+
+    public void hideEditBtn(){
+        userEditBtn.setVisible(false);
+    }
+
+    public void showEditBtn(){
+        userEditBtn.setVisible(true);
     }
 }

@@ -4,15 +4,13 @@
 package policlinica;
 
 import javafx.application.Application;
-import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import policlinica.controllers.AngajatiListController;
 import policlinica.controllers.LogInController;
 import policlinica.controllers.MainController;
-import policlinica.controllers.UserController;
+
 
 public class App extends Application {
 
@@ -51,8 +49,8 @@ public class App extends Application {
 		logInController.setMainScene(mainScene);
 
 
-		primaryStage.minWidthProperty().setValue(700);
-		primaryStage.minHeightProperty().setValue(500);
+		primaryStage.minWidthProperty().setValue(800);
+		primaryStage.minHeightProperty().setValue(550);
 		window.setTitle("Administrare Policlinica");
 		window.setScene(logInScene);
 		window.show();
