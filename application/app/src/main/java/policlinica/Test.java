@@ -57,12 +57,11 @@ public class Test {
 		System.out.println(lista.size());
 	}
 	private void verificaUpdateOrar() {
-		Calendar calendar = new Calendar("1","2021","1");
+		Calendar calendar = new Calendar("3","2021","1");
 		Day day = calendar.getDay("3");
-		System.out.println(day.getNameDayOfWeek()+"  " + day.getNrUnitate());
-		day.setIntervalorar("mere");
+		day.setIntervalorar("Saptamansa");
 		Admin admin = new Admin();
-		admin.setOrarSpecific(day);
+		admin.setDayOfOrarGeneric(day);
 		
 	}
 

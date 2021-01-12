@@ -72,11 +72,14 @@ public class ResurseUmane extends User {
 			comanda = "delete from orarspecific " + getOrarSpecificCondition(day);
 			return executeUpdate(comanda);
 		}
-		ResultSet result = getOrarSpecific(day.getNrContract(), day.getNameDayOfWeek());
+		System.out.println(day.getNrContract()+ " " + day.getStringDate());
+		ResultSet result = getOrarSpecific(day.getNrContract(), day.getStringDate());
 		try {
 			if (result.next()) {
+				System.out.println("Update");
 				comanda = getStringUpdateOrarSpecific(day);
 			} else {
+				System.out.println("insert");
 				comanda = getStringInsertOrarSpecific(day);
 			}
 		} catch (SQLException e) {
@@ -158,7 +161,7 @@ public class ResurseUmane extends User {
 	}
 
 	protected String getStringUpdateOrarSpecific(Day day) {
-		String comanda = "Update OrarGeneric Set";
+		String comanda = "Update OrarSpecific Set";
 		comanda += "   intervalOrar = '" + day.getIntervalorar();
 		comanda += "' , nrUnitate = " + day.getNrUnitate();
 		comanda += getOrarSpecificCondition(day);
