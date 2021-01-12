@@ -96,6 +96,8 @@ public class AngajatiListController implements Initializable {
             userController.setNrContractLbl(tempUser.getNrContract());
             userController.setNrTelefonLbl(tempUser.getNrTelefon());
 
+            userController.setEditedUser(tempUser);
+
             main.setCenter(userDataLayout);
 
         });

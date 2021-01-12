@@ -10,10 +10,7 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
-import policlinica.users.Admin;
-import policlinica.users.ResurseUmane;
-import policlinica.users.SuperAdmin;
-import policlinica.users.User;
+import policlinica.users.*;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -70,8 +67,13 @@ public class MainController implements Initializable {
         userController.setNrContractLbl(user.getNrContract());
         userController.setNrTelefonLbl(user.getNrTelefon());
 
+        userController.setEditedUser(user);
         userController.switchToDetails();
-        userController.hideEditBtn();
+
+        if(user instanceof SuperAdmin)
+            userController.showEditBtn();
+        else
+            userController.hideEditBtn();
 
         main.setCenter(userDataLayout);
     }
@@ -82,6 +84,7 @@ public class MainController implements Initializable {
 
         angajatiListController.fillWithEmployees(userDataLayout, userController, main);
         angajatiListController.setButtonForDetails();
+
 
         main.setCenter(angajatiListLayout);
     }
@@ -138,7 +141,6 @@ public class MainController implements Initializable {
         angajatiListLayout = loader.load();
         angajatiListController = loader.getController();
 
-
         loader = new FXMLLoader(getClass().getResource("/finanteLayout.fxml"));
         finanteLayout = loader.load();
         finanteController = loader.getController();
@@ -151,8 +153,48 @@ public class MainController implements Initializable {
 
     public void setUser(User user) {
         this.user = user;
+
+        if(user instanceof SuperAdmin) {
+            administratorBtn.setVisible(true);
+            angajatiBtn.setVisible(true);
+            pacientiBtn.setVisible(true);
+            programariBtn.setVisible(true);
+            serviciiBtn.setVisible(true);
+            angajatiListController.setUser((ResurseUmane) user);
+            userController.setUser((SuperAdmin)user);
+
+            userController.showEditBtn();
+            return;
+        }
+        else {
+            administratorBtn.setVisible(false);
+
+            userController.hideEditBtn();
+        }
+
         if(user instanceof ResurseUmane) {
+            angajatiBtn.setVisible(true);
             angajatiListController.setUser((ResurseUmane) user);
         }
+        else{
+            angajatiBtn.setVisible(false);
+        }
+
+        if(user instanceof AsistentMedical){
+            serviciiBtn.setVisible(false);
+        }
+        else{
+            serviciiBtn.setVisible(true);
+        }
+
+        if(user instanceof Medical){
+            pacientiBtn.setVisible(true);
+            programariBtn.setVisible(true);
+        }
+        else{
+            pacientiBtn.setVisible(false);
+            programariBtn.setVisible(false);
+        }
+
     }
 }

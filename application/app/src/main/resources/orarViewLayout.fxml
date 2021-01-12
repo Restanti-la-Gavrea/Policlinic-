@@ -16,7 +16,7 @@
                </HBox.margin></Label>
          </children>
       </HBox>
-      <GridPane alignment="CENTER">
+      <GridPane alignment="CENTER" VBox.vgrow="ALWAYS">
         <columnConstraints>
           <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="90.0" />
           <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="90.0" />
