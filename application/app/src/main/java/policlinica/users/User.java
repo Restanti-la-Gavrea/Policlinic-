@@ -184,6 +184,10 @@ public class User {
 		System.err.println("SQL Error:");
 		System.out.println(message);
 	}
+	public double getSalariu(int month, int year)  {
+		double salariuLunar = Double.parseDouble(salariu)*Double.parseDouble(nrOre);
+		return salariuLunar;
+	}
 	public String getNrContract() {
 		return nrContract;
 	}
