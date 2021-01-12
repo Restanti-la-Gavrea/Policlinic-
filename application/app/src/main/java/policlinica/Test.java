@@ -15,6 +15,7 @@ public class Test {
 		//CalendarTest();
 		//verificaCevaListaDeAngaati();
 		//testsubmitUser();
+		verificaUpdateOrar();
 	}
 	private void cautareSuperAdmin() {
 		System.out.println("Testul a inceput");
@@ -58,8 +59,10 @@ public class Test {
 	private void verificaUpdateOrar() {
 		Calendar calendar = new Calendar("1","2021","1");
 		Day day = calendar.getDay("3");
-		System.out.println(day.getNameDayOfWeek());
-		day.setIntervalorar("liber");
+		System.out.println(day.getNameDayOfWeek()+"  " + day.getNrUnitate());
+		day.setIntervalorar("mere");
+		Admin admin = new Admin();
+		admin.setOrarSpecific(day);
 		
 	}
 
