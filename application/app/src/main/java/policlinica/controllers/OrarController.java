@@ -5,6 +5,9 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
 import policlinica.MonthName;
 import policlinica.calendar.Calendar;
 import policlinica.calendar.CalendarAux;
@@ -83,6 +86,12 @@ public class OrarController implements Initializable {
     @FXML Button specificBtn;
     @FXML Button concediiBtn;
 
+    private VBox orarEditLayout;
+    private BorderPane main;
+    private OrarEditController orarEditController;
+
+    @FXML private HBox hrControls;
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         matrix = new Label[6][7];
@@ -97,6 +106,12 @@ public class OrarController implements Initializable {
         selLblRow = -1;
         calendar = null;
         userCalendar = null;
+
+        main = null;
+        orarEditController = null;
+        orarEditLayout = null;
+
+        hrControls.managedProperty().bind(hrControls.visibleProperty());
     }
 
     @FXML public void previousMonth(){
@@ -185,13 +200,29 @@ public class OrarController implements Initializable {
     }
 
     @FXML public void editSaptamanal(){
-
+        orarEditController.showSaptamanal();
+        main.setCenter(orarEditLayout);
     }
     @FXML public void editSpecific(){
-
+        orarEditController.showSpecific();
+        main.setCenter(orarEditLayout);
     }
     @FXML public void editConcedii(){
+        orarEditController.showConcediu();
+        main.setCenter(orarEditLayout);
+    }
 
+    public void setContext(VBox orarEditLayout, BorderPane main, OrarEditController orarEditController){
+        this.orarEditLayout = orarEditLayout;
+        this.orarEditController = orarEditController;
+        this.main = main;
+    }
+
+    public void showHrControls(){
+        hrControls.setVisible(true);
+    }
+    public void hideHrControls(){
+        hrControls.setVisible(false);
     }
 
 }

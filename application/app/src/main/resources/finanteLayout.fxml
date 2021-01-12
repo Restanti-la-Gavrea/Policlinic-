@@ -8,7 +8,6 @@
    <children>
       <HBox fx:id="extraBox" alignment="CENTER_LEFT" spacing="5.0" VBox.vgrow="ALWAYS">
          <children>
-            <Button fx:id="backBtn" mnemonicParsing="false" onAction="#goBack" text="&lt;" />
             <ChoiceBox fx:id="viewBox" prefWidth="200.0" />
             <ChoiceBox fx:id="detailBox" prefWidth="200.0" />
          </children>

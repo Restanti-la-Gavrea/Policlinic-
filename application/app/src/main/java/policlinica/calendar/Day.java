@@ -10,32 +10,28 @@ import java.util.Calendar;
 import java.util.Date;
 
 import policlinica.users.Admin;
+import policlinica.users.User;
 
 public class Day {
 	private String intervalorar;
 	private Date date;
-	private SimpleDateFormat simpleDateFormat; 
-	private String numeUnitate;
-	private int nrUnitate;
+	private static final SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");; 
+	private String nrUnitate;
 	private String nrContract;
 	public Day(Date date) {
-		simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
 		this.date = date;
 		this.intervalorar = new String("liber");
-		this.nrUnitate = 0;
+		this.nrUnitate = "0";
 		this.nrContract = null;
-		this.numeUnitate = null;
 	}
 	
-	public Day( String date) {
+	public Day(String date) {
 		super();
-		simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
 		try {
 			this.date = simpleDateFormat.parse(date);
 			this.intervalorar = new String("liber");
-			this.nrUnitate = 0;
+			this.nrUnitate = "0";
 			this.nrContract = null;
-			this.numeUnitate = null;
 		} catch (ParseException e) {
 			System.err.println("Nu s-a reusit transformarea String in date");
 			e.printStackTrace();
@@ -53,19 +49,12 @@ public class Day {
 		LocalDate localDate = date.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
 		return localDate.getYear();
 	}
-	public int getNrUnitate() {
+	public String getNrUnitate() {
 		return nrUnitate;
 	}
 
-	public void setNrUnitate(int nrUnitate) {
+	public void setNrUnitate(String nrUnitate) {
 		this.nrUnitate = nrUnitate;
-	}
-
-	public String getNumeUnitate() {
-		return numeUnitate;
-	}
-	public void setNumeUnitate(String numeUnitate) {
-		this.numeUnitate = numeUnitate;
 	}
 	public int compareTo(Day day2) {
 		return this.date.compareTo(day2.date);
@@ -129,7 +118,10 @@ public class Day {
 		///Prioritatea datelor Specific, Concediu, Generic
 		//pentru concediu intervalul orar = "concediu" ,nrunitate = 0,nume unitate = null
 		//default orar = "liber" , nrunitate = 0 , nume unitate = null
+		
+		User user = new User(nrContract);
 		this.nrContract = nrContract;
+		this.nrUnitate = user.getNrUnitate();
 		Admin admin = new Admin();
 		ResultSet resultGeneric = admin.getOrarGeneric(nrContract, this.getNameDayOfWeek());
 		ResultSet resultConcediu = admin.getConcediu(nrContract);
@@ -138,8 +130,7 @@ public class Day {
 			if (resultGeneric.next())
 			{
 				this.setIntervalorar(resultGeneric.getString("intervalOrar"));
-				this.setNrUnitate(resultGeneric.getInt("nrUnitate"));
-				this.setNumeUnitate(resultGeneric.getString("numeUM"));
+				this.setNrUnitate(resultGeneric.getString("nrUnitate"));
 			}
 			if (resultConcediu.next())
 			{
@@ -147,15 +138,31 @@ public class Day {
 				Day dayout = new Day(resultConcediu.getString("dataTerminare"));
 				if (this.compareTo(dayin) >= 0 && this.compareTo(dayout) <= 0) {
 					this.setIntervalorar("concediu");
-					this.setNrUnitate(0);
-					this.setNumeUnitate(null);
+					this.setNrUnitate(user.getNrUnitate());
 				}
 			}
 			if (resultSpecific.next())
 			{
 				this.setIntervalorar(resultSpecific.getString("intervalOrar"));
-				this.setNrUnitate(resultSpecific.getInt("nrunitate"));
-				this.setNumeUnitate(resultSpecific.getString("numeUM"));
+				this.setNrUnitate(resultSpecific.getString("nrUnitate"));
+			}
+		} catch (SQLException e) {
+			SQLError(e);
+		}
+		
+	}
+	public void setDayGenericInformation(String nrContract) {
+		
+		User user = new User(nrContract);
+		this.nrContract = nrContract;
+		this.nrUnitate = user.getNrUnitate();
+		Admin admin = new Admin();
+		ResultSet resultGeneric = admin.getOrarGeneric(nrContract, this.getNameDayOfWeek());
+		try {
+			if (resultGeneric.next())
+			{
+				this.setIntervalorar(resultGeneric.getString("intervalOrar"));
+				this.setNrUnitate(resultGeneric.getString("nrUnitate"));
 			}
 		} catch (SQLException e) {
 			SQLError(e);

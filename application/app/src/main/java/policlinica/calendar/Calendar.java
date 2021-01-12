@@ -35,15 +35,14 @@ public class Calendar {
 			return calendar[i][j];
 		return null;
 	}
-	public Day getDay(String dayofmounth) {
-		int nrDay = Integer.parseInt(dayofmounth);
+	public Day getDay(int dayOfMounth) {
 		for (int k = 1 ; k <= 42;k++) {
 			int i = (k-1)/ 7;
 			int j = k % 7;
 			Day day = getDay(i,j);
 			if (day != null)
-				nrDay--;
-			if (nrDay == 0)
+				dayOfMounth--;
+			if (dayOfMounth == 0)
 				return day;
 		}
 		return null;
