@@ -1,6 +1,13 @@
 use policlinica;
+
+delete from serviciuperprogramare;
+delete from specialitatemedic;
+delete from AparatNecesar;
+delete from serviciu;
+delete from specialitate;
 delete from orargeneric;
 delete from orarspecific;
+delete from raport;
 delete from programare;
 delete from aparatpercabinet;
 delete from medic;
@@ -67,7 +74,7 @@ Insert into UserData  values
 (13,"aventoryus","4456","user"),
 (14,"blizard4u2","9832","user"),
 (15,"creepytaco","6580","user"),
-(16,"ducksnotallowed","5684","admin"),
+(16,"ducksnotallowed","5684","user"),
 (17,"knighty","4550","user"),
 (18,"2fat2kidnaap","0712","user"),
 (19,"cowboyfrog","1234","user"),
@@ -109,11 +116,11 @@ Insert into tipasistentmedical values
 
 Insert into medic values
 (3,3,"ecografie, endoscopie digestivă,EEG,EMG","doctorand","profesor",5),
-(5,5,"ecocardiografie, cardiologie intervențională, bronhoscopie,chirurgie toracică, chirurgie spinală, chirurgie spinală","doctor în științe medicale","lector",10),
-(6,6,"chirurgie laparoscopică, chirurgie toracică, chirurgie spinală, chirurgie spinală, litotriție extracorporeală","doctor în științe medicale","conferențiar",8),
+(5,5,"ecocardiografie, cardiologie intervențională, bronhoscopie,chirurgie toracică, chirurgie spinală","doctor în științe medicale","lector",10),
+(6,6,"chirurgie laparoscopică, chirurgie toracică, chirurgie spinală, litotriție extracorporeală","doctor în științe medicale","conferențiar",8),
 (8,8,"litotriție extracorporeală, explorare computer tomograf","","preparator",5),
 (9,9,"cardiologie intervențională","","",3),
-(14,14,"chirurgie toracică, chirurgie spinală, chirurgie spinală","","asistent",10),
+(14,14,"chirurgie toracică, chirurgie spinală","","asistent",10),
 (20,20,"litotriție extracorporeală, explorare computer tomograf","doctor în științe medicale","",7);
 
 
@@ -217,6 +224,8 @@ insert into programare values
 (23,'2021-06-08','10:00:00',20,31,16),
 (24,'2021-08-26','16:00:00',20,40,16);
 
+
+
 insert into raport values
 (1,1,5,7,"","","",false),
 (2,2,6,7,"","","",false),
@@ -242,6 +251,45 @@ insert into raport values
 (22,22,9,18,"","","",false),
 (23,23,8,19,"","","",false),
 (24,24,14,NULL,"","","",false);
+
+
+
+insert into specialitate values
+(1,"ecografie"),
+(2,"endoscopie digestivă"),
+(3,"EEG"),
+(4,"EMG"),
+(5,"ecocardiografie"),
+(6,"cardiologie intervențională"),
+(7,"bronhoscopie"),
+(8,"chirurgie toracică"),
+(9,"chirurgie spinală"),
+(10,"chirurgie laparoscopică"),
+(11,"litotriție extracorporeală"),
+(12,"explorare computer tomograf");
+
+insert into serviciu values
+(1,"ecografie",1,true,300,"00:30:00"),
+(2,"endoscopie digestivă",2,true,250,"00:30:00"),
+(3,"EEG",3,true,200,"00:30:00"),
+(4,"EMG",4,true,300,"00:30:00"),
+(5,"ecocardiografie",5,true,400,"00:30:00"),
+(6,"cardiologie intervențională",6,true,350,"00:30:00"),
+(7,"bronhoscopie",7,true,250,"00:30:00"),
+(8,"chirurgie toracică",8,true,200,"00:30:00"),
+(9,"chirurgie spinală",9,true,100,"00:30:00"),
+(10,"chirurgie laparoscopică",10,true,150,"00:30:00"),
+(11,"chirurgie toracică",8,true,300,"00:30:00"),
+(12,"chirurgie spinală",9,true,400,"00:30:00"),
+(13,"litotriție extracorporeală",11,true,350,"00:30:00"),
+(14,"litotriție extracorporeală",11,true,300,"00:30:00"),
+(15,"explorare computer tomograf",12,true,250,"00:30:00"),
+(16,"cardiologie intervențională",6,true,200,"00:30:00"),
+(17,"chirurgie toracică",8,true,150,"00:30:00"),
+(18,"chirurgie spinală",9,true,100,"00:30:00"),
+(19,"litotriție extracorporeală",11,true,400,"00:30:00"),
+(20,"explorare computer tomograf",12,true,300,"00:30:00"),
+(21,"schimbare de sex",NULL,false,9000,"00:30:00");
 
 Insert into aparatpercabinet values
 (1,1,1),
@@ -325,6 +373,28 @@ Insert into aparatpercabinet values
 (79,3,40),
 (80,6,40);
 
+	
+Insert into specialitatemedic (nrContract,nrspecialitate,grad) values
+(3,1,"specialist"),
+(3,2,"specialist"),
+(3,3,"profesor"),
+(3,4,"primar"),
+(5,5,"specialist"),
+(5,6,"profesor"),
+(5,7,"profesor"),
+(5,8,"primar"),
+(5,9,"primar"),
+(6,10,"primar"),
+(6,8,"profesor"),
+(6,9,"profesor"),
+(6,11,"primar"),
+(8,11,"specialist"),
+(8,12,"specialist"),
+(9,6,"specialist"),
+(14,8,"primar"),
+(14,9,"specialist"),
+(20,11,"profesor"),
+(20,12,"specialist");
 
 Insert into orarGeneric (ziSaptamana,intervalOrar ,nrunitate,nrcontract)  values
 ("Luni","08:30-12:00 13:00-18:00",1,1),
@@ -481,21 +551,176 @@ Insert into orarSpecific (ziCalendaristica,intervalOrar ,nrunitate,nrcontract)  
 ("2021-02-20","07:00-07:30",4,20),
 ("2021-06-08","10:00-10:30",4,20),
 ("2021-08-26","16:00-16:30",4,20);
--- nu merge inca , trebuie creat intai serviciul
--- delete from AparatNecesar;
--- Insert into aparatnecesar  values
--- (1,1,1),
--- (2,1,2),
--- (3,1,5),
--- (4,1,8),
--- (5,2,5),
--- (6,2,7),
--- (7,3,6),
--- (8,4,4),
--- (9,5,1),
--- (10,5,2),
--- (11,5,4),
--- (12,5,6);
 
 
+insert into serviciuperprogramare (nrserviciu,nrprogramare,rezultat) values
+
+(1,1,""),
+(2,2,""),
+(3,3,""),
+(4,4,""),
+(5,5,""),
+(6,6,""),
+(7,7,""),
+(8,8,""),
+(10,9,""),
+(15,10,""), 
+(11,11,""),
+(12,12,""),
+(16,13,""),
+(16,14,""),
+(16,15,""),
+(14,16,""),
+(19,17,""),
+(18,18,""),
+(15,19,""), 
+(14,20,""), 
+(17,21,""),
+(18,22,""),
+(20,23,""),
+(20,24,"");
+Insert into aparatnecesar  values
+ (1,1,1),
+ (2,7,2),
+ (3,19,5),
+ (4,13,8),
+ (5,2,5),
+ (6,22,7),
+ (7,3,6),
+ (8,4,4),
+ (9,5,1),
+ (10,8,2),
+ (11,20,4),
+ (12,12,6);
+
+insert into serviciupercabinet (nrserviciu,nrcabinet) values
+(1,1),
+(1,6),
+(1,7),
+(1,10),
+(1,11),
+(1,13),
+(1,14),
+(1,18),
+(1,23),
+(1,28),
+(1,31),
+(1,32),
+(1,33),
+(5,1),
+(5,6),
+(5,7),
+(5,10),
+(5,11),
+(5,13),
+(5,14),
+(5,18),
+(5,23),
+(5,28),
+(5,31),
+(5,32),
+(5,33),
+
+(7,4),
+(7,7),
+(7,10),
+(7,15),
+(7,19),
+(7,22),
+(7,26),
+(7,29),
+(7,33),
+(7,34),
+(8,4),
+(8,7),
+(8,10),
+(8,15),
+(8,19),
+(8,22),
+(8,26),
+(8,29),
+(8,33),
+(8,34),
+
+(19,5),
+(19,8),
+(19,11),
+(19,12),
+(19,17),
+(19,21),
+(19,23),
+(19,27),
+(19,28),
+(19,29),
+(19,36),
+(2,5),
+(2,8),
+(2,11),
+(2,12),
+(2,17),
+(2,21),
+(2,23),
+(2,27),
+(2,28),
+(2,29),
+(2,36),
+
+(13,3),
+(13,9),
+(13,18),
+(13,20),
+(13,24),
+(13,32),
+(13,39),
+
+(22,3),
+(22,9),
+(22,15),
+(22,24),
+(22,25),
+(22,34),
+(22,35),
+(22,37),
+
+(3,2),
+(3,8),
+(3,12),
+(3,13),
+(3,16),
+(3,20),
+(3,25),
+(3,31),
+(3,35),
+(3,40),
+(12,2),
+(12,8),
+(12,12),
+(12,13),
+(12,16),
+(12,20),
+(12,25),
+(12,31),
+(12,35),
+(12,40),
+
+(4,2),
+(4,5),
+(4,14),
+(4,17),
+(4,19),
+(4,21),
+(4,26),
+(4,30),
+(4,36),
+(4,37),
+(20,2),
+(20,5),
+(20,14),
+(20,17),
+(20,19),
+(20,21),
+(20,26),
+(20,30),
+(20,36),
+(20,37);
 
