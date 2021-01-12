@@ -37,15 +37,34 @@ public class ResurseUmane extends User{
 	}
 	public Boolean setOrarGeneric(Day day,String orar) {
 		ResultSet result = getOrarGeneric(day.getNrContract(), day.getNameDayOfWeek());
-//		if (result.next()) {
-//			
-//			
-//		}
-		String comanda = "Update OrarGeneric Set";
-		comanda += "   intervalOrar = '" + day.getIntervalorar();
-		comanda += "' , intervalOrar = '" + day.getNumeUnitate();
-		comanda += "   where ziSaptamana = '" + day.getNameDayOfWeek() + "' " ;
-		comanda += " and nrUnitate = " + day.getNrContract() + " ;" ;
+		String comanda = null;
+		try {
+			if (result.next()) {
+				comanda = getStringUpdateOrarGeneric(day);
+			}
+			else {
+				comanda = getStringInsertOrarGeneric(day);
+			}
+		} catch (SQLException e) {
+			System.out.println("probleme in set Orar Generic");
+			return false;
+		}
+		return executeUpdate(comanda);
+	}
+	public Boolean setOrarSpecific(Day day,String orar) {
+		ResultSet result = getOrarSpecific(day.getNrContract(), day.getNameDayOfWeek());
+		String comanda = null;
+		try {
+			if (result.next()) {
+				comanda = getStringUpdateOrarGeneric(day);
+			}
+			else {
+				comanda = getStringInsertOrarGeneric(day);
+			}
+		} catch (SQLException e) {
+			System.out.println("probleme in set Orar Generic");
+			return false;
+		}
 		return executeUpdate(comanda);
 	}
 	
@@ -108,9 +127,33 @@ public class ResurseUmane extends User{
 	protected String getStringUpdateOrarGeneric(Day day) {
 		String comanda = "Update OrarGeneric Set";
 		comanda += "   intervalOrar = '" + day.getIntervalorar();
-		comanda += "' , nrUnitate = " + day.getNumeUnitate();
+		comanda += "' , nrUnitate = " + day.getNrUnitate();
 		comanda += "   where ziSaptamana = '" + day.getNameDayOfWeek() ;
 		comanda += "' and nrContract = " + day.getNrContract() + " ;" ;
+		return comanda;
+	}
+	protected String getStringInsertOrarGeneric(Day day) {
+		String comanda = "Insert into orarGeneric (ziSaptamana,intervalOrar ,nrunitate,nrcontract)  values ";
+		comanda += "('" + day.getNameDayOfWeek()+ "',";
+		comanda += "'" + day.getIntervalorar()+ "',";
+		comanda += day.getNrUnitate()+ ",";
+		comanda += day.getNrContract()+ ");";
+		return comanda;
+	}
+	protected String getStringUpdateOrarSpecific(Day day) {
+		String comanda = "Update OrarGeneric Set";
+		comanda += "   intervalOrar = '" + day.getIntervalorar();
+		comanda += "' , nrUnitate = " + day.getNrUnitate();
+		comanda += "   where ziCalendaristica = '" + day.getStringDate() ;
+		comanda += "' and nrContract = " + day.getNrContract() + " ;" ;
+		return comanda;
+	}
+	protected String getStringInsertOrarSpecific(Day day) {
+		String comanda = "Insert into orarSpecific (ziCalendaristica,intervalOrar ,nrunitate,nrcontract)  values ";
+		comanda +="('" + day.getStringDate()+ "',";
+		comanda +="'" + day.getIntervalorar()+ "',";
+		comanda += day.getNrUnitate()+ ",";
+		comanda += day.getNrContract()+ ");";
 		return comanda;
 	}
 

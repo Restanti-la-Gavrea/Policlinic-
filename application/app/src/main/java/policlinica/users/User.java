@@ -15,7 +15,7 @@ public class User {
 	private final static String DB_NAME = "policlinica";
 	private final static String USER = "root";
 	private final static String PASSWORD = "1234";
-	protected Connection connection ;
+	private final static Connection connection = setup();
 	protected String nrContract;
 	protected String username;
 	protected String nume;
@@ -35,10 +35,8 @@ public class User {
 	
 	
 	public User() {
-		this.connection = setup();
 	}
 	public User(String nrContract) {
-		this.connection = setup();
 		ResultSet result = this.getDataById(nrContract);
 		try {
 			if (result.next())
@@ -49,7 +47,6 @@ public class User {
 		}
 	}
 	public User(ResultSet result) {
-		this.connection = setup();
 		this.getUserDataFromResultSet(result);
 		
 	}
@@ -147,7 +144,7 @@ public class User {
 							cnp + ";";
 		return executeSelect(comanda);
 	}
-	private Connection setup(){
+	private static Connection setup(){
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
 		} catch (Exception ex) {
