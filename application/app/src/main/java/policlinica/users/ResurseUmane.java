@@ -35,11 +35,16 @@ public class ResurseUmane extends User {
 
 	}
 
-//	public Boolean setConcediu(User user, Day dayin, Day dayout) {
-//		if (getConcediu(user.getNrContract()).next())
-//			return executeUpdate();
-//		return executeUpdate(getStringUpdateConcediu(user, dayout, dayout));
-//	}
+	public Boolean setConcediu(User user, Day dayin, Day dayout) {
+		try {
+			if (getConcediu(user.getNrContract()).next())
+				return executeUpdate(getStringInsertConcediu(user, dayin, dayout)) ;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return executeUpdate(getStringUpdateConcediu(user, dayout, dayout));
+	}
 	public Boolean setOrarGeneric(CalendarSaptamanal calendar) {
 		Boolean t = true;
 		for (int i = 0 ; i < 7;i++) {
@@ -146,7 +151,7 @@ public class ResurseUmane extends User {
 		String comanda = "Insert into Concediu (nrContract,dataIncepere ,dataTerminare)  values ";
 		comanda += "(" + user.getNrContract() + ",";
 		comanda += "'" + dayin.getStringDate() + "',";
-		comanda += "'" + dayout.getStringDate() + ");";
+		comanda += "'" + dayout.getStringDate() + "');";
 		return comanda;
 	}
 
