@@ -5,20 +5,16 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
+import policlinica.MonthName;
+import policlinica.calendar.Calendar;
+import policlinica.calendar.CalendarAux;
+import policlinica.calendar.Day;
+import policlinica.users.User;
 
 import java.net.URL;
 import java.util.ResourceBundle;
 
 public class OrarController implements Initializable {
-
-    @FXML private Label calendarDetailLbl;
-    @FXML private Button previousBtn;
-    @FXML private Button nextBtn;
-
-    private int selLblRow;
-    private int selLblCol;
-
-    private Label[][] matrix;
 
     @FXML private Label cell00;
     @FXML private Label cell01;
@@ -68,6 +64,25 @@ public class OrarController implements Initializable {
     @FXML private Label cell55;
     @FXML private Label cell56;
 
+    @FXML private Label calendarDetailLbl;
+    @FXML private Button previousBtn;
+    @FXML private Button nextBtn;
+
+    private User userCalendar;
+    private Calendar calendar;
+
+    private int month;
+    private int year;
+
+    private int selLblRow;
+    private int selLblCol;
+
+    private Label[][] matrix;
+
+    @FXML Button saptamanalBtn;
+    @FXML Button specificBtn;
+    @FXML Button concediiBtn;
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         matrix = new Label[6][7];
@@ -80,31 +95,103 @@ public class OrarController implements Initializable {
 
         selLblCol = -1;
         selLblRow = -1;
+        calendar = null;
+        userCalendar = null;
     }
 
     @FXML public void previousMonth(){
-
+        if(userCalendar != null)
+        {
+            month--;
+            if (month<0)
+            {
+                year--;
+                month = 11;
+            }
+            createCalendar(userCalendar.getNrContract());
+        }
     }
 
     @FXML public void nextMonth(){
-
+        if(userCalendar != null)
+        {
+            month++;
+            if (month>11)
+            {
+                year++;
+                month = 0;
+            }
+            createCalendar(userCalendar.getNrContract());
+        }
     }
 
     @FXML public void calendarClickHandler(MouseEvent e){
-
         Label cell = (Label)e.getSource();
-        cell.getStyleClass().add("selectedItem");
+/*
+        for(int index = 0; index < cell.getStyleClass().size(); index++) {
+            System.out.println(cell.getStyleClass().get(index));
+        }
+        System.out.println();
+*/
+        if(cell.getStyleClass().size() > 1)
+        {
+            cell.getStyleClass().add("selectedItem");
 
-        if(selLblCol > -1 && selLblRow > -1)
-            matrix[selLblRow][selLblCol].getStyleClass().remove(2);
+            if(selLblCol > -1 && selLblRow > -1)
+                matrix[selLblRow][selLblCol].getStyleClass().remove(2);
+
+            for(int i=0; i<6; i++)
+                for(int j=0; j<7; j++) {
+                    if (matrix[i][j] == cell) {
+                        selLblCol = j;
+                        selLblRow = i;
+                    }
+                }
+        }
+    }
+
+    public void setUserShowCalendar(User user){
+        this.userCalendar = user;
+        month = CalendarAux.getCurrentMonth();
+        year = CalendarAux.getCurrentYear();
+        createCalendar(user.getNrContract());
+    }
+
+    private void createCalendar(String nrContract){
+        calendar = new Calendar(nrContract, ""+year, ""+(month+1));
 
         for(int i=0; i<6; i++)
-            for(int j=0; j<7; j++) {
-                if (matrix[i][j] == cell) {
-                    selLblCol = j;
-                    selLblRow = i;
+            for(int j=0; j<7; j++)
+            {
+                Day zi = calendar.getDay(i,j);
+                if(zi != null){
+                    matrix[i][j].setText("" + zi.getDayOfMonth() + "\n" + zi.getIntervalorar());
+                    if(matrix[i][j].getStyleClass().size() == 1)
+                        matrix[i][j].getStyleClass().add("calendarItem");
+                    if(matrix[i][j].getStyleClass().size() == 3)
+                        matrix[i][j].getStyleClass().remove(2);
+                }
+                else {
+                    matrix[i][j].setText("");
+                    while(matrix[i][j].getStyleClass().size()>1)
+                        matrix[i][j].getStyleClass().remove(1);
                 }
             }
+
+        selLblRow = -1;
+            selLblCol = -1;
+
+        calendarDetailLbl.setText(MonthName.getMonthName(month)+", "+year);
+    }
+
+    @FXML public void editSaptamanal(){
+
+    }
+    @FXML public void editSpecific(){
+
+    }
+    @FXML public void editConcedii(){
+
     }
 
 }

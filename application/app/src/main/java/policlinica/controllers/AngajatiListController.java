@@ -60,6 +60,7 @@ public class AngajatiListController implements Initializable {
         this.userDataLayout = userDataLayout;
         this.userController = userController;
         this.main = main;
+        seeDetailsBtn.setText("Vezi Detalii");
         fillWithEmployees();
     }
 
@@ -67,6 +68,7 @@ public class AngajatiListController implements Initializable {
         this.orarLayout = orarLayout;
         this.orarController = orarController;
         this.main = main;
+        seeDetailsBtn.setText("Vezi Orar");
         fillWithEmployees();
     }
 
@@ -81,11 +83,11 @@ public class AngajatiListController implements Initializable {
 
     public void setButtonForDetails(){
         seeDetailsBtn.setOnAction(e -> {
-                AngajatTableItem temp = angajatiTable.getItems().get(angajatiTable.getSelectionModel().getFocusedIndex());
-                User tempUser = new User(temp.getNrContract());
+            AngajatTableItem temp = angajatiTable.getItems().get(angajatiTable.getSelectionModel().getFocusedIndex());
+            User tempUser = new User(temp.getNrContract());
 
-                userController.showEditBtn();
-                userController.switchToDetails();
+            userController.showEditBtn();
+            userController.switchToDetails();
 
             userController.setNumeLbl(tempUser.getNume());
             userController.setPrenumeLbl(tempUser.getPrenume());
@@ -105,6 +107,11 @@ public class AngajatiListController implements Initializable {
 
     public void setButtonForOrar(){
         seeDetailsBtn.setOnAction(e -> {
+
+            AngajatTableItem temp = angajatiTable.getItems().get(angajatiTable.getSelectionModel().getFocusedIndex());
+            User tempUser = new User(temp.getNrContract());
+
+            orarController.setUserShowCalendar(tempUser);
 
             main.setCenter(orarLayout);
         });
