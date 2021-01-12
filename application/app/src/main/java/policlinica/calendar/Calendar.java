@@ -1,11 +1,16 @@
 package policlinica.calendar;
 
 import java.sql.ResultSet;
+
 import java.sql.SQLException;
 import java.time.YearMonth;
 import policlinica.users.*;
 
+
+
 public class Calendar {
+	private int daysInMonth ;
+	
 	private Day[][] calendar = new Day[6][7];//calendar[week][dayofweek]
 	public Calendar() {
 		
@@ -20,7 +25,7 @@ public class Calendar {
 		}
 		YearMonth yearMonthObject = YearMonth.of(Integer.parseInt(year), Integer.parseInt(mounth));
 		int week = 0;
-		int daysInMonth = yearMonthObject.lengthOfMonth();
+		daysInMonth = yearMonthObject.lengthOfMonth();
 		for (int day = 1 ; day <= daysInMonth ; day++) {
 			Day curentDay = new Day(year + "-" + mounth + "-" + Integer.toString(day));
 			int dayOfWeek = curentDay.getIntDayOfWeek() -1;
@@ -29,6 +34,12 @@ public class Calendar {
 			if (dayOfWeek == 6)
 				week++;
 		}
+	}
+	public int getDaysInMonth() {
+		return daysInMonth;
+	}
+	public void setDaysInMonth(int daysInMonth) {
+		this.daysInMonth = daysInMonth;
 	}
 	public Day getDay(int i,int j) {
 		if (i>=0 && i <6 && j <7 && j >= 0)

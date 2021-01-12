@@ -35,9 +35,11 @@ public class ResurseUmane extends User {
 
 	}
 
-	public Boolean setConcediu(User user, Day dayin, Day dayout) {
-		return executeUpdate(getStringSetConcediu(user, dayout, dayout));
-	}
+//	public Boolean setConcediu(User user, Day dayin, Day dayout) {
+//		if (getConcediu(user.getNrContract()).next())
+//			return executeUpdate();
+//		return executeUpdate(getStringUpdateConcediu(user, dayout, dayout));
+//	}
 	public Boolean setOrarGeneric(CalendarSaptamanal calendar) {
 		Boolean t = true;
 		for (int i = 0 ; i < 7;i++) {
@@ -133,11 +135,18 @@ public class ResurseUmane extends User {
 		return executeSelect(comanda);
 	}
 
-	protected String getStringSetConcediu(User user, Day dayin, Day dayout) {
+	protected String getStringUpdateConcediu(User user, Day dayin, Day dayout) {
 		String comanda = "Update Concediu Set";
 		comanda += "   dataIncepere = '" + dayin.getStringDate();
 		comanda += "' , dataTerminare = '" + dayout.getStringDate();
 		comanda += "'   where nrContract = " + user.getNrContract() + " ;";
+		return comanda;
+	}
+	protected String getStringInsertConcediu(User user, Day dayin, Day dayout) {
+		String comanda = "Insert into Concediu (nrContract,dataIncepere ,dataTerminare)  values ";
+		comanda += "(" + user.getNrContract() + ",";
+		comanda += "'" + dayin.getStringDate() + "',";
+		comanda += "'" + dayout.getStringDate() + ");";
 		return comanda;
 	}
 
