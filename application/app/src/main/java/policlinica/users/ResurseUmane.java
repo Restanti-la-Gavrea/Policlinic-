@@ -5,6 +5,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 import policlinica.AngajatTableItem;
+import policlinica.calendar.Day;
 
 public class ResurseUmane extends User{
 
@@ -31,6 +32,19 @@ public class ResurseUmane extends User{
 		return listaAngajati;
 		
 	}
+	public Boolean setConcediu(User user ,Day dayin,Day dayout) {
+		return executeUpdate(getStringSetConcediu(user, dayout, dayout));
+	}
+	public Boolean setOrarGeneric(Day day,String orar) {
+		String comanda = "Update OrarGeneric Set";
+		comanda += "   intervalOrar = '" + day.getIntervalorar();
+		comanda += "' , intervalOrar = '" + day.getNumeUnitate();
+		comanda += "   where ziSaptamana = '" + day.getNameDayOfWeek() + "' " ;
+		comanda += " and nrUnitate = " + day.getNrContract() + " ;" ;
+		return executeUpdate(comanda);
+	}
+
+	
 	public ResultSet getDateAngajati(String nume ,String prenume,String functie){
 		String comanda = "Select * from DatePersonale ";
 		Boolean conditie = false;//verifica daca a fost deja impus o conditie
@@ -77,6 +91,13 @@ public class ResurseUmane extends User{
 	public ResultSet getConcediu(String nrContract) {
 		String comanda = "SELECT * FROM Concediu where nrcontract = " + nrContract +";";
 		return executeSelect(comanda);
+	}
+	protected String getStringSetConcediu(User user,Day dayin,Day dayout) {
+		String comanda = "Update Concediu Set";
+		comanda += "   dataIncepere = '" + dayin.getStringDate();
+		comanda += "' , dataTerminare = '" + dayout.getStringDate();
+		comanda += "'   where nrContract = " + user.getNrContract() + " ;" ;
+		return comanda;
 	}
 
 

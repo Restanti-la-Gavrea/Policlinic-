@@ -36,11 +36,6 @@ public class Admin extends SuperAdmin {
 		}
 		return false;
 	}
-	public Boolean setConcediu(User user ,Day dayin,Day dayout) {
-		if (conditieAdmin(user))
-			return executeUpdate(getStringSetConcediu(user, dayout, dayout));
-		return false;
-	}
 
 	public Boolean setUserData(String nrContract, String username, String pwd, String tip) {
 		ResultSet result = getDataById(nrContract);

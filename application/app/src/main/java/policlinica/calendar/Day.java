@@ -121,9 +121,7 @@ public class Day {
 		ResultSet resultGeneric = admin.getOrarGeneric(nrContract, this.getNameDayOfWeek());
 		ResultSet resultConcediu = admin.getConcediu(nrContract);
 		ResultSet resultSpecific = admin.getOrarSpecific(nrContract,this.getStringDate());
-		System.out.println(resultGeneric);
 		try {
-			//System.out.println("mereMAimuta");
 			if (resultGeneric.next())
 			{
 				this.setIntervalorar(resultGeneric.getString("intervalOrar"));

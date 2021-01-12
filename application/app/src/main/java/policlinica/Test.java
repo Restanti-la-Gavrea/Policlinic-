@@ -58,7 +58,7 @@ public class Test {
 		System.out.println(day.getIntervalorar());
 	}
 	private void CalendarTest() {
-		Calendar calendar = new Calendar("1","2020","3");
+		Calendar calendar = new Calendar("1","2021","1");
 		Day day = calendar.getDay("3");
 		System.out.println(day.getIntervalorar());
 		

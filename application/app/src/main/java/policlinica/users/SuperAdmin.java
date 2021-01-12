@@ -34,9 +34,6 @@ public class SuperAdmin extends ResurseUmane {
 		String comanda = getStringSetUserData(nrContract, username, pwd, tip);
 		return executeUpdate(comanda);
 	}
-	public Boolean setConcediu(User user ,Day dayin,Day dayout) {
-		return executeUpdate(getStringSetConcediu(user, dayout, dayout));
-	}
 	
 	
 	protected String getStringSetContract(String nrContract,String nume,String prenume,String salariu,String nrOre,String functie,String nrUnitate) {
@@ -67,13 +64,6 @@ public class SuperAdmin extends ResurseUmane {
 		comanda += "' , pwd = '" + pwd;
 		comanda += "' , tip = '" + tip;
 		comanda += "'   where nrContract = " + nrContract + " ;" ;
-		return comanda;
-	}
-	protected String getStringSetConcediu(User user,Day dayin,Day dayout) {
-		String comanda = "Update Concediu Set";
-		comanda += "   dataIncepere = '" + dayin.getStringDate();
-		comanda += "' , dataTerminare = '" + dayout.getStringDate();
-		comanda += "'   where nrContract = " + user.getNrContract() + " ;" ;
 		return comanda;
 	}
 }

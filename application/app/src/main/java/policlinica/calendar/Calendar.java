@@ -11,6 +11,7 @@ public class Calendar {
 		
 	}
 	public Calendar(String nrContract,String year,String mounth) {
+		/// ex new Calendar("1","2020","12")
 		// umple matricea cu obiecte Day (Null daca ziua nu face parte din luna curenta)
 		//see function setDayInformation
 		for (int i = 0 ; i < 6; i++) {
