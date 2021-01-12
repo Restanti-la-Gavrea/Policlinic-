@@ -15,11 +15,10 @@ import policlinica.users.User;
 public class Day {
 	private String intervalorar;
 	private Date date;
-	private SimpleDateFormat simpleDateFormat; 
+	private static final SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");; 
 	private String nrUnitate;
 	private String nrContract;
 	public Day(Date date) {
-		simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
 		this.date = date;
 		this.intervalorar = new String("liber");
 		this.nrUnitate = "0";
@@ -28,7 +27,6 @@ public class Day {
 	
 	public Day(String date) {
 		super();
-		simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
 		try {
 			this.date = simpleDateFormat.parse(date);
 			this.intervalorar = new String("liber");

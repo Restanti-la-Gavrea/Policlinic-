@@ -12,10 +12,11 @@ public class Test {
 		//cautareSuperAdmin();
 		//updateContract();
 		//CalendarDayTest();
-		CalendarTest();
+		//CalendarTest();
 		//verificaCevaListaDeAngaati();
 		//testsubmitUser();
 		//verificaUpdateOrar();
+		testIntervalOrar();
 	}
 	private void cautareSuperAdmin() {
 		System.out.println("Testul a inceput");
@@ -62,7 +63,10 @@ public class Test {
 		day.setIntervalorar("Saptamansa");
 		Admin admin = new Admin();
 		admin.setDayOfOrarGeneric(day);
-		
+	}
+	private void testIntervalOrar() {
+		IntervalOrar interval = new IntervalOrar("10:00-11:10 11:20-11:40");
+		System.out.println(interval.getMinuteIntervale());
 	}
 
 }

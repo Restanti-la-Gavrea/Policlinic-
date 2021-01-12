@@ -174,11 +174,11 @@ public class ResurseUmane extends User {
 		comanda += day.getNrContract() + ");";
 		return comanda;
 	}
-	protected  String getOrarSpecificCondition (Day day) {
+	protected  String getOrarSpecificCondition(Day day) {
 		return "   where ziCalendaristica = '" + day.getStringDate()
 			+ "' and nrContract = " + day.getNrContract() + " ;";
 	}
-	protected  String getOrarGenericCondition (Day day) {
+	protected  String getOrarGenericCondition(Day day) {
 		return "   where ziSaptamana = '" + day.getNameDayOfWeek() +
 		 "' and nrContract = " + day.getNrContract() + " ;";
 	}
