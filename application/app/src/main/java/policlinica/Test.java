@@ -11,9 +11,8 @@ public class Test {
 	public Test() {
 		//cautareSuperAdmin();
 		//updateContract();
-		//createUser();
 		//CalendarDayTest();
-		CalendarTest();
+		//CalendarTest();
 		//verificaCevaListaDeAngaati();
 		//testsubmitUser();
 	}
@@ -29,17 +28,6 @@ public class Test {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-	}
-	private void createUser() {
-		System.out.println("A inceput");
-		User user = (new User()).Autentificator("gabor", "0000");
-		System.out.println(user.getNume());
-		System.out.println(user.getPrenume());
-		System.out.println(user.getUsername());
-		System.out.println(user.getFunctie());
-		System.out.println(user.getTip());
-		System.out.println(user.getAdresa());
-		
 	}
 	private void testsubmitUser() {
 		User user = new User("1");
@@ -61,12 +49,17 @@ public class Test {
 		Calendar calendar = new Calendar("1","2021","1");
 		Day day = calendar.getDay("3");
 		System.out.println(day.getIntervalorar());
-		
 	}
 	private void verificaCevaListaDeAngaati() {
 		ArrayList <AngajatTableItem>lista = new ArrayList<>();
 		lista = (new ResurseUmane()).getArrayOfDateAngajati();
 		System.out.println(lista.size());
+	}
+	private void verificaUpdateOrar() {
+		Calendar calendar = new Calendar("1","2021","1");
+		Day day = calendar.getDay("3");
+		System.out.println(day.getNameDayOfWeek());
+		day.setIntervalorar("liber");
 		
 	}
 

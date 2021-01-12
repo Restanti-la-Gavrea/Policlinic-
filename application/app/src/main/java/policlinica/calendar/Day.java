@@ -27,7 +27,7 @@ public class Day {
 		this.numeUnitate = null;
 	}
 	
-	public Day( String date) {
+	public Day(String date) {
 		super();
 		simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
 		try {
