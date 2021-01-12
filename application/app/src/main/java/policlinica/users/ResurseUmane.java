@@ -5,6 +5,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 import policlinica.AngajatTableItem;
+import policlinica.calendar.CalendarSaptamanal;
 import policlinica.calendar.Day;
 
 public class ResurseUmane extends User {
@@ -37,10 +38,10 @@ public class ResurseUmane extends User {
 	public Boolean setConcediu(User user, Day dayin, Day dayout) {
 		return executeUpdate(getStringSetConcediu(user, dayout, dayout));
 	}
-	public Boolean setOrarGeneric(ArrayList <Day> list) {
+	public Boolean setOrarGeneric(CalendarSaptamanal calendar) {
 		Boolean t = true;
-		for (int i = 0 ; i < list.size();i++) {
-			t = t && setDayOfOrarGeneric(list.get(i));
+		for (int i = 0 ; i < 7;i++) {
+			t = t && setDayOfOrarGeneric(calendar.getDay(i));
 		}
 		return t;
 	}

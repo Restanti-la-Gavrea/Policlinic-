@@ -20,7 +20,7 @@ public class CalendarSaptamanal {
 		return null;
 	}
 	public Day getDay(String dayOfWeek) {
-		for(int i = 0 ; i < 7;i ++) {
+		for(int i = 0 ; i < 7; i++) {
 			if (calendar[i].getNameDayOfWeek().equals(dayOfWeek));
 				return calendar[i]; 
 		}
