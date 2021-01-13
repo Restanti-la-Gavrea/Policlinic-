@@ -42,7 +42,7 @@ public class ResurseUmane extends User {
 			{
 				comanda = getStringUpdateConcediu(user, dayin, dayout);
 			}else {
-				comanda = getStringInsertConcediu(user, dayout, dayout);
+				comanda = getStringInsertConcediu(user, dayin, dayout);
 			}
 				
 		} catch (SQLException e) {

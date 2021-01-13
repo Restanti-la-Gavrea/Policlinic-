@@ -48,9 +48,8 @@ public class Test {
 		System.out.println(day.getIntervalorar());
 	}
 	private void CalendarTest() {
-		CalendarSaptamanal calendar = new CalendarSaptamanal("1");
-		Day day = calendar.getDay(0);
-		System.out.println(day.getNameDayOfWeek());
+		Calendar calendar = new Calendar("1","2021","1");
+		System.out.println(calendar.getMinutesWorked());
 	}
 	private void verificaCevaListaDeAngaati() {
 		ArrayList <AngajatTableItem>lista = new ArrayList<>();
@@ -60,13 +59,9 @@ public class Test {
 	private void verificaUpdateOrar() {
 		Calendar calendar = new Calendar("3","2021","1");
 		Day day = calendar.getDay(3);
-		day.setIntervalorar("Saptamansa");
+		day.setIntervalOrar("Saptamansa");
 		Admin admin = new Admin();
 		admin.setDayOfOrarGeneric(day);
-	}
-	private void testIntervalOrar() {
-		IntervalOrar interval = new IntervalOrar("10:00-11:10 11:20-11:40");
-		System.out.println(interval.getMinuteIntervale());
 	}
 
 }

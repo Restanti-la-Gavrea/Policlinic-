@@ -6,6 +6,8 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.ZoneId;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Date;
 
@@ -90,7 +92,12 @@ public class Day {
 	public String getIntervalorar() {
 		return intervalorar;
 	}
-	public void setIntervalorar(String intervalorar) {
+	public ArrayList <String> getArrayOfIntervalOrar(){
+		String[] lists = this.intervalorar.split(" ");
+		ArrayList<String> array = new ArrayList<>(Arrays.asList(lists));
+		return array;
+	}
+	public void setIntervalOrar(String intervalorar) {
 		this.intervalorar = intervalorar;
 	}
 	public String getStringDate() {
@@ -128,7 +135,7 @@ public class Day {
 		try {
 			if (resultGeneric.next())
 			{
-				this.setIntervalorar(resultGeneric.getString("intervalOrar"));
+				this.setIntervalOrar(resultGeneric.getString("intervalOrar"));
 				this.setNrUnitate(resultGeneric.getString("nrUnitate"));
 			}
 			if (resultConcediu.next())
@@ -136,13 +143,13 @@ public class Day {
 				Day dayin = new Day(resultConcediu.getString("dataIncepere"));
 				Day dayout = new Day(resultConcediu.getString("dataTerminare"));
 				if (this.compareTo(dayin) >= 0 && this.compareTo(dayout) <= 0) {
-					this.setIntervalorar("concediu");
+					this.setIntervalOrar("concediu");
 					this.setNrUnitate(user.getNrUnitate());
 				}
 			}
 			if (resultSpecific.next())
 			{
-				this.setIntervalorar(resultSpecific.getString("intervalOrar"));
+				this.setIntervalOrar(resultSpecific.getString("intervalOrar"));
 				this.setNrUnitate(resultSpecific.getString("nrUnitate"));
 			}
 		} catch (SQLException e) {
@@ -160,7 +167,7 @@ public class Day {
 		try {
 			if (resultGeneric.next())
 			{
-				this.setIntervalorar(resultGeneric.getString("intervalOrar"));
+				this.setIntervalOrar(resultGeneric.getString("intervalOrar"));
 				this.setNrUnitate(resultGeneric.getString("nrUnitate"));
 			}
 		} catch (SQLException e) {

@@ -46,17 +46,27 @@ public class Calendar {
 			return calendar[i][j];
 		return null;
 	}
-	public Day getDay(int dayOfMounth) {
+	public Day getDay(int dayOfMonth) {
 		for (int k = 1 ; k <= 42;k++) {
 			int i = (k-1)/ 7;
 			int j = k % 7;
 			Day day = getDay(i,j);
 			if (day != null)
-				dayOfMounth--;
-			if (dayOfMounth == 0)
+				dayOfMonth--;
+			if (dayOfMonth == 0)
 				return day;
 		}
 		return null;
+	}
+	public int getMinutesWorked() {
+		int numberOfMinutes = 0;
+		for (int i = 1 ; i <= this.daysInMonth; i++) {
+			Day day = getDay(i);
+			IntervalOrar interval = new IntervalOrar(day.getIntervalorar());
+			System.out.println(interval.getMinutesIntervale());
+			numberOfMinutes += interval.getMinutesIntervale();
+		}
+		return numberOfMinutes;
 	}
 	
 }
