@@ -69,5 +69,4 @@ public class Receptioner extends Medical {
 		}
 		return true; 
 	}
-
 }

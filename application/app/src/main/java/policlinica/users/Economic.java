@@ -21,7 +21,7 @@ public class Economic extends User {
 	public double getProfit(int month, int year) {
 		double profitPoliclinica = 0.0;
 		ResultSet rs = executeSelect(
-				"select suma from platimedic where MONTH(ziPlata) = " + month + " and YEAR(ziPlata) = " + year + ";");
+				"select suma,comision from platimedic where MONTH(ziPlata) = " + month + " and YEAR(ziPlata) = " + year + ";");
 		try {
 			while (rs.next()) {
 				profitPoliclinica += (rs.getInt("suma") * (100 - rs.getInt("comision"))) / 100;
@@ -42,7 +42,10 @@ public class Economic extends User {
 		try {
 			rs = executeSelect("Select salariu,nrOre,functie from Contract where nrContract = " + nrContract + ";");
 			if (rs.next())
-				salariu = rs.getInt("salariu") * rs.getDouble("nrOre");
+			{
+				User myMedic = new User(nrContract); 
+				salariu = myMedic.getSalariu(month,year); 
+			}
 			if (rs != null && rs.getString("functie") == "m") {
 				double aux = profitMedic(nrContract, month, year);
 				rs = executeSelect("Select comision from Medic where nrContract =  " + nrContract + ";");
@@ -61,7 +64,7 @@ public class Economic extends User {
 
 	public double profitMedic(String nrContract, int month, int year) {
 		double profit = 0.0;
-		ResultSet rs = executeSelect("select suma from platimedic where MONTH(ziPlata) = " + month
+		ResultSet rs = executeSelect("select suma,comision from platimedic where MONTH(ziPlata) = " + month
 				+ " and YEAR(ziPlata) = " + year + " and nrCMedic = " + nrContract + ";");
 		try {
 			while (rs.next()) {
@@ -70,7 +73,7 @@ public class Economic extends User {
 		} catch (Exception e) {
 			printSqlErrorMessage("ProfitMedic, medic");
 		}
-		profit -= getSalariu(nrContract, month, year);
+		profit -= this.getSalariu(nrContract, month, year);
 		return profit;
 	}
 
@@ -113,17 +116,20 @@ public class Economic extends User {
 				profit = null;
 			double profitTotalMedic = profitMedic(nrContract, month, year);
 			profit1[0] = profitTotalMedic;
-			rs = executeSelect("Select nume from Specialitate");
+			rs = executeSelect("Select nrSpecialitate,nume from Specialitate");
 			int j = 1;
 			while (rs.next()) {
+				
 				ResultSet aux = executeSelect(
-						"Select pret from Serviciu inner join ServiciuPerProgramare inner join Programare on Serviciu.nrServiciu"
-								+ "= ServiciuperProgramare.nrServiciu and ServiciuperProgramare.nrProgramare = Programare.nrProgramare where nrCMedic = "
+						"Select suma from Serviciu inner join ServiciuPerProgramare inner join Programare inner join Plata on Serviciu.nrServiciu"
+								+ "= ServiciuperProgramare.nrServiciu and ServiciuperProgramare.nrProgramare = Plata.nrProgramare and Programare.nrProgramare = Plata.nrProgramare where nrCMedic = "
 								+ nrContract + " and  MONTH(ziPlata) = " + month + " and YEAR(ziPlata) = " + year
-								+ " and Serviciu.nrSpecialitate = " + rs.getString("nrSpecialitate") + ";");
+								+ " and Serviciu.nrSpecialitate = " + rs.getString("nrSpecialitate") + ";"); 
 				while (aux.next()) {
-					profit1[j] += aux.getInt("pret");
+					profit1[j] += aux.getInt("suma");
 				}
+				System.out.println(1);
+				profit[j] = new FinanteTableItem();
 				aux = executeSelect("Select nume,prenume from Contract where nrContract = " + nrContract + ";");
 				if (aux.next()) {
 					profit[j].setNumeComplet(aux.getString("nume") + aux.getString("prenume"));
@@ -172,9 +178,7 @@ public class Economic extends User {
 					int suma = aux.getInt("suma");
 					result1[j] += suma;
 				}
-				aux = executeSelect("Select salariu,nrOre from Contract where nrContract =" + nrContract + ";");
-				if (aux.next())
-					result1[j] -= aux.getDouble("salariu") * aux.getDouble("nrOre") / (count * 1.00001);
+				result1[j] += result1[0] / (count * 1.00001);
 				aux = executeSelect("Select nume,prenume from Contract where nrContract = " + nrContract + ";");
 				profit[j] = new FinanteTableItem();
 				if (aux.next()) {
