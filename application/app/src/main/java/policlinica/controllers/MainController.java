@@ -53,6 +53,9 @@ public class MainController implements Initializable {
     private VBox pacientiLayout;
     private PacientiController pacientiController;
 
+    private VBox raportLayout;
+    private RaportController raportController;
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
@@ -110,6 +113,8 @@ public class MainController implements Initializable {
         main.setCenter(finanteLayout);
     }
     @FXML public void setPacientiLayout(){
+        pacientiController.setContext((Medical)user, raportLayout, raportController, main);
+        raportController.setContext((Medical)user, pacientiLayout, pacientiController, main);
         main.setCenter(pacientiLayout);
     }
     @FXML public void setProgramariLayout(){
@@ -117,7 +122,6 @@ public class MainController implements Initializable {
     @FXML public void setServiciiLayout(){
     }
     @FXML public void logOut(){
-
         StackPane layout = new StackPane();
         Label label = new Label("Alege din meniul din stanga pentru a incepe");
         layout.getChildren().add(label);
@@ -169,8 +173,11 @@ public class MainController implements Initializable {
         pacientiLayout = loader.load();
         pacientiController = loader.getController();
 
-    }
+        loader = new FXMLLoader(getClass().getResource("/raportLayout.fxml"));
+        raportLayout = loader.load();
+        raportController = loader.getController();
 
+    }
 
     public void setUser(User user) {
         this.user = user;
@@ -178,9 +185,9 @@ public class MainController implements Initializable {
         if(user instanceof SuperAdmin) {
             administratorBtn.setVisible(true);
             angajatiBtn.setVisible(true);
-            pacientiBtn.setVisible(true);
-            programariBtn.setVisible(true);
-            serviciiBtn.setVisible(true);
+            pacientiBtn.setVisible(false);
+            programariBtn.setVisible(false);
+            serviciiBtn.setVisible(false);
             angajatiListController.setUser((ResurseUmane) user);
             userController.setUser((SuperAdmin)user);
             orarController.showHrControls();
@@ -210,6 +217,8 @@ public class MainController implements Initializable {
         else{
            if(user instanceof Medic)
                serviciiBtn.setVisible(true);
+           else
+               serviciiBtn.setVisible(false);
         }
 
         if(user instanceof Medical){
@@ -220,6 +229,5 @@ public class MainController implements Initializable {
             pacientiBtn.setVisible(false);
             programariBtn.setVisible(false);
         }
-
     }
 }

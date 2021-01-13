@@ -123,3 +123,12 @@
 .table-view .table-cell{
     -fx-border-color: transparent;
 }
+
+.list-cell:filled:selected:focused, .list-cell:filled:selected {
+    -fx-background-color: rgba(14,125,138,1);
+    -fx-text-fill: white;
+}
+
+.menu-item:focused {
+   -fx-background-color: transparent;
+}

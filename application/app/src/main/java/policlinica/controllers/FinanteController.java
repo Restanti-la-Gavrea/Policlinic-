@@ -8,7 +8,6 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.HBox;
-import policlinica.AngajatTableItem;
 import policlinica.FinanteTableItem;
 import policlinica.MedicAux;
 import policlinica.MonthName;
@@ -45,10 +44,6 @@ public class FinanteController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-
-       // viewBox.getItems().addAll("Salariul Propriu", "Profitul Propriu", "Profitul Total", "Profitul Medic/Unitate", "Profitul Medic/Specialitate");
-       // detailBox.getItems().addAll("Aici Lista de medici", "medic1", "medic2");
-
         extraBox.managedProperty().bind(extraBox.visibleProperty());
 
         numeCol.setCellValueFactory(new PropertyValueFactory<>("numeComplet"));
@@ -62,7 +57,12 @@ public class FinanteController implements Initializable {
 
         viewBox.getSelectionModel().selectedIndexProperty().addListener(
                 (ObservableValue<? extends Number> ov, Number old_val, Number new_val) -> {
-                    currentView = viewBox.getItems().get(viewBox.getSelectionModel().getSelectedIndex());
+                    try{
+                        currentView = viewBox.getItems().get(viewBox.getSelectionModel().getSelectedIndex());}
+                    catch (IndexOutOfBoundsException e){
+                        System.err.println("IndexOutOfBoundsException at line 66, FinanteController");
+                        currentView = null;
+                    }
                     updateTable();
                 });
 
@@ -79,21 +79,23 @@ public class FinanteController implements Initializable {
 
     public void setUser(User user){
         this.user = user;
-        while(viewBox.getItems().size() > 0)
-        {
+        currentView = null;
+        medicList = null;
+
+        while(viewBox.getItems().size() > 0) {
             viewBox.getItems().remove(0);
         }
 
         viewBox.getItems().add("Salariul Propriu");
 
         if(user instanceof Economic){
+            detailBox.setVisible(true);
             viewBox.getItems().addAll("Profitul Total", "Profitul Medic/Unitate", "Profitul Medic/Specialitate");
 
             medicList = user.generateListaMedici();
             for(MedicAux i: medicList){
                 detailBox.getItems().add(i.getNume() + " " + i.getPrenume());
             }
-
         }
         else
             detailBox.setVisible(false);
@@ -104,8 +106,7 @@ public class FinanteController implements Initializable {
 
     @FXML public void goPrevious(){
         month--;
-        if (month<0)
-        {
+        if (month<0) {
             year--;
             month = 11;
         }
@@ -113,12 +114,10 @@ public class FinanteController implements Initializable {
     }
     @FXML public void goNext(){
         month++;
-        if (month>11)
-        {
+        if (month>11) {
             year++;
             month = 0;
         }
-
         updateTable();
     }
 
@@ -171,5 +170,4 @@ public class FinanteController implements Initializable {
             }
         }
     }
-
 }
