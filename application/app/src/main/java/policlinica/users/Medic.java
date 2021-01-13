@@ -1,8 +1,8 @@
 package policlinica.users;
 
-import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import policlinica.calendar.*;
 
 public class Medic extends Medical {
 
@@ -30,7 +30,7 @@ public class Medic extends Medical {
 	}
 	@Override
 	public double getSalariu(int month, int year) {
-		double salariuLunar = Double.parseDouble(salariu) * Double.parseDouble(nrOre);
+		double salariuLunar = this.getSalariu(month, year);
 		ResultSet rs = executeSelect("Select comision from Medic where nrContract =  " + nrContract + ";");
 		int comision = 0;
 		try {
@@ -40,6 +40,7 @@ public class Medic extends Medical {
 		} catch (Exception e) {
 			printSqlErrorMessage("getsalariu, medic");
 		}
+		
 		double aux = profitMedic(month, year);
 		aux += salariuLunar;
 		salariuLunar += (aux * comision) / (100 - comision);

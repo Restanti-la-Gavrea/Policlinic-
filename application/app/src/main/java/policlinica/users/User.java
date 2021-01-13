@@ -7,7 +7,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import policlinica.MedicAux;
-
+import policlinica.calendar.Calendar;
 import policlinica.AngajatTableItem;
 
 public class User {
@@ -75,30 +75,6 @@ public class User {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-	}
-
-	public String getNrUnitate() {
-		return nrUnitate;
-	}
-
-	public void setNrUnitate(String nrUnitate) {
-		this.nrUnitate = nrUnitate;
-	}
-
-	public String getSalariu() {
-		return salariu;
-	}
-
-	public void setSalariu(String salariu) {
-		this.salariu = salariu;
-	}
-
-	public String getNrOre() {
-		return nrOre;
-	}
-
-	public void setNrOre(String nrOre) {
-		this.nrOre = nrOre;
 	}
 
 	public User Autentificator(String username, String password) {
@@ -216,7 +192,9 @@ public class User {
 	}
 
 	public double getSalariu(int month, int year) {
-		double salariuLunar = Double.parseDouble(salariu) * Double.parseDouble(nrOre);
+		Calendar calendar = new Calendar(this.getNrContract(),Integer.toString(year),Integer.toString(month));
+		int nrMinute = calendar.getMinutesWorked();
+		double salariuLunar = Double.parseDouble(salariu) * nrMinute / 60;
 		return salariuLunar;
 	}
 
@@ -322,6 +300,29 @@ public class User {
 
 	public void setTip(String tip) {
 		this.tip = tip;
+	}
+	public String getNrUnitate() {
+		return nrUnitate;
+	}
+
+	public void setNrUnitate(String nrUnitate) {
+		this.nrUnitate = nrUnitate;
+	}
+
+	public String getSalariu() {
+		return salariu;
+	}
+
+	public void setSalariu(String salariu) {
+		this.salariu = salariu;
+	}
+
+	public String getNrOre() {
+		return nrOre;
+	}
+
+	public void setNrOre(String nrOre) {
+		this.nrOre = nrOre;
 	}
 
 }
