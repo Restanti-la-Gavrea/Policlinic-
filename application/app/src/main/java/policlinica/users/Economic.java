@@ -36,6 +36,29 @@ public class Economic extends User {
 		return profitPoliclinica;
 	}
 
+	public double getSalariu(String nrContract, int month, int year) {
+		double salariu = 0.0;
+		ResultSet rs;
+		try {
+			rs = executeSelect("Select salariu,nrOre,functie from Contract where nrContract = " + nrContract + ";");
+			if (rs.next())
+				salariu = rs.getInt("salariu") * rs.getDouble("nrOre");
+			if (rs != null && rs.getString("functie") == "m") {
+				double aux = profitMedic(nrContract, month, year);
+				rs = executeSelect("Select comision from Medic where nrContract =  " + nrContract + ";");
+				int comision = 0;
+				if (rs.next()) {
+					comision = rs.getInt("comision");
+				}
+				aux += salariu;
+				salariu += (aux * comision) / (100 - comision);
+			}
+		} catch (Exception e) {
+			printSqlErrorMessage("getSalariu,economic");
+		}
+		return salariu;
+	}
+
 	public double profitMedic(String nrContract, int month, int year) {
 		double profit = 0.0;
 		ResultSet rs = executeSelect("select suma from platimedic where MONTH(ziPlata) = " + month
@@ -47,7 +70,7 @@ public class Economic extends User {
 		} catch (Exception e) {
 			printSqlErrorMessage("ProfitMedic, medic");
 		}
-		profit -= super.getSalariu(month, year);
+		profit -= getSalariu(nrContract, month, year);
 		return profit;
 	}
 
@@ -64,7 +87,8 @@ public class Economic extends User {
 			int j = 0;
 			while (rs.next()) {
 				double auxresult = profitMedic(rs.getString("nrContract"), month, year);
-				ResultSet aux = executeSelect("Select nume,prenume from Contract where nrContract = " + nrContract + ";");
+				ResultSet aux = executeSelect(
+						"Select nume,prenume from Contract where nrContract = " + nrContract + ";");
 				if (aux.next())
 					result[j].setNumeComplet(aux.getString("nume") + aux.getString("prenume"));
 				result[j].setSum(Double.toString(auxresult));
@@ -101,8 +125,15 @@ public class Economic extends User {
 					profit1[j] += aux.getInt("pret");
 				}
 				aux = executeSelect("Select nume,prenume from Contract where nrContract = " + nrContract + ";");
-				if (aux.next())
+				if (aux.next()) {
 					profit[j].setNumeComplet(aux.getString("nume") + aux.getString("prenume"));
+					if (j == 1) {
+						profit[0] = new FinanteTableItem();
+						profit[0].setNumeComplet(aux.getString("nume") + aux.getString("prenume"));
+						profit[0].setDetails("Total");
+						profit[0].setSum(Double.toString(profit1[0]));
+					}
+				}
 				profit[j].setDetails(rs.getString("nume"));
 				profit[j].setSum(Double.toString(profit1[j]));
 				j++;
@@ -117,17 +148,17 @@ public class Economic extends User {
 	// fiind profitul total
 	public FinanteTableItem[] profitPerUnitate(String nrContract, int month, int year) {
 		FinanteTableItem[] profit = null;
-		double[] result1 = new double[0]; 
+		double[] result1 = new double[0];
 		try {
 			ResultSet rs = executeSelect("Select Count(*) as Count from UnitateMedicala");
 			int count = 1;
 			if (rs.next()) {
-				count = rs.getInt("Count") + 1;
+				count = rs.getInt("Count");
 				result1 = new double[rs.getInt("Count") + 1];
-				profit = new FinanteTableItem[rs.getInt("Count") + 1]; 
+				profit = new FinanteTableItem[rs.getInt("Count") + 1];
 			}
 			result1[0] = profitMedic(nrContract, month, year);
-			rs = executeSelect("Select nrUnitate from UnitateMedicala");
+			rs = executeSelect("Select nrUnitate,nume from UnitateMedicala");
 			int j = 1;
 			ResultSet aux;
 			while (rs.next()) {
@@ -145,8 +176,16 @@ public class Economic extends User {
 				if (aux.next())
 					result1[j] -= aux.getDouble("salariu") * aux.getDouble("nrOre") / (count * 1.00001);
 				aux = executeSelect("Select nume,prenume from Contract where nrContract = " + nrContract + ";");
-				if (aux.next())
+				profit[j] = new FinanteTableItem();
+				if (aux.next()) {
 					profit[j].setNumeComplet(aux.getString("nume") + aux.getString("prenume"));
+					if (j == 1) {
+						profit[0] = new FinanteTableItem();
+						profit[0].setNumeComplet(aux.getString("nume") + aux.getString("prenume"));
+						profit[0].setDetails("Total");
+						profit[0].setSum(Double.toString(result1[0]));
+					}
+				}
 				profit[j].setDetails(rs.getString("nume"));
 				profit[j].setSum(Double.toString(result1[j]));
 				j++;
