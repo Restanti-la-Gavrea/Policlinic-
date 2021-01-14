@@ -21,12 +21,23 @@
     -fx-background-radius: 0;
 }
 
+.text-area {
+     -fx-background-radius: 0;
+     -fx-border-color: rgba(5,50,55,0.15);
+             -fx-border-style: solid;
+             -fx-border-width: 1;
+     -fx-background-color: rgba(11,100,110,0.0);
+}
+.text-area .content{
+    -fx-background-color: rgba(11,100,110,0.01);
+}
+
 .button:hover {
-    -fx-background-color: rgba(0,0,0,0.2);
+    -fx-background-color: rgba(5,50,55,0.2);
 }
 
 .button:pressed {
-    -fx-background-color: rgba(0,0,0,0.4);
+    -fx-background-color: rgba(5,50,55,0.4);
 }
 
 #mainMenu {
@@ -123,3 +134,17 @@
 .table-view .table-cell{
     -fx-border-color: transparent;
 }
+
+.list-cell:filled:selected:focused, .list-cell:filled:selected {
+    -fx-background-color: rgba(14,125,138,1);
+    -fx-text-fill: white;
+}
+
+.menu-item:focused {
+   -fx-background-color: transparent;
+}
+
+.err {
+      -fx-background-color: rgba(204,0,0,0.8);
+      -fx-text-fill: rgba(255,255,255,1);
+ }

@@ -1,14 +1,106 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
+<?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="RaportLayout"
-            prefHeight="400.0" prefWidth="600.0">
-
-</AnchorPane>
+<VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" spacing="5.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="policlinica.controllers.RaportController">
+   <children>
+      <HBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" spacing="10.0" VBox.vgrow="NEVER">
+         <children>
+            <Label prefHeight="25.0" text="Numar Programare si ora la care a avut loc">
+               <HBox.margin>
+                  <Insets bottom="10.0" />
+               </HBox.margin></Label>
+         </children>
+      </HBox>
+      <HBox alignment="CENTER_LEFT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" spacing="5.0" VBox.vgrow="NEVER">
+         <children>
+            <Label prefHeight="25.0" prefWidth="145.0" styleClass="boldBigText" text="Nume/Prenume pacient: " />
+            <Label prefHeight="25.0" prefWidth="170.0" text="Label" />
+         </children>
+      </HBox>
+      <HBox alignment="CENTER_LEFT" layoutX="30.0" layoutY="60.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" spacing="5.0" VBox.vgrow="NEVER">
+         <children>
+            <Label prefHeight="25.0" prefWidth="145.0" styleClass="boldBigText" text="Nume/Prenume medic:" />
+            <Label prefHeight="25.0" prefWidth="170.0" text="Label" />
+         </children>
+      </HBox>
+      <HBox alignment="CENTER_LEFT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" VBox.vgrow="NEVER">
+         <children>
+            <Label prefHeight="25.0" prefWidth="150.0" styleClass="boldBigText" text="Medic recomandant:" />
+            <ChoiceBox prefWidth="170.0" />
+         </children>
+      </HBox>
+      <HBox alignment="CENTER_LEFT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" VBox.vgrow="NEVER">
+         <children>
+            <Label prefHeight="25.0" prefWidth="150.0" styleClass="boldBigText" text="Asistent (tot drop down?)" />
+         </children>
+      </HBox>
+      <Separator prefWidth="200.0" />
+      <VBox spacing="5.0" VBox.vgrow="ALWAYS">
+         <children>
+            <Label text="Simptome" />
+            <TextArea maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="50.0" VBox.vgrow="ALWAYS" />
+         </children>
+         <padding>
+            <Insets bottom="5.0" top="5.0" />
+         </padding>
+      </VBox>
+      <Separator prefWidth="200.0" />
+      <HBox maxHeight="90.0" spacing="10.0" VBox.vgrow="ALWAYS">
+         <children>
+            <VBox spacing="5.0" HBox.hgrow="ALWAYS">
+               <children>
+                  <Label text="Servicii/Investigatii:" />
+                  <ListView maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" />
+               </children>
+            </VBox>
+            <VBox spacing="5.0" HBox.hgrow="ALWAYS">
+               <children>
+                  <Label text="Rezultat" />
+                  <TextArea maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="60.0" prefWidth="100.0" VBox.vgrow="ALWAYS" />
+               </children>
+            </VBox>
+         </children>
+      </HBox>
+      <Separator prefWidth="200.0" />
+      <VBox layoutX="30.0" layoutY="198.0" spacing="5.0" VBox.vgrow="ALWAYS">
+         <children>
+            <Label text="Dignostic" />
+            <TextArea maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="30.0" VBox.vgrow="ALWAYS" />
+         </children>
+         <padding>
+            <Insets bottom="5.0" top="5.0" />
+         </padding>
+      </VBox>
+      <Separator layoutX="30.0" layoutY="315.0" prefWidth="200.0" />
+      <VBox layoutX="30.0" layoutY="323.0" spacing="5.0">
+         <children>
+            <Label text="Recomandari" />
+            <TextArea maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="50.0" VBox.vgrow="ALWAYS" />
+         </children>
+         <padding>
+            <Insets bottom="5.0" top="5.0" />
+         </padding>
+      </VBox>
+      <HBox spacing="10.0">
+         <children>
+            <Button mnemonicParsing="false" styleClass="blueButton" text="Creeaza Raport" />
+            <Button mnemonicParsing="false" text="Parafeaza" />
+            <Button fx:id="backButton" mnemonicParsing="false" onAction="#goBack" text="Inapoi" />
+            <Label maxWidth="1.7976931348623157E308" prefHeight="25.0" styleClass="err" text="A avut loc o eroare">
+               <HBox.margin>
+                  <Insets left="30.0" />
+               </HBox.margin>
+               <padding>
+                  <Insets left="5.0" right="5.0" />
+               </padding>
+            </Label>
+         </children>
+      </HBox>
+   </children>
+   <padding>
+      <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+   </padding>
+</VBox>

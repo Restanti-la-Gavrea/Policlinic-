@@ -49,14 +49,14 @@ public class OrarEditController implements Initializable {
     @FXML private Button concediuSubmitBtn;
 
     @FXML public void submitSaptamanal(){
-        calendarSaptamanal.getDay(0).setIntervalorar(sambataFld.getText());
-        calendarSaptamanal.getDay(1).setIntervalorar(duminicaFld.getText());
-        calendarSaptamanal.getDay(2).setIntervalorar(luniFld.getText());
-        calendarSaptamanal.getDay(3).setIntervalorar(martiFld.getText());
-        calendarSaptamanal.getDay(4).setIntervalorar(miercuriFld.getText());
-        calendarSaptamanal.getDay(5).setIntervalorar(joiFld.getText());
-        calendarSaptamanal.getDay(6).setIntervalorar(vineriFld.getText());
-
+       
+        calendarSaptamanal.getDay(0).setIntervalOrar(duminicaFld.getText());
+        calendarSaptamanal.getDay(1).setIntervalOrar(luniFld.getText());
+        calendarSaptamanal.getDay(2).setIntervalOrar(martiFld.getText());
+        calendarSaptamanal.getDay(3).setIntervalOrar(miercuriFld.getText());
+        calendarSaptamanal.getDay(4).setIntervalOrar(joiFld.getText());
+        calendarSaptamanal.getDay(5).setIntervalOrar(vineriFld.getText());
+        calendarSaptamanal.getDay(6).setIntervalOrar(sambataFld.getText());
 
         user.setOrarGeneric(calendarSaptamanal);
 
@@ -66,7 +66,7 @@ public class OrarEditController implements Initializable {
         main.setCenter(orarLayout);
     }
     @FXML public void submitSpecific(){
-        ziSelected.setIntervalorar(specificFld.getText());
+        ziSelected.setIntervalOrar(specificFld.getText());
         user.setOrarSpecific(ziSelected);
 
         ziSelected = null;
@@ -110,13 +110,13 @@ public class OrarEditController implements Initializable {
 
         calendarSaptamanal = new CalendarSaptamanal(userCalendar.getNrContract());
 
-        sambataFld.setText(calendarSaptamanal.getDay(0).getIntervalorar());
-        duminicaFld.setText(calendarSaptamanal.getDay(1).getIntervalorar());
-        luniFld.setText(calendarSaptamanal.getDay(2).getIntervalorar());
-        martiFld.setText(calendarSaptamanal.getDay(3).getIntervalorar());
-        miercuriFld.setText(calendarSaptamanal.getDay(4).getIntervalorar());
-        joiFld.setText(calendarSaptamanal.getDay(5).getIntervalorar());
-        vineriFld.setText(calendarSaptamanal.getDay(6).getIntervalorar());
+        duminicaFld.setText(calendarSaptamanal.getDay(0).getIntervalorar());
+        luniFld.setText(calendarSaptamanal.getDay(1).getIntervalorar());
+        martiFld.setText(calendarSaptamanal.getDay(2).getIntervalorar());
+        miercuriFld.setText(calendarSaptamanal.getDay(3).getIntervalorar());
+        joiFld.setText(calendarSaptamanal.getDay(4).getIntervalorar());
+        vineriFld.setText(calendarSaptamanal.getDay(5).getIntervalorar());
+        sambataFld.setText(calendarSaptamanal.getDay(6).getIntervalorar());
 
     }
     public void showSpecific(ResurseUmane user, User userCalendar, Day ziSelected){

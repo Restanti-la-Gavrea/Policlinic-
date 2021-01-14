@@ -25,7 +25,7 @@ public class IntervalOrar {
 			}
 		}
 	}
-	public int getMinuteIntervale() {
+	public int getMinutesIntervale() {
 		long suma = (long)0 ;
 		for (int i = 0 ; i < ore1.size(); i ++) {
 			long difference = ore2.get(i).getTime() - ore1.get(i).getTime(); 

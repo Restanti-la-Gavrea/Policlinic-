@@ -53,6 +53,15 @@ public class MainController implements Initializable {
     private VBox pacientiLayout;
     private PacientiController pacientiController;
 
+    private VBox raportLayout;
+    private RaportController raportController;
+
+    private VBox programareLayout;
+    private ProgramareController programareController;
+
+    private VBox creareProgramareLayout;
+    private CreareProgramareController creareProgramareController;
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
@@ -106,16 +115,23 @@ public class MainController implements Initializable {
         }
     }
     @FXML public void setFinanteLayout(){
+        finanteController.setUser(user);
         main.setCenter(finanteLayout);
     }
     @FXML public void setPacientiLayout(){
+        pacientiController.setContext((Medical)user, raportLayout, raportController, main);
+        raportController.setContext((Medical)user, pacientiLayout, main);
+        main.setCenter(pacientiLayout);
     }
     @FXML public void setProgramariLayout(){
+        programareController.setContext((Medical)user, creareProgramareLayout, creareProgramareController, raportLayout, raportController, main);
+        raportController.setContext((Medical)user, programareLayout, main);
+        creareProgramareController.setContext((Medical)user, programareLayout, programareController, main);
+        main.setCenter(programareLayout);
     }
     @FXML public void setServiciiLayout(){
     }
     @FXML public void logOut(){
-
         StackPane layout = new StackPane();
         Label label = new Label("Alege din meniul din stanga pentru a incepe");
         layout.getChildren().add(label);
@@ -167,8 +183,18 @@ public class MainController implements Initializable {
         pacientiLayout = loader.load();
         pacientiController = loader.getController();
 
-    }
+        loader = new FXMLLoader(getClass().getResource("/raportLayout.fxml"));
+        raportLayout = loader.load();
+        raportController = loader.getController();
 
+        loader = new FXMLLoader(getClass().getResource("/programareLayout.fxml"));
+        programareLayout = loader.load();
+        programareController = loader.getController();
+
+        loader = new FXMLLoader(getClass().getResource("/creareProgramareLayout.fxml"));
+        creareProgramareLayout = loader.load();
+        creareProgramareController = loader.getController();
+    }
 
     public void setUser(User user) {
         this.user = user;
@@ -176,9 +202,9 @@ public class MainController implements Initializable {
         if(user instanceof SuperAdmin) {
             administratorBtn.setVisible(true);
             angajatiBtn.setVisible(true);
-            pacientiBtn.setVisible(true);
-            programariBtn.setVisible(true);
-            serviciiBtn.setVisible(true);
+            pacientiBtn.setVisible(false);
+            programariBtn.setVisible(false);
+            serviciiBtn.setVisible(false);
             angajatiListController.setUser((ResurseUmane) user);
             userController.setUser((SuperAdmin)user);
             orarController.showHrControls();
@@ -206,7 +232,10 @@ public class MainController implements Initializable {
             serviciiBtn.setVisible(false);
         }
         else{
-            serviciiBtn.setVisible(true);
+           if(user instanceof Medic)
+               serviciiBtn.setVisible(true);
+           else
+               serviciiBtn.setVisible(false);
         }
 
         if(user instanceof Medical){
@@ -217,6 +246,5 @@ public class MainController implements Initializable {
             pacientiBtn.setVisible(false);
             programariBtn.setVisible(false);
         }
-
     }
 }
