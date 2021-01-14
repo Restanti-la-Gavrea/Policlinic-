@@ -26,26 +26,19 @@ public class IntervalOrar {
 		}
 	}
 	public static String formeazaInterval(String oraInitiala,String[] durate) {	
-		Date ora1 = null;
-		try {
-			String[] mere= oraInitiala.split(":");
-			oraInitiala = mere[0] + ":" + mere[1];
-			ora1 = format.parse(oraInitiala);
-		} catch (ParseException e1) {
-		}
-		Date ora2 = new Date(ora1.getTime() );
+		
+		String [] mere = oraInitiala.split(":");
+		int ora1 = Integer.parseInt(mere[0]);
+		int minut1 = Integer.parseInt(mere[1]);
+		int ora2 = ora1;
+		int minut2 =minut1;
 		for (int i = 0 ;i < durate.length ; i++) {
 			String durata = durate[i];
-			String[] mere= durata.split(":");
-			durata = mere[0] + ":" + mere[1];
-
-			try {
-				Date ora3 = format.parse(durata);
-				ora2 = new Date(ora2.getTime() + ora3.getTime());
-			} catch (ParseException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+			mere= durata.split(":");
+			int ora3 = Integer.parseInt(mere[0]);
+			int minut3 = Integer.parseInt(mere[1]);
+			ora2 += ora3;
+			minut2 += minut3;
 		}
 		return format.format(ora1) + "-" + format.format(ora2);
 	}

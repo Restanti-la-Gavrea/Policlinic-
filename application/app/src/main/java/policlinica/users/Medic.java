@@ -42,7 +42,7 @@ public class Medic extends Medical {
 		ArrayList <MedicAux> listaAsistenti =  new ArrayList<>();
 		try {
 			String comanda = "Select * from tipasistentmedical,contract "
-					+ " where contract.nrContract = contract.nrContract ;";
+					+ " where tipasistentmedical.nrContract = contract.nrContract ;";
 			ResultSet result = executeSelect(comanda);
 			if (result.next()) {
 				MedicAux Asistent = new MedicAux(result.getString("nrcontract"),
