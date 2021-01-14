@@ -200,7 +200,7 @@ public class Medic extends Medical {
 				MedicAux Asistent = new MedicAux(result.getString("nrcontract"),
 														result.getString("nume"),
 														result.getString("prenume"));
-				raport.setMedicRecomandare(Asistent);
+				raport.setAsistent(Asistent);
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block

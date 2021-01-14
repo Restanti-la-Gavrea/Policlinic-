@@ -109,7 +109,7 @@ public class Medical extends User {
 					p.setNrProgramare(rs.getString("nrProgramare"));
 					p.setAchitat("false");
 				}
-				if(p.isAchitat() || p.isRaport()) {
+				if(!p.isAchitat() || !p.isRaport()) {
 					lista.add(p); 
 				}
 			}
