@@ -24,8 +24,9 @@ public class Medic extends Medical {
 		super();
 	}
 	public ArrayList<Serviciu> getListaServicii(String nrProgramare) {
-		String comanda = "Select * from ServiciuPerProgramare inner join  Programare on ServiciuPerProgramare.nrProgramare = Programare.nrProgramare where"
-						+ " Programare.nrProgramare = " + nrProgramare + ";";
+		String comanda = "Select * from ServiciuPerProgramare inner join Serviciu inner join  Programare on ServiciuPerProgramare.nrProgramare = Programare.nrProgramare "
+				+ "and serviciuperprogramare.nrServiciu = serviciu.nrServiciu where "
+				+ "						 Programare.nrProgramare = " + nrProgramare + ";";
 		ResultSet rezultat = executeSelect(comanda);
 		String specialitate = null;
 		try {
