@@ -57,6 +57,21 @@ public class Medic extends Medical {
 		salariuLunar += (aux * comision) / (100 - comision);
 		return salariuLunar;
 	}
+	public ArrayList<RaportMedical> getListaRapoare(Pacient pacient){
+		ArrayList<RaportMedical> listaRapoarte = new ArrayList<>();
+		try {
+			String comanda = "Select * from VizualizareIstoric \r\n"
+					+ "where nrpacient =   " + pacient.getNrPacient() + ";";
+			ResultSet result = executeSelect(comanda);
+			if (result.next()) {
+				listaRapoarte.add(getRaport(result.getString("nrprogramare")));
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return listaRapoarte;
+	}
 
 	public RaportMedical getRaport(String nrProgramare) {
 

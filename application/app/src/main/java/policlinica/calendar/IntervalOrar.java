@@ -25,6 +25,14 @@ public class IntervalOrar {
 			}
 		}
 	}
+//	public Boolean isIntercalat() {
+//		for (int i = 0 ; i <ore1.size()-1;i++) {
+//			for (int j = 1 ; j <ore1.size(); i++) {
+//				
+//			}
+//		}
+//		return false;
+//	}
 	public int getMinutesIntervale() {
 		long suma = (long)0 ;
 		for (int i = 0 ; i < ore1.size(); i ++) {
