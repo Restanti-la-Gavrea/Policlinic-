@@ -2,19 +2,24 @@ package policlinica;
 
 import policlinica.calendar.Day;
 
+import java.util.ArrayList;
+
 public class Programare {
+
+    private String nrProgramare;
 
     private String numePacient;
     private String prenumePacient;
     private String numeComplet;
     private String cnpPacient;
 
-    private String specialitate;
+    private Specialitate specialitate;
 
-    private String[] servicii;
+    private ArrayList<Serviciu> servicii;
 
     private String nrCMedic;
     private String numeMedic;
+    private String prenumeMedic;
 
     private Day day;
     private String dataOra; //pentru afisare in tabel;
@@ -23,11 +28,12 @@ public class Programare {
     private String raport;
 
     public Programare(){
+        nrProgramare = null;
         numePacient = null;
         prenumePacient = null;
         cnpPacient = null;
-        specialitate = null;
-        servicii = null;
+        specialitate = new Specialitate();
+        servicii = new ArrayList<>();
         nrCMedic = null;
         numeMedic = null;
         day = null;
@@ -38,8 +44,8 @@ public class Programare {
         this.prenumePacient = prenumePacient;
         numeComplet = numePacient + " " + prenumePacient;
         this.cnpPacient = cnpPacient;
-        specialitate = null;
-        servicii = null;
+        specialitate = new Specialitate();
+        servicii = new ArrayList<>();
         nrCMedic = null;
         numeMedic = null;
         this.day = day;
@@ -56,10 +62,10 @@ public class Programare {
         if(numePacient != null) numeComplet = numePacient + " " + this.prenumePacient;}
     public String getCnpPacient() { return cnpPacient; }
     public void setCnpPacient(String cnpPacient) { this.cnpPacient = cnpPacient; }
-    public String getSpecialitate() { return specialitate; }
-    public void setSpecialitate(String specialitate) { this.specialitate = specialitate; }
-    public String[] getServicii() { return servicii; }
-    public void setServicii(String[] servicii) { this.servicii = servicii; }
+    public String getSpecialitate() { return specialitate.getNume(); }
+    public void setSpecialitate(String specialitate) { this.specialitate.setNume(specialitate); }
+    public ArrayList<Serviciu> getServicii() { return servicii; }
+    public void setServicii(ArrayList<Serviciu> servicii) { this.servicii = servicii; }
     public String getNrCMedic() { return nrCMedic; }
     public void setNrCMedic(String nrCMedic) { this.nrCMedic = nrCMedic; }
     public String getNumeMedic() { return numeMedic; }
@@ -74,6 +80,9 @@ public class Programare {
     public String getRaport() { return raport; }
     public void setRaport(String raport) { this.raport = raport; }
 
+    public Specialitate getSpecialitateObject(){return specialitate;}
+    public void setSpecialitateObject(Specialitate specialitate){ this.specialitate = specialitate;}
+
     public boolean isAchitat(){
         if(achitat != null) return achitat.toLowerCase().equals("true");
         return false;
@@ -82,6 +91,26 @@ public class Programare {
         if(raport != null) return raport.toLowerCase().equals("true");
         return false;
     }
+
+    public Pacient getPacient(){ return new Pacient(cnpPacient, numePacient, prenumePacient); }
+    public void setPacient(Pacient pacient){
+        cnpPacient = pacient.getNrPacient();
+        numePacient = pacient.getNume();
+        prenumePacient = pacient.getPrenume();
+    }
+    public MedicAux getMedic(){return new MedicAux(nrCMedic, numeMedic, prenumeMedic);}
+    public void setMedic(MedicAux medic){
+        nrCMedic = medic.getNrContract();
+        numeMedic = medic.getNume();
+        prenumeMedic = medic.getPrenume();
+    }
+
+    public String getNrProgramare() { return nrProgramare; }
+    public void setNrProgramare(String nrProgramare) { this.nrProgramare = nrProgramare; }
+    public void setSpecialitate(Specialitate specialitate) { this.specialitate = specialitate; }
+    public String getPrenumeMedic() { return prenumeMedic; }
+    public void setPrenumeMedic(String prenumeMedic) { this.prenumeMedic = prenumeMedic; }
+
 
     private void fillDataOra(){
         if(day != null){

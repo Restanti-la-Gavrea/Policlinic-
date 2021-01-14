@@ -2,18 +2,18 @@ package policlinica;
 
 public class Pacient {
 
-    private int nrPacient;
+    private String nrPacient;
     private String nume;
     private String prenume;
 
-    public Pacient(int nrPacient, String nume, String prenume) {
+    public Pacient(String nrPacient, String nume, String prenume) {
         this.nrPacient = nrPacient;
         this.nume = nume;
         this.prenume = prenume;
     }
 
-    public int getNrPacient() { return nrPacient; }
-    public void setNrPacient(int nrPacient) { this.nrPacient = nrPacient; }
+    public String getNrPacient() { return nrPacient; }
+    public void setNrPacient(String nrPacient) { this.nrPacient = nrPacient; }
     public String getNume() { return nume; }
     public void setNume(String nume) { this.nume = nume; }
     public String getPrenume() { return prenume; }

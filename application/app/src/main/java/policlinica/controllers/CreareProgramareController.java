@@ -5,7 +5,6 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
-import policlinica.users.Medic;
 import policlinica.users.Medical;
 
 import java.net.URL;
