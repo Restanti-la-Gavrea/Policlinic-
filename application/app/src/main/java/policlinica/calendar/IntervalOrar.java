@@ -44,29 +44,38 @@ public class IntervalOrar {
 		minut2 = minut2 % 60;
 		String rezultat= "";
 		if (ora1< 10)
-			rezultat += "";
-		rezultat +=ora1;
+			rezultat += "0";
+		rezultat +=ora1 + ":";
+		if (minut1 < 10)
+			rezultat+="0";
+		rezultat += minut1 + "-";
+		if (ora2< 10)
+			rezultat += "0";
+		rezultat +=ora2 + ":";
+		if (minut2 < 10)
+			rezultat+="0";
+		rezultat += minut2 ;
 		
-		return ora1 + ":" + minut1 + "-" + ora2 + ":" +minut2;
+		return rezultat;
 	}
 	public Boolean isIntercalat() {
 		for (int i = 0 ; i <ore1.size()-1;i++) {
-			for (int j = 1 ; j <ore1.size(); i++) {
-				if (!verificaintercalare(i, j))
-					return false;
+			for (int j = 1 ; j <ore1.size(); j++) {
+				if (isIntercalat(i, j))
+					return true;
 			}
 		}
-		return true;
+		return false;
 	}
-	private Boolean verificaintercalare(int i , int j) {
+	public Boolean isIntercalat(int i , int j) {
 		Date x1 = ore1.get(i);
 		Date x2 = ore1.get(j);
 		Date y1 = ore2.get(i);
 		Date y2 = ore2.get(j);
-		if (x2.compareTo(y1)>0 || y2.compareTo(x1) <0) {
-			return true;
+		if (x2.compareTo(y1)>=0 || y2.compareTo(x1) <=0) {
+			return false;
 		}
-		return false;
+		return true;
 	}
 	
 	public int getMinutesIntervale() {

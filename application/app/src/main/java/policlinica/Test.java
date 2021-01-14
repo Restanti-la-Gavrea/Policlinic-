@@ -12,9 +12,10 @@ public class Test {
 		mere();
 	}
 	public void mere() {
-		String ora1 = "11:00:00";
-		String[] intervale = {"00:20:00","00:50:00"};
-		System.out.println(IntervalOrar.formeazaInterval(ora1, intervale));
+		String mere = "09:20-10:10 10:10-12:00 10:05-11:00";
+		IntervalOrar interval = new IntervalOrar(mere);
+		System.out.println(interval.isIntercalat(0, 1));
+		System.out.println(interval.isIntercalat());
 	}
 	private void verificaListaRapoarte() {
 		Medic medic = new Medic();
