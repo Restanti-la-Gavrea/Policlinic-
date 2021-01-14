@@ -25,15 +25,15 @@ public class IntervalOrar {
 			}
 		}
 	}
-	public static String formeazaOra(String oraInitiala,String durata) {
+	public static String formeazaInterval(String oraInitiala,String durata) {
 		String[] mere= durata.split(":");
 		durata = mere[0] + ":" + mere[1];
-		Date ora1;
-		Date ora2;
+		Date ora1 = null;
+		Date ora2 = null;
 		try {
 			ora1 = format.parse(oraInitiala);
 			ora2 = format.parse(durata);
-			ora2 = new Date(ora1.getTime() + ora2.getTime())
+			ora2 = new Date(ora1.getTime() + ora2.getTime());
 		} catch (ParseException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
