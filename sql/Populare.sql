@@ -1,4 +1,5 @@
 use policlinica;
+delete from concediu;
 delete from serviciupercabinet;
 delete from aparatnecesar;
 delete from aparatpercabinet;
@@ -60,7 +61,7 @@ Insert into contract values
 
 insert into concediu values
 (1,'2021-01-09','2021-01-25'),
-(1,'2021-03-01','2021-03-05'),
+(2,'2021-03-01','2021-03-05'),
 (3,'2021-02-09','2021-02-25'),
 (6,'2021-04-09','2021-04-25'),
 (7,'2021-01-09','2021-01-25'),
