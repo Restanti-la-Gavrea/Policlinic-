@@ -3,6 +3,7 @@ package policlinica;
 public class RaportMedical {
 
     private int nrRaport;
+    private int nrProgramare;
     //urmatoarele sunt informatiile din programare
     private String dataProgramare;
     private String oraProgramare;
@@ -36,13 +37,14 @@ public class RaportMedical {
         recomandari = null;
 
         serviciu = null;
+        
         rezultatServiciu = null;
 
         parafat = false;
     }
 
-    public RaportMedical(int nrRaport, String dataProgramare, String oraProgramare, String numeMedic, String prenumeMedic, String nrCMedic, Pacient pacient, String[] serviciu) {
-        this.nrRaport = nrRaport;
+    public RaportMedical(int nrProgramare, String dataProgramare, String oraProgramare, String numeMedic, String prenumeMedic, String nrCMedic, Pacient pacient, String[] serviciu) {
+        this.nrProgramare = nrProgramare;
         this.dataProgramare = dataProgramare;
         this.oraProgramare = oraProgramare;
         this.numeMedic = numeMedic;
@@ -87,7 +89,19 @@ public class RaportMedical {
     public void parafeaza(){ if(!parafat) parafat = true; }
     public boolean isParafat(){ return parafat;}
 
-    public String getServiciuIndex(int i){return serviciu[i];}
+    public int getNrProgramare() {
+		return nrProgramare;
+	}
+
+	public void setNrProgramare(int nrProgramare) {
+		this.nrProgramare = nrProgramare;
+	}
+
+	public void setParafat(boolean parafat) {
+		this.parafat = parafat;
+	}
+
+	public String getServiciuIndex(int i){return serviciu[i];}
     public String getRezultatIndex(int i){return rezultatServiciu[i];}
 
     //urmatoarea funcitie e facuta de mine pentru mine
