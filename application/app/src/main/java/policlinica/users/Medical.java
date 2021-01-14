@@ -31,5 +31,8 @@ public class Medical extends User {
 		}
 		return lista;
 	}
+	public void setListaPacienti(ArrayList<Pacient> lista) {
+		
+	}
 
 }

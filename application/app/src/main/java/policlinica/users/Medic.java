@@ -68,6 +68,34 @@ public class Medic extends Medical {
 		}
 		return null;
 	}
+	public Boolean updateRaport(RaportMedical raport) {
+		String comanda = "Update Raport Set" +
+				" medicRecomandare = " + raport.getMedicRecomandare().getNrContract() + 
+				" asistentContract = " + raport.getAsistent().getNrContract() + 
+				" simptome = " + "'" + raport.getSimptome() + "'" + 
+				" diagnostic = " + "'" + raport.getDiagnostic() + "'" +
+				" recomandari = " + "'" + raport.getRecomandari() + "'" +
+				" parafat = " + raport.isParafat() + 
+				" where nrRaport = " + raport.getNrRaport() + ";";
+		if (!executeUpdate(comanda))
+			return false;
+		///Ramane de facut update pe servicii
+		return true;
+	}
+	public Boolean insertRaport(RaportMedical raport) {
+		String comanda = "insert into raport values (" +
+				raport.getNrProgramare() + "," +
+				raport.getMedicRecomandare().getNrContract() + "," +
+				raport.getAsistent().getNrContract() + "," +
+				raport.getSimptome() + "," +
+				raport.getDiagnostic() + ","+
+				raport.getRecomandari() + "," +
+				raport.isParafat() + ");";
+		if (!executeUpdate(comanda))
+			return false;
+		
+		return true;
+	}
 
 	public boolean UpdateRaport() {
 		return false;
