@@ -25,6 +25,21 @@ public class IntervalOrar {
 			}
 		}
 	}
+	public static String formeazaOra(String oraInitiala,String durata) {
+		String[] mere= durata.split(":");
+		durata = mere[0] + ":" + mere[1];
+		Date ora1;
+		Date ora2;
+		try {
+			ora1 = format.parse(oraInitiala);
+			ora2 = format.parse(durata);
+			ora2 = new Date(ora1.getTime() + ora2.getTime())
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return format.format(ora1) + "-" + format.format(ora2);
+	}
 	public Boolean isIntercalat() {
 		for (int i = 0 ; i <ore1.size()-1;i++) {
 			for (int j = 1 ; j <ore1.size(); i++) {
