@@ -150,6 +150,7 @@ public class User {
 	public ResultSet executeSelect(String selectString) {
 		try {
 			PreparedStatement s = connection.prepareStatement(selectString);
+			//System.out.println(selectString);
 			return s.executeQuery();
 		} catch (Exception e) {
 			printSqlErrorMessage(selectString);
@@ -161,6 +162,7 @@ public class User {
 		try {
 			PreparedStatement s = connection.prepareStatement(updateString);
 			s.executeUpdate();
+			//System.out.println(updateString);
 			return true;
 		} catch (SQLException e) {
 			printSqlErrorMessage(updateString);

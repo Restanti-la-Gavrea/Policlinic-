@@ -180,7 +180,7 @@ public class Medic extends Medical {
 			e.printStackTrace();
 		}
 
-		return null;
+		return raport;
 	}
 
 	public Boolean updateRaport(RaportMedical raport) {
