@@ -41,8 +41,8 @@ public class Medic extends Medical {
 	public ArrayList <MedicAux> getListaAsistenti(){
 		ArrayList <MedicAux> listaAsistenti =  new ArrayList<>();
 		try {
-			String comanda = "Select * from tipasistentmedical,contract"
-					+ "where contract.nrContract = contract.nrContract ;";
+			String comanda = "Select * from tipasistentmedical,contract "
+					+ " where contract.nrContract = contract.nrContract ;";
 			ResultSet result = executeSelect(comanda);
 			if (result.next()) {
 				MedicAux Asistent = new MedicAux(result.getString("nrcontract"),
@@ -78,8 +78,8 @@ public class Medic extends Medical {
 	public ArrayList<RaportMedical> getListaRapoare(Pacient pacient){
 		ArrayList<RaportMedical> listaRapoarte = new ArrayList<>();
 		try {
-			String comanda = "Select * from VizualizareIstoric \r\n"
-					+ "where nrpacient =   " + pacient.getNrPacient() + ";";
+			String comanda = "Select * from VizualizareIstoric "
+					+ " where nrpacient =   " + pacient.getNrPacient() + ";";
 			ResultSet result = executeSelect(comanda);
 			if (result.next()) {
 				RaportMedical raport = getRaport(result.getString("nrprogramare") );
@@ -98,7 +98,7 @@ public class Medic extends Medical {
 		ArrayList<Serviciu> listaServicii = new ArrayList<>();
 		RaportMedical raport = null;
 		try {
-			String comanda = "Select * from RaportCompletMedicContract " + "where nrProgramare = " + nrProgramare;
+			String comanda = "Select * from RaportCompletMedicContract " + " where nrProgramare = " + nrProgramare + ";";
 			ResultSet result = executeSelect(comanda);
 			if (result!=null && result.next()) {
 				raport = new RaportMedical();
@@ -151,7 +151,7 @@ public class Medic extends Medical {
 			String comanda = "select * from medic,raport,Contract" +
 							 " where medic.nrContract = raport.medicRecomandare" +
 							 " and medic.nrContract = Contract.nrContract" +
-							 "and raport.NrRaport = " + raport.getNrRaport() + ";";
+							 " and raport.NrRaport = " + raport.getNrRaport() + ";";
 			ResultSet result = executeSelect(comanda);
 			if (result!=null && result.next()) {
 				MedicAux medicRecomandat = new MedicAux(result.getString("nrcontract"),
@@ -167,7 +167,7 @@ public class Medic extends Medical {
 		//Se cauta asistentul
 		try {
 			String comanda = "Select * from RaportCompletAsistentContract " + 
-							 "where nrProgramare = " + nrProgramare + ";";
+							 " where nrProgramare = " + nrProgramare + ";";
 			ResultSet result = executeSelect(comanda);
 			if (result.next()) {
 				MedicAux Asistent = new MedicAux(result.getString("nrcontract"),
