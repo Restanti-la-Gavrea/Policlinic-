@@ -147,7 +147,7 @@ public class User {
 		return null;
 	}
 
-	protected ResultSet executeSelect(String selectString) {
+	public ResultSet executeSelect(String selectString) {
 		try {
 			PreparedStatement s = connection.prepareStatement(selectString);
 			return s.executeQuery();
@@ -168,7 +168,7 @@ public class User {
 		}
 	}
 
-	protected void printSqlErrorMessage(String message) {
+	public void printSqlErrorMessage(String message) {
 		System.err.println("SQL Error:");
 		System.out.println(message);
 	}
@@ -192,7 +192,7 @@ public class User {
 	}
 
 	public double getSalariu(int month, int year) {
-		Calendar calendar = new Calendar(this.getNrContract(),Integer.toString(year),Integer.toString(month));
+		Calendar calendar = new Calendar(this.getNrContract(), Integer.toString(year), Integer.toString(month));
 		int nrMinute = calendar.getMinutesWorked();
 		double salariuLunar = Double.parseDouble(salariu) * nrMinute / 60;
 		return salariuLunar;
@@ -301,6 +301,7 @@ public class User {
 	public void setTip(String tip) {
 		this.tip = tip;
 	}
+
 	public String getNrUnitate() {
 		return nrUnitate;
 	}

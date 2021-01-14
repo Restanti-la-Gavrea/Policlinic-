@@ -12,6 +12,10 @@ public class Medic extends Medical {
 		super(result);
 	}
 
+	public Medic(String nrContract) {
+		super(nrContract);
+	}
+
 	public Medic() {
 		super();
 	}
@@ -30,6 +34,7 @@ public class Medic extends Medical {
 		profit -= super.getSalariu(month, year);
 		return profit;
 	}
+
 	@Override
 	public double getSalariu(int month, int year) {
 		double salariuLunar = this.getSalariu(month, year);
@@ -42,20 +47,20 @@ public class Medic extends Medical {
 		} catch (Exception e) {
 			printSqlErrorMessage("getsalariu, medic");
 		}
-		
+
 		double aux = profitMedic(month, year);
 		aux += salariuLunar;
 		salariuLunar += (aux * comision) / (100 - comision);
 		return salariuLunar;
 	}
+
 	public RaportMedical getRaport(String nrProgramare) {
 		RaportMedical raport = null;
-		String comanda = "Select * from RaportComplet " 
-					   + "where nrProgramare = " + nrProgramare;
-		ResultSet  result = executeSelect(comanda);
+		String comanda = "Select * from RaportComplet " + "where nrProgramare = " + nrProgramare;
+		ResultSet result = executeSelect(comanda);
 		try {
 			if (result.next()) {
-				
+
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -63,8 +68,8 @@ public class Medic extends Medical {
 		}
 		return null;
 	}
-	public bool UpdateRaport() {
-		
+
+	public boolean UpdateRaport() {
 		return false;
 	}
 

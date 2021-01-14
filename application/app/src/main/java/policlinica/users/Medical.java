@@ -11,20 +11,25 @@ public class Medical extends User {
 		super(result);
 	}
 
+	public Medical(String nrContract) {
+		super(nrContract);
+	}
+
 	public Medical() {
 		super();
 	}
+
 	public ArrayList<Pacient> getListaPacienti() {
 		ArrayList<Pacient> lista = new ArrayList<Pacient>();
 		ResultSet rs = executeSelect("Select * from Pacient");
 		try {
 			while (rs.next()) {
-				lista.add(new Pacient(rs.getInt("nrPacient"), rs.getString("nume"), rs.getString("prenume")));
+				lista.add(new Pacient(rs.getString("nrPacient"), rs.getString("nume"), rs.getString("prenume")));
 			}
 		} catch (Exception e) {
 			printSqlErrorMessage("getListaPacienti,medical");
 		}
-		return lista; 
+		return lista;
 	}
 
 }
