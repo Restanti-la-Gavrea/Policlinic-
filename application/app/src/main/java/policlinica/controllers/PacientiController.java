@@ -58,6 +58,12 @@ public class PacientiController implements Initializable {
 
             rapoarteMedicale = user.getListaRapoare(tempPacient);
 
+            if(rapoarteMedicale == null)
+                System.out.println("rapoarte lista is null");
+            else if(rapoarteMedicale.isEmpty())
+                System.out.println("rapoarte lista is empty");
+
+
             ObservableList<String> list = FXCollections.observableArrayList();
             for(RaportMedical r: rapoarteMedicale)
                 list.add(r.getNrRaport()+" "+r.getNumeMedic()+" "+r.getDataProgramare());

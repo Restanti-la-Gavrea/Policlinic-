@@ -1,5 +1,7 @@
 package policlinica.controllers;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -9,13 +11,17 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
 import policlinica.Programare;
+import policlinica.users.Medic;
 import policlinica.users.Medical;
-import policlinica.users.User;
 
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 public class ProgramareController implements Initializable {
+
+    private Medical user;
+    private ArrayList<Programare> programari;
 
     @FXML TableView<Programare> programareTable;
     @FXML TableColumn<Programare, String> numePacientCol;
@@ -68,6 +74,13 @@ public class ProgramareController implements Initializable {
         this.raportLayout = raportLayout;
         raportController = r;
         this.main = main;
+        this.user = user;
+
+        programari = user.getProgramari();
+
+        ObservableList<Programare> list = FXCollections.observableArrayList(programari);
+        programareTable.setItems(list);
+
         //TODO: ascuns butoane in functie tipul medical
 
 

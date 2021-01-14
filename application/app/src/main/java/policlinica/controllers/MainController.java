@@ -231,7 +231,7 @@ public class MainController implements Initializable {
         if(user instanceof AsistentMedical){
             serviciiBtn.setVisible(false);
             pacientiBtn.setVisible(true);
-            programariBtn.setVisible(true);
+            programariBtn.setVisible(false);
         }
         else if(user instanceof Medic){
             serviciiBtn.setVisible(true);
