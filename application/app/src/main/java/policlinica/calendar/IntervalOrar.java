@@ -25,14 +25,26 @@ public class IntervalOrar {
 			}
 		}
 	}
-//	public Boolean isIntercalat() {
-//		for (int i = 0 ; i <ore1.size()-1;i++) {
-//			for (int j = 1 ; j <ore1.size(); i++) {
-//				
-//			}
-//		}
-//		return false;
-//	}
+	public Boolean isIntercalat() {
+		for (int i = 0 ; i <ore1.size()-1;i++) {
+			for (int j = 1 ; j <ore1.size(); i++) {
+				if (!verificaintercalare(i, j))
+					return false;
+			}
+		}
+		return true;
+	}
+	private Boolean verificaintercalare(int i , int j) {
+		Date x1 = ore1.get(i);
+		Date x2 = ore1.get(j);
+		Date y1 = ore2.get(i);
+		Date y2 = ore2.get(j);
+		if (x2.compareTo(y1)>0 || y2.compareTo(x1) <0) {
+			return true;
+		}
+		return false;
+	}
+	
 	public int getMinutesIntervale() {
 		long suma = (long)0 ;
 		for (int i = 0 ; i < ore1.size(); i ++) {

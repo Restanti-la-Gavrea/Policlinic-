@@ -38,6 +38,24 @@ public class Medic extends Medical {
 		profit -= super.getSalariu(month, year);
 		return profit;
 	}
+	public ArrayList <MedicAux> getListaAsistenti(){
+		ArrayList <MedicAux> listaAsistenti =  new ArrayList<>();
+		try {
+			String comanda = "Select * from tipasistentmedical,contract"
+					+ "where contract.nrContract = contract.nrContract ;";
+			ResultSet result = executeSelect(comanda);
+			if (result.next()) {
+				MedicAux Asistent = new MedicAux(result.getString("nrcontract"),
+														result.getString("nume"),
+														result.getString("prenume"));
+				listaAsistenti.add(Asistent);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return listaAsistenti;
+	}
 
 	@Override
 	public double getSalariu(int month, int year) {
