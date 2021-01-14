@@ -44,7 +44,7 @@ public class Medic extends Medical {
 			String comanda = "Select * from tipasistentmedical,contract "
 					+ " where tipasistentmedical.nrContract = contract.nrContract ;";
 			ResultSet result = executeSelect(comanda);
-			if (result.next()) {
+			while (result.next()) {
 				MedicAux Asistent = new MedicAux(result.getString("nrcontract"),
 														result.getString("nume"),
 														result.getString("prenume"));
