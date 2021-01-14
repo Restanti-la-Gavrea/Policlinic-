@@ -81,7 +81,6 @@ public class Receptioner extends Medical {
 			return false;
 		}
 	}
-
 	public boolean generarePlata(String nrProgramare) {
 		int sum = 0;
 		try {
@@ -101,19 +100,19 @@ public class Receptioner extends Medical {
 			return false;
 		}
 	}
-	public boolean creeareProgramare(String numePacient, String prenumePacient, String cnp, String[] listaServicii,
-			String nrCMedic, String data, String ora) {
-		if (!registerPatient(numePacient, prenumePacient, cnp))
+	public boolean creeareProgramare(Programare p) {
+		if (!registerPatient(p.getNumePacient(), p.getPrenumePacient(), p.getCnpPacient()))
 			return false;
-		boolean rs = executeUpdate("Insert into Programare(dataP,ora,nrCMedic,nrPacient) " + "values (" + data + ","
-				+ ora + "," + nrCMedic + "," + cnp + ");");
-		ResultSet p = executeSelect("Select last_insert_rowid() as nrProgramare;");
+		
+		boolean rs = executeUpdate("Insert into Programare(dataP,ora,nrCMedic,nrPacient) " + "values (" + p.getDay().getStringDate() + ","
+				+ p.getDay().getIntervalorar() + ":00" + "," + p.getNrCMedic() + "," + cnp + ");");
+		ResultSet aux = executeSelect("Select last_insert_rowid() as nrProgramare;");
 		if (rs)
 			return false;
-		for (String itterator : listaServicii) {
+		for (Serviciu itterator : p.getServicii()) {
 			try {
-				rs = executeUpdate("Insert into ServiciuPerProgramare(nrServiciu , nrProgramare) values (" + itterator
-						+ "," + p.getString("nrProgramare") + ");");
+				rs = executeUpdate("Insert into ServiciuPerProgramare(nrServiciu , nrProgramare) values (" + itterator.getNrServiciu()
+						+ "," + aux.getString("nrProgramare") + ");");
 			} catch (SQLException e) {
 				System.out.println("SQLException: " + e.getMessage());
 				System.out.println("SQLState: " + ((SQLException) e).getSQLState());
