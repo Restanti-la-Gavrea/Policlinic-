@@ -33,18 +33,20 @@ public class Medical extends User {
 		}
 		return lista;
 	}
-	public void setListaPacienti(ArrayList<Serviciu> lista, String nrProgramare) {
+	public Boolean setListaServiciuPerProgramare(ArrayList<Serviciu> lista, String nrProgramare) {
 		deleteAllServiciuPerProgramare(nrProgramare);
+		Boolean mere = true;
 		for (int i = 0 ; i < lista.size(); i ++) {
-			
+			mere = mere && insertServiciuPerProgramare(lista.get(i), nrProgramare);
 		}
+		return mere;
 	}
-//	public Boolean insertServiciuPerProgramare(Serviciu serviciu) {
-//		String comanda = "Insert into ServiciuPerProgramare(nrServiciu , nrProgramare,rezultat) values" +
-//						"(" + serviciu.getNrServiciu() + ""
-//		rs = executeUpdate("Insert into ServiciuPerProgramare(nrServiciu , nrProgramare) values (" + itterator
-//				+ "," + p.getString("nrProgramare") + ");");
-//	}
+	public Boolean insertServiciuPerProgramare(Serviciu serviciu,String nrProgramare) {
+		String comanda = "Insert into ServiciuPerProgramare(nrServiciu , nrProgramare,rezultat) values" +
+						"(" + serviciu.getNrServiciu() + "," +nrProgramare + ",'" +
+						serviciu.getRezultat() + "')";
+		return executeUpdate(comanda);
+	}
 	public Boolean deleteAllServiciuPerProgramare(String nrProgramare) {
 		String comanda = "delete from ServiciuPerProgramare where nrProgramare = " +  nrProgramare;
 		return executeUpdate(comanda);
