@@ -5,6 +5,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import policlinica.MedicAux;
 import policlinica.Programare;
@@ -44,23 +45,33 @@ public class RaportController implements Initializable {
 
     @FXML private Label errLbl;
 
+    @FXML private HBox extra;
+    @FXML private Button showServiciBtn;
+    @FXML private Button deleteBtn;
+    @FXML private Button addServiciuBtn;
+    @FXML private ChoiceBox serviciuBox;
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         createBtn.managedProperty().bind(createBtn.visibleProperty());
         updateBtn.managedProperty().bind(updateBtn.visibleProperty());
         pBtn.managedProperty().bind(pBtn.visibleProperty());
 
+        extra.managedProperty().bind(extra.visibleProperty());
+        extra.setVisible(false);
+
         errLbl.managedProperty().bind(pBtn.visibleProperty());
         errLbl.setVisible(false);
 
         serviciiList.getSelectionModel().selectedIndexProperty().addListener(
                 (ObservableValue<? extends Number> ov, Number old_val, Number new_val) -> {
-                    if(!raportMedical.isParafat()){
+                    if(!raportMedical.isParafat() && ((old_val.intValue() != -1))){
                         String temp = rezultatArea.getText();
-                        raportMedical.getServiciu().get((int)old_val).setRezultat(temp);
+                        raportMedical.getServiciu().get(old_val.intValue()).setRezultat(temp);
                     }
 
-                    rezultatArea.setText(raportMedical.getServiciu().get((int)(new_val)).getRezultat());
+                    if(new_val.intValue() != -1)
+                        rezultatArea.setText(raportMedical.getServiciu().get(new_val.intValue()).getRezultat());
 
                 });
     }
@@ -74,8 +85,7 @@ public class RaportController implements Initializable {
     @FXML public void createRaport(){
         fillDataIntoRaport();
 
-        //TODO update la Raport
-        //TODO creare raport in baza de date
+        user.insertRaport(raportMedical);
 
         goBack();
     }
@@ -83,16 +93,23 @@ public class RaportController implements Initializable {
     @FXML public void updateRaport(){
         fillDataIntoRaport();
 
-        //TODO: dat update la report si in baza de date
+        user.updateRaport(raportMedical);
+
         goBack();
     }
 
     @FXML public void parafeaza(){
 
-        if(updateBtn.visibleProperty().getValue()&&!createBtn.visibleProperty().getValue())
-            updateRaport();
-        else if (!updateBtn.visibleProperty().getValue()&&createBtn.visibleProperty().getValue())
-            createRaport();
+        if(updateBtn.visibleProperty().getValue()&&!createBtn.visibleProperty().getValue()) {
+            fillDataIntoRaport();
+            raportMedical.parafeaza();
+            user.updateRaport(raportMedical);
+        }
+        else if (!updateBtn.visibleProperty().getValue()&&createBtn.visibleProperty().getValue()){
+            fillDataIntoRaport();
+            raportMedical.parafeaza();
+            user.updateRaport(raportMedical);
+        }
         else {System.err.println("Eroare la parafare, nu se detecteaza scena");return;}
 
         if(!(user instanceof AsistentMedical))
@@ -101,6 +118,25 @@ public class RaportController implements Initializable {
         }
 
         goBack();
+    }
+
+    @FXML public void showServiciu(){
+        extra.setVisible(true);
+    }
+
+    @FXML public void deleteServiciu(){
+        int i = serviciiList.getSelectionModel().selectedIndexProperty().intValue();
+        if(i != -1){
+            raportMedical.getServiciu().remove(i);
+            updateServicii();
+        }
+    }
+
+    @FXML public void addServiciu(){
+
+
+
+        extra.setVisible(false);
     }
 
     public void setRaportMedical(RaportMedical raportMedical){
@@ -181,6 +217,23 @@ public class RaportController implements Initializable {
     }
 
     private void fillDataIntoRaport(){
+        int i = medicRecomandantBox.getSelectionModel().getSelectedIndex();
+        if( i != -1)
+            raportMedical.setMedicRecomandare(user.generateListaMedici()[i]);
+        else
+            raportMedical.setMedicRecomandare(null);
+
+        i = asistentBox.getSelectionModel().getSelectedIndex();
+        if(i != -1)
+            raportMedical.setMedicRecomandare(user.getListaAsistenti().get(i));
+        else
+            raportMedical.setMedicRecomandare(null);
+
+        raportMedical.setDiagnostic(diagnosticArea.getText());
+        raportMedical.setSimptome(simptomeArea.getText());
+        raportMedical.setRecomandari(recomandariArea.getText());
+
+        raportMedical.getServiciu().get(serviciiList.getSelectionModel().getSelectedIndex()).setRezultat(rezultatArea.getText());
 
     }
 
@@ -206,6 +259,9 @@ public class RaportController implements Initializable {
         diagnosticArea.setDisable(true);
         recomandariArea.setDisable(true);
 
+        asistentBox.setDisable(true);
+        medicRecomandantBox.setDisable(true);
+
         updateBtn.setVisible(false);
         createBtn.setVisible(false);
         pBtn.setVisible(false);
@@ -215,6 +271,9 @@ public class RaportController implements Initializable {
         rezultatArea.setDisable(false);
         diagnosticArea.setDisable(false);
         recomandariArea.setDisable(false);
+
+        asistentBox.setDisable(false);
+        medicRecomandantBox.setDisable(false);
     }
 
     private void fillBoxes(){
@@ -233,5 +292,16 @@ public class RaportController implements Initializable {
         for(MedicAux a: asistenti)
             asistentBox.getItems().add(a.getNume() + " " + a.getPrenume());
 
+        ArrayList<Serviciu> servicii = user.getListaServicii(raportMedical.getNrProgramare());
+        serviciuBox.getItems().clear();
+        for(Serviciu s: servicii)
+            serviciuBox.getItems().add(s.getNume());
+    }
+
+    private void updateServicii(){
+        ArrayList<Serviciu> list = raportMedical.getServiciu();
+        serviciiList.getItems().clear();
+        for(Serviciu s: list)
+            serviciiList.getItems().add(s.getNume());
     }
 }

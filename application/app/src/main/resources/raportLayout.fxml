@@ -60,6 +60,12 @@
                   <ListView fx:id="serviciiList" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" />
                </children>
             </VBox>
+            <VBox alignment="BOTTOM_CENTER" spacing="10.0" HBox.hgrow="NEVER">
+               <children>
+                  <Button fx:id="showServiciuBtn" mnemonicParsing="false" onAction="#showServiciu" styleClass="blueButton" text="Adauga" />
+                  <Button fx:id="deleteBtn" mnemonicParsing="false" onAction="#deleteServiciu" prefWidth="57.0" styleClass="blueButton" text="Sterge" />
+               </children>
+            </VBox>
             <VBox spacing="5.0" HBox.hgrow="ALWAYS">
                <children>
                   <Label text="Rezultat" />
@@ -70,6 +76,12 @@
          <padding>
             <Insets bottom="5.0" top="5.0" />
          </padding>
+      </HBox>
+      <HBox fx:id="extra" spacing="10.0" VBox.vgrow="ALWAYS">
+         <children>
+            <ChoiceBox fx:id="serviciuBox" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" HBox.hgrow="ALWAYS" />
+            <Button fx:id="addServiciuBtn" mnemonicParsing="false" onAction="#addServiciu" text="Adauga Serviciu" />
+         </children>
       </HBox>
       <Separator prefWidth="200.0" />
       <VBox layoutX="30.0" layoutY="198.0" spacing="5.0" VBox.vgrow="ALWAYS">

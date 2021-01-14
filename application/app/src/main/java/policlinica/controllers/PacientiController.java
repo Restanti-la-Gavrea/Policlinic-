@@ -58,15 +58,13 @@ public class PacientiController implements Initializable {
 
             rapoarteMedicale = user.getListaRapoare(tempPacient);
 
-            if(rapoarteMedicale == null)
-                System.out.println("rapoarte lista is null");
-            else if(rapoarteMedicale.isEmpty())
-                System.out.println("rapoarte lista is empty");
-
 
             ObservableList<String> list = FXCollections.observableArrayList();
             for(RaportMedical r: rapoarteMedicale)
+            {
                 list.add(r.getNrRaport()+" "+r.getNumeMedic()+" "+r.getDataProgramare());
+                System.out.println(r.getDataProgramare() + " here i tried to put a day");
+            }
 
             contextList.setItems(list);
 
@@ -107,7 +105,6 @@ public class PacientiController implements Initializable {
                if(r.hasTheseDetails(raportDetails))
                    tempRaport = r;
 
-           //TODO: setat raport folosind raportController)
            raportController.loadRaport(tempRaport);
 
            main.setCenter(raportLayout);

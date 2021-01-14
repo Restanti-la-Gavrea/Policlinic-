@@ -94,28 +94,28 @@ public class RaportMedical {
 
     //funtiile de set nu fac nimic daca e parafat raportul
     public String getNrRaport() { return nrRaport; }
-    public void setNrRaport(String nrRaport) { if(!parafat) this.nrRaport = nrRaport; }
+    public void setNrRaport(String nrRaport) { this.nrRaport = nrRaport; }
     public String getDataProgramare() { return dataProgramare; }
-    public void setDataProgramare(String dataProgramare) { if(!parafat)  this.dataProgramare = dataProgramare; }
+    public void setDataProgramare(String dataProgramare) {  this.dataProgramare = dataProgramare; }
     public String getOraProgramare() { return oraProgramare;  }
-    public void setOraProgramare(String oraProgramare) { if(!parafat)  this.oraProgramare = oraProgramare; }
+    public void setOraProgramare(String oraProgramare) {  this.oraProgramare = oraProgramare; }
     public String getNumeMedic() {return medic.getNume(); }
-    public void setNumeMedic(String numeMedic) { if(!parafat) medic.setNume(numeMedic); }
+    public void setNumeMedic(String numeMedic) {  medic.setNume(numeMedic); }
     public String getPrenumeMedic() { return medic.getPrenume(); }
-    public void setPrenumeMedic(String prenumeMedic) { if(!parafat) medic.setPrenume(prenumeMedic); }
+    public void setPrenumeMedic(String prenumeMedic) {  medic.setPrenume(prenumeMedic); }
     public String getNrCMedic() { return medic.getNrContract();}
-    public void setNrCMedic(String nrCMedic) { if(!parafat)  medic.setNrContract(nrCMedic); }
+    public void setNrCMedic(String nrCMedic) { medic.setNrContract(nrCMedic); }
     public Pacient getPacient() { return pacient;  }
-    public void setPacient(Pacient pacient) { if(!parafat) this.pacient = pacient; }
+    public void setPacient(Pacient pacient) { this.pacient = pacient; }
     public String getSimptome() {return simptome; }
-    public void setSimptome(String simptome) { if(!parafat) this.simptome = simptome; }
+    public void setSimptome(String simptome) {  this.simptome = simptome; }
     public String getDiagnostic() {  return diagnostic;  }
-    public void setDiagnostic(String diagnostic) { if(!parafat) this.diagnostic = diagnostic; }
+    public void setDiagnostic(String diagnostic) { this.diagnostic = diagnostic; }
     public String getRecomandari() { return recomandari;  }
-    public void setRecomandari(String recomandari) { if(!parafat) this.recomandari = recomandari; }
+    public void setRecomandari(String recomandari) {  this.recomandari = recomandari; }
     public ArrayList<Serviciu> getServiciu() { return serviciu;  }
-    public void setServiciu(ArrayList serviciu) { if(!parafat) this.serviciu = serviciu; }
-    public void parafeaza(){ if(!parafat) parafat = true; }
+    public void setServiciu(ArrayList serviciu) {  this.serviciu = serviciu; }
+    public void parafeaza(){  parafat = true; }
     public boolean isParafat(){ return parafat;}
 
     public String getNrProgramare() { return nrProgramare; }
