@@ -21,12 +21,23 @@
     -fx-background-radius: 0;
 }
 
+.text-area {
+     -fx-background-radius: 0;
+     -fx-border-color: rgba(5,50,55,0.15);
+             -fx-border-style: solid;
+             -fx-border-width: 1;
+     -fx-background-color: rgba(11,100,110,0.0);
+}
+.text-area .content{
+    -fx-background-color: rgba(11,100,110,0.01);
+}
+
 .button:hover {
-    -fx-background-color: rgba(0,0,0,0.2);
+    -fx-background-color: rgba(5,50,55,0.2);
 }
 
 .button:pressed {
-    -fx-background-color: rgba(0,0,0,0.4);
+    -fx-background-color: rgba(5,50,55,0.4);
 }
 
 #mainMenu {

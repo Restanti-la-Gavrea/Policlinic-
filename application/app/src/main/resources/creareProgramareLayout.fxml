@@ -121,7 +121,7 @@
                   <Insets />
                </HBox.margin>
             </Button>
-            <Button fx:id="backBtn" mnemonicParsing="false" onAction="#goBack" styleClass="blueButton" text="Inapoi" />
+            <Button fx:id="backBtn" mnemonicParsing="false" onAction="#goBack" text="Inapoi" />
             <Label fx:id="errLbl" prefHeight="25.0" styleClass="err" text="A avut loc o eroare la creearea programarii">
                <padding>
                   <Insets left="5.0" right="5.0" />

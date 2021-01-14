@@ -21,12 +21,11 @@ public class RaportController implements Initializable {
     private RaportMedical raportMedical;
 
     @FXML Button backButton;
-    @FXML
-    TextArea text;
+
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        text.setDisable(true);
+
     }
 
     @FXML public void goBack(){
