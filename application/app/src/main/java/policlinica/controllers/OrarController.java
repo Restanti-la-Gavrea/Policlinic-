@@ -16,6 +16,7 @@ import policlinica.users.ResurseUmane;
 import policlinica.users.User;
 
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 public class OrarController implements Initializable {
@@ -186,7 +187,11 @@ public class OrarController implements Initializable {
             {
                 Day zi = calendar.getDay(i,j);
                 if(zi != null){
-                    matrix[i][j].setText("" + zi.getDayOfMonth() + "\n" + zi.getIntervalorar());
+                    String temp = "";
+                    ArrayList<String> intervale = zi.getArrayOfIntervalOrar();
+                    for(String s: intervale)
+                        temp += s + "\n";
+                    matrix[i][j].setText("" + zi.getDayOfMonth() + "\n" + temp); // + zi.getInterval()
                     if(matrix[i][j].getStyleClass().size() == 1)
                         matrix[i][j].getStyleClass().add("calendarItem");
                     if(matrix[i][j].getStyleClass().size() == 3)

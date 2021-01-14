@@ -119,13 +119,13 @@ public class MainController implements Initializable {
         main.setCenter(finanteLayout);
     }
     @FXML public void setPacientiLayout(){
-        pacientiController.setContext((Medical)user, raportLayout, raportController, main);
-        raportController.setContext((Medical)user, pacientiLayout, main);
+        pacientiController.setContext((Medic)user, raportLayout, raportController, main);
+        raportController.setContext((Medic)user, pacientiLayout, main);
         main.setCenter(pacientiLayout);
     }
     @FXML public void setProgramariLayout(){
         programareController.setContext((Medical)user, creareProgramareLayout, creareProgramareController, raportLayout, raportController, main);
-        raportController.setContext((Medical)user, programareLayout, main);
+        raportController.setContext((Medic)user, programareLayout, main);
         creareProgramareController.setContext((Medical)user, programareLayout, programareController, main);
         main.setCenter(programareLayout);
     }
@@ -230,21 +230,22 @@ public class MainController implements Initializable {
 
         if(user instanceof AsistentMedical){
             serviciiBtn.setVisible(false);
-        }
-        else{
-           if(user instanceof Medic)
-               serviciiBtn.setVisible(true);
-           else
-               serviciiBtn.setVisible(false);
-        }
-
-        if(user instanceof Medical){
             pacientiBtn.setVisible(true);
             programariBtn.setVisible(true);
         }
+        else if(user instanceof Medic){
+            serviciiBtn.setVisible(true);
+            pacientiBtn.setVisible(true);
+            programariBtn.setVisible(true);}
+        else if(user instanceof Receptioner) {
+            pacientiBtn.setVisible(false);
+            programariBtn.setVisible(true);
+            serviciiBtn.setVisible(false); }
         else{
             pacientiBtn.setVisible(false);
             programariBtn.setVisible(false);
+            serviciiBtn.setVisible(false);
         }
+
     }
 }

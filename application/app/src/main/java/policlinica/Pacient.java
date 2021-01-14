@@ -22,7 +22,7 @@ public class Pacient {
     //urmatoarea funtie e facuta pentru mine de mine
     public boolean hasFullName(String fullName){
         //ii dai numele complet si verifica daca se potriveste
-        return fullName.equals(nume+""+prenume);
+        return fullName.equals(nume+" "+prenume);
     }
 
 }

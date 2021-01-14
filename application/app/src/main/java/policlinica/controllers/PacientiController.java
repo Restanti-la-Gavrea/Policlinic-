@@ -11,6 +11,7 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
 import policlinica.Pacient;
 import policlinica.RaportMedical;
+import policlinica.users.Medic;
 import policlinica.users.Medical;
 
 import java.net.URL;
@@ -26,7 +27,7 @@ public class PacientiController implements Initializable {
     private ArrayList<Pacient> pacienti;
     private ArrayList<RaportMedical> rapoarteMedicale;
 
-    private Medical user;
+    private Medic user;
     private VBox raportLayout;
     private RaportController raportController;
     private BorderPane main;
@@ -49,18 +50,18 @@ public class PacientiController implements Initializable {
         System.out.println("P selected: " + numePacient);
 
         if(numePacient != null){
-            Pacient tempPacient;
+            Pacient tempPacient = null;
             for(Pacient p: pacienti) {
                 if(p.hasFullName(numePacient))
                     tempPacient = p;
             }
 
-            //TODO: de creat lista de rapoarte pe baza unui numar de pacient
+            rapoarteMedicale = user.getListaRapoare(tempPacient);
 
             ObservableList<String> list = FXCollections.observableArrayList();
             for(RaportMedical r: rapoarteMedicale)
                 list.add(r.getNrRaport()+" "+r.getNumeMedic()+" "+r.getDataProgramare());
-            list.add("acum vedem rapoarte");
+
             contextList.setItems(list);
 
             backContextBtn.setVisible(true);
@@ -74,13 +75,12 @@ public class PacientiController implements Initializable {
     private void showPacientiHandler(ActionEvent e){ showPacienti();}
     public void showPacienti(){
 
-        //TODO: de RECREAT lista de pacienti
+        pacienti = user.getListaPacienti();
 
         ObservableList<String> list = FXCollections.observableArrayList();
         for(Pacient p: pacienti) {
             list.add(p.getNume()+" "+p.getPrenume());
         }
-        list.add("acum vedem pacienti");
         contextList.setItems(list);
 
         nextContextBtn.setOnAction(this::showReportsHandler);
@@ -95,21 +95,22 @@ public class PacientiController implements Initializable {
         System.out.println("R selected: " + raportDetails);
 
        if(raportDetails != null){
-           RaportMedical tempRaport;
+           RaportMedical tempRaport = null;
 
            for(RaportMedical r: rapoarteMedicale)
                if(r.hasTheseDetails(raportDetails))
                    tempRaport = r;
 
-           //TODO: setat raport folosind raportController.setRaportMedical()
+           //TODO: setat raport folosind raportController)
+           raportController.loadRaport(tempRaport);
 
            main.setCenter(raportLayout);
        }
     }
 
-    public void setContext(Medical user, VBox raportLayout, RaportController raportController, BorderPane main){
+    public void setContext(Medic user, VBox raportLayout, RaportController raportController, BorderPane main){
         //asta se executa cand se apasa pe butonul pacienti
-        //TODO: de creat lista de pacienti
+        pacienti = user.getListaPacienti();
 
         this.main = main;
         this.user = user;
@@ -117,9 +118,11 @@ public class PacientiController implements Initializable {
         this.raportController = raportController;
 
         ObservableList<String> list = FXCollections.observableArrayList();
-        for(RaportMedical r: rapoarteMedicale)
-            list.add(r.getNrRaport()+" "+r.getNumeMedic()+" "+r.getDataProgramare());
-        list.add("acum vedem pacienti");
+        /*for(RaportMedical r: rapoarteMedicale)
+            list.add(r.getNrRaport()+" "+r.getNumeMedic()+" "+r.getDataProgramare());*/
+        for(Pacient p: pacienti) {
+            list.add(p.getNume()+" "+p.getPrenume());
+        }
         contextList.setItems(list);
     }
 
