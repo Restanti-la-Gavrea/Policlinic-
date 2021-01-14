@@ -131,6 +131,7 @@ public class Medic extends Medical {
 						result.getString("numeserviciu"),
 						result.getString("rezultat"));
 				listaServicii.add(serviciu);
+				raport.setServiciu(listaServicii);
 			}
 			else 
 				return null; // Aici se poate termina programul
