@@ -21,7 +21,6 @@ public class Medical extends User {
 	public Medical() {
 		super();
 	}
-
 	public ArrayList<Pacient> getListaPacienti() {
 		ArrayList<Pacient> lista = new ArrayList<Pacient>();
 		ResultSet rs = executeSelect("Select * from Pacient");
@@ -73,7 +72,7 @@ public class Medical extends User {
 		try {
 			while (rs.next()) {
 				ResultSet aux = executeSelect(
-						"Select * from Raport where nrProgramre = " + rs.getString("nrProgramare") + ";");	
+						"Select * from Raport where nrProgramare = " + rs.getString("nrProgramare") + ";");	
 				Programare p = new Programare();
 				p.setRaport("true");
 				p.setAchitat("false");
@@ -115,9 +114,7 @@ public class Medical extends User {
 				}
 			}
 		} catch (Exception e) {
-			System.out.println("SQLException: " + e.getMessage());
-			System.out.println("SQLState: " + ((SQLException) e).getSQLState());
-			System.out.println("VendorError: " + ((SQLException) e).getErrorCode());
+			e.getStackTrace();
 		}
 		return lista;
 	}

@@ -12,7 +12,6 @@ import policlinica.RaportMedical;
 import policlinica.Serviciu;
 import policlinica.users.AsistentMedical;
 import policlinica.users.Medic;
-import policlinica.users.Medical;
 
 import java.net.URL;
 import java.util.ArrayList;
@@ -45,8 +44,6 @@ public class RaportController implements Initializable {
 
     @FXML private Label errLbl;
 
-    RaportMedical workingRaport;
-
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         createBtn.managedProperty().bind(createBtn.visibleProperty());
@@ -58,12 +55,12 @@ public class RaportController implements Initializable {
 
         serviciiList.getSelectionModel().selectedIndexProperty().addListener(
                 (ObservableValue<? extends Number> ov, Number old_val, Number new_val) -> {
-                    if(!workingRaport.isParafat()){
+                    if(!raportMedical.isParafat()){
                         String temp = rezultatArea.getText();
-                        workingRaport.getServiciu().get((int)old_val).setRezultat(temp);
+                        raportMedical.getServiciu().get((int)old_val).setRezultat(temp);
                     }
 
-                    rezultatArea.setText(workingRaport.getServiciu().get((int)(new_val)).getRezultat());
+                    rezultatArea.setText(raportMedical.getServiciu().get((int)(new_val)).getRezultat());
 
                 });
     }
@@ -166,21 +163,21 @@ public class RaportController implements Initializable {
     }
 
     private void fillDataIntoScreen(){
-        detailsLbl.setText("Raport Nr. " + workingRaport.getNrProgramare() + ", " + workingRaport.getDataProgramare() + " " + workingRaport.getOraProgramare());
-        numeMedicLbl.setText(workingRaport.getNumeMedic() + " " + workingRaport.getPrenumeMedic());
-        numePacientLbl.setText(workingRaport.getPacient().getNume() + " " + workingRaport.getPacient().getPrenume());
+        detailsLbl.setText("Raport Nr. " + raportMedical.getNrProgramare() + ", " + raportMedical.getDataProgramare() + " " + raportMedical.getOraProgramare());
+        numeMedicLbl.setText(raportMedical.getNumeMedic() + " " + raportMedical.getPrenumeMedic());
+        numePacientLbl.setText(raportMedical.getPacient().getNume() + " " + raportMedical.getPacient().getPrenume());
 
         fillBoxes();
 
-        if(workingRaport.getMedicRecomandare() != null)
-            medicRecomandantBox.getSelectionModel().select(workingRaport.getMedicRecomandare().getNume() + " " + workingRaport.getMedicRecomandare().getPrenume());
+        if(raportMedical.getMedicRecomandare() != null)
+            medicRecomandantBox.getSelectionModel().select(raportMedical.getMedicRecomandare().getNume() + " " + raportMedical.getMedicRecomandare().getPrenume());
 
-        if(workingRaport.getAsistent() != null)
-            asistentBox.getSelectionModel().select(workingRaport.getAsistent().getNume() + " " + workingRaport.getAsistent().getPrenume());
+        if(raportMedical.getAsistent() != null)
+            asistentBox.getSelectionModel().select(raportMedical.getAsistent().getNume() + " " + raportMedical.getAsistent().getPrenume());
 
-        recomandariArea.setText(workingRaport.getRecomandari());
-        simptomeArea.setText(workingRaport.getSimptome());
-        diagnosticArea.setText(workingRaport.getDiagnostic());
+        recomandariArea.setText(raportMedical.getRecomandari());
+        simptomeArea.setText(raportMedical.getSimptome());
+        diagnosticArea.setText(raportMedical.getDiagnostic());
     }
 
     private void fillDataIntoRaport(){
@@ -226,7 +223,7 @@ public class RaportController implements Initializable {
         for(MedicAux m: medici)
             medicRecomandantBox.getItems().add(m.getNume() + " " + m.getPrenume());
 
-        ArrayList<Serviciu> list = workingRaport.getServiciu();
+        ArrayList<Serviciu> list = raportMedical.getServiciu();
         serviciiList.getItems().clear();
         for(Serviciu s: list)
             serviciiList.getItems().add(s.getNume());
