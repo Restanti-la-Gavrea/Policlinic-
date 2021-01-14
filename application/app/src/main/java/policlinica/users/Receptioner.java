@@ -7,6 +7,9 @@ import java.util.Calendar;
 import java.util.ArrayList;
 import policlinica.Specialitate;
 import policlinica.Serviciu;
+import policlinica.Programare;
+import policlinica.MedicAux;
+import policlinica.Pacient;
 
 public class Receptioner extends Medical {
 
@@ -98,7 +101,6 @@ public class Receptioner extends Medical {
 			return false;
 		}
 	}
-
 	public boolean creeareProgramare(String numePacient, String prenumePacient, String cnp, String[] listaServicii,
 			String nrCMedic, String data, String ora) {
 		if (!registerPatient(numePacient, prenumePacient, cnp))
