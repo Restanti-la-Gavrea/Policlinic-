@@ -75,7 +75,7 @@ public class Medical extends User {
 						"Select * from Raport where nrProgramare = " + rs.getString("nrProgramare") + ";");	
 				Programare p = new Programare();
 				p.setRaport("true");
-				p.setAchitat("false");
+				p.setAchitat("true");
 				if (!aux.next()) {
 					ResultSet aux1 = executeSelect(
 							"Select nume, prenume from Contract where nrContract = " + rs.getString("nrCMedic") + ";");
