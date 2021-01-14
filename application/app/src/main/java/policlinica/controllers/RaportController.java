@@ -14,8 +14,7 @@ import java.util.ResourceBundle;
 
 public class RaportController implements Initializable {
 
-    private VBox pacientiLayout;
-    private PacientiController pacientiController;
+    private VBox returnLayout;
     private Medical user;
     private BorderPane main;
 
@@ -31,19 +30,18 @@ public class RaportController implements Initializable {
     }
 
     @FXML public void goBack(){
-        main.setCenter(pacientiLayout);
+        main.setCenter(returnLayout);
     }
 
     public void setRaportMedical(RaportMedical raportMedical){
         this.raportMedical = raportMedical;
     }
 
-    public void setContext(Medical user, VBox pacientiLayout,  PacientiController pacientiController, BorderPane main) {
+    public void setContext(Medical user, VBox returnLayout,  BorderPane main) {
         //asta se executa cand se apasa pe butonul pacienti
 
         this.main = main;
         this.user = user;
-        this.pacientiLayout = pacientiLayout;
-        this.pacientiController = pacientiController;
+        this.returnLayout = returnLayout;
     }
 }

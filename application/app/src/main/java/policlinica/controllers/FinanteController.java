@@ -60,7 +60,8 @@ public class FinanteController implements Initializable {
                     try{
                         currentView = viewBox.getItems().get(viewBox.getSelectionModel().getSelectedIndex());}
                     catch (IndexOutOfBoundsException e){
-                        System.err.println("IndexOutOfBoundsException at line 66, FinanteController");
+                        System.err.println("IndexOutOfBoundsException , FinanteController");
+                        viewBox.getSelectionModel().clearSelection();
                         currentView = null;
                     }
                     updateTable();
@@ -81,6 +82,7 @@ public class FinanteController implements Initializable {
         this.user = user;
         currentView = null;
         medicList = null;
+        viewBox.getSelectionModel().clearSelection();
 
         while(viewBox.getItems().size() > 0) {
             viewBox.getItems().remove(0);

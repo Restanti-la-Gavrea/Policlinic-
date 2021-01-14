@@ -105,7 +105,6 @@ public class PacientiController implements Initializable {
 
            main.setCenter(raportLayout);
        }
-
     }
 
     public void setContext(Medical user, VBox raportLayout, RaportController raportController, BorderPane main){
@@ -120,7 +119,7 @@ public class PacientiController implements Initializable {
         ObservableList<String> list = FXCollections.observableArrayList();
         for(RaportMedical r: rapoarteMedicale)
             list.add(r.getNrRaport()+" "+r.getNumeMedic()+" "+r.getDataProgramare());
-        list.add("acum vedem rapoarte");
+        list.add("acum vedem pacienti");
         contextList.setItems(list);
     }
 

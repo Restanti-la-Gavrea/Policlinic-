@@ -56,6 +56,12 @@ public class MainController implements Initializable {
     private VBox raportLayout;
     private RaportController raportController;
 
+    private VBox programareLayout;
+    private ProgramareController programareController;
+
+    private VBox creareProgramareLayout;
+    private CreareProgramareController creareProgramareController;
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
@@ -114,10 +120,14 @@ public class MainController implements Initializable {
     }
     @FXML public void setPacientiLayout(){
         pacientiController.setContext((Medical)user, raportLayout, raportController, main);
-        raportController.setContext((Medical)user, pacientiLayout, pacientiController, main);
+        raportController.setContext((Medical)user, pacientiLayout, main);
         main.setCenter(pacientiLayout);
     }
     @FXML public void setProgramariLayout(){
+        programareController.setContext((Medical)user, creareProgramareLayout, creareProgramareController, raportLayout, raportController, main);
+        raportController.setContext((Medical)user, programareLayout, main);
+        creareProgramareController.setContext((Medical)user, programareLayout, programareController, main);
+        main.setCenter(programareLayout);
     }
     @FXML public void setServiciiLayout(){
     }
@@ -177,6 +187,13 @@ public class MainController implements Initializable {
         raportLayout = loader.load();
         raportController = loader.getController();
 
+        loader = new FXMLLoader(getClass().getResource("/programareLayout.fxml"));
+        programareLayout = loader.load();
+        programareController = loader.getController();
+
+        loader = new FXMLLoader(getClass().getResource("/creareProgramareLayout.fxml"));
+        creareProgramareLayout = loader.load();
+        creareProgramareController = loader.getController();
     }
 
     public void setUser(User user) {

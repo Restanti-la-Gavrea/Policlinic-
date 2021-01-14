@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" spacing="10.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="policlinica.controllers.ProgramareController">
+   <padding>
+      <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+   </padding>
+   <children>
+      <TableView fx:id="programareTable" VBox.vgrow="ALWAYS">
+        <columns>
+          <TableColumn fx:id="numePacientCol" prefWidth="111.0" text="Nume Pacient" />
+          <TableColumn fx:id="specialitateCol" prefWidth="105.0" text="Specialitatea" />
+            <TableColumn fx:id="dataOraCol" prefWidth="75.0" text="Data si Ora" />
+            <TableColumn fx:id="achitatCol" prefWidth="75.0" text="Achitata" />
+            <TableColumn fx:id="raportCol" prefWidth="75.0" text="Raport" />
+        </columns>
+      </TableView>
+      <HBox spacing="10.0">
+         <VBox.margin>
+            <Insets />
+         </VBox.margin>
+         <children>
+            <Button fx:id="raportBtn" mnemonicParsing="false" onAction="#creeazaRaport" styleClass="blueButton" text="Incepe Raport" />
+            <Button fx:id="plataBtn" mnemonicParsing="false" onAction="#creeazaPlata" styleClass="blueButton" text="Realizeaza Plata" />
+            <Button fx:id="programareBtn" mnemonicParsing="false" onAction="#creeazaProgramare" styleClass="blueButton" text="Creeaza Programare" />
+         </children>
+      </HBox>
+   </children>
+</VBox>
