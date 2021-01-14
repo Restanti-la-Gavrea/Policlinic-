@@ -82,7 +82,9 @@ public class Medic extends Medical {
 					+ "where nrpacient =   " + pacient.getNrPacient() + ";";
 			ResultSet result = executeSelect(comanda);
 			if (result.next()) {
-				listaRapoarte.add(getRaport(result.getString("nrprogramare")));
+				RaportMedical raport = getRaport(result.getString("nrprogramare") );
+				if (raport != null)
+					listaRapoarte.add(raport);
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -98,7 +100,7 @@ public class Medic extends Medical {
 		try {
 			String comanda = "Select * from RaportCompletMedicContract " + "where nrProgramare = " + nrProgramare;
 			ResultSet result = executeSelect(comanda);
-			if (result.next()) {
+			if (result!=null && result.next()) {
 				raport = new RaportMedical();
 
 				// Tabela Raport
@@ -133,7 +135,7 @@ public class Medic extends Medical {
 			else 
 				return null; // Aici se poate termina programul
 			
-			while (result.next()) {//Se cauta si restul de servicii
+			while (result!=null && result.next()) {//Se cauta si restul de servicii
 				Serviciu serviciu = new Serviciu(
 						result.getString("nrserviciu"), 
 						result.getString("numeserviciu"),
@@ -151,7 +153,7 @@ public class Medic extends Medical {
 							 " and medic.nrContract = Contract.nrContract" +
 							 "and raport.NrRaport = " + raport.getNrRaport() + ";";
 			ResultSet result = executeSelect(comanda);
-			if (result.next()) {
+			if (result!=null && result.next()) {
 				MedicAux medicRecomandat = new MedicAux(result.getString("nrcontract"),
 														result.getString("nume"),
 														result.getString("prenume"));
