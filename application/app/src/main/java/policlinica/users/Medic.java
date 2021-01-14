@@ -2,6 +2,8 @@ package policlinica.users;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+
+import policlinica.RaportMedical;
 import policlinica.calendar.*;
 
 public class Medic extends Medical {
@@ -45,6 +47,25 @@ public class Medic extends Medical {
 		aux += salariuLunar;
 		salariuLunar += (aux * comision) / (100 - comision);
 		return salariuLunar;
+	}
+	public RaportMedical getRaport(String nrProgramare) {
+		RaportMedical raport = null;
+		String comanda = "Select * from RaportComplet " 
+					   + "where nrProgramare = " + nrProgramare;
+		ResultSet  result = executeSelect(comanda);
+		try {
+			if (result.next()) {
+				
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return null;
+	}
+	public bool UpdateRaport() {
+		
+		return false;
 	}
 
 }
