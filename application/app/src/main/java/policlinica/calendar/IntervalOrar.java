@@ -40,7 +40,14 @@ public class IntervalOrar {
 			ora2 += ora3;
 			minut2 += minut3;
 		}
-		return format.format(ora1) + "-" + format.format(ora2);
+		ora2 += (minut2/60)%24;
+		minut2 = minut2 % 60;
+		String rezultat= "";
+		if (ora1< 10)
+			rezultat += "";
+		rezultat +=ora1;
+		
+		return ora1 + ":" + minut1 + "-" + ora2 + ":" +minut2;
 	}
 	public Boolean isIntercalat() {
 		for (int i = 0 ; i <ore1.size()-1;i++) {
