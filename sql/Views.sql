@@ -36,14 +36,16 @@ specialitate.nume AS numespecialitate,serviciu.nrserviciu,serviciu.nume AS numes
 newdurata from medic INNER JOIN specialitatemedic INNER JOIN specialitate INNER JOIN serviciu INNER JOIN serviciucustom 
 ON medic.nrcontract=specialitatemedic.nrcontract and specialitate.nrspecialitate=specialitatemedic.nrspecialitate and medic.nrcontract=serviciucustom.nrcontract 
 and serviciu.nrserviciu=serviciucustom.nrserviciu and serviciu.nrspecialitate=specialitate.nrspecialitate;
-drop view if exists raportcomplet; 
-CREATE VIEW raportcompletmediccontract AS Select distinct contract.nrcontract,contract.nume,contract.prenume,salariu,nrore,functie,nrunitate,tip as tipasistent,grad,pacient.nrpacient,
+
+drop view if exists raportcompletmediccontract; 
+CREATE VIEW raportcompletmediccontract AS Select distinct contract.nrcontract,contract.nume,contract.prenume,salariu,nrore,functie,nrunitate,pacient.nrpacient,
 pacient.nume as numepacient,pacient.prenume as prenumepacient,codparafa as codparafamedic,competente,titlustiintific,postdidactic,programare.nrprogramare,datap,
 ora,nrcabinet,serviciu.nrserviciu,serviciu.nume as numeserviciu,nrspecialitate,needscompetenta,pret,durata,rezultat,raport.nrraport,simptome,
-diagnostic,recomandari,parafat from raport INNER JOIN programare INNER JOIN pacient INNER JOIN medic INNER JOIN tipasistentmedical INNER JOIN contract 
+diagnostic,recomandari,parafat from raport INNER JOIN programare INNER JOIN pacient INNER JOIN medic INNER JOIN contract 
 INNER JOIN serviciu INNER JOIN serviciuperprogramare ON pacient.nrpacient=programare.nrpacient and programare.nrcmedic=medic.nrcontract 
 and programare.nrprogramare=raport.nrprogramare and serviciu.nrserviciu=serviciuperprogramare.nrserviciu and serviciuperprogramare.nrprogramare=programare.nrprogramare and medic.nrcontract=contract.nrcontract;
 
+drop view if exists raportcompletasistentcontract; 
 CREATE VIEW raportcompletasistentcontract AS Select distinct contract.nrcontract,contract.nume,contract.prenume,salariu,nrore,functie,nrunitate,tip as tipasistent,grad,pacient.nrpacient,
 pacient.nume as numepacient,pacient.prenume as prenumepacient,codparafa as codparafamedic,competente,titlustiintific,postdidactic,programare.nrprogramare,datap,
 ora,nrcabinet,serviciu.nrserviciu,serviciu.nume as numeserviciu,nrspecialitate,needscompetenta,pret,durata,rezultat,raport.nrraport,simptome,
