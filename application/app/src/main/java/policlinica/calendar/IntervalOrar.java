@@ -25,18 +25,27 @@ public class IntervalOrar {
 			}
 		}
 	}
-	public static String formeazaInterval(String oraInitiala,String durata) {
-		String[] mere= durata.split(":");
-		durata = mere[0] + ":" + mere[1];
+	public static String formeazaInterval(String oraInitiala,String[] durate) {	
 		Date ora1 = null;
-		Date ora2 = null;
 		try {
+			String[] mere= oraInitiala.split(":");
+			oraInitiala = mere[0] + ":" + mere[1];
 			ora1 = format.parse(oraInitiala);
-			ora2 = format.parse(durata);
-			ora2 = new Date(ora1.getTime() + ora2.getTime());
-		} catch (ParseException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+		} catch (ParseException e1) {
+		}
+		Date ora2 = new Date(ora1.getTime() );
+		for (int i = 0 ;i < durate.length ; i++) {
+			String durata = durate[i];
+			String[] mere= durata.split(":");
+			durata = mere[0] + ":" + mere[1];
+
+			try {
+				Date ora3 = format.parse(durata);
+				ora2 = new Date(ora2.getTime() + ora3.getTime());
+			} catch (ParseException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
 		return format.format(ora1) + "-" + format.format(ora2);
 	}

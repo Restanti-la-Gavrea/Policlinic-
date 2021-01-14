@@ -9,7 +9,12 @@ import policlinica.users.*;
 public class Test {
 
 	public Test() {
-		verificaListaRapoarte();
+		mere();
+	}
+	public void mere() {
+		String ora1 = "11:00:00";
+		String[] intervale = {"00:20:30","00:50:00"};
+		System.out.println(IntervalOrar.formeazaInterval(ora1, intervale));
 	}
 	private void verificaListaRapoarte() {
 		Medic medic = new Medic();
