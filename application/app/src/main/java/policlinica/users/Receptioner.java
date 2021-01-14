@@ -10,6 +10,7 @@ import policlinica.Serviciu;
 import policlinica.Programare;
 import policlinica.MedicAux;
 import policlinica.Pacient;
+import policlinica.calendar.*;
 
 public class Receptioner extends Medical {
 
@@ -81,6 +82,7 @@ public class Receptioner extends Medical {
 			return false;
 		}
 	}
+
 	public boolean generarePlata(String nrProgramare) {
 		int sum = 0;
 		try {
@@ -100,25 +102,72 @@ public class Receptioner extends Medical {
 			return false;
 		}
 	}
+
+	public String[] durateServiciiProgramare(String nrProgramare) {
+		ResultSet rs = executeSelect(
+				"Select Count(*) as count from ServiciuPerProgramare inner join  Programare on ServiciuPerProgramare.nrProgramare = Programare.nrProgramare where"
+						+ " Programare.nrProgramare = " + nrProgramare + ";");
+		try {
+			String[] durate = new String[rs.getInt("count")];
+			rs = executeSelect(
+					"Select durata from ServiciuPerProgramare inner join  Programare on ServiciuPerProgramare.nrProgramare = Programare.nrProgramare where"
+							+ " Programare.nrProgramare = " + nrProgramare + ";");
+			int i = 0;
+			while (rs.next()) {
+				durate[i] = rs.getString("durata");
+			}
+			return durate;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return null;
+		}
+
+	}
+
+	public boolean deleteProgramare(String nrProgramare) {
+		return executeUpdate("Delete from Programare where nrProgramare = " + nrProgramare + ";");
+	}
+
 	public boolean creeareProgramare(Programare p) {
 		if (!registerPatient(p.getNumePacient(), p.getPrenumePacient(), p.getCnpPacient()))
 			return false;
-		
-		boolean rs = executeUpdate("Insert into Programare(dataP,ora,nrCMedic,nrPacient) " + "values (" + p.getDay().getStringDate() + ","
-				+ p.getDay().getIntervalorar() + ":00" + "," + p.getNrCMedic() + "," + cnp + ");");
-		ResultSet aux = executeSelect("Select last_insert_rowid() as nrProgramare;");
-		if (rs)
+		boolean rs = executeUpdate(
+				"Insert into Programare(dataP,ora,nrCMedic,nrPacient) " + "values (" + p.getDay().getStringDate() + ","
+						+ p.getDay().getIntervalorar() + ":00" + "," + p.getNrCMedic() + "," + cnp + ");");
+		ResultSet aux = executeSelect(
+				"Select * from Programare where (Select MAX(nrProgramare) as i from Programare) =  nrProgramare;");
+		if (!rs)
 			return false;
-		for (Serviciu itterator : p.getServicii()) {
-			try {
-				rs = executeUpdate("Insert into ServiciuPerProgramare(nrServiciu , nrProgramare) values (" + itterator.getNrServiciu()
-						+ "," + aux.getString("nrProgramare") + ");");
-			} catch (SQLException e) {
-				System.out.println("SQLException: " + e.getMessage());
-				System.out.println("SQLState: " + ((SQLException) e).getSQLState());
-				System.out.println("VendorError: " + ((SQLException) e).getErrorCode());
-				return false;
+		setListaServiciuPerProgramare(p.getServicii(),p.getNrProgramare());
+		try {
+			ResultSet aux1 = executeSelect("Select nrProgramare,ora,nrServiciu from Programare where dataP = "
+					+ aux.getString("dataP") + "and nrCMedic = " + aux.getString("nrCMedic") + ";");
+			String intervale = "";
+			while (aux1.next()) {
+				String[] durate = durateServiciiProgramare(aux1.getString("nrProgramare"));
+				intervale += " " + IntervalOrar.formeazaInterval(aux1.getString("ora"), durate);
 			}
+			IntervalOrar myInterval = new IntervalOrar(intervale);
+			if (myInterval.isIntercalat()) {
+				deleteAllServiciuPerProgramare(aux1.getString("nrProgramare"));
+				deleteProgramare(aux1.getString("nrProgramare"));
+			}
+			aux1 = executeSelect("Select nrProgramare,ora,nrServiciu from Programare where dataP = "
+					+ aux.getString("dataP") + "and nrCabinet = " + aux.getString("nrCabinet") + ";");
+		    intervale = "";
+			while (aux1.next()) {
+				String[] durate = durateServiciiProgramare(aux1.getString("nrProgramare"));
+				intervale += " " + IntervalOrar.formeazaInterval(aux1.getString("ora"), durate);
+			}
+			myInterval = new IntervalOrar(intervale);
+			if (myInterval.isIntercalat()) {
+				deleteAllServiciuPerProgramare(aux1.getString("nrProgramare"));
+				deleteProgramare(aux1.getString("nrProgramare"));
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 		return true;
 	}
