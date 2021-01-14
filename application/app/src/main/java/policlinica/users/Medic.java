@@ -37,7 +37,7 @@ public class Medic extends Medical {
 
 	@Override
 	public double getSalariu(int month, int year) {
-		double salariuLunar = this.getSalariu(month, year);
+		double salariuLunar =super.getSalariu(month, year);
 		ResultSet rs = executeSelect("Select comision from Medic where nrContract =  " + nrContract + ";");
 		int comision = 0;
 		try {

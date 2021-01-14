@@ -2,6 +2,8 @@ package policlinica.users;
 
 import java.sql.ResultSet;
 import policlinica.Pacient;
+import policlinica.Serviciu;
+
 import java.util.ArrayList;
 import java.sql.*;
 
@@ -31,8 +33,21 @@ public class Medical extends User {
 		}
 		return lista;
 	}
-	public void setListaPacienti(ArrayList<Pacient> lista) {
-		
+	public void setListaPacienti(ArrayList<Serviciu> lista, String nrProgramare) {
+		deleteAllServiciuPerProgramare(nrProgramare);
+		for (int i = 0 ; i < lista.size(); i ++) {
+			
+		}
+	}
+//	public Boolean insertServiciuPerProgramare(Serviciu serviciu) {
+//		String comanda = "Insert into ServiciuPerProgramare(nrServiciu , nrProgramare,rezultat) values" +
+//						"(" + serviciu.getNrServiciu() + ""
+//		rs = executeUpdate("Insert into ServiciuPerProgramare(nrServiciu , nrProgramare) values (" + itterator
+//				+ "," + p.getString("nrProgramare") + ");");
+//	}
+	public Boolean deleteAllServiciuPerProgramare(String nrProgramare) {
+		String comanda = "delete from ServiciuPerProgramare where nrProgramare = " +  nrProgramare;
+		return executeUpdate(comanda);
 	}
 
 }
