@@ -50,6 +50,9 @@ public class ProgramareController implements Initializable {
     }
 
     @FXML public void creeazaRaport(){
+
+        //solutie temporara
+        raportController.prepareNewRaport(new Programare());
         main.setCenter(raportLayout);
     }
     @FXML public void creeazaPlata(){
@@ -66,6 +69,8 @@ public class ProgramareController implements Initializable {
         raportController = r;
         this.main = main;
         //TODO: ascuns butoane in functie tipul medical
+
+
 
     }
 

@@ -70,8 +70,15 @@ public class RaportMedical {
         nrRaport = "";
         pacient = programare.getPacient();
         medic = programare.getMedic();
-        dataProgramare = programare.getDay().getStringDate();
-        oraProgramare = programare.getDay().getIntervalorar();
+        if(programare.getDay() != null){
+            dataProgramare = programare.getDay().getStringDate();
+            oraProgramare = programare.getDay().getIntervalorar();
+        }
+        else
+        {
+            dataProgramare = "";
+            oraProgramare = "";
+        }
         nrProgramare = programare.getNrProgramare();
         serviciu = programare.getServicii();
 
