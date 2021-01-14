@@ -23,6 +23,31 @@ public class Medic extends Medical {
 	public Medic() {
 		super();
 	}
+	public ArrayList<Serviciu> getListaServicii(String nrProgramare) {
+		String comanda = "Select * from ServiciuPerProgramare inner join  Programare on ServiciuPerProgramare.nrProgramare = Programare.nrProgramare where"
+						+ " Programare.nrProgramare = " + nrProgramare + ";";
+		ResultSet rezultat = executeSelect(comanda);
+		String specialitate = null;
+		try {
+			if (rezultat.next()) {
+				specialitate = rezultat.getString("nrSpecialitate");
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			printSqlErrorMessage("listaServicii/Programari , receptioner");
+		}
+		ArrayList<Serviciu> lista = new ArrayList<Serviciu>();
+		comanda = "Select nrServiciu from Serviciu where nrSpecialitate = " + specialitate + ";";
+		rezultat = executeSelect(comanda);
+		try {
+			while (rezultat.next()) {
+				lista.add(new Serviciu(rezultat.getString("nrServiviu")));
+			}
+		} catch (SQLException e) {
+			
+		}
+		return lista;
+	}
 
 	public double profitMedic(int month, int year) {
 		double profit = 0.0;
