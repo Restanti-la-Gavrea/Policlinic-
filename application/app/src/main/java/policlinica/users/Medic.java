@@ -8,6 +8,7 @@ import policlinica.MedicAux;
 import policlinica.Pacient;
 import policlinica.RaportMedical;
 import policlinica.Serviciu;
+import policlinica.ServiciuCustom;
 import policlinica.calendar.*;
 
 public class Medic extends Medical {
@@ -49,6 +50,40 @@ public class Medic extends Medical {
 		}
 		return lista;
 	}
+	
+	public Boolean setServiciuCustom(ServiciuCustom serviciu) {
+		
+		if (serviciu.getId().equals("-1")) {
+			String comanda = "Select * from serviciu where nrServiciu = "+serviciu.getNrServiciu() + ";";
+			ResultSet result = executeSelect(comanda);
+			try {
+				if (result.next()) {
+					String pret = result.getString("pret");
+					String durata = result.getString("durata");
+					if (!pret.equals(serviciu.getPret()) || !durata.equals(serviciu.getDurata())) {
+						comanda = "insert into serviciucustom values"
+								+ "(" + serviciu.getNrServiciu() +
+								"," + this.getNrContract() +
+								"," + serviciu.getPret() +
+								",'" + serviciu.getDurata() + "';";
+						return executeUpdate(comanda);
+					}
+				}
+				else 
+					return true;
+			} catch (SQLException e) {
+				e.printStackTrace();
+				return false;	
+			}
+		}
+		String comanda = "Update Concediu Set("
+				+ " newpret = " + serviciu.getPret() 
+				+ ", newDurata = '"+ serviciu.getDurata() + "' "
+				+ "where ID = " + serviciu.getId() + ";";
+		return executeUpdate(comanda);
+				
+		}
+	
 
 	public ArrayList <MedicAux> getListaAsistenti(){
 		ArrayList <MedicAux> listaAsistenti =  new ArrayList<>();

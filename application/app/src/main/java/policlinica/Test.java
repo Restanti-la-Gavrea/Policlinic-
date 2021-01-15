@@ -9,16 +9,17 @@ import policlinica.users.*;
 public class Test {
 
 	public Test() {
-		mere();
+		verificaListaRapoarte();
 	}
 	public void mere() {
-		Medical medic = new Medical();
-		medic.getProgramari();
+		
 	}
 	private void verificaListaRapoarte() {
-		Medic medic = new Medic();
-		//RaportMedical raport = medic.getRaport("1");
-		medic.getListaServicii("3");
+		Medic medic = new Medic("3");
+		ServiciuCustom serviciu = new ServiciuCustom("7");
+		serviciu.setPret("100");
+		serviciu.setDurata("01:25:00");
+		medic.setServiciuCustom(serviciu);
 	}
 	public void verificaLista(String nrSpecialitate) {
 		Receptioner t = new Receptioner();
