@@ -81,6 +81,11 @@ public class ProgramareController implements Initializable {
         ObservableList<Programare> list = FXCollections.observableArrayList(programari);
         programareTable.setItems(list);
 
+        for(Programare p: programari)
+        {
+            System.out.println(p.getNumeComplet() + " " + p.getNumeComplet());
+        }
+
         if(user instanceof Medic){
             raportBtn.setVisible(true);
             plataBtn.setVisible(false);
