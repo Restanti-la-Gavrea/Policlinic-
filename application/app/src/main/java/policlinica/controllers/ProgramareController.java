@@ -14,6 +14,7 @@ import policlinica.Programare;
 import policlinica.users.AsistentMedical;
 import policlinica.users.Medic;
 import policlinica.users.Medical;
+import policlinica.users.Receptioner;
 
 import java.net.URL;
 import java.util.ArrayList;
@@ -64,7 +65,12 @@ public class ProgramareController implements Initializable {
         }
     }
     @FXML public void creeazaPlata(){
-        //TODO: tot ce tine de plata, chitanta, bon fiscal etc.
+        int i = programareTable.getSelectionModel().getSelectedIndex();
+        if(i != -1){
+
+           ((Receptioner)user).generarePlata(programari.get(i).getNrProgramare());
+           setContext(user, creareProgramareLayout, creareProgramareController, raportLayout, raportController, main);
+        }
     }
     @FXML public void creeazaProgramare(){ main.setCenter(creareProgramareLayout); }
 
