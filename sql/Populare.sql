@@ -1,4 +1,5 @@
 use policlinica;
+delete from serviciucustom;
 delete from concediu;
 delete from serviciupercabinet;
 delete from aparatnecesar;
@@ -753,3 +754,26 @@ Insert into aparatnecesar  values
 (20,30),
 (20,36),
 (20,37);
+
+
+insert into serviciucustom values
+(1,1,3,NULL,NULL),
+(2,2,3,NULL,NULL),
+(3,3,3,NULL,NULL),
+(4,4,3,NULL,NULL),
+(5,5,5,NULL,NULL),
+(6,6,5,NULL,NULL),
+(7,7,5,NULL,NULL),
+(8,8,5,NULL,NULL),
+(9,9,5,NULL,NULL),
+(10,10,6,NULL,NULL),
+(11,11,6,NULL,NULL),
+(12,12,6,NULL,NULL),
+(13,13,6,NULL,NULL),
+(14,14,8,NULL,NULL),
+(15,15,8,NULL,NULL),
+(16,16,9,NULL,NULL),
+(17,17,14,NULL,NULL),
+(18,18,14,NULL,NULL),
+(19,19,20,NULL,NULL),
+(20,20,20,NULL,NULL); 

@@ -140,9 +140,9 @@ create table Serviciu (
 create table ServiciuCustom (
 	ID int primary key auto_increment not null,
 	nrServiciu int not null unique,
-    nrContract int not null unique,
-    newPret numeric(10,2) not null,
-    newDurata time not null
+    nrContract int not null,
+    newPret numeric(10,2) ,
+    newDurata time 
 );
 
 
