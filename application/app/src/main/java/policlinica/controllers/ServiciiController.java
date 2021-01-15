@@ -1,16 +1,12 @@
 package policlinica.controllers;
 
 import javafx.beans.value.ObservableValue;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
-import policlinica.Serviciu;
 import policlinica.ServiciuCustom;
-import policlinica.Specialitate;
 import policlinica.users.Medic;
 
 import java.net.URL;
@@ -37,20 +33,19 @@ public class ServiciiController implements Initializable {
               //this does nothing
             }
         });
-
     }
 
     @FXML public void changePrice(){
         int index = serviciiList.getSelectionModel().getSelectedIndex();
         if(index != -1){
-            servicii.get(index).setPret(priceFld.getText());
-            //TODO submit changes
+            ServiciuCustom temp = servicii.get(index);
+            temp.setPret(priceFld.getText());
+            user.setServiciuCustom(temp);
         }
     }
 
     public void setContext(Medic user){
 
         this.user = user;
-
     }
 }
