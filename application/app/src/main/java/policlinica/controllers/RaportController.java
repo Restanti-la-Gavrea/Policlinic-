@@ -237,7 +237,7 @@ public class RaportController implements Initializable {
 
         i = asistentBox.getSelectionModel().getSelectedIndex();
         if(i != -1)
-            raportMedical.setMedicRecomandare(user.getListaAsistenti().get(i));
+            raportMedical.setAsistent(user.getListaAsistenti().get(i));
         else
             raportMedical.setMedicRecomandare(null);
 

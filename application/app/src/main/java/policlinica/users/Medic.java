@@ -39,6 +39,7 @@ public class Medic extends Medical {
 		ArrayList<Serviciu> lista = new ArrayList<Serviciu>();
 		comanda = "Select nrServiciu from Serviciu where nrSpecialitate = " + specialitate + ";";
 		rezultat = executeSelect(comanda);
+		System.out.println(comanda);
 		try {
 			while (rezultat.next()) {
 				lista.add(new Serviciu(rezultat.getString("nrServiciu")));
@@ -222,13 +223,13 @@ public class Medic extends Medical {
 
 	public Boolean updateRaport(RaportMedical raport) {
 		String comanda = "Update Raport Set" + " medicRecomandare = " + raport.getMedicRecomandare().getNrContract()
-				+ " asistentContract = " + raport.getAsistent().getNrContract() + " simptome = " + "'"
-				+ raport.getSimptome() + "'" + " diagnostic = " + "'" + raport.getDiagnostic() + "'" + " recomandari = "
-				+ "'" + raport.getRecomandari() + "'" + " parafat = " + raport.isParafat() + " where nrRaport = "
+				+ ", asistentContract = " + raport.getAsistent().getNrContract() + ", simptome = " + "'"
+				+ raport.getSimptome() + "'" + ", diagnostic = " + "'" + raport.getDiagnostic() + "'" + ", recomandari = "
+				+ "'" + raport.getRecomandari() + "'" + ", parafat = " + raport.isParafat() + " where nrRaport = "
 				+ raport.getNrRaport() + ";";
 		if (!executeUpdate(comanda))
 			return false;
-		setListaServiciuPerProgramare(raport.getServiciu(), comanda);
+		setListaServiciuPerProgramare(raport.getServiciu(), raport.getNrProgramare());
 		return true;
 	}
 
@@ -237,9 +238,10 @@ public class Medic extends Medical {
 				+ raport.getMedicRecomandare().getNrContract() + "," + raport.getAsistent().getNrContract() + ","
 				+ raport.getSimptome() + "," + raport.getDiagnostic() + "," + raport.getRecomandari() + ","
 				+ raport.isParafat() + ");";
+		System.out.println(comanda);
 		if (!executeUpdate(comanda))
 			return false;
-		setListaServiciuPerProgramare(raport.getServiciu(), comanda);
+		setListaServiciuPerProgramare(raport.getServiciu(), raport.getNrProgramare());
 		return true;
 	}
 
