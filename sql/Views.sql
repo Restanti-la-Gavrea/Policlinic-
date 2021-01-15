@@ -47,11 +47,14 @@ and serviciu.nrserviciu=serviciucustom.nrserviciu and serviciu.nrspecialitate=sp
 drop view if exists raportcompletmediccontract; 
 CREATE VIEW raportcompletmediccontract AS Select distinct contract.nrcontract,contract.nume,contract.prenume,salariu,nrore,functie,nrunitate,pacient.nrpacient,
 pacient.nume as numepacient,pacient.prenume as prenumepacient,codparafa as codparafamedic,competente,titlustiintific,postdidactic,programare.nrprogramare,datap,
-ora,nrcabinet,serviciu.nrserviciu,serviciu.nume as numeserviciu,nrspecialitate,needscompetenta,pret,durata,rezultat,raport.nrraport,medicrecomandare,asistentcontract,simptome,
-diagnostic,recomandari,parafat from raport INNER JOIN programare INNER JOIN pacient INNER JOIN medic INNER JOIN contract 
+ora,nrcabinet,serviciu.nrserviciu,serviciu.nume as numeserviciu,nrspecialitate,needscompetenta,pret,durata,rezultat,raport.nrraport,medicrecomandare,
+asistentcontract,simptome,diagnostic,recomandari,parafat from raport INNER JOIN programare INNER JOIN pacient INNER JOIN medic INNER JOIN contract 
 INNER JOIN serviciu INNER JOIN serviciuperprogramare ON pacient.nrpacient=programare.nrpacient and programare.nrcmedic=medic.nrcontract 
-and programare.nrprogramare=raport.nrprogramare and serviciu.nrserviciu=serviciuperprogramare.nrserviciu and serviciuperprogramare.nrprogramare=programare.nrprogramare and medic.nrcontract=contract.nrcontract;
+and programare.nrprogramare=raport.nrprogramare and serviciu.nrserviciu=serviciuperprogramare.nrserviciu 
+and serviciuperprogramare.nrprogramare=programare.nrprogramare and medic.nrcontract=contract.nrcontract;
 
 drop view if exists raportcompletasistentcontract; 
 CREATE VIEW raportcompletasistentcontract AS Select contract.nrcontract,contract.nume,contract.prenume,contract.salariu,contract.nrore,contract.functie,
-contract.nrunitate,tip as tipasistent,grad, raportcompletmediccontract.nrraport,raportcompletmediccontract.nrprogramare,raportcompletmediccontract.asistentcontract from contract INNER JOIN tipasistentmedical INNER JOIN raportcompletmediccontract ON contract.nrcontract=tipasistentmedical.nrcontract and raportcompletmediccontract.asistentcontract=tipasistentmedical.nrContract;
+contract.nrunitate,tip as tipasistent,grad, raportcompletmediccontract.nrraport,raportcompletmediccontract.nrprogramare,raportcompletmediccontract.asistentcontract
+from contract INNER JOIN tipasistentmedical INNER JOIN raportcompletmediccontract ON contract.nrcontract=tipasistentmedical.nrcontract 
+and raportcompletmediccontract.asistentcontract=tipasistentmedical.nrContract;
