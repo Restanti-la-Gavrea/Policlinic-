@@ -123,9 +123,6 @@ public class RaportMedical {
 
 	public void setParafat(boolean parafat) { this.parafat = parafat; }
 	public Serviciu getServiciuIndex(int i){return serviciu.get(i);}
-	
-	
-
 
     public MedicAux getMedic() {
 		return medic;
@@ -134,23 +131,18 @@ public class RaportMedical {
 	public void setMedic(MedicAux medic) {
 		this.medic = medic;
 	}
-
 	public MedicAux getMedicRecomandare() {
 		return medicRecomandare;
 	}
-
 	public void setMedicRecomandare(MedicAux medicRecomandare) {
 		this.medicRecomandare = medicRecomandare;
 	}
-
 	public MedicAux getAsistent() {
 		return asistent;
 	}
-
 	public void setAsistent(MedicAux asistent) {
 		this.asistent = asistent;
 	}
-
 	//urmatoarea funcitie e facuta de mine pentru mine
     public boolean hasTheseDetails(String details){
        return details.equals(nrRaport+" "+medic.getNume()+" "+dataProgramare);

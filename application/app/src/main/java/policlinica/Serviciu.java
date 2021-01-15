@@ -20,7 +20,6 @@ public class Serviciu {
 		nume = null;
 		rezultat = null;
 	}
-
 	public Serviciu(String nrServiciu) {
 		ResultSet rs = (new User()).executeSelect("Select * from Serviciu inner join ServiciuPerProgramare on\r\n"
 				+ "				 Serviciu.nrServiciu = ServiciuPerProgramare.nrServiciu where\r\n"
@@ -35,7 +34,6 @@ public class Serviciu {
 			e.printStackTrace();
 		}
 	}
-
 	public String getNrServiciu() {
 		return nrServiciu;
 	}
@@ -47,15 +45,12 @@ public class Serviciu {
 	public String getNume() {
 		return nume;
 	}
-
 	public void setNume(String nume) {
 		this.nume = nume;
 	}
-
 	public String getRezultat() {
 		return rezultat;
 	}
-
 	public void setRezultat(String rezultat) {
 		this.rezultat = rezultat;
 	}
