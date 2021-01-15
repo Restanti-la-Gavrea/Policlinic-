@@ -61,11 +61,12 @@ public class Medic extends Medical {
 					String pret = result.getString("pret");
 					String durata = result.getString("durata");
 					if (!pret.equals(serviciu.getPret()) || !durata.equals(serviciu.getDurata())) {
-						comanda = "insert into serviciucustom values"
-								+ "(" + serviciu.getNrServiciu() +
-								"," + this.getNrContract() +
-								"," + serviciu.getPret() +
-								",'" + serviciu.getDurata() + "';";
+						comanda = "insert into serviciucustom values "
+								+ " (" + serviciu.getNrServiciu() +
+								", " + this.getNrContract() +
+								", " + serviciu.getPret() +
+								" ,'" + serviciu.getDurata() + " ' );";
+						System.out.println(comanda);
 						return executeUpdate(comanda);
 					}
 				}
@@ -76,10 +77,11 @@ public class Medic extends Medical {
 				return false;	
 			}
 		}
-		String comanda = "Update Concediu Set("
+		String comanda = "Update serviciucustom Set"
 				+ " newpret = " + serviciu.getPret() 
 				+ ", newDurata = '"+ serviciu.getDurata() + "' "
 				+ "where ID = " + serviciu.getId() + ";";
+		System.out.println(comanda);
 		return executeUpdate(comanda);
 				
 		}

@@ -7,8 +7,8 @@ public class ServiciuCustom extends Serviciu{
 	private String id = "-1"; 
 	ServiciuCustom(String nrContract,String nrServiciu){
 		User u = new User();
-		 ResultSet rs = u.executeSelect("Select * from Serviciu inner join Serviciu Custom on Serviciu.nrServiciu = ServiciuCustom.nrServiciu"
-		 		+ "where nrContract = " + nrContract + " Serviciu.nrServiciu = " + nrServiciu+ ";");
+		 ResultSet rs = u.executeSelect("Select * from Serviciu inner join ServiciuCustom on Serviciu.nrServiciu = ServiciuCustom.nrServiciu"
+		 		+ " where nrContract = " + nrContract + " and Serviciu.nrServiciu = " + nrServiciu+ ";");
 		 try {
 			if(rs.next()) {
 				 this.setNrServiciu(nrServiciu);

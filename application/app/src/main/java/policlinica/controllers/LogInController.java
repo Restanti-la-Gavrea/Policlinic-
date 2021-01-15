@@ -33,7 +33,7 @@ public class LogInController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         errLogInLbl.setVisible(false);
-        testBtn.setVisible(false);
+        testBtn.setVisible(true);
     }
 
     @FXML public void logIn () throws Exception{

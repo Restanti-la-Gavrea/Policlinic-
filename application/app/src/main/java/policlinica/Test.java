@@ -16,9 +16,9 @@ public class Test {
 	}
 	private void verificaListaRapoarte() {
 		Medic medic = new Medic("3");
-		ServiciuCustom serviciu = new ServiciuCustom("7");
-		serviciu.setPret("100");
-		serviciu.setDurata("01:25:00");
+		ServiciuCustom serviciu = new ServiciuCustom("5", "6");
+		serviciu.setPret("20");
+		serviciu.setDurata("02:25:00");
 		medic.setServiciuCustom(serviciu);
 	}
 	public void verificaLista(String nrSpecialitate) {
