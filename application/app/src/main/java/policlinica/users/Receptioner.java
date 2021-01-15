@@ -24,7 +24,7 @@ public class Receptioner extends Medical {
 
 	public ArrayList<Specialitate> getSpecialitati() {
 		ArrayList<Specialitate> lista = new ArrayList<Specialitate>();
-		ResultSet rs = executeSelect("Select * from Specialitati");
+		ResultSet rs = executeSelect("Select * from Specialitate");
 		try {
 			while (rs.next()) {
 				lista.add(new Specialitate(rs.getString("nrSpecialitate"), rs.getString("nume")));
@@ -34,7 +34,6 @@ public class Receptioner extends Medical {
 		}
 		return lista;
 	}
-
 	public ArrayList<Serviciu> getServicii(String nrSpecialitate) {
 		ArrayList<Serviciu> lista = new ArrayList<Serviciu>();
 		ResultSet rs = executeSelect("Select nrServiciu from Serviciu where nrSpecialitate = NULL or nrSpecialitate = "
@@ -87,10 +86,17 @@ public class Receptioner extends Medical {
 		int sum = 0;
 		try {
 			ResultSet rs = executeSelect(
-					"Select Serviciu.pret as pret from Serviciu inner join ServiciuPerProgramare on Serviciu.nrServiciu = "
+					"Select Serviciu.pret,nrServiviu,nrCMedic as pret from Serviciu inner join ServiciuPerProgramare on Serviciu.nrServiciu = "
 							+ "ServiciuPerProgramare.nrServiciu where nrProgramre = " + nrProgramare + ";");
 			while (rs.next()) {
-				sum += rs.getInt("pret");
+				ResultSet nrCMedic = executeSelect(
+						"Select nrCMedic from Programare where nrProgramare = " + nrProgramare + ";");
+				ResultSet aux = executeSelect("Select newPret from ServiciuCustom where ServiciuCustom.nrServiciu = "
+						+ rs.getString("nrServiciu") + " and nrContract = " + nrCMedic.getString("nrCMedic") + ";");
+				if (aux.next()) 
+					sum += aux.getInt("newPret");
+				 else
+					sum += rs.getInt("pret");
 			}
 			executeUpdate("Insert into Plata(suma,ziPlata,nrProgramare) values (" + sum + "," + Calendar.getInstance()
 					+ "," + nrProgramare + ");");
@@ -102,7 +108,6 @@ public class Receptioner extends Medical {
 			return false;
 		}
 	}
-
 	public String[] durateServiciiProgramare(String nrProgramare) {
 		ResultSet rs = executeSelect(
 				"Select Count(*) as count from ServiciuPerProgramare inner join  Programare on ServiciuPerProgramare.nrProgramare = Programare.nrProgramare where"
@@ -139,7 +144,7 @@ public class Receptioner extends Medical {
 				"Select * from Programare where (Select MAX(nrProgramare) as i from Programare) =  nrProgramare;");
 		if (!rs)
 			return false;
-		setListaServiciuPerProgramare(p.getServicii(),p.getNrProgramare());
+		setListaServiciuPerProgramare(p.getServicii(), p.getNrProgramare());
 		try {
 			ResultSet aux1 = executeSelect("Select nrProgramare,ora,nrServiciu from Programare where dataP = "
 					+ aux.getString("dataP") + "and nrCMedic = " + aux.getString("nrCMedic") + ";");
@@ -155,7 +160,7 @@ public class Receptioner extends Medical {
 			}
 			aux1 = executeSelect("Select nrProgramare,ora,nrServiciu from Programare where dataP = "
 					+ aux.getString("dataP") + "and nrCabinet = " + aux.getString("nrCabinet") + ";");
-		    intervale = "";
+			intervale = "";
 			while (aux1.next()) {
 				String[] durate = durateServiciiProgramare(aux1.getString("nrProgramare"));
 				intervale += " " + IntervalOrar.formeazaInterval(aux1.getString("ora"), durate);

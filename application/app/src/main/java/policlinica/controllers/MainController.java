@@ -21,7 +21,6 @@ public class MainController implements Initializable {
 
     //main menu buttons
     @FXML Button userBtn;
-    @FXML Button administratorBtn;
     @FXML Button angajatiBtn;
     @FXML Button orarBtn;
     @FXML Button finanteBtn;
@@ -62,10 +61,13 @@ public class MainController implements Initializable {
     private VBox creareProgramareLayout;
     private CreareProgramareController creareProgramareController;
 
+    private VBox serviciiLayout;
+    private ServiciiController serviciiController;
+
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
-        administratorBtn.managedProperty().bind(administratorBtn.visibleProperty());
         angajatiBtn.managedProperty().bind(angajatiBtn.visibleProperty());
         pacientiBtn.managedProperty().bind(pacientiBtn.visibleProperty());
         programariBtn.managedProperty().bind(programariBtn.visibleProperty());
@@ -92,9 +94,7 @@ public class MainController implements Initializable {
 
         main.setCenter(userDataLayout);
     }
-    @FXML public void setAdministratorLayout() throws Exception{
 
-    }
     @FXML public void setAngajatiLayout() throws Exception{
         angajatiListController.fillWithEmployees(userDataLayout, userController, main);
         angajatiListController.setButtonForDetails();
@@ -134,6 +134,7 @@ public class MainController implements Initializable {
         main.setCenter(programareLayout);
     }
     @FXML public void setServiciiLayout(){
+        main.setCenter(serviciiLayout);
     }
     @FXML public void logOut(){
         StackPane layout = new StackPane();
@@ -154,8 +155,7 @@ public class MainController implements Initializable {
     public void setLogInController(LogInController logInController) { this.logInController = logInController; }
     public void setLogInScene(Scene logInScene) { this.logInScene = logInScene; }
 
-    public void setButtons(boolean administratorBtn, boolean angajatiBtn, boolean pacientiBtn, boolean programariBtn, boolean serviciiBtn){
-        this.administratorBtn.setVisible(administratorBtn);
+    public void setButtons( boolean angajatiBtn, boolean pacientiBtn, boolean programariBtn, boolean serviciiBtn){
         this.angajatiBtn.setVisible(angajatiBtn);
         this.pacientiBtn.setVisible(pacientiBtn);
         this.programariBtn.setVisible(programariBtn);
@@ -198,13 +198,17 @@ public class MainController implements Initializable {
         loader = new FXMLLoader(getClass().getResource("/creareProgramareLayout.fxml"));
         creareProgramareLayout = loader.load();
         creareProgramareController = loader.getController();
+
+        loader = new FXMLLoader(getClass().getResource("/serviciiCustom.fxml"));
+        serviciiLayout = loader.load();
+        serviciiController = loader.getController();
+
     }
 
     public void setUser(User user) {
         this.user = user;
 
         if(user instanceof SuperAdmin) {
-            administratorBtn.setVisible(true);
             angajatiBtn.setVisible(true);
             pacientiBtn.setVisible(false);
             programariBtn.setVisible(false);
@@ -217,8 +221,6 @@ public class MainController implements Initializable {
             return;
         }
         else {
-            administratorBtn.setVisible(false);
-
             userController.hideEditBtn();
         }
 

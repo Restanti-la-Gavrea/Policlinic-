@@ -80,6 +80,7 @@ public class CreareProgramareController implements Initializable {
         this.main = main;
 
         specialitati = user.getSpecialitati();
+        System.out.println("lungime get specialitati:" + specialitati.size());
         specialitateList.getItems().clear();
         for(Specialitate s: specialitati)
             specialitateList.getItems().add(s.getNume());
