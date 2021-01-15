@@ -1,0 +1,233 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" spacing="10.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="policlinica.controllers.OrarController">
+   <children>
+      <HBox alignment="CENTER_LEFT" spacing="5.0" VBox.vgrow="NEVER">
+         <children>
+            <Button fx:id="previousBtn" mnemonicParsing="false" onAction="#previousMonth" text="&lt;" />
+            <Button fx:id="nextBtn" mnemonicParsing="false" onAction="#nextMonth" text="&gt;" />
+            <Label fx:id="calendarDetailLbl" text="Month and yeah here">
+               <HBox.margin>
+                  <Insets left="10.0" />
+               </HBox.margin></Label>
+         </children>
+      </HBox>
+      <GridPane alignment="CENTER" VBox.vgrow="ALWAYS">
+        <columnConstraints>
+          <ColumnConstraints hgrow="ALWAYS" minWidth="10.0" prefWidth="90.0" />
+          <ColumnConstraints hgrow="ALWAYS" minWidth="10.0" prefWidth="90.0" />
+            <ColumnConstraints hgrow="ALWAYS" minWidth="10.0" prefWidth="90.0" />
+            <ColumnConstraints hgrow="ALWAYS" minWidth="10.0" prefWidth="90.0" />
+            <ColumnConstraints hgrow="ALWAYS" minWidth="10.0" prefWidth="90.0" />
+            <ColumnConstraints hgrow="ALWAYS" minWidth="10.0" prefWidth="90.0" />
+            <ColumnConstraints hgrow="ALWAYS" minWidth="10.0" prefWidth="90.0" />
+        </columnConstraints>
+        <rowConstraints>
+            <RowConstraints minHeight="10.0" prefHeight="20.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="75.0" vgrow="ALWAYS" />
+          <RowConstraints minHeight="10.0" prefHeight="75.0" vgrow="ALWAYS" />
+          <RowConstraints minHeight="10.0" prefHeight="75.0" vgrow="ALWAYS" />
+            <RowConstraints minHeight="10.0" prefHeight="75.0" vgrow="ALWAYS" />
+            <RowConstraints minHeight="10.0" prefHeight="75.0" vgrow="ALWAYS" />
+            <RowConstraints minHeight="10.0" prefHeight="75.0" vgrow="ALWAYS" />
+        </rowConstraints>
+         <children>
+            <Label fx:id="cell00" alignment="TOP_LEFT" contentDisplay="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onMouseClicked="#calendarClickHandler" prefHeight="75.0" prefWidth="90.0" styleClass="calendarItem" text="Label" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.vgrow="ALWAYS">
+               <padding>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </padding></Label>
+            <Label fx:id="cell01" alignment="TOP_LEFT" layoutX="10.0" layoutY="10.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onMouseClicked="#calendarClickHandler" prefHeight="75.0" prefWidth="90.0" text="Label" GridPane.columnIndex="1" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.vgrow="ALWAYS">
+               <padding>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </padding></Label>
+            <Label fx:id="cell02" alignment="TOP_LEFT" layoutX="85.0" layoutY="10.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onMouseClicked="#calendarClickHandler" prefHeight="75.0" prefWidth="90.0" text="Label" GridPane.columnIndex="2" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.vgrow="ALWAYS">
+               <padding>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </padding></Label>
+            <Label fx:id="cell03" alignment="TOP_LEFT" layoutX="10.0" layoutY="10.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onMouseClicked="#calendarClickHandler" prefHeight="75.0" prefWidth="90.0" text="Label" GridPane.columnIndex="3" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.vgrow="ALWAYS">
+               <padding>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </padding></Label>
+            <Label fx:id="cell04" alignment="TOP_LEFT" layoutX="10.0" layoutY="10.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onMouseClicked="#calendarClickHandler" prefHeight="75.0" prefWidth="90.0" text="Label" GridPane.columnIndex="4" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.vgrow="ALWAYS">
+               <padding>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </padding></Label>
+            <Label fx:id="cell05" alignment="TOP_LEFT" layoutX="10.0" layoutY="10.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onMouseClicked="#calendarClickHandler" prefHeight="75.0" prefWidth="90.0" text="Label" GridPane.columnIndex="5" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.vgrow="ALWAYS">
+               <padding>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </padding></Label>
+            <Label fx:id="cell06" alignment="TOP_LEFT" layoutX="10.0" layoutY="10.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onMouseClicked="#calendarClickHandler" prefHeight="75.0" prefWidth="90.0" text="Label" GridPane.columnIndex="6" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.vgrow="ALWAYS">
+               <padding>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </padding></Label>
+            <Label fx:id="cell10" alignment="TOP_LEFT" layoutX="10.0" layoutY="10.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onMouseClicked="#calendarClickHandler" prefHeight="75.0" prefWidth="90.0" text="Label" GridPane.hgrow="ALWAYS" GridPane.rowIndex="2" GridPane.vgrow="ALWAYS">
+               <padding>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </padding></Label>
+            <Label fx:id="cell11" alignment="TOP_LEFT" layoutX="10.0" layoutY="10.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onMouseClicked="#calendarClickHandler" prefHeight="75.0" prefWidth="90.0" text="Label" GridPane.columnIndex="1" GridPane.hgrow="ALWAYS" GridPane.rowIndex="2" GridPane.vgrow="ALWAYS">
+               <padding>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </padding></Label>
+            <Label fx:id="cell12" alignment="TOP_LEFT" layoutX="10.0" layoutY="10.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onMouseClicked="#calendarClickHandler" prefHeight="75.0" prefWidth="90.0" text="Label" GridPane.columnIndex="2" GridPane.hgrow="ALWAYS" GridPane.rowIndex="2" GridPane.vgrow="ALWAYS">
+               <padding>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </padding></Label>
+            <Label fx:id="cell13" alignment="TOP_LEFT" layoutX="10.0" layoutY="10.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onMouseClicked="#calendarClickHandler" prefHeight="75.0" prefWidth="90.0" text="Label" GridPane.columnIndex="3" GridPane.hgrow="ALWAYS" GridPane.rowIndex="2" GridPane.vgrow="ALWAYS">
+               <padding>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </padding></Label>
+            <Label fx:id="cell14" alignment="TOP_LEFT" layoutX="10.0" layoutY="10.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onMouseClicked="#calendarClickHandler" prefHeight="75.0" prefWidth="90.0" text="Label" GridPane.columnIndex="4" GridPane.hgrow="ALWAYS" GridPane.rowIndex="2" GridPane.vgrow="ALWAYS">
+               <padding>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </padding></Label>
+            <Label fx:id="cell15" alignment="TOP_LEFT" layoutX="10.0" layoutY="10.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onMouseClicked="#calendarClickHandler" prefHeight="75.0" prefWidth="90.0" text="Label" GridPane.columnIndex="5" GridPane.hgrow="ALWAYS" GridPane.rowIndex="2" GridPane.vgrow="ALWAYS">
+               <padding>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </padding></Label>
+            <Label fx:id="cell16" alignment="TOP_LEFT" layoutX="10.0" layoutY="10.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onMouseClicked="#calendarClickHandler" prefHeight="75.0" prefWidth="90.0" text="Label" GridPane.columnIndex="6" GridPane.hgrow="ALWAYS" GridPane.rowIndex="2" GridPane.vgrow="ALWAYS">
+               <padding>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </padding></Label>
+            <Label fx:id="cell20" alignment="TOP_LEFT" layoutX="10.0" layoutY="10.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onMouseClicked="#calendarClickHandler" prefHeight="75.0" prefWidth="90.0" text="Label" GridPane.hgrow="ALWAYS" GridPane.rowIndex="3" GridPane.vgrow="ALWAYS">
+               <padding>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </padding></Label>
+            <Label fx:id="cell21" alignment="TOP_LEFT" layoutX="10.0" layoutY="10.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onMouseClicked="#calendarClickHandler" prefHeight="75.0" prefWidth="90.0" text="Label" GridPane.columnIndex="1" GridPane.hgrow="ALWAYS" GridPane.rowIndex="3" GridPane.vgrow="ALWAYS">
+               <padding>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </padding></Label>
+            <Label fx:id="cell22" alignment="TOP_LEFT" layoutX="85.0" layoutY="110.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onMouseClicked="#calendarClickHandler" prefHeight="75.0" prefWidth="90.0" text="Label" GridPane.columnIndex="2" GridPane.hgrow="ALWAYS" GridPane.rowIndex="3" GridPane.vgrow="ALWAYS">
+               <padding>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </padding></Label>
+            <Label fx:id="cell23" alignment="TOP_LEFT" layoutX="10.0" layoutY="10.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onMouseClicked="#calendarClickHandler" prefHeight="75.0" prefWidth="90.0" text="Label" GridPane.columnIndex="3" GridPane.hgrow="ALWAYS" GridPane.rowIndex="3" GridPane.vgrow="ALWAYS">
+               <padding>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </padding></Label>
+            <Label fx:id="cell24" alignment="TOP_LEFT" layoutX="10.0" layoutY="10.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onMouseClicked="#calendarClickHandler" prefHeight="75.0" prefWidth="90.0" text="Label" GridPane.columnIndex="4" GridPane.hgrow="ALWAYS" GridPane.rowIndex="3" GridPane.vgrow="ALWAYS">
+               <padding>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </padding></Label>
+            <Label fx:id="cell25" alignment="TOP_LEFT" layoutX="10.0" layoutY="10.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onMouseClicked="#calendarClickHandler" prefHeight="75.0" prefWidth="90.0" text="Label" GridPane.columnIndex="5" GridPane.hgrow="ALWAYS" GridPane.rowIndex="3" GridPane.vgrow="ALWAYS">
+               <padding>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </padding></Label>
+            <Label fx:id="cell26" alignment="TOP_LEFT" layoutX="10.0" layoutY="10.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onMouseClicked="#calendarClickHandler" prefHeight="75.0" prefWidth="90.0" text="Label" GridPane.columnIndex="6" GridPane.hgrow="ALWAYS" GridPane.rowIndex="3" GridPane.vgrow="ALWAYS">
+               <padding>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </padding></Label>
+            <Label fx:id="cell30" alignment="TOP_LEFT" layoutX="10.0" layoutY="10.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onMouseClicked="#calendarClickHandler" prefHeight="75.0" prefWidth="90.0" text="Label" GridPane.hgrow="ALWAYS" GridPane.rowIndex="4" GridPane.vgrow="ALWAYS">
+               <padding>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </padding></Label>
+            <Label fx:id="cell31" alignment="TOP_LEFT" layoutX="10.0" layoutY="10.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onMouseClicked="#calendarClickHandler" prefHeight="75.0" prefWidth="90.0" text="Label" GridPane.columnIndex="1" GridPane.hgrow="ALWAYS" GridPane.rowIndex="4" GridPane.vgrow="ALWAYS">
+               <padding>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </padding></Label>
+            <Label fx:id="cell32" alignment="TOP_LEFT" layoutX="10.0" layoutY="10.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onMouseClicked="#calendarClickHandler" prefHeight="75.0" prefWidth="90.0" text="Label" GridPane.columnIndex="2" GridPane.hgrow="ALWAYS" GridPane.rowIndex="4" GridPane.vgrow="ALWAYS">
+               <padding>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </padding></Label>
+            <Label fx:id="cell33" alignment="TOP_LEFT" layoutX="10.0" layoutY="10.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onMouseClicked="#calendarClickHandler" prefHeight="75.0" prefWidth="90.0" text="Label" GridPane.columnIndex="3" GridPane.hgrow="ALWAYS" GridPane.rowIndex="4" GridPane.vgrow="ALWAYS">
+               <padding>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </padding></Label>
+            <Label fx:id="cell34" alignment="TOP_LEFT" layoutX="10.0" layoutY="10.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onMouseClicked="#calendarClickHandler" prefHeight="75.0" prefWidth="90.0" text="Label" GridPane.columnIndex="4" GridPane.hgrow="ALWAYS" GridPane.rowIndex="4" GridPane.vgrow="ALWAYS">
+               <padding>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </padding></Label>
+            <Label fx:id="cell35" alignment="TOP_LEFT" layoutX="310.0" layoutY="160.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onMouseClicked="#calendarClickHandler" prefHeight="75.0" prefWidth="90.0" text="Label" GridPane.columnIndex="5" GridPane.hgrow="ALWAYS" GridPane.rowIndex="4" GridPane.vgrow="ALWAYS">
+               <padding>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </padding></Label>
+            <Label fx:id="cell36" alignment="TOP_LEFT" layoutX="10.0" layoutY="10.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onMouseClicked="#calendarClickHandler" prefHeight="75.0" prefWidth="90.0" text="Label" GridPane.columnIndex="6" GridPane.hgrow="ALWAYS" GridPane.rowIndex="4" GridPane.vgrow="ALWAYS">
+               <padding>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </padding></Label>
+            <Label fx:id="cell40" alignment="TOP_LEFT" layoutX="10.0" layoutY="10.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onMouseClicked="#calendarClickHandler" prefHeight="75.0" prefWidth="90.0" text="Label" GridPane.hgrow="ALWAYS" GridPane.rowIndex="5" GridPane.vgrow="ALWAYS">
+               <padding>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </padding></Label>
+            <Label fx:id="cell41" alignment="TOP_LEFT" layoutX="10.0" layoutY="10.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onMouseClicked="#calendarClickHandler" prefHeight="75.0" prefWidth="90.0" text="Label" GridPane.columnIndex="1" GridPane.hgrow="ALWAYS" GridPane.rowIndex="5" GridPane.vgrow="ALWAYS">
+               <padding>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </padding></Label>
+            <Label fx:id="cell42" alignment="TOP_LEFT" layoutX="10.0" layoutY="10.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onMouseClicked="#calendarClickHandler" prefHeight="75.0" prefWidth="90.0" text="Label" GridPane.columnIndex="2" GridPane.hgrow="ALWAYS" GridPane.rowIndex="5" GridPane.vgrow="ALWAYS">
+               <padding>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </padding></Label>
+            <Label fx:id="cell43" alignment="TOP_LEFT" layoutX="10.0" layoutY="10.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onMouseClicked="#calendarClickHandler" prefHeight="75.0" prefWidth="90.0" text="Label" GridPane.columnIndex="3" GridPane.hgrow="ALWAYS" GridPane.rowIndex="5" GridPane.vgrow="ALWAYS">
+               <padding>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </padding></Label>
+            <Label fx:id="cell44" alignment="TOP_LEFT" layoutX="10.0" layoutY="10.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onMouseClicked="#calendarClickHandler" prefHeight="75.0" prefWidth="90.0" text="Label" GridPane.columnIndex="4" GridPane.hgrow="ALWAYS" GridPane.rowIndex="5" GridPane.vgrow="ALWAYS">
+               <padding>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </padding></Label>
+            <Label fx:id="cell45" alignment="TOP_LEFT" layoutX="310.0" layoutY="210.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onMouseClicked="#calendarClickHandler" prefHeight="75.0" prefWidth="90.0" text="Label" GridPane.columnIndex="5" GridPane.hgrow="ALWAYS" GridPane.rowIndex="5" GridPane.vgrow="ALWAYS">
+               <padding>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </padding></Label>
+            <Label fx:id="cell46" alignment="TOP_LEFT" layoutX="10.0" layoutY="10.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onMouseClicked="#calendarClickHandler" prefHeight="75.0" prefWidth="90.0" text="Label" GridPane.columnIndex="6" GridPane.hgrow="ALWAYS" GridPane.rowIndex="5" GridPane.vgrow="ALWAYS">
+               <padding>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </padding></Label>
+            <Label alignment="CENTER" contentDisplay="CENTER" maxWidth="1.7976931348623157E308" prefHeight="20.0" prefWidth="89.0" styleClass="calendarTitle" text="Luni" GridPane.columnIndex="1" GridPane.hgrow="NEVER" GridPane.vgrow="NEVER" />
+            <Label alignment="CENTER" maxWidth="1.7976931348623157E308" prefHeight="20.0" prefWidth="89.0" styleClass="calendarTitle" text="Marti" GridPane.columnIndex="2" GridPane.hgrow="NEVER" GridPane.vgrow="NEVER" />
+            <Label alignment="CENTER" maxWidth="1.7976931348623157E308" prefHeight="20.0" prefWidth="89.0" styleClass="calendarTitle" text="Miercuri" GridPane.columnIndex="3" GridPane.hgrow="NEVER" GridPane.vgrow="NEVER" />
+            <Label alignment="CENTER" maxWidth="1.7976931348623157E308" prefHeight="20.0" prefWidth="89.0" styleClass="calendarTitle" text="Joi" GridPane.columnIndex="4" GridPane.hgrow="NEVER" GridPane.vgrow="NEVER" />
+            <Label alignment="CENTER" maxWidth="1.7976931348623157E308" prefHeight="20.0" prefWidth="89.0" styleClass="calendarTitle" text="Vineri" GridPane.columnIndex="5" GridPane.hgrow="NEVER" GridPane.vgrow="NEVER" />
+            <Label alignment="CENTER" maxWidth="1.7976931348623157E308" prefHeight="20.0" prefWidth="89.0" styleClass="calendarTitle" text="Sambata" GridPane.columnIndex="6" GridPane.hgrow="NEVER" GridPane.vgrow="NEVER" />
+            <Label alignment="CENTER" layoutX="15.0" layoutY="15.0" maxWidth="1.7976931348623157E308" prefHeight="20.0" prefWidth="89.0" styleClass="calendarTitle" text="Duminica" GridPane.hgrow="NEVER" GridPane.vgrow="NEVER" />
+            <Label fx:id="cell55" alignment="TOP_LEFT" layoutX="465.0" layoutY="235.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onMouseClicked="#calendarClickHandler" prefHeight="75.0" prefWidth="90.0" text="Label" GridPane.columnIndex="5" GridPane.hgrow="ALWAYS" GridPane.rowIndex="6" GridPane.vgrow="ALWAYS">
+               <padding>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </padding></Label>
+            <Label fx:id="cell54" alignment="TOP_LEFT" layoutX="15.0" layoutY="15.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onMouseClicked="#calendarClickHandler" prefHeight="75.0" prefWidth="90.0" text="Label" GridPane.columnIndex="4" GridPane.hgrow="ALWAYS" GridPane.rowIndex="6" GridPane.vgrow="ALWAYS">
+               <padding>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </padding></Label>
+            <Label fx:id="cell53" alignment="TOP_LEFT" layoutX="15.0" layoutY="15.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onMouseClicked="#calendarClickHandler" prefHeight="75.0" prefWidth="90.0" text="Label" GridPane.columnIndex="3" GridPane.hgrow="ALWAYS" GridPane.rowIndex="6" GridPane.vgrow="ALWAYS">
+               <padding>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </padding></Label>
+            <Label fx:id="cell52" alignment="TOP_LEFT" layoutX="15.0" layoutY="15.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onMouseClicked="#calendarClickHandler" prefHeight="75.0" prefWidth="90.0" text="Label" GridPane.columnIndex="2" GridPane.hgrow="ALWAYS" GridPane.rowIndex="6" GridPane.vgrow="ALWAYS">
+               <padding>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </padding></Label>
+            <Label fx:id="cell51" alignment="TOP_LEFT" layoutX="15.0" layoutY="15.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onMouseClicked="#calendarClickHandler" prefHeight="75.0" prefWidth="90.0" text="Label" GridPane.columnIndex="1" GridPane.hgrow="ALWAYS" GridPane.rowIndex="6" GridPane.vgrow="ALWAYS">
+               <padding>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </padding></Label>
+            <Label fx:id="cell50" alignment="TOP_LEFT" layoutX="15.0" layoutY="15.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onMouseClicked="#calendarClickHandler" prefHeight="75.0" prefWidth="90.0" text="Label" GridPane.hgrow="ALWAYS" GridPane.rowIndex="6" GridPane.vgrow="ALWAYS">
+               <padding>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </padding></Label>
+            <Label fx:id="cell56" alignment="TOP_LEFT" layoutX="390.0" layoutY="285.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onMouseClicked="#calendarClickHandler" prefHeight="75.0" prefWidth="90.0" text="Label" GridPane.columnIndex="6" GridPane.hgrow="ALWAYS" GridPane.rowIndex="6" GridPane.vgrow="ALWAYS">
+               <padding>
+                  <Insets bottom="5.0" right="5.0" top="5.0" />
+               </padding></Label>
+         </children>
+         <padding>
+            <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+         </padding>
+      </GridPane>
+      <HBox fx:id="hrControls" alignment="CENTER" spacing="10.0" VBox.vgrow="NEVER">
+         <children>
+            <Button fx:id="saptamanalBtn" mnemonicParsing="false" onAction="#editSaptamanal" styleClass="blueButton" text="Orar Saptamanal" />
+            <Button fx:id="specificBtn" mnemonicParsing="false" onAction="#editSpecific" styleClass="blueButton" text="Orar Specific" />
+            <Button fx:id="concediiBtn" mnemonicParsing="false" onAction="#editConcedii" styleClass="blueButton" text="Concedii" />
+         </children>
+         <padding>
+            <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+         </padding>
+      </HBox>
+   </children>
+   <padding>
+      <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+   </padding>
+</VBox>
