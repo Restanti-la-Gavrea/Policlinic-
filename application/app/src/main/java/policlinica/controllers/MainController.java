@@ -111,6 +111,7 @@ public class MainController implements Initializable {
         }
         else {
             orarController.setUserShowCalendar(user);
+            orarController.hideHrControls();
             main.setCenter(orarLayout);
         }
     }
@@ -125,8 +126,11 @@ public class MainController implements Initializable {
     }
     @FXML public void setProgramariLayout(){
         programareController.setContext((Medical)user, creareProgramareLayout, creareProgramareController, raportLayout, raportController, main);
-        raportController.setContext((Medic)user, programareLayout, main);
-        creareProgramareController.setContext((Medical)user, programareLayout, programareController, main);
+        if(user instanceof Medic)
+            raportController.setContext((Medic)user, programareLayout, main);
+        if(user instanceof  Receptioner)
+            creareProgramareController.setContext((Receptioner) user, programareLayout, programareController, main);
+
         main.setCenter(programareLayout);
     }
     @FXML public void setServiciiLayout(){

@@ -12,6 +12,8 @@ import policlinica.MonthName;
 import policlinica.calendar.Calendar;
 import policlinica.calendar.CalendarAux;
 import policlinica.calendar.Day;
+import policlinica.users.AsistentMedical;
+import policlinica.users.Medic;
 import policlinica.users.ResurseUmane;
 import policlinica.users.User;
 
@@ -114,6 +116,8 @@ public class OrarController implements Initializable {
         orarEditController = null;
         orarEditLayout = null;
 
+        specificBtn.managedProperty().bind(specificBtn.visibleProperty());
+
         hrControls.managedProperty().bind(hrControls.visibleProperty());
     }
 
@@ -170,6 +174,16 @@ public class OrarController implements Initializable {
 
     public void setUserShowCalendar(User user){
         this.userCalendar = user;
+
+        if(user instanceof AsistentMedical){
+            specificBtn.setVisible(false);
+        }else{
+            if(user instanceof Medic)
+                specificBtn.setVisible(true);
+            else
+                specificBtn.setVisible(false);
+        }
+
         month = CalendarAux.getCurrentMonth();
         year = CalendarAux.getCurrentYear();
         createCalendar(user.getNrContract());

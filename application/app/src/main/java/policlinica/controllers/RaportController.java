@@ -24,6 +24,8 @@ public class RaportController implements Initializable {
     private Medic user;
     private BorderPane main;
 
+    ArrayList<Serviciu> serviciiPosibile;
+
     private RaportMedical raportMedical;
 
     @FXML private Label detailsLbl;
@@ -78,6 +80,7 @@ public class RaportController implements Initializable {
 
     @FXML public void goBack(){
         errLbl.setVisible(false);
+        extra.setVisible(false);
         raportMedical = null;
         main.setCenter(returnLayout);
     }
@@ -125,18 +128,27 @@ public class RaportController implements Initializable {
     }
 
     @FXML public void deleteServiciu(){
-        int i = serviciiList.getSelectionModel().selectedIndexProperty().intValue();
-        if(i != -1){
-            raportMedical.getServiciu().remove(i);
-            updateServicii();
+        if(raportMedical.getServiciu().size()>1)
+        {
+            int i = serviciiList.getSelectionModel().selectedIndexProperty().intValue();
+            if(i != -1){
+                raportMedical.getServiciu().remove(i);
+                updateServicii();
+            }
         }
     }
 
     @FXML public void addServiciu(){
 
+        int i = serviciuBox.getSelectionModel().getSelectedIndex();
+        if(i != -1)
+        {
+            Serviciu temp = serviciiPosibile.get(i);
+            temp.setRezultat("");
+            raportMedical.getServiciu().add(temp);
 
-
-        extra.setVisible(false);
+            extra.setVisible(false);
+        }
     }
 
     public void setRaportMedical(RaportMedical raportMedical){
@@ -292,10 +304,12 @@ public class RaportController implements Initializable {
         for(MedicAux a: asistenti)
             asistentBox.getItems().add(a.getNume() + " " + a.getPrenume());
 
-        ArrayList<Serviciu> servicii = user.getListaServicii(raportMedical.getNrProgramare());
+        serviciiPosibile = user.getListaServicii(raportMedical.getNrProgramare());
         serviciuBox.getItems().clear();
-        for(Serviciu s: servicii)
+        for(Serviciu s: serviciiPosibile){
             serviciuBox.getItems().add(s.getNume());
+            System.out.println("S-a adaugat !" + s.getNume());
+        }
     }
 
     private void updateServicii(){
