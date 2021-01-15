@@ -85,7 +85,31 @@ public class Medic extends Medical {
 	}
 	
 	public double getMinuteWorked(int month,int year) {
-		return 0.0;
+		String comanda = "SELECT * FROM realizarebon where"
+				+ " nrcmedic = " + this.getNrContract() +
+				" and year(datap) = " + year 
+				+ " and month(datap) = " + month + ";";
+		ResultSet result = executeSelect(comanda);
+		String durate ="";
+		System.out.println(comanda);
+		try {
+			while(result.next()) {
+				String durata = result.getString("newdurata");
+				if ( durata == null) {
+					durata = result.getString("durata");
+				}
+				if (!durate.equals(""))
+					durate+=" ";
+				durate+=durata;
+			}
+		} catch (SQLException e) {
+			return 0.0;
+		}
+		System.out.println(durate);
+		String intervalString = IntervalOrar.formeazaInterval("00:00:00",durate.split(" ") );
+		System.out.println(intervalString);
+		IntervalOrar interval = new IntervalOrar(intervalString);
+		return interval.getMinutesIntervale();
 	}
 	
 	public double getSalariuMedic(int month,int year) {
@@ -106,7 +130,7 @@ public class Medic extends Medical {
 		} catch (Exception e) {
 			printSqlErrorMessage("getsalariu, medic");
 		}
-
+		
 		double aux = profitMedic(month, year);
 		aux += salariuLunar;
 		salariuLunar += (aux * comision) / (100 - comision);

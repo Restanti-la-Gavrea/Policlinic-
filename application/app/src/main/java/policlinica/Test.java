@@ -9,13 +9,11 @@ import policlinica.users.*;
 public class Test {
 
 	public Test() {
-		verificaLista("1");
+		mere();
 	}
 	public void mere() {
-		String mere = "09:20-10:10 10:10-12:00 10:05-11:00";
-		IntervalOrar interval = new IntervalOrar(mere);
-		System.out.println(interval.isIntercalat(0, 1));
-		System.out.println(interval.isIntercalat());
+		Medic medic = new Medic("3");
+		System.out.println(medic.getMinuteWorked(2,2021));
 	}
 	private void verificaListaRapoarte() {
 		Medic medic = new Medic();
