@@ -9,7 +9,7 @@ import policlinica.users.*;
 public class Test {
 
 	public Test() {
-		verificaProgramare();
+		verificaLista("1");
 	}
 	public void mere() {
 		String mere = "09:20-10:10 10:10-12:00 10:05-11:00";
@@ -21,6 +21,13 @@ public class Test {
 		Medic medic = new Medic();
 		//RaportMedical raport = medic.getRaport("1");
 		medic.getListaServicii("3");
+	}
+	public void verificaLista(String nrSpecialitate) {
+		Receptioner t = new Receptioner();
+		ArrayList<Medic> rez = t.getListaMedici("1");
+		for( Medic m : rez ) {
+			System.out.println(m.getNrContract()); 
+		}
 	}
 	public void verificaProgramare() {
 		Programare p = new Programare();

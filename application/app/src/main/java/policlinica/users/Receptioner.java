@@ -51,8 +51,9 @@ public class Receptioner extends Medical {
 	public ArrayList<Medic> getListaMedici(String nrSpecialitate) {
 		ArrayList<Medic> lista = new ArrayList<Medic>();
 		ResultSet rs = executeSelect(
-				"Select nrContract from Medic inner join SpecialitateMedic inner join Specialitate "
-						+ "on Specialitate.nrSpecialitate = SpecialitateMedic.nrSpecialitate and SpecialitateMedic.nrContract = Medic.nrContract  where Specilaitate.nrSpecialitate = "
+				"Select Medic.nrContract from Medic inner join SpecialitateMedic "
+				+ " inner join Specialitate on Specialitate.nrSpecialitate = SpecialitateMedic.nrSpecialitate "
+				+ " and SpecialitateMedic.nrContract = Medic.nrContract  where Specialitate.nrSpecialitate = "
 						+ nrSpecialitate + ";");
 		try {
 			while (rs.next()) {
