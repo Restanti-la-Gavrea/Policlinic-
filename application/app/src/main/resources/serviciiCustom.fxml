@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="policlinica.controllers.ServiciiController">
+   <padding>
+      <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+   </padding>
+   <children>
+      <HBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" spacing="10.0" VBox.vgrow="ALWAYS">
+         <children>
+            <ListView fx:id="serviciiList" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" HBox.hgrow="ALWAYS" />
+            <VBox alignment="CENTER" spacing="10.0" HBox.hgrow="NEVER">
+               <children>
+                  <Label text="Noul Pret" />
+                  <TextField fx:id="priceFld" prefWidth="200.0" />
+                  <Button fx:id="submitBtn" mnemonicParsing="false" onAction="#changePrice" text="Modifica Pretul" />
+               </children>
+            </VBox>
+         </children></HBox>
+   </children>
+</VBox>

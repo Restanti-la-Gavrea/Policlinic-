@@ -111,6 +111,11 @@ public class AngajatiListController implements Initializable {
             AngajatTableItem temp = angajatiTable.getItems().get(angajatiTable.getSelectionModel().getFocusedIndex());
             User tempUser = new User(temp.getNrContract());
 
+            if(temp.getPost().equals("m"))
+                orarController.showS();
+            else
+                orarController.hideS();
+
             orarController.setUserShowCalendar(tempUser);
 
             main.setCenter(orarLayout);

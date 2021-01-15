@@ -50,7 +50,7 @@ public class App extends Application {
 
 
 		primaryStage.minWidthProperty().setValue(800);
-		primaryStage.minHeightProperty().setValue(550);
+		primaryStage.minHeightProperty().setValue(600);
 		window.setTitle("Administrare Policlinica");
 		window.setScene(logInScene);
 		window.show();

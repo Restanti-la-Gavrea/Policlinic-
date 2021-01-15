@@ -113,6 +113,10 @@ public class PacientiController implements Initializable {
         //asta se executa cand se apasa pe butonul pacienti
         pacienti = user.getListaPacienti();
 
+        nextContextBtn.setOnAction(this::showReportsHandler);
+        nextContextBtn.setText("Arata Rapoartele Pacientului");
+        backContextBtn.setVisible(false);
+
         this.main = main;
         this.user = user;
         this.raportLayout = raportLayout;

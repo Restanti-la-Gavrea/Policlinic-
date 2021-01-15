@@ -175,18 +175,18 @@ public class OrarController implements Initializable {
     public void setUserShowCalendar(User user){
         this.userCalendar = user;
 
-        if(user instanceof AsistentMedical){
-            specificBtn.setVisible(false);
-        }else{
-            if(user instanceof Medic)
-                specificBtn.setVisible(true);
-            else
-                specificBtn.setVisible(false);
-        }
+        System.out.println(user.getClass());
 
         month = CalendarAux.getCurrentMonth();
         year = CalendarAux.getCurrentYear();
         createCalendar(user.getNrContract());
+    }
+
+    public void hideS(){
+        specificBtn.setVisible(false);
+    }
+    public void showS(){
+        specificBtn.setVisible(true);
     }
 
     public void refreshCalendar(){
