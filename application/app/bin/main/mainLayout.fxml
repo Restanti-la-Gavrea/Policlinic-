@@ -4,39 +4,39 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<BorderPane fx:controller="policlinica.controllers.MainController" fx:id="main" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="330.0" minWidth="300.0" prefHeight="401.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" >
+<BorderPane fx:id="main" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="330.0" minWidth="300.0" prefHeight="401.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="policlinica.controllers.MainController">
    <left>
       <VBox fx:id="mainMenu" alignment="CENTER" prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
          <opaqueInsets>
             <Insets />
          </opaqueInsets>
          <children>
-            <Button fx:id="userBtn" mnemonicParsing="false" onAction="#setUserLayout" prefWidth="100.0" styleClass="whiteText" text="User">
+            <Button fx:id="userBtn" mnemonicParsing="false" onAction="#setUserLayout" prefHeight="37.0" prefWidth="100.0" styleClass="whiteText" text="User">
                <VBox.margin>
                   <Insets />
                </VBox.margin>
                <padding>
                   <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                </padding></Button>
-            <Button fx:id="administratorBtn" mnemonicParsing="false" onAction="#setAdministratorLayout" prefWidth="100.0" styleClass="whiteText" text="Administrator">
+            <Button fx:id="administratorBtn" mnemonicParsing="false" onAction="#setAdministratorLayout" prefHeight="37.0" prefWidth="100.0" styleClass="whiteText" text="Administrator">
                <padding>
                   <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                </padding></Button>
-            <Button fx:id="angajatiBtn" layoutX="10.0" layoutY="85.0" mnemonicParsing="false" onAction="#setAngajatiLayout" prefWidth="100.0" styleClass="whiteText" text="Angajati">
+            <Button fx:id="angajatiBtn" layoutX="10.0" layoutY="85.0" mnemonicParsing="false" onAction="#setAngajatiLayout" prefHeight="37.0" prefWidth="100.0" styleClass="whiteText" text="Angajati">
                <padding>
                   <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                </padding>
             </Button>
-            <Button fx:id="orarBtn" mnemonicParsing="false" onAction="#setOrarLayout" prefWidth="100.0" styleClass="whiteText" text="Orar">
+            <Button fx:id="orarBtn" mnemonicParsing="false" onAction="#setOrarLayout" prefHeight="37.0" prefWidth="100.0" styleClass="whiteText" text="Orar">
                <padding>
                   <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                </padding></Button>
-            <Button fx:id="finanteBtn" mnemonicParsing="false" onAction="#setFinanteLayout" prefWidth="100.0" styleClass="whiteText" text="Finante">
+            <Button fx:id="finanteBtn" mnemonicParsing="false" onAction="#setFinanteLayout" prefHeight="37.0" prefWidth="100.0" styleClass="whiteText" text="Finante">
                <padding>
                   <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                </padding>
             </Button>
-            <Button fx:id="pacientiBtn" mnemonicParsing="false" onAction="#setPacientiLayout" prefWidth="100.0" styleClass="whiteText" text="Pacienti">
+            <Button fx:id="pacientiBtn" mnemonicParsing="false" onAction="#setPacientiLayout" prefHeight="37.0" prefWidth="100.0" styleClass="whiteText" text="Pacienti">
                <VBox.margin>
                   <Insets />
                </VBox.margin>
@@ -44,17 +44,17 @@
                   <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                </padding>
             </Button>
-            <Button fx:id="programariBtn" mnemonicParsing="false" onAction="#setProgramariLayout" prefWidth="100.0" styleClass="whiteText" text="Programari">
+            <Button fx:id="programariBtn" mnemonicParsing="false" onAction="#setProgramariLayout" prefHeight="37.0" prefWidth="100.0" styleClass="whiteText" text="Programari">
                <padding>
                   <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                </padding>
             </Button>
-            <Button fx:id="serviciiBtn" mnemonicParsing="false" onAction="#setServiciiLayout" prefWidth="100.0" styleClass="whiteText" text="Servicii">
+            <Button fx:id="serviciiBtn" mnemonicParsing="false" onAction="#setServiciiLayout" prefHeight="37.0" prefWidth="100.0" styleClass="whiteText" text="Servicii">
                <padding>
                   <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                </padding>
             </Button>
-            <Button fx:id="logOutBtn" alignment="BASELINE_CENTER" contentDisplay="BOTTOM" mnemonicParsing="false" onAction="#logOut" prefWidth="100.0" styleClass="whiteText" text="Log Out">
+            <Button fx:id="logOutBtn" alignment="BASELINE_CENTER" contentDisplay="BOTTOM" mnemonicParsing="false" onAction="#logOut" prefHeight="37.0" prefWidth="100.0" styleClass="whiteText" text="Log Out">
                <padding>
                   <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                </padding>
@@ -63,9 +63,6 @@
                </VBox.margin>
             </Button>
          </children>
-         <padding>
-            <Insets bottom="5.0" top="5.0" />
-         </padding>
       </VBox>
    </left>
    <center>

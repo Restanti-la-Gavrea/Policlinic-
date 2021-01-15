@@ -4,19 +4,19 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<VBox fx:id="pane" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="330.0" minWidth="300.0" prefHeight="400.0" prefWidth="600.0" spacing="5.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="policlinica.controllers.LogInController">
+<VBox fx:id="pane" alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="330.0" minWidth="300.0" spacing="5.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="policlinica.controllers.LogInController">
    <children>
-      <Label fx:id="errLogInLbl" text="Username or Password did not match!">
+      <Label fx:id="errLogInLbl" text="Username or Password did not match!" VBox.vgrow="NEVER">
          <padding>
             <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
          </padding></Label>
-      <HBox alignment="CENTER" prefHeight="30.0" prefWidth="200.0" spacing="10.0">
+      <HBox alignment="CENTER" maxWidth="1.7976931348623157E308" prefHeight="30.0" spacing="10.0" VBox.vgrow="NEVER">
          <children>
             <Label text="username" />
             <TextField fx:id="usernameField" />
          </children>
       </HBox>
-      <HBox alignment="CENTER" prefHeight="30.0" prefWidth="200.0" spacing="10.0">
+      <HBox alignment="CENTER" maxWidth="1.7976931348623157E308" prefHeight="30.0" spacing="10.0" VBox.vgrow="NEVER">
          <children>
             <Label text="password">
                <HBox.margin>

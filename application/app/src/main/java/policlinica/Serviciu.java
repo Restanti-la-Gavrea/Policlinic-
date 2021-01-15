@@ -22,7 +22,9 @@ public class Serviciu {
 	}
 
 	public Serviciu(String nrServiciu) {
-		ResultSet rs = (new User()).executeSelect("Select * from Serviciu where nrServiciu = " + nrServiciu + ";");
+		ResultSet rs = (new User()).executeSelect("Select * from Serviciu inner join ServiciuPerProgramare on\r\n"
+				+ "				 Serviciu.nrServiciu = ServiciuPerProgramare.nrServiciu where\r\n"
+				+ "				 Serviciu.nrServiciu = " + nrServiciu + ";");
 		try {
 			if (rs.next()) {
 				this.nrServiciu = rs.getString("nrServiciu");
@@ -30,7 +32,7 @@ public class Serviciu {
 				this.rezultat = rs.getString("rezultat");
 			}
 		} catch (Exception e) {
-			new User().printSqlErrorMessage("Serviciu Constructor");
+			e.printStackTrace();
 		}
 	}
 

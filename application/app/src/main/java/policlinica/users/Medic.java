@@ -34,10 +34,8 @@ public class Medic extends Medical {
 				specialitate = rezultat.getString("nrSpecialitate");
 			}
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			printSqlErrorMessage("getListaServicii Medic");
 		}
-		System.err.println(specialitate);
 		ArrayList<Serviciu> lista = new ArrayList<Serviciu>();
 		comanda = "Select nrServiciu from Serviciu where nrSpecialitate = " + specialitate + ";";
 		rezultat = executeSelect(comanda);
@@ -46,25 +44,11 @@ public class Medic extends Medical {
 				lista.add(new Serviciu(rezultat.getString("nrServiciu")));
 			}
 		} catch (SQLException e) {
-			
+			System.err.println("Eroare in getListaServicii");
 		}
 		return lista;
 	}
 
-	public double profitMedic(int month, int year) {
-		double profit = 0.0;
-		ResultSet rs = executeSelect("select suma from platimedic where MONTH(ziPlata) = " + month
-				+ " and YEAR(ziPlata) = " + year + " and nrCMedic = " + nrContract + ";");
-		try {
-			while (rs.next()) {
-				profit += (rs.getInt("suma") * (100 - rs.getInt("comision"))) / 100;
-			}
-		} catch (Exception e) {
-			printSqlErrorMessage("ProfitMedic, medic");
-		}
-		profit -= super.getSalariu(month, year);
-		return profit;
-	}
 	public ArrayList <MedicAux> getListaAsistenti(){
 		ArrayList <MedicAux> listaAsistenti =  new ArrayList<>();
 		try {
@@ -82,6 +66,31 @@ public class Medic extends Medical {
 			e.printStackTrace();
 		}
 		return listaAsistenti;
+	}
+	
+	public double profitMedic(int month, int year) {
+		double profit = 0.0;
+		ResultSet rs = executeSelect("select suma from platimedic where MONTH(ziPlata) = " + month
+				+ " and YEAR(ziPlata) = " + year + " and nrCMedic = " + nrContract + ";");
+		try {
+			while (rs.next()) {
+				profit += (rs.getInt("suma") * (100 - rs.getInt("comision"))) / 100;
+			}
+		} catch (Exception e) {
+			printSqlErrorMessage("ProfitMedic, medic");
+		}
+		profit -= super.getSalariu(month, year);
+		return profit;
+	}
+	
+	public double getMinuteWorked(int month,int year) {
+		return 0.0;
+	}
+	
+	public double getSalariuMedic(int month,int year) {
+		double nrMinute = getMinuteWorked(month,year);
+		double salariuLunar = Double.parseDouble(salariu) * nrMinute / 60;
+		return salariuLunar;
 	}
 
 	@Override
