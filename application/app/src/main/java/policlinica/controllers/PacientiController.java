@@ -47,7 +47,6 @@ public class PacientiController implements Initializable {
     public void showReports(){
 
         String numePacient = contextList.getSelectionModel().getSelectedItem();
-        System.out.println("P selected: " + numePacient);
 
         if(numePacient != null){
             Pacient tempPacient = null;
@@ -96,7 +95,6 @@ public class PacientiController implements Initializable {
     public void openReport(){
 
         String raportDetails = contextList.getSelectionModel().getSelectedItem();
-        System.out.println("R selected: " + raportDetails);
 
        if(raportDetails != null){
            RaportMedical tempRaport = null;

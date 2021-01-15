@@ -11,6 +11,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
 import policlinica.Programare;
+import policlinica.users.AsistentMedical;
 import policlinica.users.Medic;
 import policlinica.users.Medical;
 
@@ -57,16 +58,17 @@ public class ProgramareController implements Initializable {
 
     @FXML public void creeazaRaport(){
 
-        //solutie temporara
-        raportController.prepareNewRaport(new Programare());
-        main.setCenter(raportLayout);
+        int i = programareTable.getSelectionModel().getSelectedIndex();
+        if(i != -1){
+
+            raportController.prepareNewRaport(programari.get(i));
+            main.setCenter(raportLayout);
+        }
     }
     @FXML public void creeazaPlata(){
         //TODO: tot ce tine de plata, chitanta, bon fiscal etc.
     }
-    @FXML public void creeazaProgramare(){
-        main.setCenter(creareProgramareLayout);
-    }
+    @FXML public void creeazaProgramare(){ main.setCenter(creareProgramareLayout); }
 
     public void setContext(Medical user, VBox creareProgramareLayout, CreareProgramareController c, VBox raportLayout, RaportController r, BorderPane main){
         this.creareProgramareLayout = creareProgramareLayout;
@@ -81,9 +83,16 @@ public class ProgramareController implements Initializable {
         ObservableList<Programare> list = FXCollections.observableArrayList(programari);
         programareTable.setItems(list);
 
-        //TODO: ascuns butoane in functie tipul medical
-
-
+        if(user instanceof Medic){
+            raportBtn.setVisible(true);
+            plataBtn.setVisible(false);
+            programareBtn.setVisible(false);
+        }
+        else{
+            raportBtn.setVisible(false);
+            plataBtn.setVisible(true);
+            programareBtn.setVisible(true);
+        }
 
     }
 

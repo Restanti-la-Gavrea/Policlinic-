@@ -35,14 +35,15 @@ public class Medic extends Medical {
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
-			printSqlErrorMessage("listaServicii/Programari , receptioner");
+			printSqlErrorMessage("getListaServicii Medic");
 		}
+		System.err.println(specialitate);
 		ArrayList<Serviciu> lista = new ArrayList<Serviciu>();
 		comanda = "Select nrServiciu from Serviciu where nrSpecialitate = " + specialitate + ";";
 		rezultat = executeSelect(comanda);
 		try {
 			while (rezultat.next()) {
-				lista.add(new Serviciu(rezultat.getString("nrServiviu")));
+				lista.add(new Serviciu(rezultat.getString("nrServiciu")));
 			}
 		} catch (SQLException e) {
 			

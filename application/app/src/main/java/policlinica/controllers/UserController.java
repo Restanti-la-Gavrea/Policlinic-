@@ -73,7 +73,7 @@ public class UserController implements Initializable {
             if(editedUser != null && user.submitUser(editedUser)) {
                 editedUser.setNume(numeFld.getText());
                 editedUser.setPrenume(prenumeFld.getText());
-                editedUser.setAdresa(adresaLbl.getText());
+                editedUser.setAdresa(adresaFld.getText());
                 editedUser.setEmail(emailFld.getText());
                 editedUser.setIban(ibanFld.getText());
                 editedUser.setNrTelefon(nrTelefonFld.getText());

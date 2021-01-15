@@ -1,13 +1,19 @@
 package policlinica.controllers;
 
+import javafx.beans.InvalidationListener;
+import javafx.beans.value.ObservableValue;
+import javafx.collections.ListChangeListener;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
+import policlinica.Specialitate;
 import policlinica.users.Medical;
+import policlinica.users.Receptioner;
 
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 public class CreareProgramareController implements Initializable {
@@ -28,13 +34,34 @@ public class CreareProgramareController implements Initializable {
 
     @FXML private Label errLbl;
 
-    private Medical user;
+    private Receptioner user;
     private VBox programareLayout;
     private ProgramareController programareController;
     private BorderPane main;
 
+    private ArrayList<Specialitate> specialitati;
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        specialitateList.getSelectionModel().selectedIndexProperty().addListener(
+                (ObservableValue<? extends Number> ov, Number old_val, Number new_val) -> {
+
+
+
+                });
+
+        serviciiList.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
+        serviciiList.getSelectionModel().getSelectedIndices().addListener(
+                (ListChangeListener.Change<? extends Integer> c) -> {
+
+                });
+
+        medicList.getSelectionModel().selectedIndexProperty().addListener(
+                (ObservableValue<? extends Number> ov, Number old_val, Number new_val) -> {
+
+
+
+                });
 
     }
 
@@ -45,12 +72,17 @@ public class CreareProgramareController implements Initializable {
         main.setCenter(programareLayout);
     }
 
-    @FXML public void setContext(Medical user, VBox programareLayout, ProgramareController programareController, BorderPane main){
+    @FXML public void setContext(Receptioner user, VBox programareLayout, ProgramareController programareController, BorderPane main){
         errLbl.setVisible(false);
         this.user = user;
         this.programareLayout = programareLayout;
         this.programareController = programareController;
         this.main = main;
+
+        specialitati = user.getSpecialitati();
+        specialitateList.getItems().clear();
+        for(Specialitate s: specialitati)
+            specialitateList.getItems().add(s.getNume());
     }
 
 }
