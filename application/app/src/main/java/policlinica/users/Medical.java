@@ -75,18 +75,14 @@ public class Medical extends User {
 				ResultSet aux = executeSelect(
 						"Select * from Raport where nrProgramare = " + rs.getString("nrProgramare") + ";");	
 				Programare p = new Programare();
+				ResultSet aux1; 
 				p.setRaport("true");
 				p.setAchitat("true");
 				if (!aux.next()) {
-					ResultSet aux1 = executeSelect(
+					aux1 = executeSelect(
 							"Select nume, prenume from Contract where nrContract = " + rs.getString("nrCMedic") + ";");
 					if (aux1.next()) {
 						p.setMedic(new MedicAux(rs.getString("nrCMedic"), aux1.getString("nume"),
-								aux1.getString("prenume")));
-					}
-					aux1 = executeSelect("Select * from Pacient where nrPacient = " + rs.getString("nrPacient") + ";");
-					if (aux1.next()) {
-						p.setPacient(new Pacient(aux1.getString("nrPacient"), aux1.getString("nume"),
 								aux1.getString("prenume")));
 					}
 					Day d = new Day(rs.getDate("dataP")); 
@@ -98,7 +94,7 @@ public class Medical extends User {
 				}
 				aux = executeSelect("Select * from Plata where nrProgramare = " + rs.getString("nrProgramare") + ";");
 				if(!aux.next()) {
-					ResultSet aux1 = executeSelect(
+					aux1 = executeSelect(
 							"Select nume, prenume from Contract where nrContract = " + rs.getString("nrCMedic") + ";");
 					if (aux1.next()) {
 						p.setMedic(new MedicAux(rs.getString("nrCMedic"), aux1.getString("nume"),
@@ -108,6 +104,7 @@ public class Medical extends User {
 					if (aux1.next()) {
 						p.setPacient(new Pacient(aux1.getString("nrPacient"), aux1.getString("nume"),
 								aux1.getString("prenume")));
+						System.out.println(p.getCnpPacient() + " " + p.getNumePacient());
 					}
 					Day d = new Day(rs.getDate("dataP")); 
 					d.setIntervalOrar(rs.getString("ora"));
@@ -116,9 +113,15 @@ public class Medical extends User {
 					p.setNrProgramare(rs.getString("nrProgramare"));
 					p.setAchitat("false");
 				}
-				//if(!p.isAchitat() || !p.isRaport()) {
-					lista.add(p); 
-				//}
+					aux1 = executeSelect("Select * from Pacient where nrPacient = " + rs.getString("nrPacient") + ";");
+					if (aux1.next()) {
+						p.setPacient(new Pacient(aux1.getString("nrPacient"), aux1.getString("nume"),
+								aux1.getString("prenume")));
+						System.out.println(p.getCnpPacient() + " " + p.getNumePacient());
+					}
+					if(!p.isAchitat() || !p.isRaport()) {
+						lista.add(p); 
+					}
 			}
 		} catch (Exception e) {
 			e.getStackTrace();
