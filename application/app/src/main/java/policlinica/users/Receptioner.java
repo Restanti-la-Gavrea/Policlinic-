@@ -72,7 +72,7 @@ public class Receptioner extends Medical {
 					return true;
 				}
 			}
-			boolean p = executeUpdate("Insert into Pacient Values(" + cnp + "," + Nume + "," + Prenume + ");");
+			boolean p = executeUpdate("Insert into Pacient Values(" + cnp + ",\"" + Nume + "\",\"" + Prenume + "\");");
 			return true;
 		} catch (Exception e) {
 			System.out.println("SQLException: " + e.getMessage());
@@ -138,16 +138,18 @@ public class Receptioner extends Medical {
 		if (!registerPatient(p.getNumePacient(), p.getPrenumePacient(), p.getCnpPacient()))
 			return false;
 		boolean rs = executeUpdate(
-				"Insert into Programare(dataP,ora,nrCMedic,nrPacient) " + "values (" + p.getDay().getStringDate() + ","
-						+ p.getDay().getIntervalorar() + ":00" + "," + p.getNrCMedic() + "," + cnp + ");");
+				"Insert into Programare(dataP,ora,nrCMedic,nrPacient) " + "values (\"" + p.getDay().getStringDate() + "\",\""
+						+ p.getDay().getIntervalorar() + "\"," + p.getNrCMedic() + "," + p.getCnpPacient() + ");");
 		ResultSet aux = executeSelect(
 				"Select * from Programare where (Select MAX(nrProgramare) as i from Programare) =  nrProgramare;");
+		
 		if (!rs)
 			return false;
 		setListaServiciuPerProgramare(p.getServicii(), p.getNrProgramare());
 		try {
-			ResultSet aux1 = executeSelect("Select nrProgramare,ora,nrServiciu from Programare where dataP = "
-					+ aux.getString("dataP") + "and nrCMedic = " + aux.getString("nrCMedic") + ";");
+			aux.next(); 
+			ResultSet aux1 = executeSelect("Select nrProgramare,ora from Programare where dataP = "
+					+ aux.getString("dataP") + " and nrCMedic = " + aux.getString("nrCMedic") + ";");
 			String intervale = "";
 			while (aux1.next()) {
 				String[] durate = durateServiciiProgramare(aux1.getString("nrProgramare"));
@@ -158,15 +160,17 @@ public class Receptioner extends Medical {
 				deleteAllServiciuPerProgramare(aux1.getString("nrProgramare"));
 				deleteProgramare(aux1.getString("nrProgramare"));
 			}
-			aux1 = executeSelect("Select nrProgramare,ora,nrServiciu from Programare where dataP = "
-					+ aux.getString("dataP") + "and nrCabinet = " + aux.getString("nrCabinet") + ";");
+			aux1 = executeSelect("Select nrProgramare,ora from Programare where dataP = "
+					+ aux.getString("dataP") + " and nrCabinet = " + aux.getString("nrCabinet") + ";");
 			intervale = "";
 			while (aux1.next()) {
 				String[] durate = durateServiciiProgramare(aux1.getString("nrProgramare"));
 				intervale += " " + IntervalOrar.formeazaInterval(aux1.getString("ora"), durate);
 			}
+			System.out.println(" intai aici"); 
 			myInterval = new IntervalOrar(intervale);
 			if (myInterval.isIntercalat()) {
+				System.out.println("aici"); 
 				deleteAllServiciuPerProgramare(aux1.getString("nrProgramare"));
 				deleteProgramare(aux1.getString("nrProgramare"));
 			}
