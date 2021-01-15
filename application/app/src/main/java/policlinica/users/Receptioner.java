@@ -146,9 +146,9 @@ public class Receptioner extends Medical {
 		
 		if (!rs)
 			return false;
-		setListaServiciuPerProgramare(p.getServicii(), p.getNrProgramare());
 		try {
 			aux.next(); 
+			setListaServiciuPerProgramare(p.getServicii(), aux.getString("nrProgramare"));
 			ResultSet aux1 = executeSelect("Select nrProgramare,ora from Programare where dataP = "
 					+ aux.getString("dataP") + " and nrCMedic = " + aux.getString("nrCMedic") + ";");
 			String intervale = "";

@@ -12,7 +12,6 @@
       <TableView fx:id="programareTable" VBox.vgrow="ALWAYS">
         <columns>
           <TableColumn fx:id="numePacientCol" prefWidth="111.0" text="Nume Pacient" />
-          <TableColumn fx:id="specialitateCol" prefWidth="105.0" text="Specialitatea" />
             <TableColumn fx:id="dataOraCol" prefWidth="75.0" text="Data si Ora" />
             <TableColumn fx:id="achitatCol" prefWidth="75.0" text="Achitata" />
             <TableColumn fx:id="raportCol" prefWidth="75.0" text="Raport" />
