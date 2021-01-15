@@ -118,7 +118,7 @@ public class Programare {
 
     private void fillDataOra(){
         if(day != null){
-            dataOra = day.getDayOfMonth() + " " + MonthName.getMonthName(day.getDayOfMonth()-1) + " - " + day.getIntervalorar();
+            dataOra = day.getDayOfMonth() + " " + MonthName.getMonthName(day.getMounthOfYear()-1) + " - " + day.getIntervalorar();
         }
     }
 }
