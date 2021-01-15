@@ -68,8 +68,8 @@ public class MainController implements Initializable {
         administratorBtn.managedProperty().bind(administratorBtn.visibleProperty());
         angajatiBtn.managedProperty().bind(angajatiBtn.visibleProperty());
         pacientiBtn.managedProperty().bind(pacientiBtn.visibleProperty());
-        programariBtn.managedProperty().bind(pacientiBtn.visibleProperty());
-        serviciiBtn.managedProperty().bind(pacientiBtn.visibleProperty());
+        programariBtn.managedProperty().bind(programariBtn.visibleProperty());
+        serviciiBtn.managedProperty().bind(serviciiBtn.visibleProperty());
     }
 
     @FXML public void setUserLayout() throws Exception{
@@ -236,20 +236,18 @@ public class MainController implements Initializable {
             serviciiBtn.setVisible(false);
             pacientiBtn.setVisible(true);
             programariBtn.setVisible(false);
-        }
-        else if(user instanceof Medic){
+        } else if(user instanceof Medic){
             serviciiBtn.setVisible(true);
             pacientiBtn.setVisible(true);
-            programariBtn.setVisible(true);}
-        else if(user instanceof Receptioner) {
+            programariBtn.setVisible(true);
+        } else if(user instanceof Receptioner) {
             pacientiBtn.setVisible(false);
             programariBtn.setVisible(true);
-            serviciiBtn.setVisible(false); }
-        else{
+            serviciiBtn.setVisible(false);
+        } else{
             pacientiBtn.setVisible(false);
             programariBtn.setVisible(false);
             serviciiBtn.setVisible(false);
         }
-
     }
 }

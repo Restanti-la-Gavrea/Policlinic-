@@ -245,7 +245,8 @@ public class RaportController implements Initializable {
         raportMedical.setSimptome(simptomeArea.getText());
         raportMedical.setRecomandari(recomandariArea.getText());
 
-        raportMedical.getServiciu().get(serviciiList.getSelectionModel().getSelectedIndex()).setRezultat(rezultatArea.getText());
+        if(serviciiList.getSelectionModel().getSelectedIndex() != -1)
+            raportMedical.getServiciu().get(serviciiList.getSelectionModel().getSelectedIndex()).setRezultat(rezultatArea.getText());
 
     }
 
