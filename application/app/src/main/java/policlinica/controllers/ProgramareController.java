@@ -26,7 +26,6 @@ public class ProgramareController implements Initializable {
 
     @FXML TableView<Programare> programareTable;
     @FXML TableColumn<Programare, String> numePacientCol;
-    @FXML TableColumn<Programare, String> specialitateCol;
     @FXML TableColumn<Programare, String> dataOraCol;
     @FXML TableColumn<Programare, String> achitatCol;
     @FXML TableColumn<Programare, String> raportCol;
@@ -50,7 +49,6 @@ public class ProgramareController implements Initializable {
         programareBtn.managedProperty().bind(programareBtn.visibleProperty());
 
         numePacientCol.setCellValueFactory(new PropertyValueFactory<>("numeComplet"));
-        specialitateCol.setCellValueFactory(new PropertyValueFactory<>("specialitate"));
         dataOraCol.setCellValueFactory(new PropertyValueFactory<>("dataOra"));
         achitatCol.setCellValueFactory(new PropertyValueFactory<>("achitat"));
         raportCol.setCellValueFactory(new PropertyValueFactory<>("raport"));

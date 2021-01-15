@@ -14,6 +14,7 @@ public class Programare {
     private String cnpPacient;
 
     private Specialitate specialitate;
+    private String siString;
 
     private ArrayList<Serviciu> servicii;
 
@@ -97,6 +98,7 @@ public class Programare {
         cnpPacient = pacient.getNrPacient();
         numePacient = pacient.getNume();
         prenumePacient = pacient.getPrenume();
+        numeComplet = numePacient+" "+prenumePacient;
     }
     public MedicAux getMedic(){return new MedicAux(nrCMedic, numeMedic, prenumeMedic);}
     public void setMedic(MedicAux medic){
@@ -107,10 +109,12 @@ public class Programare {
 
     public String getNrProgramare() { return nrProgramare; }
     public void setNrProgramare(String nrProgramare) { this.nrProgramare = nrProgramare; }
-    public void setSpecialitate(Specialitate specialitate) { this.specialitate = specialitate; }
+    public void setSpecialitate(Specialitate specialitate) { this.specialitate = specialitate; siString = specialitate.getNume(); }
     public String getPrenumeMedic() { return prenumeMedic; }
     public void setPrenumeMedic(String prenumeMedic) { this.prenumeMedic = prenumeMedic; }
 
+    public String getSiString() { return siString; }
+    public void setSiString(String sString) { this.siString = sString; }
 
     private void fillDataOra(){
         if(day != null){

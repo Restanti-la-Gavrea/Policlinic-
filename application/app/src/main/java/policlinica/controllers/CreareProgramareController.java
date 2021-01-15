@@ -1,6 +1,5 @@
 package policlinica.controllers;
 
-import javafx.beans.InvalidationListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ListChangeListener;
@@ -10,14 +9,12 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
-import policlinica.MedicAux;
 import policlinica.Programare;
 import policlinica.Serviciu;
 import policlinica.Specialitate;
 import policlinica.calendar.CalendarAux;
 import policlinica.calendar.Day;
 import policlinica.users.Medic;
-import policlinica.users.Medical;
 import policlinica.users.Receptioner;
 
 import java.net.URL;
@@ -56,18 +53,21 @@ public class CreareProgramareController implements Initializable {
         specialitateList.getSelectionModel().selectedIndexProperty().addListener(
                 (ObservableValue<? extends Number> ov, Number old_val, Number new_val) -> {
 
-                    Specialitate temp = specialitati.get(specialitateList.getSelectionModel().getSelectedIndex());
-                    servicii =  user.getServicii(temp.getNrSpecialitate());
-                    ObservableList<String> list = FXCollections.observableArrayList();
-                    for(Serviciu s: servicii)
-                        list.add(s.getNume());
-                    serviciiList.setItems(list);
+                    int index = specialitateList.getSelectionModel().getSelectedIndex();
+                    if(index != -1){
+                        Specialitate temp = specialitati.get(index);
+                        servicii =  user.getServicii(temp.getNrSpecialitate());
+                        ObservableList<String> list = FXCollections.observableArrayList();
+                        for(Serviciu s: servicii)
+                            list.add(s.getNume());
+                        serviciiList.setItems(list);
 
-                    mediciAux = user.getListaMedici(temp.getNrSpecialitate());
-                    ObservableList<String> mediciList = FXCollections.observableArrayList();
-                    for(Medic m: mediciAux)
-                        mediciList.add(m.getNume()+" "+m.getPrenume());
-                    medicList.setItems(mediciList);
+                        mediciAux = user.getListaMedici(temp.getNrSpecialitate());
+                        ObservableList<String> mediciList = FXCollections.observableArrayList();
+                        for(Medic m: mediciAux)
+                            mediciList.add(m.getNume()+" "+m.getPrenume());
+                        medicList.setItems(mediciList);
+                    }
                 });
 
         serviciiList.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
@@ -118,12 +118,15 @@ public class CreareProgramareController implements Initializable {
         for(Integer o: serviciiIndexes)
             list.add(servicii.get(o.intValue()));
         p.setServicii(list);
-
+        p.setNumeMedic(mediciAux.get(medicIndex).getNume());
+        p.setPrenumeMedic(mediciAux.get(medicIndex).getPrenume());
+        p.setNrCMedic(mediciAux.get(medicIndex).getNrContract());
         p.setDay(new Day(date));
         p.getDay().setIntervalOrar(ora);
 
         user.creeareProgramare(p);
 
+        goBack();
 
     }
     @FXML public void goBack(){
