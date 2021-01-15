@@ -12,8 +12,8 @@ public class Test {
 		mere();
 	}
 	public void mere() {
-		Medic medic = new Medic("3");
-		System.out.println(medic.getMinuteWorked(2,2021));
+		Medical medic = new Medical();
+		medic.getProgramari();
 	}
 	private void verificaListaRapoarte() {
 		Medic medic = new Medic();

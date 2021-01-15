@@ -59,7 +59,7 @@ public class Medical extends User {
 						+ " Programare.nrProgramare = " + nrProgramare + ";");
 		try {
 			while (rs.next()) {
-				lista.add(new Serviciu(rs.getString("nrServiviu")));
+				lista.add(new Serviciu(rs.getString("nrServiciu")));
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -69,31 +69,39 @@ public class Medical extends User {
 	}
 	public ArrayList<Programare> getProgramari() {
 		ArrayList<Programare> lista = new ArrayList<Programare>();
-		ResultSet rs = executeSelect("Select * from Programare");
+		String comanda ="Select * from Programare";
+		ResultSet rs = executeSelect(comanda);
+		System.out.println(comanda);
 		try {
 			while (rs.next()) {
-				ResultSet aux = executeSelect(
-						"Select * from Raport where nrProgramare = " + rs.getString("nrProgramare") + ";");	
+				comanda = "Select * from Raport where nrProgramare = " + rs.getString("nrProgramare") + ";";
+				ResultSet aux = executeSelect(comanda);	
 				Programare p = new Programare();
 				ResultSet aux1; 
 				p.setRaport("true");
 				p.setAchitat("true");
 				if (!aux.next()) {
-					aux1 = executeSelect(
-							"Select nume, prenume from Contract where nrContract = " + rs.getString("nrCMedic") + ";");
+					p.setRaport("false");
+					comanda = "Select nume, prenume from Contract where nrContract = " + rs.getString("nrCMedic") + ";";
+					aux1 = executeSelect(comanda);
 					if (aux1.next()) {
 						p.setMedic(new MedicAux(rs.getString("nrCMedic"), aux1.getString("nume"),
 								aux1.getString("prenume")));
+						
+						
 					}
 					Day d = new Day(rs.getDate("dataP")); 
 					d.setIntervalOrar(rs.getString("ora"));
 					p.setDay(d);
 					p.setServicii(getListaServiciiPerProgramare(rs.getString("nrProgramare")));
+				
 					p.setNrProgramare(rs.getString("nrProgramare"));
-					p.setRaport("false");
 				}
+				
+				
 				aux = executeSelect("Select * from Plata where nrProgramare = " + rs.getString("nrProgramare") + ";");
 				if(!aux.next()) {
+					p.setAchitat("false");
 					aux1 = executeSelect(
 							"Select nume, prenume from Contract where nrContract = " + rs.getString("nrCMedic") + ";");
 					if (aux1.next()) {
@@ -104,28 +112,28 @@ public class Medical extends User {
 					if (aux1.next()) {
 						p.setPacient(new Pacient(aux1.getString("nrPacient"), aux1.getString("nume"),
 								aux1.getString("prenume")));
-						System.out.println(p.getCnpPacient() + " " + p.getNumePacient());
 					}
 					Day d = new Day(rs.getDate("dataP")); 
 					d.setIntervalOrar(rs.getString("ora"));
 					p.setDay(d);
 					p.setServicii(getListaServiciiPerProgramare(rs.getString("nrProgramare")));
 					p.setNrProgramare(rs.getString("nrProgramare"));
-					p.setAchitat("false");
 				}
 					aux1 = executeSelect("Select * from Pacient where nrPacient = " + rs.getString("nrPacient") + ";");
 					if (aux1.next()) {
 						p.setPacient(new Pacient(aux1.getString("nrPacient"), aux1.getString("nume"),
 								aux1.getString("prenume")));
-						System.out.println(p.getCnpPacient() + " " + p.getNumePacient());
+						//System.out.println(p.getCnpPacient() + " " + p.getNumePacient());
 					}
 					if(!p.isAchitat() || !p.isRaport()) {
 						lista.add(p); 
 					}
+					
 			}
 		} catch (Exception e) {
 			e.getStackTrace();
 		}
+		
 		return lista;
 	}
 }

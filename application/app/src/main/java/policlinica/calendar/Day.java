@@ -39,16 +39,16 @@ public class Day {
 		}
 	}
 	public int getDayOfMonth() {
-		LocalDate localDate = date.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
-		return localDate.getDayOfMonth();
+		String[] luna = this.getStringDate().split("-");
+		return Integer.parseInt(luna[2]) ;
 	}
 	public int getMounthOfYear() {
-		LocalDate localDate = date.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
-		return localDate.getMonthValue();
+		String[] luna = this.getStringDate().split("-");
+		return Integer.parseInt(luna[1]) ;
 	}
 	public int getYear() {
-		LocalDate localDate = date.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
-		return localDate.getYear();
+		String[] luna = this.getStringDate().split("-");
+		return Integer.parseInt(luna[0]) ;
 	}
 	public String getNrUnitate() {
 		return nrUnitate;
