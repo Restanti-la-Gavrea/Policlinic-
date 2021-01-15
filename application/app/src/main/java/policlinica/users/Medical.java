@@ -4,6 +4,7 @@ import policlinica.MedicAux;
 import policlinica.Pacient;
 import policlinica.Programare;
 import policlinica.Serviciu;
+import policlinica.calendar.Day;
 
 import java.util.ArrayList;
 import java.sql.*;
@@ -88,6 +89,9 @@ public class Medical extends User {
 						p.setPacient(new Pacient(aux1.getString("nrPacient"), aux1.getString("nume"),
 								aux1.getString("prenume")));
 					}
+					Day d = new Day(rs.getDate("dataP")); 
+					d.setIntervalOrar(rs.getString("ora"));
+					p.setDay(d);
 					p.setServicii(getListaServiciiPerProgramare(rs.getString("nrProgramare")));
 					p.setNrProgramare(rs.getString("nrProgramare"));
 					p.setRaport("false");

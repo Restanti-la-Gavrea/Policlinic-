@@ -128,7 +128,6 @@ public class Economic extends User {
 				while (aux.next()) {
 					profit1[j] += aux.getInt("suma");
 				}
-				System.out.println(1);
 				profit[j] = new FinanteTableItem();
 				aux = executeSelect("Select nume,prenume from Contract where nrContract = " + nrContract + ";");
 				if (aux.next()) {
